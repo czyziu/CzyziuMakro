@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CzyziuMakro — Panel użytkownika</title>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#0b0f14" />
+
+  <!-- STRAŻNIK: uruchom bardzo wcześnie (dozwolone przez CSP 'self') -->
+  <script src="/guard.js"></script>
+</head>
+<body>
+  <!-- STRAŻNIK: jeśli nie ma tokena, przekieruj na logowanie -->
+  <script>
+    (function () {
+      try {
+        if (!localStorage.getItem('cm_token')) {
+          // przekierowanie z parametrem, żeby po zalogowaniu wrócić tutaj
+          location.replace('logowanie.html?next=pozalogowaniu.html');
+        }
+      } catch {
+        location.replace('logowanie.html');
+      }
+    })();
+  </script>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+        <img
+          src="/assets/logo-czyziumakro.svg"
+          alt="CzyziuMakro"
+          class="brand-logo"
+          width="220"
+          height="48"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <!-- widoczne tylko, gdy ZALOGOWANY -->
+        <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
+          Cześć, <span id="userName"></span>!
+        </a>
+
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+
+        <!-- widoczne tylko, gdy NIE zalogowany -->
+        <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
+        <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
+
+        <!-- widoczne tylko, gdy ZALOGOWANY -->
+        <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="site-main">
+    <div class="container">
+      <section>
+        <h1>Panel użytkownika</h1>
+        <p class="muted">
+          Witaj w swoim panelu! Tutaj możesz dodać funkcje dostępne tylko po zalogowaniu —
+          np. podsumowanie diety, statystyki, ustawienia profilu itd.
+        </p>
+      </section>
+    </div>
+  </main>
+
+
+
+  <!-- ===================== SKRYPTY ===================== -->
+  <script>
+    // Ustaw rok w stopce
+    const yr = document.getElementById('year');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- główny skrypt aplikacji -->
+<script src="/footer.js" defer></script>
+<script src="/app.js" defer></script>
+</body>
+</html>
+

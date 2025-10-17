@@ -12,30 +12,43 @@
 </head>
 <body>
   <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
-        <img
-          src="/assets/logo-czyziumakro.svg"
-          alt="CzyziuMakro"
-          class="brand-logo"
-          width="220"
-          height="48"
-          decoding="async"
-          fetchpriority="high"
-        />
-        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+      <img
+        src="/assets/logo-czyziumakro.svg"
+        alt="CzyziuMakro"
+        class="brand-logo"
+        width="220"
+        height="48"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+    </a>
+
+    <nav class="nav" aria-label="Główna nawigacja">
+      <!-- widoczne tylko, gdy ZALOGOWANY — PRZYWITANIE JAKO LINK -->
+      <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
+        Cześć, <span id="userName"></span>!
       </a>
 
-      <nav class="nav" aria-label="Główna nawigacja">
-        <a class="nav-link" href="index.html">O aplikacji</a>
-        <a class="nav-link" href="regulamin.html">Regulamin</a>
-        <a class="nav-link" href="kontakt.html">Kontakt</a>
-        <a class="nav-link" href="logowanie.html">Logowanie</a>
-        <a class="nav-link" href="rejestracja.html">Rejestracja</a>
-      </nav>
-    </div>
-  </header>
+      <!-- wspólne linki -->
+      <a class="nav-link" href="index.html">O aplikacji</a>
+      <a class="nav-link" href="regulamin.html">Regulamin</a>
+      <a class="nav-link" href="kontakt.html">Kontakt</a>
+
+      <!-- widoczne tylko, gdy NIE zalogowany -->
+      <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
+      <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
+
+      <!-- widoczne tylko, gdy ZALOGOWANY -->
+      <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
+    </nav>
+  </div>
+</header>
+
+
 
   <!-- ===================== MAIN / HERO ===================== -->
   <main id="home" class="hero">
@@ -54,11 +67,19 @@
           <li>Minimalny interfejs — maksimum konkretów.</li>
         </ul>
 
-        <div class="cta-row">
-          <button id="btn-register" class="btn btn-accent">Zacznij teraz</button>
-          <button id="btn-login" class="btn btn-outline">Mam już konto</button>
+        <!-- ===== CTA sekcja ===== -->
+        <div class="cta-row" data-auth="out">
+          <a href="rejestracja.html" class="btn btn-accent">Zacznij teraz</a>
+          <a href="logowanie.html" class="btn btn-outline">Mam już konto</a>
+        </div>
+
+        <!-- ===== CTA po zalogowaniu ===== -->
+        <div class="cta-row" data-auth="in" style="display:none;">
+          <a href="pozalogowaniu.html" class="btn btn-accent">Przejdź do panelu</a>
         </div>
       </div>
+
+      
 
       <section aria-labelledby="features-title" class="feature-card">
         <h2 id="features-title">Co potrafi CzyziuMakro?</h2>
@@ -72,24 +93,7 @@
     </div>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-info">
-        <p>© <span id="year"></span> CzyziuMakro</p>
-        <p class="small-note">
-          Aplikacja powstała w celach realizacji pracy inżynierskiej.
-          Autor: <strong>Jakub Czyżycki</strong>
-        </p>
-      </div>
 
-      <nav class="footer-nav" aria-label="Nawigacja w stopce">
-        <a href="index.html">O aplikacji</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="regulamin.html">Regulamin</a>
-      </nav>
-    </div>
-  </footer>
 
   <!-- ===================== SKRYPT ===================== -->
   <script>
@@ -111,5 +115,8 @@
       });
     }
   </script>
+<script src="/footer.js" defer></script>
+<script src="/app.js" defer></script>
 </body>
 </html>
+

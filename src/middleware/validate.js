@@ -1,24 +1,21 @@
 // src/middleware/validate.js
-// Proste middleware do walidacji schematem Zod
+const { ZodError } = require('zod');
+
 function validate(schema) {
   return (req, res, next) => {
-    const result = schema.safeParse({
-      body: req.body,
-      query: req.query,
-      params: req.params
-    });
-
+    const result = schema.safeParse(req.body || {});
     if (!result.success) {
-      const details = result.error.issues.map(i => ({
-        path: i.path.join('.'),
-        message: i.message
-      }));
-      return res.status(400).json({ error: 'Validation error', details });
+      const issue = result.error.issues?.[0];
+      return res.status(400).json({
+        message: issue?.message || 'Błędne dane',
+        path: issue?.path || [],
+      });
     }
-
     req.validated = result.data;
     next();
   };
 }
 
-module.exports = validate;
+// podwójny eksport, żeby import zawsze zadziałał
+module.exports = validate;          // default
+module.exports.validate = validate; // named

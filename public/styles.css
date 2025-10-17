@@ -330,3 +330,9 @@ button:focus-visible {
   outline: 2px solid var(--accent-500);
   outline-offset: 3px;
 }
+
+.user-greet {
+  font-weight: 500;
+  color: var(--accent-500);
+  cursor: default;
+}
