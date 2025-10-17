@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title>CzyziuMakro — Logowanie</title>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%2312b981'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Arial' font-size='120' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">⚑</span>
+        <span class="brand-name">CzyziuMakro</span>
+      </a>
+      <nav class="site-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="regulamin.html">Regulamin</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="logowanie.html">Logowanie</a></li>
+          <li><a href="rejestracja.html" class="btn-accent">Rejestracja</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <section class="page-header">
+        <h1>Zaloguj się</h1>
+        <p class="muted">Wróć do swojego konta i kontynuuj pracę.</p>
+      </section>
+
+      <article class="card card-narrow">
+        <div class="card-content">
+          <form class="form" action="#" method="post">
+            <div class="form-row">
+              <label for="email">E‑mail</label>
+              <input type="email" id="email" name="email" placeholder="jan@example.com" required />
+            </div>
+            <div class="form-row">
+              <label for="password">Hasło</label>
+              <input type="password" id="password" name="password" placeholder="••••••••" required minlength="8" />
+            </div>
+            <div class="form-row inline">
+              <input type="checkbox" id="remember" name="remember" />
+              <label for="remember">Zapamiętaj mnie</label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-accent">Zaloguj się</button>
+              <a class="btn-link" href="#">Nie pamiętasz hasła?</a>
+            </div>
+          </form>
+          <p class="muted">Nie masz konta? <a href="rejestracja.html">Zarejestruj się</a>.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+      <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+    </div>
+  </footer>
+
+</body>
+</html>

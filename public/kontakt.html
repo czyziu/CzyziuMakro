@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <title>CzyziuMakro — Kontakt</title>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%2312b981'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Arial' font-size='120' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">⚑</span>
+        <span class="brand-name">CzyziuMakro</span>
+      </a>
+      <nav class="site-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="regulamin.html">Regulamin</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="logowanie.html">Logowanie</a></li>
+          <li><a href="rejestracja.html" class="btn-accent">Rejestracja</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <section class="page-header">
+        <h1>Kontakt</h1>
+        <p class="muted">Masz pytania, sugestie lub zgłoszenie błędu? Napisz do nas.</p>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="card-content">
+            <form class="form" action="#" method="post" aria-describedby="contact-help">
+              <div class="form-row">
+                <label for="name">Imię i nazwisko</label>
+                <input type="text" id="name" name="name" placeholder="Jan Kowalski" required />
+              </div>
+              <div class="form-row">
+                <label for="email">E‑mail</label>
+                <input type="email" id="email" name="email" placeholder="jan@example.com" required />
+              </div>
+              <div class="form-row">
+                <label for="subject">Temat</label>
+                <input type="text" id="subject" name="subject" placeholder="Krótki temat wiadomości" required />
+              </div>
+              <div class="form-row">
+                <label for="message">Wiadomość</label>
+                <textarea id="message" name="message" rows="6" placeholder="Opisz sprawę..." required></textarea>
+              </div>
+              <div class="form-row inline">
+                <input type="checkbox" id="consent" name="consent" required />
+                <label for="consent">Wyrażam zgodę na przetwarzanie moich danych w celu obsługi zgłoszenia.</label>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn-accent">Wyślij</button>
+              </div>
+              <p id="contact-help" class="muted">Odpowiadamy zwykle w ciągu 1–2 dni roboczych.</p>
+            </form>
+          </div>
+        </article>
+
+        <aside class="card">
+          <div class="card-content content-flow">
+            <h2>Dane kontaktowe</h2>
+            <ul class="stack">
+              <li><strong>E‑mail:</strong> <a href="mailto:support@czyziumakro.app">support@czyziumakro.app</a></li>
+              <li><strong>Wsparcie techniczne:</strong> pon–pt 9:00–17:00 (CET)</li>
+            </ul>
+            <h3>Najczęstsze tematy</h3>
+            <ul>
+              <li>Zgłoszenia błędów i propozycje funkcji</li>
+              <li>Problemy z logowaniem</li>
+              <li>Pytania o import/eksport danych</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+      <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+    </div>
+  </footer>
+
+</body>
+</html>
