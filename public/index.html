@@ -2,22 +2,31 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CzyziuMakro — liczenie makro</title>
 
   <!-- Favicon / ikona aplikacji -->
-  <link rel="icon" type="image/svg+xml" href="assets/icon-cm.svg" />
-  <link rel="alternate icon" href="assets/icon-cm.svg" />
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
+  <!-- (opcjonalnie PNG fallback) -->
+  <!-- <link rel="icon" type="image/png" href="/assets/icon-cm-256.png" sizes="256x256" /> -->
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#0b0f14" />
+  <!-- ===================== [FAVICON / IKONA CM] ===================== -->
+<!-- Używa tej samej ikony co w headerze -->
+<link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg?v=1" sizes="any">
+<link rel="alternate icon" href="/assets/icon-cm.svg?v=1">
+<meta name="theme-color" content="#0b0f14">
+
+  
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="CzyziuMakro — strona główna">
-        <!-- Logo wektorowe spójne z paletą (Czyziu szare, Makro żółte) -->
+        <!-- Logo wektorowe (Czyziu szare, Makro żółte) -->
         <img
-          src="assets/logo-czyziumakro.svg"
+          src="/assets/logo-czyziumakro.svg"
           alt="CzyziuMakro"
           class="brand-logo"
           width="220"

@@ -16,6 +16,6 @@
   <!-- tło przezroczyste – logo działa na ciemnym headerze -->
   <g transform="translate(24,110)">
     <text class="t1" font-size="84" x="0" y="0">Czyziu</text>
-    <text class="t2" font-size="84" x="328" y="0">Makro</text>
+    <text class="t2" font-size="84" x="280" y="0">Makro</text>
   </g>
 </svg>

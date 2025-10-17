@@ -154,3 +154,4 @@ input:focus, textarea:focus{ border-color:var(--accent-500); box-shadow:0 0 0 4p
   .nav{ gap:.25rem; }
   .nav-link{ padding:.5rem .7rem; }
 }
+
