@@ -7,24 +7,14 @@
 
   <!-- Favicon / ikona aplikacji -->
   <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
-  <!-- (opcjonalnie PNG fallback) -->
-  <!-- <link rel="icon" type="image/png" href="/assets/icon-cm-256.png" sizes="256x256" /> -->
-
   <link rel="stylesheet" href="/styles.css" />
   <meta name="theme-color" content="#0b0f14" />
-  <!-- ===================== [FAVICON / IKONA CM] ===================== -->
-<!-- Używa tej samej ikony co w headerze -->
-<link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg?v=1" sizes="any">
-<link rel="alternate icon" href="/assets/icon-cm.svg?v=1">
-<meta name="theme-color" content="#0b0f14">
-
-  
 </head>
 <body>
+  <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#home" class="brand" aria-label="CzyziuMakro — strona główna">
-        <!-- Logo wektorowe (Czyziu szare, Makro żółte) -->
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
         <img
           src="/assets/logo-czyziumakro.svg"
           alt="CzyziuMakro"
@@ -38,15 +28,16 @@
       </a>
 
       <nav class="nav" aria-label="Główna nawigacja">
-        <a class="nav-link" href="#home">O aplikacji</a>
-        <a class="nav-link" href="#terms">Regulamin</a>
-        <a class="nav-link" href="#contact">Kontakt</a>
-        <a class="nav-link" href="#login">Logowanie</a>
-        <a class="nav-link" href="#register">Rejestracja</a>
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+        <a class="nav-link" href="logowanie.html">Logowanie</a>
+        <a class="nav-link" href="rejestracja.html">Rejestracja</a>
       </nav>
     </div>
   </header>
 
+  <!-- ===================== MAIN / HERO ===================== -->
   <main id="home" class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -64,8 +55,8 @@
         </ul>
 
         <div class="cta-row">
-          <a class="btn btn-accent" href="#register">Zacznij teraz</a>
-          <a class="btn btn-outline" href="#login">Mam już konto</a>
+          <button id="btn-register" class="btn btn-accent">Zacznij teraz</button>
+          <button id="btn-login" class="btn btn-outline">Mam już konto</button>
         </div>
       </div>
 
@@ -81,6 +72,7 @@
     </div>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-info">
@@ -92,16 +84,32 @@
       </div>
 
       <nav class="footer-nav" aria-label="Nawigacja w stopce">
-        <a href="#home">O aplikacji</a>
-        <a href="#contact">Kontakt</a>
-        <a href="#terms">Regulamin</a>
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
       </nav>
     </div>
   </footer>
 
+  <!-- ===================== SKRYPT ===================== -->
   <script>
     // Aktualny rok w stopce
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ======== Przekierowania między stronami CzyziuMakro ========
+    const loginBtn = document.getElementById("btn-login");
+    if (loginBtn) {
+      loginBtn.addEventListener("click", () => {
+        window.location.href = "logowanie.html";
+      });
+    }
+
+    const registerBtn = document.getElementById("btn-register");
+    if (registerBtn) {
+      registerBtn.addEventListener("click", () => {
+        window.location.href = "rejestracja.html";
+      });
+    }
   </script>
 </body>
 </html>

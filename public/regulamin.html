@@ -1,35 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <title>CzyziuMakro — Regulamin</title>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%2312b981'/%3E%3Ctext x='50%25' y='57%25' text-anchor='middle' font-family='Arial' font-size='120' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
+  <title>CzyziuMakro — Regulamin</title>
+
+  <!-- Ikona jak w index.html -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
+  <meta name="theme-color" content="#0b0f14" />
+
   <link rel="stylesheet" href="styles.css" />
-
 </head>
-<body>
+<body data-page="regulamin">
 
+  <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <span class="brand-mark" aria-hidden="true">⚑</span>
-        <span class="brand-name">CzyziuMakro</span>
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+        <img
+          src="/assets/logo-czyziumakro.svg"
+          alt="CzyziuMakro"
+          class="brand-logo"
+          width="220"
+          height="48"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
       </a>
-      <nav class="site-nav" aria-label="Główna nawigacja">
-        <ul>
-          <li><a href="index.html">Start</a></li>
-          <li><a href="regulamin.html">Regulamin</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-          <li><a href="logowanie.html">Logowanie</a></li>
-          <li><a href="rejestracja.html" class="btn-accent">Rejestracja</a></li>
-        </ul>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+        <a class="nav-link" href="logowanie.html">Logowanie</a>
+        <a class="nav-link" href="rejestracja.html">Rejestracja</a>
       </nav>
     </div>
   </header>
 
+  <!-- ===================== MAIN ===================== -->
   <main class="site-main">
     <div class="container">
       <section class="page-header">
@@ -43,21 +53,21 @@
           <p>Niniejszy regulamin określa zasady korzystania z serwisu CzyziuMakro („Serwis”). Akceptacja regulaminu jest równoznaczna z zawarciem umowy o świadczenie usług drogą elektroniczną.</p>
 
           <h2>2. Definicje</h2>
-          <ul>
+          <ul class="terms">
             <li><strong>Użytkownik</strong> — osoba korzystająca z Serwisu.</li>
             <li><strong>Konto</strong> — utworzony dla Użytkownika zbiór zasobów i ustawień.</li>
             <li><strong>Usługi</strong> — funkcjonalności dostępne w Serwisie.</li>
           </ul>
 
           <h2>3. Warunki korzystania</h2>
-          <ol>
+          <ol class="terms">
             <li>Do korzystania z Serwisu wymagane jest połączenie z Internetem oraz aktualna przeglądarka.</li>
             <li>Użytkownik jest zobowiązany do podawania prawdziwych danych.</li>
             <li>Zakazane jest dostarczanie treści bezprawnych.</li>
           </ol>
 
           <h2>4. Rejestracja i logowanie</h2>
-          <p>Założenie Konta wymaga podania adresu e‑mail oraz hasła i zaakceptowania Regulaminu. Logowanie odbywa się przy użyciu adresu e‑mail i hasła.</p>
+          <p>Założenie Konta wymaga podania adresu e-mail oraz hasła i zaakceptowania Regulaminu. Logowanie odbywa się przy użyciu adresu e-mail i hasła.</p>
 
           <h2>5. Odpowiedzialność</h2>
           <p>Administrator nie odpowiada za przerwy w działaniu Serwisu wynikające z siły wyższej, awarii ani nieuprawnionych działań osób trzecich.</p>
@@ -66,13 +76,13 @@
           <p>Informacje o przetwarzaniu danych osobowych oraz stosowaniu cookies opisane są w Polityce Prywatności.</p>
 
           <h2>7. Reklamacje</h2>
-          <ol>
+          <ol class="terms">
             <li>Reklamacje można składać na adres: <a href="mailto:support@czyziumakro.app">support@czyziumakro.app</a>.</li>
             <li>Reklamacje rozpatrujemy w terminie 14 dni roboczych.</li>
           </ol>
 
           <h2>8. Zmiany regulaminu</h2>
-          <p>O istotnych zmianach regulaminu Użytkownicy zostaną poinformowani z 7‑dniowym wyprzedzeniem.</p>
+          <p>O istotnych zmianach regulaminu Użytkownicy zostaną poinformowani z 7-dniowym wyprzedzeniem.</p>
 
           <h2>9. Kontakt</h2>
           <p>W sprawach związanych z Serwisem prosimy o kontakt poprzez formularz na stronie <a href="kontakt.html">Kontakt</a>.</p>
@@ -81,12 +91,19 @@
     </div>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> CzyziuMakro • Wszystkie prawa zastrzeżone</p>
-      <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
     </div>
   </footer>
 
+  <script>
+    // Aktualny rok w stopce (opcjonalnie)
+    document.addEventListener('DOMContentLoaded', () => {
+      const yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
