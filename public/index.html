@@ -1,85 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <title>CzyziuMakro – Strona główna (MVP)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    :root { --bg:#0b1020; --card:#121a33; --text:#e7ecff; --muted:#9fb0ff; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
-    header { padding: 2rem 1rem; text-align: center; border-bottom: 1px solid #1f2a52; }
-    main { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; display: grid; gap: 1.25rem; }
-    .card { background: var(--card); border: 1px solid #1f2a52; border-radius: 14px; padding: 1.25rem; }
-    h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }
-    h2 { margin: 0.25rem 0 0.75rem; font-size: 1.2rem; color: var(--muted); }
-    code, pre { background: #0c1327; color: #cfe0ff; padding: .25rem .4rem; border-radius: 6px; }
-    a { color: #c6d4ff; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.25rem; }
-    .status { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-    .ok { color: #8be28b; } .err { color: #ff9b9b; }
-    ul { margin: .5rem 0 .5rem 1.25rem; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CzyziuMakro — liczenie makro</title>
+
+  <!-- Favicon / ikona aplikacji -->
+  <link rel="icon" type="image/svg+xml" href="assets/icon-cm.svg" />
+  <link rel="alternate icon" href="assets/icon-cm.svg" />
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>CzyziuMakro</h1>
-    <h2>Backend: rejestrowanie posiłków, makra, zapasy, zamienniki + guardrails</h2>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="CzyziuMakro — strona główna">
+        <!-- Logo wektorowe spójne z paletą (Czyziu szare, Makro żółte) -->
+        <img
+          src="assets/logo-czyziumakro.svg"
+          alt="CzyziuMakro"
+          class="brand-logo"
+          width="220"
+          height="48"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a class="nav-link" href="#home">O aplikacji</a>
+        <a class="nav-link" href="#terms">Regulamin</a>
+        <a class="nav-link" href="#contact">Kontakt</a>
+        <a class="nav-link" href="#login">Logowanie</a>
+        <a class="nav-link" href="#register">Rejestracja</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="card">
-      <h3>Status API</h3>
-      <div id="api-status" class="status">Sprawdzam...</div>
-    </section>
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Aplikacja do liczenia makroskładników</h1>
 
-    <section class="grid">
-      <div class="card">
-        <h3>Szybki start</h3>
-        <ol>
-          <li><code>npm run dev</code> – start serwera (domyślnie <code>http://localhost:4000</code>)</li>
-          <li>Testy: <code>npm test</code></li>
-          <li>Health: <a href="/api/health" target="_blank">/api/health</a></li>
-        </ol>
-      </div>
+        <p class="lead">
+          Szybko obliczaj <strong>białko</strong>, <strong>tłuszcze</strong> i
+          <strong>węglowodany</strong> oraz kontroluj kalorie każdego posiłku.
+        </p>
 
-      <div class="card">
-        <h3>Auth (MVP)</h3>
-        <ul>
-          <li><code>POST /api/auth/register</code> – <small>{ email, password, name }</small></li>
-          <li><code>POST /api/auth/login</code> – <small>{ email, password }</small></li>
-          <li><code>GET /api/users/me</code> – nagłówek <code>Authorization: Bearer &lt;token&gt;</code></li>
+        <ul class="bullets" aria-label="Dlaczego warto?">
+          <li>Brak reklam i rozpraszaczy.</li>
+          <li>Ciemny motyw przyjazny dla oczu.</li>
+          <li>Minimalny interfejs — maksimum konkretów.</li>
         </ul>
+
+        <div class="cta-row">
+          <a class="btn btn-accent" href="#register">Zacznij teraz</a>
+          <a class="btn btn-outline" href="#login">Mam już konto</a>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Regulamin i zastrzeżenia</h3>
-        <p><a href="/disclaimers.html" target="_blank">Zobacz &rarr; /disclaimers.html</a></p>
-      </div>
-    </section>
-
-    <section class="card">
-      <h3>Użycie w Postmanie/Supertest</h3>
-      <pre><code>POST http://localhost:4000/api/auth/register
-Content-Type: application/json
-
-{ "email": "user@example.com", "password": "StrongPass123!", "name": "User" }</code></pre>
-    </section>
+      <section aria-labelledby="features-title" class="feature-card">
+        <h2 id="features-title">Co potrafi CzyziuMakro?</h2>
+        <ul class="feature-list">
+          <li>Kalkulator makro — wprowadź produkty i ilości, a my policzymy resztę.</li>
+          <li>Cele dzienne — ustaw docelowe kalorie i rozkład makro.</li>
+          <li>Zapisywanie posiłków — szybkie dodawanie „z ulubionych”.</li>
+          <li>Podgląd postępów — dzienny wykres kalorii i makro.</li>
+        </ul>
+      </section>
+    </div>
   </main>
 
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© <span id="year"></span> CzyziuMakro</p>
+        <p class="small-note">
+          Aplikacja powstała w celach realizacji pracy inżynierskiej.
+          Autor: <strong>Jakub Czyżycki</strong>
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="#home">O aplikacji</a>
+        <a href="#contact">Kontakt</a>
+        <a href="#terms">Regulamin</a>
+      </nav>
+    </div>
+  </footer>
+
   <script>
-    async function checkHealth() {
-      const el = document.getElementById('api-status');
-      try {
-        const res = await fetch('/api/health');
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
-        el.innerHTML = '<span class="ok">OK</span> • ' + JSON.stringify(data);
-      } catch (e) {
-        el.innerHTML = '<span class="err">BŁĄD</span> • ' + e.message;
-      }
-    }
-    checkHealth();
+    // Aktualny rok w stopce
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

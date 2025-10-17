@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Ikona CzyziuMakro: litery C (szare) i M (żółte)">
+  <defs>
+    <style>
+      .bg { fill: #101720; }      /* tło */
+      .c { fill: #c6d2dc; }       /* C szare */
+      .m { fill: #facc15; }       /* M żółte */
+      text {
+        font-family: Inter, Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        font-weight: 900;
+      }
+    </style>
+  </defs>
+
+  <!-- Tło z zaokrąglonymi rogami -->
+  <rect class="bg" width="256" height="256" rx="48"/>
+
+  <!-- Litera C lekko przesunięta w lewo i nieco wyżej -->
+  <text class="c" x="90" y="155" font-size="130" text-anchor="middle">C</text>
+
+  <!-- Litera M przesunięta w prawo, lekko wyżej dla optycznego wyrównania -->
+  <text class="m" x="175" y="150" font-size="128" text-anchor="middle">M</text>
+</svg>

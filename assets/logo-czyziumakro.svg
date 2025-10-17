@@ -1,0 +1,21 @@
+<!-- assets/logo-czyziumakro.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="160" viewBox="0 0 720 160" role="img" aria-labelledby="title">
+  <title id="title">CzyziuMakro</title>
+  <defs>
+    <style>
+      .t1{ fill:#c6d2dc; }            /* Czyziu (jasna szarość pod Twój tekst-300) */
+      .t2{ fill:#facc15; }            /* Makro (amber 500) */
+      text{
+        font-family: Inter, Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        font-weight: 800;
+        letter-spacing: .2px;
+      }
+    </style>
+  </defs>
+
+  <!-- tło przezroczyste – logo działa na ciemnym headerze -->
+  <g transform="translate(24,110)">
+    <text class="t1" font-size="84" x="0" y="0">Czyziu</text>
+    <text class="t2" font-size="84" x="328" y="0">Makro</text>
+  </g>
+</svg>
