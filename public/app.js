@@ -212,25 +212,37 @@ function initLoginForm() {
     }
   });
 }
-
 /* ========== UI: wylogowanie / stan ========== */
 function initAuthUI() {
-  const logoutBtn =
-    document.querySelector('[data-action="logout"]') ||
-    document.getElementById('logoutBtn');
+  // GLOBALNE WYLOGOWANIE (header + modal)
+  document.addEventListener('click', function (e) {
+    const el = e.target.closest('[data-action="logout"], #logoutBtn');
+    if (!el) return;
 
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Usuń token i dane użytkownika
-    auth.clear();
+    // Usuń tokeny i dane logowania
+    try {
+      auth.clear();
+      ['token', 'auth', 'jwt', 'accessToken', 'refreshToken', 'user', 'profile']
+        .forEach(k => {
+          localStorage.removeItem(k);
+          sessionStorage.removeItem(k);
+        });
+    } catch (_) {}
 
-    // Przekieruj na stronę główną
-    window.location.href = 'index.html';
-  });
-}
+    // Usuń ciasteczka (jeśli jakieś są)
+    try {
+      document.cookie.split(';').forEach(c => {
+        document.cookie = c.trim().replace(/=.*/, '=;expires=' + new Date(0).toUTCString() + ';path=/');
+      });
+    } catch (_) {}
 
+    // Przekieruj na stronę logowania
+    window.location.replace('logowanie.html');
+  }, true); // capture = true, by złapać klik w każdej warstwie (modal itp.)
+
+  // Pokazywanie / ukrywanie elementów zależnie od stanu logowania
   const hasToken = !!auth.get();
   document.querySelectorAll('[data-auth="in"]').forEach(el => {
     el.style.display = hasToken ? '' : 'none';
@@ -255,14 +267,14 @@ if (logoutBtn) {
           localStorage.setItem('cm_user', JSON.stringify(user));
         }
       }
+
       if (user && (user.username || user.name)) {
-  // wyciągnij pierwsze słowo z imienia i nazwiska
-  const full = user.username || user.name;
-  const firstName = full.trim().split(' ')[0]; // np. "Jan Kowalski" → "Jan"
-  userNameEl.textContent = firstName;
-} else {
-  userNameEl.textContent = '';
-}
+        const full = user.username || user.name;
+        const firstName = full.trim().split(' ')[0]; // np. "Jan Kowalski" → "Jan"
+        userNameEl.textContent = firstName;
+      } else {
+        userNameEl.textContent = '';
+      }
     } catch {
       userNameEl.textContent = '';
     }
