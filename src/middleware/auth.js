@@ -1,51 +1,28 @@
-// src/routes/auth.js
-const express = require('express');
-const bcrypt = require('bcryptjs'); // jeśli wolisz natywne: require('bcrypt')
-const { z } = require('zod');
-const validateMW = require('../middleware/validate'); // może być default albo { validate }
-const validate = validateMW.validate || validateMW;   // normalizacja importu
-const User = require('../models/User');
+// src/middleware/auth.js
+const jwt = require('jsonwebtoken');
 
-const router = express.Router();
-
-const registerSchema = z.object({
-  username: z.string().trim().min(3, 'Nazwa min. 3 znaki'),
-  email: z.string().trim().email('Nieprawidłowy email'),
-  password: z.string().min(6, 'Hasło min. 6 znaków'),
-});
-
-router.post('/register', validate(registerSchema), async (req, res) => {
+module.exports = function auth(req, res, next) {
   try {
-    const { username, email, password } = req.validated || req.body;
+    const hdr = req.headers.authorization || '';
+    const token = hdr.startsWith('Bearer ') ? hdr.slice(7) : null;
+    if (!token) return res.status(401).json({ message: 'Brak tokena' });
 
-    // kolizje email/username
-    const exists = await User.findOne({ $or: [{ email }, { username }] });
-    if (exists) {
-      return res.status(409).json({ message: 'Użytkownik z takim email/username już istnieje' });
-    }
+    const secret = process.env.JWT_SECRET || 'supersecretjwt';
+    const payload = jwt.verify(token, secret);
 
-    // hash hasła
-    const hashed = await bcrypt.hash(password, 10);
+    const id =
+      payload.userId ||
+      payload.id ||
+      payload.sub ||
+      (payload.user && (payload.user.id || payload.user._id)) ||
+      payload._id;
 
-    // zapis
-    const user = await User.create({ username, email, password: hashed });
+    if (!id) return res.status(401).json({ message: 'Token bez userId' });
 
-    // bez hasła w odpowiedzi
-    const safeUser = {
-      id: user._id.toString(),
-      username: user.username,
-      email: user.email,
-      createdAt: user.createdAt,
-    };
-
-    res.status(201).json({ message: 'Użytkownik zarejestrowany', user: safeUser });
-  } catch (err) {
-    if (err?.code === 11000) {
-      return res.status(409).json({ message: 'Email lub username jest już zajęty' });
-    }
-    console.error(err);
-    res.status(500).json({ message: 'Błąd serwera' });
+    req.user = { id: String(id) };
+    next();
+  } catch (e) {
+    console.error('AUTH ERROR:', e?.message || e);
+    return res.status(401).json({ message: 'Nieautoryzowany' });
   }
-});
-
-module.exports = router;
+};

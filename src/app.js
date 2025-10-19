@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const connectDB = require('./config/db');
 
+const profileRoutes = require('./routes/profile');
 const healthRoutes = require('./routes/health');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
@@ -59,6 +60,8 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/profile', profileRoutes);
+
 
 // 404 (dla nieistniejących endpointów API; pliki statyczne obsługuje middleware powyżej)
 app.use((req, res) => {

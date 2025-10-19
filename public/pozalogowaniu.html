@@ -9,23 +9,10 @@
   <link rel="stylesheet" href="/styles.css" />
   <meta name="theme-color" content="#0b0f14" />
 
-  <!-- STRAŻNIK: uruchom bardzo wcześnie (dozwolone przez CSP 'self') -->
-  <script src="/guard.js"></script>
+  
 </head>
 <body>
-  <!-- STRAŻNIK: jeśli nie ma tokena, przekieruj na logowanie -->
-  <script>
-    (function () {
-      try {
-        if (!localStorage.getItem('cm_token')) {
-          // przekierowanie z parametrem, żeby po zalogowaniu wrócić tutaj
-          location.replace('logowanie.html?next=pozalogowaniu.html');
-        }
-      } catch {
-        location.replace('logowanie.html');
-      }
-    })();
-  </script>
+
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
@@ -44,27 +31,30 @@
       </a>
 
       <nav class="nav" aria-label="Główna nawigacja">
-        <!-- widoczne tylko, gdy ZALOGOWANY -->
         <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
           Cześć, <span id="userName"></span>!
         </a>
-
         <a class="nav-link" href="index.html">O aplikacji</a>
         <a class="nav-link" href="regulamin.html">Regulamin</a>
         <a class="nav-link" href="kontakt.html">Kontakt</a>
-
-        <!-- widoczne tylko, gdy NIE zalogowany -->
         <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
         <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
-
-        <!-- widoczne tylko, gdy ZALOGOWANY -->
         <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
       </nav>
     </div>
   </header>
 
+  <!-- ===================== LATERAL NAV ===================== -->
+  <aside class="side-nav">
+    <ul>
+      <li><a href="#" class="side-link" id="navCalendar">📅 Kalendarz</a></li>
+      <li><a href="#" class="side-link" id="navProducts">🍗 Twoje produkty</a></li>
+      <li><a href="#" class="side-link" id="navGoals">🎯 Ustaw cele</a></li>
+    </ul>
+  </aside>
+
   <!-- ===================== MAIN ===================== -->
-  <main class="site-main">
+  <main class="site-main with-sidebar">
     <div class="container">
       <section>
         <h1>Panel użytkownika</h1>
@@ -73,21 +63,92 @@
           np. podsumowanie diety, statystyki, ustawienia profilu itd.
         </p>
       </section>
+
+      <!-- ===================== KOMUNIKAT ===================== -->
+      <div class="info-banner" id="infoBanner">
+        ⚠️ <strong>Przypomnienie:</strong> aplikacja CzyziuMakro nie stanowi porady medycznej.
+        Dane mają charakter informacyjny i nie zastępują konsultacji ze specjalistą.
+        <button id="closeInfo" aria-label="Zamknij komunikat">&times;</button>
+      </div>
     </div>
+
+<!-- ===================== ONBOARDING MODAL ===================== -->
+<div class="modal-backdrop" id="onbBackdrop" hidden></div>
+<div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
+  <form id="onbForm" class="modal-card" novalidate>
+    <header class="modal-header">
+      <h2 id="onbTitle">Ustawienia startowe</h2>
+      <!-- brak przycisku zamknięcia: nie można pominąć -->
+    </header>
+
+    <p class="modal-desc">Uzupełnij podstawowe dane. Bez tego nie możemy ruszyć dalej.</p>
+
+    <div class="form-grid">
+      <label class="form-field">
+        <span>Wiek</span>
+        <input type="number" name="age" min="18" max="120" step="1" inputmode="numeric" required placeholder="np. 24" />
+      </label>
+
+      <label class="form-field">
+        <span>Waga (kg)</span>
+        <input type="number" name="weight" min="20" max="400" step="0.1" inputmode="decimal" required placeholder="np. 72.5" />
+      </label>
+
+      <label class="form-field">
+        <span>Aktywność</span>
+        <select name="activity" required>
+          <option value="" disabled selected>Wybierz poziom</option>
+          <option value="1">1 — siedzący tryb życia</option>
+          <option value="2">2 — lekka aktywność (1–2x/tydz.)</option>
+          <option value="3">3 — umiarkowana (3–4x/tydz.)</option>
+          <option value="4">4 — wysoka (5–6x/tydz.)</option>
+          <option value="5">5 — bardzo wysoka / wyczynowa</option>
+        </select>
+      </label>
+
+      <fieldset class="form-field">
+        <legend>Płeć</legend>
+        <label class="radio">
+          <input type="radio" name="sex" value="F" required />
+          <span>Kobieta</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="sex" value="M" />
+          <span>Mężczyzna</span>
+        </label>
+      </fieldset>
+
+      <fieldset class="form-field">
+        <legend>Poziom użytkownika</legend>
+        <label class="radio">
+          <input type="radio" name="level" value="basic" required />
+          <span>Zwykły</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="level" value="advanced" />
+          <span>Zaawansowany</span>
+        </label>
+      </fieldset>
+    </div>
+
+    <footer class="modal-actions">
+      <button type="submit" class="btn primary" id="onbSubmit" disabled>Zapisz i kontynuuj</button>
+    </footer>
+  </form>
+</div>
   </main>
 
-
-
   <!-- ===================== SKRYPTY ===================== -->
-  <script>
-    // Ustaw rok w stopce
-    const yr = document.getElementById('year');
-    if (yr) yr.textContent = new Date().getFullYear();
-  </script>
 
-  <!-- główny skrypt aplikacji -->
+
 <script src="/footer.js" defer></script>
 <script src="/app.js" defer></script>
+<script src="/guard.js" defer></script>
+<script src="/guard2.js" defer></script>
+<script src="/ui.js" defer></script>
+<script src="/onboarding.js" defer></script>
+
+
+
 </body>
 </html>
-

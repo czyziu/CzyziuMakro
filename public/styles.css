@@ -336,3 +336,238 @@ button:focus-visible {
   color: var(--accent-500);
   cursor: default;
 }
+
+/* ===================== INFO BANNER ===================== */
+.info-banner {
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid var(--accent-500);
+  color: var(--text-100);
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-banner strong {
+  color: var(--accent-500);
+}
+
+.info-banner button {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-300);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/* ===================== SIDE NAV ===================== */
+.side-nav {
+  position: fixed;
+  top: 72px; /* poniżej headera */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 72px);
+  background-color: var(--bg-800);
+  border-right: 1px solid var(--border-700);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  z-index: 5;
+}
+
+.side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-link {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-300);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.side-link:hover {
+  background-color: var(--bg-700);
+  color: var(--accent-500);
+}
+
+.with-sidebar {
+  margin-left: 220px; /* przesunięcie głównej zawartości */
+}
+
+/* ===================== INFO BANNER (z poprzedniej wersji) ===================== */
+.info-banner {
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid var(--accent-500);
+  color: var(--text-100);
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-banner strong {
+  color: var(--accent-500);
+}
+
+.info-banner button {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-300);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+
+
+
+/* ===================== MODAL (ONBOARDING) ===================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-card {
+  width: min(720px, 100%);
+  background: var(--bg-800);
+  border: 1px solid var(--border-700);
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  padding: 1rem 1rem 1.25rem;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .5rem;
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+  color: var(--text-100);
+}
+
+.modal-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-300);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-desc {
+  color: var(--text-300);
+  margin-bottom: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: block;
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: .75rem;
+}
+
+.form-field > span,
+.form-field > legend {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .5rem;
+}
+
+.form-field input[type="number"],
+.form-field select {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-700);
+  border-radius: .5rem;
+  padding: .6rem .7rem;
+  color: var(--text-100);
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  box-shadow: 0 0 0 3px var(--ring);
+  border-color: var(--accent-600);
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-right: 1rem;
+  margin-top: .25rem;
+  user-select: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: .65rem 1rem;
+  border-radius: .75rem;
+  border: 1px solid var(--border-700);
+  background: var(--bg-700);
+  color: var(--text-100);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.primary {
+  border-color: var(--accent-600);
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color: #0b0f14;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--text-300);
+}
+
+@media (max-width: 720px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
