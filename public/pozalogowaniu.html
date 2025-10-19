@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#0b0f14" />
 </head>
 
-<body data-page="pozalogowaniu" class="blur-on"><!-- <- rozmazane tło na start -->
+<body data-page="pozalogowaniu" ><!-- <- rozmazane tło na start -->
 
   <!-- ===================== WRAPPER DO ROZMYCIA ===================== -->
   <div id="pageBlurWrap">
@@ -76,9 +76,9 @@
   </div><!-- /#pageBlurWrap -->
 
   <!-- ===================== ONBOARDING MODAL (FORMULARZ WIDOCZNY) ===================== -->
-  <div class="modal-backdrop" id="onbBackdrop"></div>
-  <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle">
-    <form id="onbForm" class="modal-card" novalidate>
+<div class="modal-backdrop" id="onbBackdrop" hidden></div>
+<div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
+  <form id="onbForm" class="modal-card" novalidate>
       <header class="modal-header">
         <h2 id="onbTitle">Ustawienia startowe</h2>
       </header>
@@ -177,12 +177,29 @@
       </footer>
     </form>
   </div>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-info">
+      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+      <p class="small-note">
+        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+        Autor: <strong>Jakub Czyżycki</strong>
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Nawigacja w stopce">
+      <a href="index.html">O aplikacji</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="regulamin.html">Regulamin</a>
+    </nav>
+  </div>
+</footer>
+
+
 
   <!-- ===================== SKRYPTY ===================== -->
-  <script src="/footer.js" defer></script>
   <script src="/app.js" defer></script>
   <script src="/guard.js" defer></script>
-  <script src="/guard2.js" defer></script>
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
 

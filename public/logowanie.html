@@ -92,14 +92,23 @@
 
 
 
-  <script>
-    // Aktualny rok w stopce
-    document.addEventListener('DOMContentLoaded', () => {
-      const yr = document.getElementById('year');
-      if (yr) yr.textContent = new Date().getFullYear();
-    });
-  </script>
-<script src="/footer.js" defer></script>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-info">
+      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+      <p class="small-note">
+        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+        Autor: <strong>Jakub Czyżycki</strong>
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Nawigacja w stopce">
+      <a href="index.html">O aplikacji</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="regulamin.html">Regulamin</a>
+    </nav>
+  </div>
+</footer>
 <script src="/app.js" defer></script>
 </body>
 </html>

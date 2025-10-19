@@ -92,30 +92,23 @@
       </section>
     </div>
   </main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-info">
+      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+      <p class="small-note">
+        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+        Autor: <strong>Jakub Czyżycki</strong>
+      </p>
+    </div>
 
-
-
-  <!-- ===================== SKRYPT ===================== -->
-  <script>
-    // Aktualny rok w stopce
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ======== Przekierowania między stronami CzyziuMakro ========
-    const loginBtn = document.getElementById("btn-login");
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-        window.location.href = "logowanie.html";
-      });
-    }
-
-    const registerBtn = document.getElementById("btn-register");
-    if (registerBtn) {
-      registerBtn.addEventListener("click", () => {
-        window.location.href = "rejestracja.html";
-      });
-    }
-  </script>
-<script src="/footer.js" defer></script>
+    <nav class="footer-nav" aria-label="Nawigacja w stopce">
+      <a href="index.html">O aplikacji</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="regulamin.html">Regulamin</a>
+    </nav>
+  </div>
+</footer>
 <script src="/app.js" defer></script>
 </body>
 </html>

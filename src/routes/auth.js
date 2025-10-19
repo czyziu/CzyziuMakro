@@ -3,8 +3,7 @@ const router = require('express').Router();
 const { z } = require('zod');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const validateMW = require('../middleware/validate');
-const validate = validateMW.validate || validateMW;
+const { validate } = require('../middleware/auth');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwt';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
