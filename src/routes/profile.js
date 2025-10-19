@@ -159,4 +159,36 @@ router.post('/onboarding', auth, async (req, res) => {
   }
 });
 
+// GET /api/profile/macro/latest — ostatnio zapisane makro danego usera
+router.get('/macro/latest', auth, async (req, res) => {
+  try {
+    const macro = await UserMacro
+      .findOne({ userId: req.user.id })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    if (!macro) {
+      return res.status(404).json({ message: 'Użytkownik nie ma jeszcze zapisanych makr.' });
+    }
+
+    return res.json({
+      ok: true,
+      macro: {
+        kcal: macro.kcal,
+        protein_g: macro.protein_g,
+        fat_g: macro.fat_g,
+        carbs_g: macro.carbs_g,
+        method: macro.method,
+        pa: macro.pa,
+        goal: macro.goal,
+        createdAt: macro.createdAt
+      }
+    });
+  } catch (e) {
+    console.error('PROFILE /macro/latest error:', e);
+    return res.status(500).json({ message: 'Błąd serwera' });
+  }
+});
+
+
 module.exports = router;
