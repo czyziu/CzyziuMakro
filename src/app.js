@@ -8,6 +8,8 @@ const profileRoutes = require('./routes/profile');
 const healthRoutes = require('./routes/health');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
+const macrosRoutes = require('./routes/macros.js'); // ← DODAJ NA GÓRZE
+
 
 const app = express();
 
@@ -61,6 +63,8 @@ app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/macros', macrosRoutes); // ← DODAJ TĘ LINIĘ
+
 
 
 // 404 (dla nieistniejących endpointów API; pliki statyczne obsługuje middleware powyżej)

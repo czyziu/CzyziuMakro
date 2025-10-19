@@ -186,40 +186,6 @@
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const body = document.body;
-      const form = document.getElementById('onbForm');
-      const backdrop = document.getElementById('onbBackdrop');
-      const modal = document.getElementById('onbModal');
 
-      // Formularz ma być widoczny, tło rozmazane
-      body.classList.add('blur-on');
-      backdrop.hidden = true;
-      modal.hidden = true;
-
-      // Po wysłaniu formularza – wyłącz blur
-      form.addEventListener("submit", () => {
-        body.classList.remove('blur-on');
-      });
-
-      // Zamknięcie komunikatu
-      const closeInfo = document.getElementById('closeInfo');
-      const info = document.getElementById('infoBanner');
-      if (closeInfo && info) {
-        closeInfo.addEventListener('click', () => info.remove());
-      }
-
-      // Logout fallback
-      document.querySelectorAll('[data-action="logout"]').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          localStorage.removeItem('token');
-          sessionStorage.removeItem('token');
-          window.location.href = "logowanie.html";
-        });
-      });
-    });
-  </script>
 </body>
 </html>
