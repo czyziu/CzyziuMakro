@@ -1,5 +1,4 @@
 // public/onboarding.js
-// public/onboarding.js
 (function () {
   let token = null;
   try { token = localStorage.getItem('cm_token'); } catch {}
@@ -33,17 +32,16 @@
   const KEY_SETUP = K('profile_setup');
   const KEY_PROFILE = K('profile');
 
-  // WYTNij starą globalną flagę (mogła zostać po poprzednim userze)
+  // usuń starą globalną flagę (po poprzednim userze)
   try { localStorage.removeItem('cm_profile_setup'); } catch {}
 
-  const backdrop = document.getElementById('onbBackdrop');
-  const modal = document.getElementById('onbModal');
-  const form = document.getElementById('onbForm');
+  const backdrop  = document.getElementById('onbBackdrop');
+  const modal     = document.getElementById('onbModal');
+  const form      = document.getElementById('onbForm');
   const submitBtn = document.getElementById('onbSubmit');
-
   if (!backdrop || !modal || !form || !submitBtn) return;
 
-  // ✅ twardy bezpiecznik: jeśli ten KONKRETNY user ma już setup, to ucinamy modal
+  // ✅ jeśli ten user ma już setup, schowaj modal
   try {
     if (localStorage.getItem(KEY_SETUP) === 'true') {
       modal.hidden = true;
@@ -55,14 +53,42 @@
     }
   } catch {}
 
+  // —————————————————————————————
+  //  Warstwa BLUR widoczna zawsze (tworzona do sterowania)
+  // —————————————————————————————
+  const blurLayer = document.createElement('div');
+  blurLayer.id = 'cm-submit-blur';
+  Object.assign(blurLayer.style, {
+    position: 'fixed',
+    inset: '0',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
+    background: 'rgba(0,0,0,0.35)',
+    zIndex: '950',            // nad tłem, pod modalem (który ma 1000)
+    pointerEvents: 'none',    // nie blokuje kliku — blokadę robi modal
+    display: 'none'
+  });
+  document.body.appendChild(blurLayer);
+
+  function setBlur(active) {
+    // klasa jako dodatkowy fallback (masz już style.css)
+    document.body.classList.toggle('blur-active', !!active);
+    blurLayer.style.display = active ? 'block' : 'none';
+  }
+  window.addEventListener('beforeunload', () => setBlur(false));
+
   function openModal() {
     modal.hidden = false;
     backdrop.hidden = false;
     modal.style.display = '';
     backdrop.style.display = '';
     document.body.style.overflow = 'hidden';
+    document.documentElement.classList.add('modal-open');
     const first = form.querySelector('input, select');
     first && first.focus();
+
+    // WŁĄCZ rozmycie gdy modal jest otwarty — to realizuje Twoje życzenie:
+    setBlur(true);
   }
   function closeModal() {
     modal.hidden = true;
@@ -70,93 +96,80 @@
     modal.style.display = 'none';
     backdrop.style.display = 'none';
     document.body.style.overflow = '';
+    document.documentElement.classList.remove('modal-open');
+
+    // ZAWSZE wyłącz blur przy zamknięciu modału
+    setBlur(false);
   }
 
+  // Auto-otwarcie modału i blur jeśli profil nie skonfigurowany:
+  // (wcześniej było zakomentowane openModal(); — teraz otwieramy modal
+  // i rozmazywujemy stronę do momentu wypełnienia formularza)
+  openModal();
 
-
-  function isValid() {
+  // ============ Walidacja ============
+  function validateForm() {
     const fd = new FormData(form);
-    const age = Math.floor(Number(fd.get('age')));
-    const weight = Number(fd.get('weight'));
+
+    const age      = Math.floor(Number(fd.get('age')));
+    const weight   = Number(String(fd.get('weight') || '').replace(',', '.'));
+    const height   = Number(String(fd.get('height') || '').replace(',', '.'));
     const activity = Number(fd.get('activity'));
-    const sex = String(fd.get('sex') || '');
-    const level = String(fd.get('level') || '');
+    const sex      = String(fd.get('sex') || '');
+    const level    = String(fd.get('level') || '');
+    const goal     = String(fd.get('goal') || '');
 
-    return (
-      Number.isFinite(age) && age >= 18 && age <= 120 &&
-      Number.isFinite(weight) && weight >= 20 && weight <= 400 &&
-      [1,2,3,4,5].includes(activity) &&
-      (sex === 'F' || sex === 'M') &&
-      (level === 'basic' || level === 'advanced')
-    );
+    if (!Number.isFinite(age) || age < 18 || age > 120)
+      return { ok: false, message: 'Podaj wiek w zakresie 18–120 lat.' };
+    if (!Number.isFinite(weight) || weight < 20 || weight > 400)
+      return { ok: false, message: 'Podaj wagę w zakresie 20–400 kg.' };
+    if (!Number.isFinite(height) || height < 100 || height > 250)
+      return { ok: false, message: 'Podaj wzrost w zakresie 100–250 cm.' };
+    if (![1,2,3,4,5].includes(activity))
+      return { ok: false, message: 'Wybierz poziom aktywności (1–5).' };
+    if (!(sex === 'F' || sex === 'M'))
+      return { ok: false, message: 'Zaznacz płeć.' };
+    if (!(level === 'basic' || level === 'advanced'))
+      return { ok: false, message: 'Wybierz poziom użytkownika.' };
+    if (!(goal === 'loss' || goal === 'maintain' || goal === 'gain'))
+      return { ok: false, message: 'Wybierz cel (schudnąć / utrzymać / przytyć).' };
+
+    return { ok: true, data: { age, weight, height, activity, sex, level, goal, ts: Date.now() } };
   }
 
+  // pseudo-disabled (klasa, nie .disabled)
   function updateSubmitState() {
-    submitBtn.disabled = !isValid();
+    const ok = validateForm().ok;
+    submitBtn.classList.toggle('is-disabled', !ok);
+    submitBtn.setAttribute('aria-disabled', String(!ok));
   }
+  form.addEventListener('input',  updateSubmitState);
+  form.addEventListener('change', updateSubmitState);
+  updateSubmitState();
 
-  // brak możliwości pominięcia
-  document.addEventListener('keydown', (ev) => {
-    if (!modal.hidden && ev.key === 'Escape') {
-      ev.preventDefault();
-      ev.stopPropagation();
-    }
-  });
-  backdrop.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-  });
+  // ============ Submit ============
+  let isSubmitting = false;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    form.addEventListener('input', updateSubmitState);
-    form.addEventListener('change', updateSubmitState);
-    updateSubmitState();
-  });
-
-  // 1) pokaż modal tylko jeśli profil nieukończony
-(async function checkStatus() {
-  const localFlag = (localStorage.getItem(KEY_SETUP) === 'true'); // <= per-user flaga
-  if (localFlag) return;
-  try {
-    const res = await fetch('/api/profile/status', {
-      method: 'GET',
-      headers: { 'Accept': 'application/json', 'Authorization': 'Bearer ' + token }
-    });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.completed === true) {
-        localStorage.setItem(KEY_SETUP, 'true');
-        if (data.profile) localStorage.setItem(KEY_PROFILE, JSON.stringify(data.profile));
-        return;
-      }
-      openModal();
-    } else {
-      if (!localFlag) openModal();
-    }
-  } catch {
-    if (!localFlag) openModal();
-  }
-})();
-
-  // 2) zapis do bazy (obowiązkowy)
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!isValid()) {
-      alert('Uzupełnij poprawnie wszystkie pola.');
+
+    const validation = validateForm();
+    if (!validation.ok) {
+      alert(validation.message);
+      setBlur(true); // upewnij się, że blur jest włączony gdy wystąpi błąd walidacji
       return;
     }
+    if (isSubmitting) return; // anty-dubel
 
-    submitBtn.disabled = true;
+    isSubmitting = true;
+    submitBtn.classList.add('is-disabled');
+    submitBtn.setAttribute('aria-disabled', 'true');
 
-    const fd = new FormData(form);
-    const profile = {
-      age: Math.floor(Number(fd.get('age'))),
-      weight: Number(fd.get('weight')),
-      activity: Number(fd.get('activity')),
-      sex: String(fd.get('sex')),
-      level: String(fd.get('level')),
-      ts: Date.now()
-    };
+    // Wyłączamy rozmycie **na czas wysyłki** tak jak chciałeś:
+    // (użytkownik wysyła formularz -> strona ma być "normalna")
+    setBlur(false);
+
+    const profile = validation.data;
 
     try {
       const res = await fetch('/api/profile/onboarding', {
@@ -176,19 +189,33 @@
           if (j && j.message) msg = j.message;
         } catch {}
         alert(msg);
-        submitBtn.disabled = false;
+        isSubmitting = false;
+        updateSubmitState();
+
+        // Przy błędzie przywróć blur (user wraca do modału i edycji)
+        setBlur(true);
         return;
       }
 
-localStorage.setItem(KEY_PROFILE, JSON.stringify(profile));
-localStorage.setItem(KEY_SETUP, 'true');
-location.reload();
+      // profil zwrócony z backendu (jeśli jest)
+      let saved = null;
+      try { const j = await res.json(); saved = j && j.profile ? j.profile : null; } catch {}
+      const toStore = saved || profile;
 
-// Dla pełnej pewności: po zapisie odśwież stronę, żeby nic już nie zainicjowało modala
-location.reload();
+      localStorage.setItem(KEY_PROFILE, JSON.stringify(toStore));
+      localStorage.setItem(KEY_SETUP, 'true');
+
+      // zamknij modal (closeModal wyłączy blur) i zrób reload strony
+      closeModal();
+
+      location.reload();
     } catch {
       alert('Błąd połączenia z serwerem. Spróbuj ponownie.');
-      submitBtn.disabled = false;
+      isSubmitting = false;
+      updateSubmitState();
+
+      // przy błędzie sieci przywróć blur
+      setBlur(true);
     }
   });
 })();

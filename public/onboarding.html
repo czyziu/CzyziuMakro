@@ -1,0 +1,65 @@
+
+<!-- ===================== ONBOARDING MODAL ===================== -->
+<div class="modal-backdrop" id="onbBackdrop" hidden></div>
+<div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
+  <form id="onbForm" class="modal-card" novalidate>
+    <header class="modal-header">
+      <h2 id="onbTitle">Ustawienia startowe</h2>
+      <!-- brak przycisku zamknięcia: nie można pominąć -->
+    </header>
+
+    <p class="modal-desc">Uzupełnij podstawowe dane. Bez tego nie możemy ruszyć dalej.</p>
+
+    <div class="form-grid">
+      <label class="form-field">
+        <span>Wiek</span>
+        <input type="number" name="age" min="18" max="120" step="1" inputmode="numeric" required placeholder="np. 24" />
+      </label>
+
+      <label class="form-field">
+        <span>Waga (kg)</span>
+        <input type="number" name="weight" min="20" max="400" step="0.1" inputmode="decimal" required placeholder="np. 72.5" />
+      </label>
+
+      <label class="form-field">
+        <span>Aktywność</span>
+        <select name="activity" required>
+          <option value="" disabled selected>Wybierz poziom</option>
+          <option value="1">1 — siedzący tryb życia</option>
+          <option value="2">2 — lekka aktywność (1–2x/tydz.)</option>
+          <option value="3">3 — umiarkowana (3–4x/tydz.)</option>
+          <option value="4">4 — wysoka (5–6x/tydz.)</option>
+          <option value="5">5 — bardzo wysoka / wyczynowa</option>
+        </select>
+      </label>
+
+      <fieldset class="form-field">
+        <legend>Płeć</legend>
+        <label class="radio">
+          <input type="radio" name="sex" value="F" required />
+          <span>Kobieta</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="sex" value="M" />
+          <span>Mężczyzna</span>
+        </label>
+      </fieldset>
+
+      <fieldset class="form-field">
+        <legend>Poziom użytkownika</legend>
+        <label class="radio">
+          <input type="radio" name="level" value="basic" required />
+          <span>Zwykły</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="level" value="advanced" />
+          <span>Zaawansowany</span>
+        </label>
+      </fieldset>
+    </div>
+
+    <footer class="modal-actions">
+      <button type="submit" class="btn primary" id="onbSubmit" disabled>Zapisz i kontynuuj</button>
+    </footer>
+  </form>
+</div>

@@ -8,12 +8,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Wstawiamy stopkę na koniec <body>
     document.body.insertAdjacentHTML('beforeend', html);
 
-    // Dodajemy rok do stopki
-    const yearEl = document.createElement('script');
-    yearEl.textContent = `
-      const yr = document.querySelector('.site-footer span#year');
-      if (yr) yr.textContent = new Date().getFullYear();
-    `;
+    // Dodajemy aktualny rok (jeśli w stopce jest <span id="year">)
+    const yearSpan = document.querySelector('#year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    // 🔹 Wymuś ponowne przeliczenie layoutu po wstawieniu stopki
+    document.body.style.display = 'flex';
+    document.body.style.flexDirection = 'column';
+    document.body.style.minHeight = '100vh';
+    const main = document.querySelector('main');
+    if (main) main.style.flex = '1';
   } catch (err) {
     console.error('[Footer error]', err);
   }

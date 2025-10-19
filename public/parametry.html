@@ -3,81 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CzyziuMakro — Panel użytkownika</title>
+  <title>CzyziuMakro — Ustaw cele</title>
 
   <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
   <link rel="stylesheet" href="/styles.css" />
   <meta name="theme-color" content="#0b0f14" />
 </head>
+<body data-page="parametry">
 
-<body data-page="pozalogowaniu" class="blur-on"><!-- <- rozmazane tło na start -->
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+        <img src="/assets/logo-czyziumakro.svg" alt="CzyziuMakro" class="brand-logo" width="220" height="48" decoding="async" fetchpriority="high" />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      </a>
 
-  <!-- ===================== WRAPPER DO ROZMYCIA ===================== -->
-  <div id="pageBlurWrap">
-    <!-- ===================== HEADER ===================== -->
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
-          <img
-            src="/assets/logo-czyziumakro.svg"
-            alt="CzyziuMakro"
-            class="brand-logo"
-            width="220"
-            height="48"
-            decoding="async"
-            fetchpriority="high"
-          />
-          <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
+          Cześć, <span id="userName"></span>!
         </a>
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+        <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
+        <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
+        <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
+      </nav>
+    </div>
+  </header>
 
-        <nav class="nav" aria-label="Główna nawigacja">
-          <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
-            Cześć, <span id="userName"></span>!
-          </a>
-          <a class="nav-link" href="index.html">O aplikacji</a>
-          <a class="nav-link" href="regulamin.html">Regulamin</a>
-          <a class="nav-link" href="kontakt.html">Kontakt</a>
-          <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
-          <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
-          <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
-        </nav>
-      </div>
-    </header>
+  <!-- ===================== LATERAL NAV ===================== -->
+  <aside class="side-nav">
+    <ul>
+      <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+      <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+      <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
+      <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
+    </ul>
+  </aside>
 
-    <!-- ===================== LATERAL NAV ===================== -->
-    <aside class="side-nav">
-      <ul>
-        <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
-        <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
-        <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
-        <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
-      </ul>
-    </aside>
+  <!-- ===================== MAIN ===================== -->
+  <main class="site-main with-sidebar">
+    <div class="container">
+      <header class="page-header">
+        <h1>Ustaw cele</h1>
+        <p class="muted">Zdefiniuj cele kalorii i makro — pomogę Ci je trzymać.</p>
+      </header>
 
-    <!-- ===================== MAIN ===================== -->
-    <main class="site-main with-sidebar">
-      <div class="container">
-        <section>
-          <h1>Panel użytkownika</h1>
-          <p class="muted">
-            Witaj w swoim panelu! Tutaj możesz dodać funkcje dostępne tylko po zalogowaniu —
-            np. podsumowanie diety, statystyki, ustawienia profilu itd.
-          </p>
-        </section>
+      <section class="card card-narrow">
+        <h3>Cel dzienny</h3>
+        <form class="form" id="goalsForm">
+          <div class="form-row">
+            <label for="calories">Kalorie (kcal)</label>
+            <input id="calories" name="calories" type="number" min="800" max="6000" step="10" placeholder="np. 2600" required />
+          </div>
+          <div class="grid-2">
+            <div class="form-row">
+              <label for="protein">Białko (g)</label>
+              <input id="protein" name="protein" type="number" min="0" max="500" step="1" placeholder="np. 180" required />
+            </div>
+            <div class="form-row">
+              <label for="fat">Tłuszcz (g)</label>
+              <input id="fat" name="fat" type="number" min="0" max="300" step="1" placeholder="np. 90" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="carbs">Węglowodany (g)</label>
+            <input id="carbs" name="carbs" type="number" min="0" max="800" step="1" placeholder="np. 267" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent">Zapisz cele</button>
+            <button type="button" class="btn btn-outline" id="resetGoals">Resetuj</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main><!-- 🔹 dodane zamknięcie main -->
 
-        <!-- ===================== KOMUNIKAT ===================== -->
-        <div class="info-banner" id="infoBanner">
-          ⚠️ <strong>Przypomnienie:</strong> aplikacja CzyziuMakro nie stanowi porady medycznej.
-          Dane mają charakter informacyjny i nie zastępują konsultacji ze specjalistą.
-          <button id="closeInfo" aria-label="Zamknij komunikat">&times;</button>
-        </div>
-      </div>
-    </main>
-  </div><!-- /#pageBlurWrap -->
-
-  <!-- ===================== ONBOARDING MODAL (FORMULARZ WIDOCZNY) ===================== -->
-  <div class="modal-backdrop" id="onbBackdrop"></div>
-  <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle">
+  <!-- ===================== ONBOARDING MODAL (POZA <main>) ===================== -->
+  <div class="modal-backdrop" id="onbBackdrop" hidden></div>
+  <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
     <form id="onbForm" class="modal-card" novalidate>
       <header class="modal-header">
         <h2 id="onbTitle">Ustawienia startowe</h2>
@@ -185,41 +191,5 @@
   <script src="/guard2.js" defer></script>
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const body = document.body;
-      const form = document.getElementById('onbForm');
-      const backdrop = document.getElementById('onbBackdrop');
-      const modal = document.getElementById('onbModal');
-
-      // Formularz ma być widoczny, tło rozmazane
-      body.classList.add('blur-on');
-      backdrop.hidden = true;
-      modal.hidden = true;
-
-      // Po wysłaniu formularza – wyłącz blur
-      form.addEventListener("submit", () => {
-        body.classList.remove('blur-on');
-      });
-
-      // Zamknięcie komunikatu
-      const closeInfo = document.getElementById('closeInfo');
-      const info = document.getElementById('infoBanner');
-      if (closeInfo && info) {
-        closeInfo.addEventListener('click', () => info.remove());
-      }
-
-      // Logout fallback
-      document.querySelectorAll('[data-action="logout"]').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          localStorage.removeItem('token');
-          sessionStorage.removeItem('token');
-          window.location.href = "logowanie.html";
-        });
-      });
-    });
-  </script>
 </body>
 </html>

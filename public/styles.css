@@ -435,17 +435,24 @@ button:focus-visible {
 
 
 
+/* ====================================================================== */
+/* ===============  MODAL (ONBOARDING) – LAYOUT & STYLES  =============== */
+/* ====================================================================== */
 
-
-/* ===================== MODAL (ONBOARDING) ===================== */
+/* Backdrop */
+/* ===================== MODAL BACKDROP (Z ROZMYCIEM STRONY) ===================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.55); /* półprzezroczyste przyciemnienie */
+  backdrop-filter: blur(8px);      /* 🔹 rozmycie całej strony */
+  -webkit-backdrop-filter: blur(8px);
   z-index: 40;
+  transition: opacity 0.3s ease;
 }
 
+
+/* Modal container */
 .modal {
   position: fixed;
   inset: 0;
@@ -455,15 +462,22 @@ button:focus-visible {
   z-index: 50;
 }
 
+/* Modal card */
 .modal-card {
-  width: min(720px, 100%);
-  background: var(--bg-800);
-  border: 1px solid var(--border-700);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 720px;                 /* ← możesz zwiększyć/zmniejszyć */
+  max-height: 90vh;                 /* wewnętrzne przewijanie */
+  overflow: hidden;
+  background: var(--bg-700);
   border-radius: 1rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,.45);
-  padding: 1rem 1rem 1.25rem;
+  padding: 1.5rem;
+  color: var(--text-100);
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
 }
 
+/* Header */
 .modal-header {
   display: flex;
   align-items: center;
@@ -471,12 +485,10 @@ button:focus-visible {
   gap: .5rem;
   margin-bottom: .5rem;
 }
-
 .modal-header h2 {
   font-size: 1.25rem;
   color: var(--text-100);
 }
-
 .modal-close {
   appearance: none;
   border: 0;
@@ -487,17 +499,26 @@ button:focus-visible {
   cursor: pointer;
 }
 
+/* Opis pod tytułem */
 .modal-desc {
   color: var(--text-300);
   margin-bottom: 1rem;
 }
 
+/* ====================================================================== */
+/* ======================  FORM – GRID & FIELDS  ======================== */
+/* ====================================================================== */
+
+/* Siatka formularza (2 kolumny na desktopie) */
 .form-grid {
+  flex: 1 1 auto;                  /* wypełnia kartę między headerem a stopką */
+  overflow: auto;                  /* przewijanie tylko treści, nie stopki */
   display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
+  grid-template-columns: 1fr 1fr;  /* ← 2 kolumny */
   gap: 1rem;
 }
 
+/* Pojedyncze pole / grupa */
 .form-field {
   display: block;
   background: var(--bg-700);
@@ -505,7 +526,6 @@ button:focus-visible {
   border-radius: .75rem;
   padding: .75rem;
 }
-
 .form-field > span,
 .form-field > legend {
   display: block;
@@ -514,6 +534,7 @@ button:focus-visible {
   margin-bottom: .5rem;
 }
 
+/* Inputs & selects w polu */
 .form-field input[type="number"],
 .form-field select {
   width: 100%;
@@ -524,13 +545,13 @@ button:focus-visible {
   color: var(--text-100);
   outline: none;
 }
-
 .form-field input:focus,
 .form-field select:focus {
   box-shadow: 0 0 0 3px var(--ring);
   border-color: var(--accent-600);
 }
 
+/* Radio inline */
 .radio {
   display: inline-flex;
   align-items: center;
@@ -540,11 +561,174 @@ button:focus-visible {
   user-select: none;
 }
 
+/* 1 kolumna na mobile */
+@media (max-width: 720px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================================================================== */
+/* =========================  SELECT (UI)  ============================== */
+/* ====================================================================== */
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--bg-700);
+  color: var(--text-100);
+  border: 1px solid var(--border-700);
+  border-radius: 0.6rem;
+  padding: 0.65rem 2.5rem 0.65rem 0.9rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--accent-500) 50%),
+    linear-gradient(135deg, var(--accent-500) 50%, transparent 50%);
+  background-position: calc(100% - 1.2rem) center, calc(100% - 1rem) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  transition: border-color .2s, box-shadow .2s;
+}
+select:hover { border-color: var(--accent-500); }
+select:focus {
+  outline: none;
+  border-color: var(--accent-600);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+option {
+  background: var(--bg-800);
+  color: var(--text-100);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+option:hover, option:checked {
+  background: var(--accent-600);
+  color: #0b0f14;
+}
+
+/* ====================================================================== */
+/* ================  POZIOM UŻYTKOWNIKA – 2 WARIANTY  =================== */
+/* ====================================================================== */
+
+/* --- Wariant 1: „kafelek obok” (fieldset + info-box) ------------------ */
+.level-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: .25rem;
+}
+.level-left {
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.level-left legend {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .5rem;
+}
+.level-left .radio {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .25rem 0;
+}
+.info-card {
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  color: var(--text-100);
+  font-size: .9rem;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.info-card h4 { margin: 0 0 .4rem 0; font-size: 1rem; color: var(--text-100); }
+.info-card p  { margin: .4rem 0;    color: var(--text-300); }
+.info-card strong { color: var(--text-100); }
+
+@media (max-width: 720px) {
+  .level-row { grid-template-columns: 1fr; }
+}
+
+/* --- Wariant 2: „jeden szeroki kafelek” (2 karty-opcje) --------------- */
+.level-card {
+  grid-column: 1 / -1;
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: .75rem .9rem 1rem;
+  margin-bottom: 1.25rem;          /* odstęp przed stopką */
+}
+.level-card-header { margin-bottom: .5rem; }
+.level-card-header h3 { margin: 0; font-size: 1rem; color: var(--text-100); }
+
+.level-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+.level-option {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  border-radius: .6rem;
+  position: relative;
+}
+.level-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  pointer-events: none;
+}
+.option-body {
+  height: 100%;
+  background: var(--bg-800, #0e131a);
+  border: 1px solid var(--border-700);
+  border-radius: .6rem;
+  padding: .8rem .9rem;
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.level-option:hover .option-body { border-color: var(--border-600, #2b3544); }
+.option-title { font-weight: 600; color: var(--text-100); margin-bottom: .25rem; }
+.option-desc  { color: var(--text-300); font-size: .92rem; line-height: 1.4; }
+.level-option input[type="radio"]:checked + .option-body {
+  border-color: var(--accent-500, #ffd166);
+  box-shadow: 0 0 0 2px rgba(255,209,102,.15);
+}
+@media (max-width: 720px) {
+  .level-card-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================================================================== */
+/* ===========================  FOOTER / CTA  =========================== */
+/* ====================================================================== */
+
+/* === STOPKA BEZ TŁA === */
 .modal-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
   display: flex;
   justify-content: flex-end;
   gap: .75rem;
-  margin-top: 1rem;
+
+  padding-top: .75rem;
+  margin-top: .75rem;
+  background: none;                  /* 🔹 usuwa tło */
+  border-top: 1px solid var(--border-700); /* cienka linia separująca */
+  box-shadow: none;                  /* bez cienia */
 }
 
 .btn {
@@ -556,27 +740,34 @@ button:focus-visible {
   font-weight: 600;
   cursor: pointer;
 }
-
 .btn.primary {
   border-color: var(--accent-600);
   background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
   color: #0b0f14;
+  box-shadow: 0 3px 12px rgba(250,204,21,0.25);
 }
-
 .btn.ghost {
   background: transparent;
   color: var(--text-300);
 }
-
-@media (max-width: 720px) {
-  .form-grid { grid-template-columns: 1fr; }
+.modal-actions .btn.secondary {
+  background: transparent;
+  border: 1px solid var(--border-700);
+  color: var(--text-300);
+}
+.modal-actions .btn.secondary:hover {
+  color: var(--accent-500);
+  border-color: var(--accent-500);
 }
 
+/* ====================================================================== */
+/* ================  SIDE NAV – ACTIVE STATE (bez zmian)  =============== */
+/* ====================================================================== */
 
-/* === Aktywna strona w bocznym menu === */
 .side-link.active,
 body[data-page="pozalogowaniu"] .side-link[href$="pozalogowaniu.html"],
 body[data-page="produkty"] .side-link[href$="produkty.html"],
+body[data-page="parametry"] .side-link[href$="parametry.html"],
 body[data-page="ustaw-cele"] .side-link[href$="ustaw-cele.html"] {
   background-color: var(--bg-700);
   color: var(--accent-500);
@@ -584,48 +775,52 @@ body[data-page="ustaw-cele"] .side-link[href$="ustaw-cele.html"] {
   border-left: 3px solid var(--accent-600);
 }
 
-/* ===================== SELECT (LISTY ROZWIJANE) ===================== */
-select {
-  appearance: none; /* ukrywa natywne strzałki */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: var(--bg-700);
-  color: var(--text-100);
-  border: 1px solid var(--border-700);
-  border-radius: 0.6rem;
-  padding: 0.65rem 2.5rem 0.65rem 0.9rem;
-  font-size: 1rem;
-  font-family: inherit;
-  cursor: pointer;
-  background-image: linear-gradient(45deg, transparent 50%, var(--accent-500) 50%),
-                    linear-gradient(135deg, var(--accent-500) 50%, transparent 50%);
-  background-position: calc(100% - 1.2rem) center, calc(100% - 1rem) center;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-  transition: border-color .2s, box-shadow .2s;
+
+
+
+
+/* === Modal zawsze na wierzchu, backdrop tuż pod nim === */
+.modal         { z-index: 1000 !important; }
+.modal-backdrop{ z-index:  900 !important; }
+
+/* Header nie może być nad backdorpem */
+.site-header   { z-index:   20 !important; }  /* mniej niż 900 */
+
+/* (opcjonalnie) boczne menu też nisko */
+.side-nav      { z-index:   15 !important; }
+/* === Blur całej strony podczas wysyłania formularza === */
+body.blur-active main,
+body.blur-active header,
+body.blur-active aside {
+  filter: blur(6px);
+  pointer-events: none; /* blokuje klikanie w tle */
+  user-select: none;
+  transition: filter 0.3s ease;
 }
 
-select:hover {
-  border-color: var(--accent-500);
+body.blur-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* lekkie przyciemnienie */
+  z-index: 999;
+}
+/* 🔹 Wyłącz rozmycie wewnątrz modału */
+#onbModal, 
+#onbModal * {
+  filter: none !important;
+  backdrop-filter: none !important;
 }
 
-select:focus {
-  outline: none;
-  border-color: var(--accent-600);
-  box-shadow: 0 0 0 3px var(--ring);
+/* Wrapper, który ma wypełnić ekran między headerem a footerem */
+#pageBlurWrap {
+  flex: 1;                 /* ← to jest klucz do sticky footera */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;           /* pozwala dzieciom z flex rosnąć/przewijać */
 }
 
-/* Opcje w rozwijanym menu */
-option {
-  background: var(--bg-800);
-  color: var(--text-100);
-  font-weight: 500;
-  padding: 0.5rem 0.75rem;
+/* Główna treść wypełnia dostępną przestrzeń */
+.site-main { 
+  flex: 1; 
 }
-
-/* Dla urządzeń z jasnym akcentem (hover w dropdownie nie działa wszędzie, ale nadajemy kolor) */
-option:hover, option:checked {
-  background: var(--accent-600);
-  color: #0b0f14;
-}
-

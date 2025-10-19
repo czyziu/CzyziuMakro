@@ -10,6 +10,7 @@
   <meta name="theme-color" content="#0b0f14" />
 </head>
 <body data-page="produkty">
+
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -35,9 +36,10 @@
   <!-- ===================== LATERAL NAV ===================== -->
   <aside class="side-nav">
     <ul>
-      <li><a href="pozalogowaniu.html" class="side-link">📅 Kalendarz</a></li>
-      <li><a href="produkty.html" class="side-link">🍗 Twoje produkty</a></li>
-      <li><a href="ustaw-cele.html" class="side-link">🎯 Ustaw cele</a></li>
+      <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+      <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+      <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
+      <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
     </ul>
   </aside>
 
@@ -58,71 +60,110 @@
         </div>
       </section>
     </div>
-    
-<!-- ===================== ONBOARDING MODAL ===================== -->
-<div class="modal-backdrop" id="onbBackdrop" hidden></div>
-<div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
-  <form id="onbForm" class="modal-card" novalidate>
-    <header class="modal-header">
-      <h2 id="onbTitle">Ustawienia startowe</h2>
-      <!-- brak przycisku zamknięcia: nie można pominąć -->
-    </header>
+  </main><!-- 🔹 ważne: main jest zamknięty -->
 
-    <p class="modal-desc">Uzupełnij podstawowe dane. Bez tego nie możemy ruszyć dalej.</p>
+  <!-- ===================== ONBOARDING MODAL (POZA <main>) ===================== -->
+  <div class="modal-backdrop" id="onbBackdrop" hidden></div>
+  <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
+    <form id="onbForm" class="modal-card" novalidate>
+      <header class="modal-header">
+        <h2 id="onbTitle">Ustawienia startowe</h2>
+      </header>
 
-    <div class="form-grid">
-      <label class="form-field">
-        <span>Wiek</span>
-        <input type="number" name="age" min="18" max="120" step="1" inputmode="numeric" required placeholder="np. 24" />
-      </label>
+      <p class="modal-desc">Uzupełnij podstawowe dane. Bez tego nie możemy ruszyć dalej.</p>
 
-      <label class="form-field">
-        <span>Waga (kg)</span>
-        <input type="number" name="weight" min="20" max="400" step="0.1" inputmode="decimal" required placeholder="np. 72.5" />
-      </label>
-
-      <label class="form-field">
-        <span>Aktywność</span>
-        <select name="activity" required>
-          <option value="" disabled selected>Wybierz poziom</option>
-          <option value="1">1 — siedzący tryb życia</option>
-          <option value="2">2 — lekka aktywność (1–2x/tydz.)</option>
-          <option value="3">3 — umiarkowana (3–4x/tydz.)</option>
-          <option value="4">4 — wysoka (5–6x/tydz.)</option>
-          <option value="5">5 — bardzo wysoka / wyczynowa</option>
-        </select>
-      </label>
-
-      <fieldset class="form-field">
-        <legend>Płeć</legend>
-        <label class="radio">
-          <input type="radio" name="sex" value="F" required />
-          <span>Kobieta</span>
+      <div class="form-grid">
+        <label class="form-field">
+          <span>Wiek</span>
+          <input type="number" name="age" min="18" max="120" step="1" required placeholder="np. 24" />
         </label>
-        <label class="radio">
-          <input type="radio" name="sex" value="M" />
-          <span>Mężczyzna</span>
-        </label>
-      </fieldset>
 
-      <fieldset class="form-field">
-        <legend>Poziom użytkownika</legend>
-        <label class="radio">
-          <input type="radio" name="level" value="basic" required />
-          <span>Zwykły</span>
+        <label class="form-field">
+          <span>Waga (kg)</span>
+          <input type="number" name="weight" min="20" max="400" step="0.1" required placeholder="np. 72.5" />
         </label>
-        <label class="radio">
-          <input type="radio" name="level" value="advanced" />
-          <span>Zaawansowany</span>
-        </label>
-      </fieldset>
-    </div>
 
-<footer class="modal-actions">
-  <button type="submit" class="btn primary" id="onbSubmit" disabled>Zapisz i kontynuuj</button>
-  <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">Wyloguj</a>
-</footer>
-  </main>
+        <label class="form-field">
+          <span>Wzrost (cm)</span>
+          <input type="number" name="height" min="100" max="250" step="0.5" required placeholder="np. 180" />
+        </label>
+
+        <label class="form-field">
+          <span>Aktywność</span>
+          <select name="activity" required>
+            <option value="" disabled selected>Wybierz poziom</option>
+            <option value="1">1 — siedzący tryb życia</option>
+            <option value="2">2 — lekka aktywność (1–2x/tydz.)</option>
+            <option value="3">3 — umiarkowana (3–4x/tydz.)</option>
+            <option value="4">4 — wysoka (5–6x/tydz.)</option>
+            <option value="5">5 — bardzo wysoka / wyczynowa</option>
+          </select>
+        </label>
+
+        <label class="form-field">
+          <span>Cel</span>
+          <select name="goal" required>
+            <option value="" disabled selected>Wybierz cel</option>
+            <option value="loss">Chcę schudnąć</option>
+            <option value="maintain">Chcę utrzymać wagę</option>
+            <option value="gain">Chcę przytyć</option>
+          </select>
+        </label>
+
+        <fieldset class="form-field">
+          <legend>Płeć</legend>
+          <label class="radio">
+            <input type="radio" name="sex" value="F" required />
+            <span>Kobieta</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="sex" value="M" />
+            <span>Mężczyzna</span>
+          </label>
+        </fieldset>
+
+        <!-- 🔹 POZIOM UŻYTKOWNIKA -->
+        <div class="level-card" role="group" aria-labelledby="levelTitle">
+          <div class="level-card-header">
+            <h3 id="levelTitle">Poziom użytkownika</h3>
+          </div>
+
+          <div class="level-card-grid">
+            <label class="level-option">
+              <input type="radio" name="level" value="basic" required />
+              <div class="option-body">
+                <div class="option-title">Zwykły</div>
+                <div class="option-desc">
+                  Dla początkujących. Aplikacja stosuje bezpieczne, „twarde” limity i tempo zmian masy,
+                  żeby uniknąć kontuzji lub zbyt szybkiej redukcji.
+                </div>
+              </div>
+            </label>
+
+            <label class="level-option">
+              <input type="radio" name="level" value="advanced" />
+              <div class="option-body">
+                <div class="option-title">Zaawansowany</div>
+                <div class="option-desc">
+                  Dla sportowców i osób obytych z podobnymi aplikacjami. Większa swoboda w ustawianiu celów;
+                  domyślnie start z „makrem sportowca”.
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div> <!-- /form-grid -->
+
+      <footer class="modal-actions">
+        <button type="submit" class="btn primary" id="onbSubmit">
+          Zapisz i kontynuuj
+        </button>
+        <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">
+          Wyloguj
+        </a>
+      </footer>
+    </form>
+  </div>
 
   <!-- ===================== SKRYPTY ===================== -->
   <script src="/footer.js" defer></script>
@@ -131,6 +172,5 @@
   <script src="/guard2.js" defer></script>
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
-  
 </body>
 </html>
