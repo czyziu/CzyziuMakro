@@ -33,14 +33,15 @@
   </header>
 
   <!-- ===================== LATERAL NAV ===================== -->
-<aside class="side-nav">
-  <ul>
-    <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
-    <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
-    <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
-    <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
-  </ul>
-</aside>
+  <aside class="side-nav">
+    <ul>
+      <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+      <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+      <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
+      <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
+    </ul>
+  </aside>
+
   <!-- ===================== MAIN ===================== -->
   <main class="site-main with-sidebar">
     <div class="container">
@@ -77,8 +78,9 @@
         </form>
       </section>
     </div>
-  </main><!-- 🔹 dodane zamknięcie main -->
-  <!-- ===================== ONBOARDING MODAL (FORMULARZ WIDOCZNY) ===================== -->
+  </main>
+
+  <!-- ===================== ONBOARDING MODAL ===================== -->
   <div class="modal-backdrop" id="onbBackdrop"></div>
   <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle">
     <form id="onbForm" class="modal-card" novalidate>
@@ -138,7 +140,7 @@
           </label>
         </fieldset>
 
-        <!-- 🔹 POZIOM UŻYTKOWNIKA -->
+        <!-- Poziom użytkownika -->
         <div class="level-card" role="group" aria-labelledby="levelTitle">
           <div class="level-card-header">
             <h3 id="levelTitle">Poziom użytkownika</h3>
@@ -168,43 +170,39 @@
             </label>
           </div>
         </div>
-      </div> <!-- /form-grid -->
+      </div>
 
       <footer class="modal-actions">
-        <button type="submit" class="btn primary" id="onbSubmit">
-          Zapisz i kontynuuj
-        </button>
-        <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">
-          Wyloguj
-        </a>
+        <button type="submit" class="btn primary" id="onbSubmit">Zapisz i kontynuuj</button>
+        <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">Wyloguj</a>
       </footer>
     </form>
   </div>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-info">
-      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
-      <p class="small-note">
-        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
-        Autor: <strong>Jakub Czyżycki</strong>
-      </p>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+        <p class="small-note">
+          Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+          Autor: <strong>Jakub Czyżycki</strong>
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+      </nav>
     </div>
+  </footer>
 
-    <nav class="footer-nav" aria-label="Nawigacja w stopce">
-      <a href="index.html">O aplikacji</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="regulamin.html">Regulamin</a>
-    </nav>
-  </div>
-</footer>
   <!-- ===================== SKRYPTY ===================== -->
-
   <script src="/app.js" defer></script>
-  <script src="/guard.js" defer></script>
-<script src="/goals.js" defer></script>
-
+  <!-- cache-bust, żeby na pewno wczytały się wersje z popupem -->
+  <script src="/guard.js?v=popup" defer></script>
   <script src="/ui.js" defer></script>
-  <script src="/onboarding.js" defer></script>
-  
+  <script src="/goals.js?v=popup" defer></script>
+  <script src="/onboarding.js?v=popup" defer></script>
 </body>
 </html>

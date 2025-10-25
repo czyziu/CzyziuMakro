@@ -73,31 +73,25 @@
     }
 
     const { total, kcalP, kcalF, kcalC } = kcalFromMacros(p, f, c);
-    const diff = total - kcalTarget; // +: makro > cel kcal | -: makro < cel kcal
+    const diff = total - kcalTarget; // +: makro > cel | -: makro < cel
     const tol = Math.max(TOL_KCAL_ABS, Math.abs(kcalTarget) * TOL_KCAL_PCT);
     const ok = Math.abs(diff) <= tol;
 
     const kcalAbs = Math.abs(diff);
-    const gPC = Math.round(kcalAbs / 4); // białko/węgle (4 kcal/g)
-    const gF  = Math.round(kcalAbs / 9); // tłuszcz (9 kcal/g)
+    const gPC = Math.round(kcalAbs / 4); // białko/węgle
+    const gF  = Math.round(kcalAbs / 9); // tłuszcz
 
-    // Buduj sugestie co zrobić (konkretne komunikaty)
     let whatToDo = '';
     if (!ok) {
-      // A: zmień "Kalorie" do sumy z makro
       const actCals = diff > 0
-        ? `Odejmij ${format1(kcalAbs)} kcal w polu \u201EKalorie\u201D (ustaw ${format1(total)}).`
-        : `Dodaj ${format1(kcalAbs)} kcal w polu \u201EKalorie\u201D (ustaw ${format1(total)}).`;
-
-      // B: zostaw "Kalorie", skoryguj makro (pierwsza propozycja na białku)
+        ? `Odejmij ${format1(kcalAbs)} kcal w polu „Kalorie” (ustaw ${format1(total)}).`
+        : `Dodaj ${format1(kcalAbs)} kcal w polu „Kalorie” (ustaw ${format1(total)}).`;
       const actMacros = diff > 0
         ? `Albo odejmij ~${gPC} g białka (lub ~${gPC} g węgli, ~${gF} g tłuszczu).`
         : `Albo dodaj ~${gPC} g białka (lub ~${gPC} g węgli, ~${gF} g tłuszczu).`;
-
       whatToDo = `${actCals} ${actMacros}`;
     }
 
-    // Komunikat pod polem
     if (hint) {
       hint.innerHTML =
         `Z makro wychodzi <strong>${format1(total)} kcal</strong> ` +
@@ -108,7 +102,6 @@
       hint.style.color = ok ? 'inherit' : 'var(--danger, #c0392b)';
     }
 
-    // A11y + blokada submitu + dymek walidacyjny
     [caloriesEl, proteinEl, fatEl, carbsEl].forEach(el => el?.setAttribute('aria-invalid', String(!ok)));
     caloriesEl?.setCustomValidity(
       ok ? '' :
@@ -122,28 +115,29 @@
   }
 
   function wireValidation() {
-    // Reaktywne przeliczanie przy każdej zmianie pól
     $$('#calories, #protein, #fat, #carbs').forEach(el => {
       el.addEventListener('input', () => validateMacros(false));
       el.addEventListener('change', () => validateMacros(false));
     });
-    // Pierwsze przeliczenie po załadowaniu
     validateMacros(false);
   }
 
   // ====== INIT (GET ostatnich makr i podstawienie) ======
   async function init() {
     const token = findToken();
-    if (!token) return (window.location.href = 'logowanie.html');
+
+    // ⛔ Brak tokena → NIC nie rób (guard zajmuje się dostępem / popupem)
+    if (!token) return;
 
     // 1) Status profilu (onboarding)
     try {
       const status = await getJSON('/api/profile/status', token);
       if (!status?.completed) {
-        return; // onboarding załatwia resztę
+        return; // onboarding ogarnie resztę
       }
     } catch (e) {
-      if (String(e.message).includes('unauth')) return (window.location.href = 'logowanie.html');
+      // ⛔ 401/unauth → NIC nie rób (guard wyświetli ścianę)
+      if (String(e.message).includes('unauth')) return;
       console.warn('Nie udało się pobrać statusu profilu:', e);
     }
 
@@ -183,9 +177,12 @@
         e.preventDefault();
 
         const { ok } = validateMacros(true);
-        if (!ok) return; // zablokuj wysyłkę przy niezgodności
+        if (!ok) return;
 
         const token = findToken();
+        // ⛔ Brak tokena → NIC nie rób (guard zabluruje stronę i pokaże ścianę)
+        if (!token) return;
+
         const payload = {
           kcal: Number($('#calories').value),
           protein_g: Number($('#protein').value),

@@ -12,7 +12,7 @@
 
   // ====== Konfiguracja (zmień pod siebie w razie potrzeby) =================
   const TOKEN_KEY = "cm_token"; // localStorage key z JWT
-  const LOGIN_URL = "/login";   // dokąd prowadzi przycisk logowania w ścianie
+  const LOGIN_URL = "/logowanie.html";  // absolutna ścieżka z ukośnikiem
   const WALL_ID   = "authWall"; // id kontenera z komunikatem
   const BLUR_CLASS = "blur-active"; // klasa CSS włączająca rozmycie tła
 
