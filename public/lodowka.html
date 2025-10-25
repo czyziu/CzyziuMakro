@@ -54,19 +54,26 @@
       </header>
 
       <!-- ====== DODAJ DO LODÓWKI ====== -->
-      <section class="card">
+      <section class="card" id="addEditCard">
         <h3>Dodaj do lodówki</h3>
         <form id="fridgeForm" class="form-grid" novalidate>
           <!-- 1) Szukanie z podpowiedziami -->
-          <label class="form-field">
+          <label class="form-field ac-wrap">
             <span>Szukaj produktu *</span>
-            <input type="search" id="catalogFilter" placeholder="Zacznij pisać nazwę lub kategorię" autocomplete="off" />
+            <input type="search" id="catalogFilter" placeholder="np. pier → Pierś z kurczaka" autocomplete="off" />
+            <!-- panel podpowiedzi wstrzykuje JS -->
           </label>
 
           <!-- 2) Ilość w gramach -->
           <label class="form-field">
             <span>Ilość (g) *</span>
             <input type="number" id="gramsInput" name="grams" min="1" step="1" required placeholder="np. 250" />
+          </label>
+
+          <!-- 3) Opcjonalnie data ważności -->
+          <label class="form-field">
+            <span>Ważne do (opcjonalnie)</span>
+            <input type="date" id="expiresInput" />
           </label>
 
           <div class="modal-actions">
@@ -93,6 +100,7 @@
                 <tr>
                   <th>Nazwa</th>
                   <th>Kategoria</th>
+                  <th>Ważne do</th>
                   <th style="width:120px;">Ilość (g)</th>
                   <th>kcal</th>
                   <th>B (g)</th>
@@ -137,29 +145,50 @@
   <script src="/guard.js" defer></script>
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
+
   <!-- Modal: zmiana ilości w lodówce -->
-<div id="editModal" class="cm-modal" hidden>
-  <div class="cm-modal__backdrop" data-close></div>
-
-  <div class="cm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
-    <header class="cm-modal__header">
-      <h4 id="editModalTitle">Zmień ilość</h4>
-    </header>
-
-    <div class="cm-modal__body">
-      <p class="muted" id="editModalName"></p>
-      <label class="form-field" style="margin-top:.25rem;">
-        <span>Ilość (g)</span>
-        <input type="number" id="editModalInput" min="0" step="1" inputmode="numeric" />
-      </label>
+  <div id="editModal" class="cm-modal" hidden>
+    <div class="cm-modal__backdrop" data-close></div>
+    <div class="cm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+      <header class="cm-modal__header">
+        <h4 id="editModalTitle">Zmień ilość</h4>
+      </header>
+      <div class="cm-modal__body">
+        <p class="muted" id="editModalName"></p>
+        <label class="form-field" style="margin-top:.25rem;">
+          <span>Ilość (g)</span>
+          <input type="number" id="editModalInput" min="0" step="1" inputmode="numeric" />
+        </label>
+      </div>
+      <footer class="cm-modal__footer">
+        <button type="button" class="btn secondary" data-close>Anuluj</button>
+        <button type="button" class="btn primary" id="editModalSave">Zapisz</button>
+      </footer>
     </div>
-
-    <footer class="cm-modal__footer">
-      <button type="button" class="btn secondary" data-close>Anuluj</button>
-      <button type="button" class="btn primary" id="editModalSave">Zapisz</button>
-    </footer>
   </div>
-</div>
+
+  <!-- Modal: zmiana daty ważności -->
+  <div id="dateModal" class="cm-modal" hidden>
+    <div class="cm-modal__backdrop" data-close></div>
+    <div class="cm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="dateModalTitle">
+      <header class="cm-modal__header">
+        <h4 id="dateModalTitle">Zmień datę ważności</h4>
+      </header>
+      <div class="cm-modal__body">
+        <p class="muted" id="dateModalName"></p>
+        <label class="form-field" style="margin-top:.25rem;">
+          <span>Ważne do</span>
+          <input type="date" id="dateModalInput" />
+        </label>
+        <p class="muted" style="margin-top:.5rem;">Pozostaw puste, aby usunąć datę.</p>
+      </div>
+      <footer class="cm-modal__footer">
+        <button type="button" class="btn secondary" data-close>Anuluj</button>
+        <button type="button" class="btn primary" id="dateModalSave">Zapisz</button>
+      </footer>
+    </div>
+  </div>
+
   <script type="module" src="./lodowka.js" defer></script>
 </body>
 </html>

@@ -1101,3 +1101,406 @@ body.cm-modal-open{ overflow:hidden; }
 .table td:last-child .btn:first-child:focus-visible {
   /* nic specjalnego – użyjemy reguły powyżej */
 }
+
+
+
+
+
+
+
+/* ===== Odstęp między "Dodaj do lodówki" a "Szukaj w lodówce" ===== */
+:root{
+  /* jeden suwak na przerwę między kartami */
+  --section-gap: 1.25rem;
+}
+
+#addEditCard{
+  margin-bottom: var(--section-gap);
+}
+
+/* Gdyby ID nie było — zapasowa reguła: każda karta po karcie ma przerwę */
+.card + .card{
+  margin-top: var(--section-gap);
+}
+
+/* Trochę ciaśniej na węższych ekranach */
+@media (max-width: 900px){
+  :root{ --section-gap: 1rem; }
+}
+
+/* Oddech w górnej części karty z tabelą: pasek narzędzi odsuń od tabeli */
+.toolbar{
+  margin-bottom: .5rem;
+}
+
+
+
+
+
+
+
+/* === Dania: pole produktu + autocomplete widoczne w tabeli === */
+
+/* Pozwól komórce z polem produktu normalnie się składać i nie ucinać zawartości */
+#ingTbody td:first-child {
+  white-space: normal;   /* nadpisuje nowrap z ogólnej reguły tabeli */
+  overflow: visible;     /* nie przycinaj pola input wewnątrz */
+}
+
+/* Uprość styl „kartki” wewnątrz komórki i ustaw kontekst dla dropdownu */
+#ingTbody td:first-child .form-field {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  position: relative;    /* kotwica dla .ac-panel (absolute) */
+  overflow: visible;
+}
+
+/* Samo pole produktu – pełna szerokość kolumny + minimalna użyteczna szerokość */
+#ingTbody td:first-child .form-field input.ing-name {
+  display: block;
+  width: 100%;
+  min-width: 220px;
+}
+
+/* Dropdown autouzupełniania ponad tabelą/sidebarem */
+.ac-panel {
+  z-index: 120;          /* wyżej niż side-nav/header i komórki tabeli */
+}
+
+/* Na węższych ekranach pozwól pierwszej kolumnie rosnąć (gdy brakuje miejsca) */
+@media (max-width: 900px) {
+  .table :is(th,td):first-child { max-width: none; }
+}
+
+
+/* Dania: większe okno na tabelę składników */
+body[data-page="dania"] #mealFormCard .table-wrapper {
+  max-height: 72vh; /* zwiększ wysokość okna tabeli */
+  overflow: auto;   /* wewnętrzny scroll */
+  padding-bottom: 100px; /* zapas pod tabelą na dropdown przy ostatniej pozycji */
+}
+
+/* Nie ucinać pola produktu i dropdownu w pierwszej kolumnie */
+#ingTbody td:first-child { white-space: normal; overflow: visible; }
+#ingTbody td:first-child .form-field { position: relative; overflow: visible; }
+.ac-panel { z-index: 120; }
+
+
+/* === Dania: fix nachodzących nagłówków w liście dań === */
+body[data-page="dania"] #mealListCard .table {
+  width: 100%;
+  table-layout: fixed; /* kolumny trzymają szerokości */
+}
+
+/* pozwól nagłówkom się łamać, nie ściskaj ich */
+body[data-page="dania"] #mealListCard thead th {
+  white-space: normal !important;
+  overflow-wrap: anywhere;   /* może łamać w dowolnym miejscu, też przy "/" */
+  word-break: break-word;
+  line-height: 1.25;
+  vertical-align: bottom;
+}
+
+/* treść komórek nie wychodzi poza kolumny */
+body[data-page="dania"] #mealListCard tbody td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* sugerowane szerokości kolumn */
+body[data-page="dania"] #mealListCard thead th:nth-child(1),
+body[data-page="dania"] #mealListCard tbody td:nth-child(1) { width: 34%; } /* Nazwa */
+body[data-page="dania"] #mealListCard thead th:nth-child(2),
+body[data-page="dania"] #mealListCard tbody td:nth-child(2) { width: 16%; } /* Kategoria */
+body[data-page="dania"] #mealListCard thead th:nth-child(3),
+body[data-page="dania"] #mealListCard tbody td:nth-child(3) { width: 10%; text-align:center; } /* Porcji */
+body[data-page="dania"] #mealListCard thead th:nth-child(4),
+body[data-page="dania"] #mealListCard tbody td:nth-child(4) { width: 14%; } /* kcal/porcję */
+body[data-page="dania"] #mealListCard thead th:nth-child(5),
+body[data-page="dania"] #mealListCard tbody td:nth-child(5) { width: 14%; } /* B/T/W/porcję */
+body[data-page="dania"] #mealListCard thead th:nth-child(6),
+body[data-page="dania"] #mealListCard tbody td:nth-child(6) { width: 200px; white-space: nowrap; } /* Akcje */
+
+/* responsywnie: delikatnie zmniejsz font i ścieśnij przyciski akcji */
+@media (max-width: 900px) {
+  body[data-page="dania"] #mealListCard .table { font-size: 0.95rem; }
+  body[data-page="dania"] #mealListCard thead th:nth-child(6),
+  body[data-page="dania"] #mealListCard tbody td:nth-child(6) { width: 160px; }
+}
+
+
+
+/* === Podgląd dania: poprawki UI === */
+body[data-page="dania"] .cm-modal__dialog {
+  width: min(96vw, 980px);
+  max-width: 980px;
+}
+body[data-page="dania"] .cm-modal__body {
+  max-height: 72vh;
+  overflow: auto;
+}
+
+/* Nagłówek podglądu */
+#previewBody .preview-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+#previewBody .preview-name { font-size: 1.25rem; font-weight: 700; }
+#previewBody .preview-meta { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+
+.cm-badge {
+  display: inline-block;
+  padding: .2rem .5rem;
+  border-radius: .5rem;
+  background: var(--surface-3, #eef1f5);
+  font-size: .85rem;
+  line-height: 1;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.cm-badge.success { background: #e6f6ea; border-color: #cdebd6; }
+.cm-badge.neutral { background: #edf3ff; border-color: #d6e3ff; }
+.cm-badge.outline { background: transparent; border-color: rgba(0,0,0,.12); }
+
+/* Tabela w podglądzie */
+#previewBody .table.preview-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1, #fff);
+  z-index: 1;
+}
+#previewBody .table.preview-table th.t-right,
+#previewBody .table.preview-table td.t-right { text-align: right; }
+
+/* Kafel podsumowania */
+#previewBody .preview-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .5rem .75rem;
+}
+#previewBody .recipe-card p { white-space: pre-wrap; }
+
+
+
+
+/* === Dania / Podgląd — zgodne z resztą stylu === */
+body[data-page="dania"] .cm-modal__dialog {
+  width: min(96vw, 960px);
+  max-width: 960px;
+}
+body[data-page="dania"] .cm-modal__body {
+  max-height: 72vh;
+  overflow: auto;
+}
+
+/* Nagłówek podglądu */
+#previewBody .preview-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+#previewBody .preview-name {
+  font-size: 1.1rem;   /* zbliżone do nagłówków sekcji */
+  font-weight: 700;
+  line-height: 1.25;
+}
+#previewBody .preview-meta {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* „Badge” bez twardych kolorów — podpinamy pod surface/border z motywu */
+#previewBody .cm-badge {
+  display: inline-block;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border, rgba(0,0,0,.1));
+  font-size: .85rem;
+  line-height: 1;
+  color: inherit;
+}
+
+/* Tabela składników — zachowujemy styl .table, tylko UX */
+#previewBody .table.preview-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1, #fff); /* spójne z resztą tła */
+  z-index: 1;
+}
+#previewBody .table.preview-table th.t-right,
+#previewBody .table.preview-table td.t-right {
+  text-align: right;
+}
+
+/* Kafel podsumowania — układ siatki, bez własnych kolorów */
+#previewBody .preview-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .5rem .75rem;
+}
+
+/* Treść przepisu — respektuj łamanie linii z textarea */
+#previewBody .recipe-card p { white-space: pre-wrap; }
+
+
+
+/* Dania: nagłówek tabeli w podglądzie — spójny z kartą */
+body[data-page="dania"] #previewBody .table.preview-table thead th {
+  background: var(--surface-2) !important;          /* zamiast bieli */
+  border-bottom: 1px solid var(--border, rgba(0,0,0,.12));
+  box-shadow: none;                                  /* bez cieniowania */
+}
+
+
+
+/* Dania: nagłówek tabeli w podglądzie na żółto (accent) */
+body[data-page="dania"] #previewBody .table.preview-table thead th {
+  background: var(--accent-500) !important;   /* Twój żółty */
+  color: #0b0f14;                             /* ciemny tekst dla kontrastu */
+  border-bottom: 1px solid var(--accent-600); /* delikatne odcięcie */
+}
+
+
+/* === Dania / Podgląd — tabela & podsumowanie === */
+
+/* Tabela w podglądzie: stały układ, klarowne szerokości liczbowych kolumn */
+body[data-page="dania"] #previewBody .table.preview-table {
+  table-layout: fixed;
+}
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(1),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(1) { width: 42%; }
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(2),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(2) { width: 18%; }
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(3),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(3),
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(4),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(4),
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(5),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(5) { width: 13%; }
+
+/* Dodatkowe wyrównanie liczb */
+body[data-page="dania"] #previewBody .table.preview-table th.t-right,
+body[data-page="dania"] #previewBody .table.preview-table td.t-right { text-align: right; }
+
+/* Oddech pod tabelą, żeby podsumowanie nie „nachodziło” */
+body[data-page="dania"] #previewBody .table.preview-table { margin-bottom: .75rem; }
+
+/* Grid z boksami podsumowania */
+body[data-page="dania"] #previewBody .summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .75rem;
+}
+
+/* Pudełka z metrykami — spójne z kartami */
+body[data-page="dania"] #previewBody .summary-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border, rgba(0,0,0,.12));
+  border-radius: .5rem;
+  padding: .5rem .75rem;
+}
+
+/* Tytuł boksu */
+body[data-page="dania"] #previewBody .summary-box .summary-title {
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+/* Lista metryk: każda w osobnej linii, równe odstępy, bez upychania "obok siebie" */
+body[data-page="dania"] #previewBody .metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body[data-page="dania"] #previewBody .metrics li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .15rem 0;
+  border-top: 1px dashed var(--border, rgba(0,0,0,.12));
+}
+body[data-page="dania"] #previewBody .metrics li:first-child { border-top: 0; }
+body[data-page="dania"] #previewBody .metrics li strong { font-variant-numeric: tabular-nums; }
+
+
+
+/* ==== OVERRIDE: węższe "Nazwa" i "Kategoria" (wklej na SAM KONIEC pliku) ==== */
+
+/* 1) Nazwa (kolumna 1) */
+.table :is(th,td):first-child{
+  width: clamp(120px, 18vw, 240px) !important;
+  min-width: 120px;            /* twarde minimum */
+  max-width: 240px;            /* nie rośnie ponad */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2) Kategoria (kolumna 2) */
+.table :is(th,td):nth-child(2){
+  width: clamp(90px, 12vw, 160px) !important;
+  min-width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Trochę ciaśniej na węższych ekranach */
+@media (max-width: 1200px){
+  .table :is(th,td):first-child{
+    width: clamp(110px, 20vw, 200px) !important;
+    min-width: 110px;
+  }
+  .table :is(th,td):nth-child(2){
+    width: clamp(80px, 12vw, 140px) !important;
+    min-width: 80px;
+  }
+}
+
+
+
+/* Data ważności w tabeli */
+.exp-date.expired { color: var(--danger-500); font-weight: 600; }
+
+
+
+
+
+/* ==== Lodówka: kolumna "Ważne do" + korekta szerokości kolumn (OVERRIDE) ==== */
+
+/* 3) "Ważne do" – wąska kolumna na datę */
+.table :is(th,td):nth-child(3){
+  width: clamp(110px, 12vw, 140px) !important;
+  min-width: 110px;
+  text-align: left;               /* data czytelna jak tekst */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 4–7) Liczbowe kolumny: Ilość + kcal/B/T/W */
+.table :is(th,td):nth-child(n+4):nth-child(-n+7){
+  width: var(--num-col-w) !important; /* masz w :root np. 9ch */
+  text-align: right !important;
+}
+
+/* Data — wygląd i stan po terminie */
+.exp-date{ font-variant-numeric: tabular-nums; }
+.exp-date.expired{ color: var(--danger-500, #ef4444); font-weight: 600; }
+
+/* Na bardzo wąskich ekranach data może się zwęzić jeszcze bardziej */
+@media (max-width: 900px){
+  .table :is(th,td):nth-child(3){
+    width: clamp(96px, 24vw, 120px) !important;
+    min-width: 96px;
+  }
+}

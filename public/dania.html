@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CzyziuMakro — Twoje dania</title>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#0b0f14" />
+</head>
+<body data-page="dania">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+        <img src="/assets/logo-czyziumakro.svg" alt="CzyziuMakro" class="brand-logo" width="220" height="48" decoding="async" fetchpriority="high" />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
+          Cześć, <span id="userName"></span>!
+        </a>
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+        <a class="nav-link" href="logowanie.html" data-auth="out">Logowanie</a>
+        <a class="nav-link" href="rejestracja.html" data-auth="out">Rejestracja</a>
+        <a class="nav-link" href="#" data-action="logout" data-auth="in">Wyloguj</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== LATERAL NAV ===================== -->
+  <aside class="side-nav">
+    <ul>
+      <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+      <li><a href="lodowka.html" class="side-link">Lodówka</a></li>
+      <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+      <li><a href="dania.html" class="side-link" aria-current="page">Twoje dania</a></li>
+      <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
+      <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="site-main with-sidebar">
+    <div class="container">
+
+      <header class="page-header">
+        <h1>Twoje dania</h1>
+        <p class="muted">Twórz dania z produktów, zapisuj i licz makro: kcal oraz B/T/W — łącznie i na porcję.</p>
+      </header>
+
+      <!-- ====== DODAJ/EDYTUJ DANIE ====== -->
+<section class="card" id="mealFormCard" hidden>
+  <h3 id="mealFormTitle">Dodaj danie</h3>
+
+  <form id="mealForm" class="form-grid" novalidate>
+    <input type="hidden" name="id" />
+
+    <label class="form-field">
+      <span>Nazwa *</span>
+      <input type="text" name="name" required placeholder="np. Owsianka białkowa" />
+    </label>
+
+    <label class="form-field">
+      <span>Kategoria *</span>
+      <select name="category" required>
+        <option value="" disabled selected>Wybierz kategorię</option>
+        <option value="Śniadanie">Śniadanie</option>
+        <option value="Obiad">Obiad</option>
+        <option value="Kolacja">Kolacja</option>
+        <option value="Przekąska">Przekąska</option>
+        <option value="Deser">Deser</option>
+        <option value="Inne">Inne</option>
+      </select>
+    </label>
+
+    <!-- Waga po obróbce + Liczba porcji obok siebie -->
+    <div style="grid-column: 1 / -1; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.75rem;">
+      <label class="form-field">
+        <span>Waga po obróbce (g)</span>
+        <input type="number" name="postWeight" min="1" step="1" placeholder="np. 500" />
+      </label>
+
+      <label class="form-field">
+        <span>Liczba porcji</span>
+        <input type="number" name="portions" min="1" step="1" placeholder="np. 1" />
+      </label>
+    </div>
+
+    <label class="form-field" style="grid-column: 1 / -1;">
+      <span>Przepis (opcjonalnie)</span>
+      <textarea name="recipe" rows="4" placeholder="Opcjonalnie: opisz przygotowanie krok po kroku..."></textarea>
+    </label>
+
+    <label class="form-field" style="grid-column: 1 / -1; display:flex; align-items:center; gap:.5rem;">
+      <input type="checkbox" name="isPublic" />
+      <span>Udostępnij przepis wszystkim użytkownikom</span>
+    </label>
+
+    <div class="form-field" style="grid-column: 1 / -1;">
+      <div class="toolbar" style="display:flex; align-items:center; justify-content:space-between; gap:.5rem;">
+        <h4 style="margin:0;">Składniki</h4>
+        <button type="button" class="btn" id="addIngBtn">+ Dodaj składnik</button>
+      </div>
+      <div class="table-wrapper" style="margin-top:.5rem;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:40%;">Produkt</th>
+              <th>Kategoria</th>
+              <th style="width:140px;">Ilość (g)</th>
+              <th style="width:120px;">kcal</th>
+              <th style="width:120px;">B/T/W</th>
+              <th style="width:90px;">Usuń</th>
+            </tr>
+          </thead>
+          <tbody id="ingTbody">
+            <!-- wiersze składników wypełnia JS -->
+          </tbody>
+        </table>
+        <p class="muted" id="ingEmpty" hidden>Brak składników. Dodaj przynajmniej dwa.</p>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1; background:var(--surface-2);">
+      <h4>Podsumowanie dania</h4>
+      <div id="mealSummary" class="muted">Wprowadź składniki, aby zobaczyć makro.</div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="submit" class="btn primary">Zapisz</button>
+      <button type="button" class="btn secondary" id="mealCancelBtn">Anuluj</button>
+    </div>
+  </form>
+</section>
+
+
+      <!-- ====== LISTA DAŃ ====== -->
+      <section class="card" id="mealListCard">
+        <div class="content-flow" id="mealApp">
+          <div class="toolbar" style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+            <label class="form-field" style="flex:1; min-width:240px;">
+              <span>Szukaj</span>
+              <input type="search" id="mealSearch" placeholder="Filtruj po nazwie lub kategorii" />
+            </label>
+            <button type="button" class="btn btn-accent" id="openAddMealBtn">+ Dodaj danie</button>
+          </div>
+
+          <div class="table-wrapper" style="margin-top:1rem;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Kategoria</th>
+                  <th>Porcji</th>
+                  <th>kcal / porcję</th>
+                  <th>B/T/W / porcję</th>
+                  <th style="width:200px;">Akcje</th>
+                </tr>
+              </thead>
+              <tbody id="mealTbody">
+                <!-- wypełniane skryptem -->
+              </tbody>
+            </table>
+            <p class="muted" id="mealEmpty" hidden>Brak dań. Dodaj pierwsze, używając przycisku powyżej.</p>
+          </div>
+
+          <div class="pagination" id="mealPager" style="display:flex; align-items:center; gap:0.5rem; justify-content:flex-end; margin-top:1rem;">
+            <button class="btn secondary" id="prevMealPage" aria-label="Poprzednia strona">‹</button>
+            <div id="mealPageList" aria-label="Numery stron" style="display:flex; gap:0.25rem; flex-wrap:wrap;"></div>
+            <button class="btn secondary" id="nextMealPage" aria-label="Następna strona">›</button>
+          </div>
+          <p class="muted" id="mealPagerInfo" style="text-align:right; margin-top:0.25rem;"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===================== PODGLĄD: MODAL ===================== -->
+  <div id="previewModal" class="cm-modal" hidden>
+    <div class="cm-modal__backdrop" data-close></div>
+    <div class="cm-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+      <header class="cm-modal__header">
+        <h4 id="previewTitle">Podgląd dania</h4>
+      </header>
+      <div class="cm-modal__body" id="previewBody"></div>
+      <footer class="cm-modal__footer">
+        <button type="button" class="btn secondary" data-close>Zamknij</button>
+      </footer>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+        <p class="small-note">
+          Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+          Autor: <strong>Jakub Czyżycki</strong>
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===================== SKRYPTY ===================== -->
+  <script src="/app.js" defer></script>
+  <script src="/guard.js" defer></script>
+  <script src="/ui.js" defer></script>
+  <script src="/onboarding.js" defer></script>
+  <script type="module" src="./dania.js" defer></script>
+</body>
+</html>

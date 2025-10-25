@@ -11,6 +11,8 @@ const { Product } = require('../models/Product');
 const objectId = z.string().min(1, 'productId wymagane');
 const gramsPos  = z.number().positive('grams > 0');
 const gramsNonNeg = z.number().min(0, 'grams >= 0');
+const dateStrOpt   = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'format YYYY-MM-DD').optional().nullable();
+
 
 // GET /api/fridge  -> lista pozycji z dołączonym produktem
 router.get('/', auth, async (req, res) => {
@@ -25,6 +27,7 @@ router.get('/', auth, async (req, res) => {
       id: String(it._id),
       productId: String(it.productId?._id || it.productId),
       grams: it.grams,
+      expiresAt: it.expiresAt || null,
       product: it.productId && it.productId.name ? {
         id: String(it.productId._id),
         name: it.productId.name,
@@ -48,46 +51,61 @@ router.post('/', auth, async (req, res) => {
   try {
     const body = z.object({
       productId: objectId,
-      grams: gramsPos
+      grams: gramsPos,
+      expiresAt: dateStrOpt // YYYY-MM-DD | null | undefined
     }).parse(req.body || {});
 
-    // upewnij się, że produkt należy do użytkownika
+    // produkt może pochodzić od dowolnego użytkownika — ważne, że istnieje
     const prod = await Product.findById(body.productId).lean();
     if (!prod) return res.status(404).json({ message: 'Produkt nie istnieje' });
 
-    // jeśli już istnieje pozycja — zwiększ ilość
+    // jeśli już istnieje pozycja — zwiększ ilość (i ewentualnie ustaw/wyczyść datę)
     const existing = await FridgeItem.findOne({ userId: req.user.id, productId: body.productId });
     if (existing) {
       existing.grams += body.grams;
+      if (body.expiresAt !== undefined) {
+        existing.expiresAt = body.expiresAt ? new Date(body.expiresAt) : null;
+      }
       await existing.save();
+
       return res.json({
         id: String(existing._id),
         productId: String(existing.productId),
         grams: existing.grams,
+        expiresAt: existing.expiresAt || null,
         product: {
           id: String(prod._id),
-          name: prod.name, category: prod.category || '',
-          kcal100: prod.kcal100 ?? null, p100: prod.p100 ?? null,
-          f100: prod.f100 ?? null, c100: prod.c100 ?? null
+          name: prod.name,
+          category: prod.category || '',
+          kcal100: prod.kcal100 ?? null,
+          p100: prod.p100 ?? null,
+          f100: prod.f100 ?? null,
+          c100: prod.c100 ?? null
         }
       });
     }
 
+    // nowa pozycja
     const created = await FridgeItem.create({
       userId: req.user.id,
       productId: body.productId,
-      grams: body.grams
+      grams: body.grams,
+      expiresAt: body.expiresAt ? new Date(body.expiresAt) : null
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       id: String(created._id),
       productId: String(created.productId),
       grams: created.grams,
+      expiresAt: created.expiresAt || null,
       product: {
         id: String(prod._id),
-        name: prod.name, category: prod.category || '',
-        kcal100: prod.kcal100 ?? null, p100: prod.p100 ?? null,
-        f100: prod.f100 ?? null, c100: prod.c100 ?? null
+        name: prod.name,
+        category: prod.category || '',
+        kcal100: prod.kcal100 ?? null,
+        p100: prod.p100 ?? null,
+        f100: prod.f100 ?? null,
+        c100: prod.c100 ?? null
       }
     });
   } catch (e) {
@@ -96,37 +114,57 @@ router.post('/', auth, async (req, res) => {
       return res.status(400).json({ message: i?.message || 'Błędne dane' });
     }
     console.error('POST /fridge error', e);
-    res.status(500).json({ message: 'Błąd serwera' });
+    return res.status(500).json({ message: 'Błąd serwera' });
   }
 });
 
-// PATCH /api/fridge/:id  { grams }  (0 => usuń)
+
+
+
+// PATCH /api/fridge/:id  { grams?, expiresAt? }  (grams:0 => usuń)
 router.patch('/:id', auth, async (req, res) => {
   try {
-    const { grams } = z.object({ grams: gramsNonNeg }).parse(req.body || {});
+    const payload = z.object({
+      grams: gramsNonNeg.optional(),
+      expiresAt: dateStrOpt            // YYYY-MM-DD | null | undefined
+    })
+    // musi przyjść choć jedno pole
+    .refine(v => v.grams !== undefined || 'expiresAt' in v, { message: 'Podaj grams lub expiresAt' })
+    .parse(req.body || {});
+
     const it = await FridgeItem.findOne({ _id: req.params.id, userId: req.user.id });
     if (!it) return res.status(404).json({ message: 'Pozycja nie istnieje' });
 
-    if (grams === 0) {
+    // 0 gramów = kasujemy pozycję
+    if (payload.grams === 0) {
       await it.deleteOne();
       return res.json({ deleted: true });
     }
 
-    it.grams = grams;
+    // aktualizacje pól
+    if (payload.grams !== undefined) it.grams = payload.grams;
+    if ('expiresAt' in payload) it.expiresAt = payload.expiresAt ? new Date(payload.expiresAt) : null;
+
     await it.save();
 
-    // dołącz produkt (lekki select)
-    const prod = await Product.findById(it.productId).select('name category kcal100 p100 f100 c100').lean();
+    // lekkie dołączenie produktu
+    const prod = await Product.findById(it.productId)
+      .select('name category kcal100 p100 f100 c100')
+      .lean();
 
-    res.json({
+    return res.json({
       id: String(it._id),
       productId: String(it.productId),
       grams: it.grams,
+      expiresAt: it.expiresAt || null,
       product: prod ? {
         id: String(prod._id),
-        name: prod.name, category: prod.category || '',
-        kcal100: prod.kcal100 ?? null, p100: prod.p100 ?? null,
-        f100: prod.f100 ?? null, c100: prod.c100 ?? null
+        name: prod.name,
+        category: prod.category || '',
+        kcal100: prod.kcal100 ?? null,
+        p100: prod.p100 ?? null,
+        f100: prod.f100 ?? null,
+        c100: prod.c100 ?? null
       } : null
     });
   } catch (e) {
@@ -135,9 +173,10 @@ router.patch('/:id', auth, async (req, res) => {
       return res.status(400).json({ message: i?.message || 'Błędne dane' });
     }
     console.error('PATCH /fridge/:id error', e);
-    res.status(500).json({ message: 'Błąd serwera' });
+    return res.status(500).json({ message: 'Błąd serwera' });
   }
 });
+
 
 // DELETE /api/fridge/:id
 router.delete('/:id', auth, async (req, res) => {

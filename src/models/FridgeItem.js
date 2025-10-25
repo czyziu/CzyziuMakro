@@ -6,7 +6,9 @@ const FridgeItemSchema = new Schema(
   {
     userId:    { type: Schema.Types.ObjectId, ref: 'User',    required: true, index: true },
     productId: { type: Schema.Types.ObjectId, ref: 'Product', required: true, index: true },
-    grams:     { type: Number, required: true, min: 0 }
+    grams:     { type: Number, required: true, min: 0 },
+    expiresAt: { type: Date, default: null }  // ← NOWE, opcjonalne
+
   },
   { timestamps: true }
 );

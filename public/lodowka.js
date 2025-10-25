@@ -28,14 +28,21 @@ const api = {
     const arr = Array.isArray(data) ? data : (data.items || []);
     return arr.map(mapFridgeDoc);
   },
-  async addToFridge(productId, grams) {
-    const body = JSON.stringify({ productId, grams: Number(grams) });
+  // ← teraz przyjmuje opcjonalnie expiresAt (YYYY-MM-DD)
+  async addToFridge(productId, grams, expiresAt) {
+    const payload = { productId, grams: Number(grams) };
+    if (expiresAt) payload.expiresAt = expiresAt;
+    const body = JSON.stringify(payload);
     const r = await fetch(API_FRIDGE, { method: 'POST', headers: authHeaders(), body });
     if (!r.ok) throw new Error('Nie udało się dodać do lodówki');
     return mapFridgeDoc(await r.json());
   },
-  async updateFridgeItem(id, grams) {
-    const body = JSON.stringify({ grams: Number(grams) });
+  // ← można zaktualizować grams i/lub expiresAt (null usuwa datę)
+  async updateFridgeItem(id, grams, expiresAt) {
+    const payload = {};
+    if (grams !== undefined)     payload.grams = Number(grams);
+    if (expiresAt !== undefined) payload.expiresAt = expiresAt || null;
+    const body = JSON.stringify(payload);
     const r = await fetch(`${API_FRIDGE}/${id}`, { method: 'PATCH', headers: authHeaders(), body });
     if (!r.ok) throw new Error('Nie udało się zaktualizować');
     return mapFridgeDoc(await r.json());
@@ -63,6 +70,8 @@ function mapFridgeDoc(doc) {
     id: doc._id || doc.id,
     productId: doc.productId || doc.product?.id || doc.product?._id,
     grams: Number(doc.grams ?? 0),
+    // normalizacja do YYYY-MM-DD jeśli backend zwróci ISO/Date
+    expiresAt: doc.expiresAt ? toYMD(doc.expiresAt) : null,
   };
   const p = doc.product ? mapProductDoc(doc.product) : null;
   return { ...base, product: p };
@@ -82,6 +91,7 @@ let currentSuggestions = [];
 const $ = (id) => document.getElementById(id);
 const catalogFilter = $('catalogFilter');
 const gramsInput    = $('gramsInput');
+const expiresInput  = $('expiresInput'); // ← NOWE
 const resetAdd      = $('resetAdd');
 const fridgeForm    = $('fridgeForm');
 
@@ -90,23 +100,40 @@ const fridgeTbody   = $('fridgeTbody');
 const fridgeEmpty   = $('fridgeEmpty');
 const fridgeSummary = $('fridgeSummary');
 
-
-// Modal — refy i stan
+// Modal — edycja gramów
 const editModal   = document.getElementById('editModal');
 const editInput   = document.getElementById('editModalInput');
 const editName    = document.getElementById('editModalName');
 const editSaveBtn = document.getElementById('editModalSave');
-let   editCurrent = null; // { it }
+let   editCurrent = null;
 
+// Modal — edycja daty ważności (HTML masz wstawiony w stronie)
+const dateModal   = document.getElementById('dateModal');
+const dateInput   = document.getElementById('dateModalInput');
+const dateName    = document.getElementById('dateModalName');
+const dateSaveBtn = document.getElementById('dateModalSave');
+let   dateCurrent = null;
 
 // ======= Helpers =======
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ESC[c]); }
 function round1(x) { return Math.round(x * 10) / 10; }
 function fmt(x) { return Number.isFinite(x) ? String(x) : '—'; }
-// normalizacja bez polskich znaków → case-insensitive
 function norm(str) {
   return String(str ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+}
+function toYMD(d){
+  try {
+    const dt = (d instanceof Date) ? d : new Date(d);
+    const y = dt.getFullYear(), m = String(dt.getMonth()+1).padStart(2,'0'), da = String(dt.getDate()).padStart(2,'0');
+    return `${y}-${m}-${da}`;
+  } catch { return null; }
+}
+function isExpired(ymd){
+  if (!ymd) return false;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(ymd);  d.setHours(0,0,0,0);
+  return d < today;
 }
 
 // ======= AUTOCOMPLETE =======
@@ -115,19 +142,13 @@ let suggestBox = null;
 function setupAutocompleteUI() {
   if (!catalogFilter) return;
 
-  // priorytetowo .ac-wrap (jeśli jest w HTML), w przeciwnym razie .form-field, w ostateczności rodzic inputa
   let wrap = catalogFilter.closest('.ac-wrap') ||
              catalogFilter.closest('.form-field') ||
              catalogFilter.parentElement;
 
-  // jeśli rodzic nie istnieje, podłącz do samego <body> (portal)
   let attachToBody = false;
-  if (!wrap) {
-    wrap = document.body;
-    attachToBody = true;
-  }
+  if (!wrap) { wrap = document.body; attachToBody = true; }
 
-  // upewnij się, że kontener nie ucina overflow
   if (!attachToBody) {
     wrap.style.position = wrap.style.position || 'relative';
     wrap.style.overflow = 'visible';
@@ -138,12 +159,8 @@ function setupAutocompleteUI() {
   suggestBox.hidden = true;
 
   if (attachToBody) {
-    // portal pod <body> — ustawiamy pozycję pod inputem
-    Object.assign(suggestBox.style, {
-      position: 'absolute', zIndex: '9999'
-    });
+    Object.assign(suggestBox.style, { position: 'absolute', zIndex: '9999' });
     document.body.appendChild(suggestBox);
-    // przeliczenie pozycji przy focusie i wpisywaniu
     const place = () => {
       const r = catalogFilter.getBoundingClientRect();
       suggestBox.style.left = `${r.left + window.scrollX}px`;
@@ -159,7 +176,6 @@ function setupAutocompleteUI() {
     wrap.appendChild(suggestBox);
   }
 }
-
 
 function onSearchInput() {
   const q = norm(catalogFilter.value);
@@ -244,7 +260,6 @@ function onSearchKeydown(e) {
     highlightedIndex = (highlightedIndex - 1 + currentSuggestions.length) % currentSuggestions.length;
     updateHighlight();
   } else if (e.key === 'Enter') {
-    // Enter wybiera aktywną lub pierwszą
     if (has) {
       e.preventDefault();
       pickSuggestion(currentSuggestions[Math.max(0, highlightedIndex)]);
@@ -261,7 +276,7 @@ function clearSearch() {
   hideSuggestions();
 }
 
-
+// ======= Modale =======
 function openEditModal(item){
   editCurrent = { it: item };
   editName.textContent = item.product?.name || '[brak nazwy]';
@@ -290,9 +305,35 @@ async function saveEditModal(){
   closeEditModal();
 }
 
+// ——— modal daty
+function openDateModal(item){
+  dateCurrent = { it: item };
+  dateName.textContent = item.product?.name || '[brak nazwy]';
+  dateInput.value = item.expiresAt || '';
+  dateModal.hidden = false;
+  document.body.classList.add('cm-modal-open');
+  setTimeout(() => dateInput.focus(), 0);
+}
+function closeDateModal(){
+  dateModal.hidden = true;
+  document.body.classList.remove('cm-modal-open');
+  dateCurrent = null;
+}
+async function saveDateModal(){
+  if (!dateCurrent) return;
+  const v = (dateInput.value || '').trim() || null; // null = usuń datę
+  const grams = dateCurrent.it?.grams;              // ← doślij bieżące gramy (fallback dla backendu)
 
-
-
+  try {
+    const updated = await api.updateFridgeItem(dateCurrent.it.id, grams, v);
+    mergeFridge(updated);
+    applyFridgeFilter();
+    closeDateModal();
+  } catch (err) {
+    console.error(err);
+    alert('Nie udało się zapisać daty');
+  }
+}
 
 
 // ======= INIT =======
@@ -327,27 +368,30 @@ function wireEvents() {
   resetAdd?.addEventListener('click', () => {
     clearSearch();
     gramsInput.value = '';
+    if (expiresInput) expiresInput.value = '';
     catalogFilter.focus();
   });
 
   fridgeForm?.addEventListener('submit', onAddSubmit);
   fridgeSearch?.addEventListener('input', () => applyFridgeFilter());
+
   // Zamknij dropdown podpowiedzi, gdy użytkownik jedzie do tabeli
-fridgeTbody?.addEventListener('mouseenter', hideSuggestions);
-document.addEventListener('click', (e) => {
-  if (!catalogFilter.contains(e.target) && !(suggestBox && suggestBox.contains(e.target))) {
-    hideSuggestions();
-  }
-});
-
-
-  // Modal: zapisz / zamknij / klawiatura  ⇦ WKLEJ TU
-  editSaveBtn?.addEventListener('click', () => { saveEditModal().catch(console.error); });
-
-  editModal?.addEventListener('click', (e) => {
-    if (e.target.matches('[data-close]')) closeEditModal();
+  fridgeTbody?.addEventListener('mouseenter', hideSuggestions);
+  document.addEventListener('click', (e) => {
+    if (!catalogFilter.contains(e.target) && !(suggestBox && suggestBox.contains(e.target))) {
+      hideSuggestions();
+    }
   });
 
+  // Modal gramów
+  editSaveBtn?.addEventListener('click', () => { saveEditModal().catch(console.error); });
+  editModal?.addEventListener('click', (e) => { if (e.target.matches('[data-close]')) closeEditModal(); });
+
+  // Modal daty
+  dateSaveBtn?.addEventListener('click', () => { saveDateModal().catch(console.error); });
+  dateModal?.addEventListener('click', (e) => { if (e.target.matches('[data-close]')) closeDateModal(); });
+
+  // Klawiatura dla obu modali
   document.addEventListener('keydown', (e) => {
     if (editModal && !editModal.hidden) {
       if (e.key === 'Escape') { e.preventDefault(); closeEditModal(); }
@@ -355,15 +399,21 @@ document.addEventListener('click', (e) => {
         e.preventDefault(); saveEditModal().catch(console.error);
       }
     }
+    if (dateModal && !dateModal.hidden) {
+      if (e.key === 'Escape') { e.preventDefault(); closeDateModal(); }
+      if (e.key === 'Enter' && document.activeElement === dateInput) {
+        e.preventDefault(); saveDateModal().catch(console.error);
+      }
+    }
   });
 }
-
 
 // ======= FORM SUBMIT =======
 async function onAddSubmit(e) {
   e.preventDefault();
   let productId = selectedProductId;
   const grams = Number(gramsInput.value);
+  const expiresAt = (expiresInput?.value || '').trim() || null;
 
   if (!Number.isFinite(grams) || grams < 1) { gramsInput.focus(); return; }
 
@@ -380,13 +430,14 @@ async function onAddSubmit(e) {
   const existing = fridge.find(it => it.productId === productId);
   try {
     if (existing) {
-      const updated = await api.updateFridgeItem(existing.id, existing.grams + grams);
+      const updated = await api.updateFridgeItem(existing.id, existing.grams + grams, expiresAt ?? undefined);
       mergeFridge(updated);
     } else {
-      const created = await api.addToFridge(productId, grams);
+      const created = await api.addToFridge(productId, grams, expiresAt);
       mergeFridge(created);
     }
     gramsInput.value = '';
+    if (expiresInput) expiresInput.value = '';
     clearSearch();
     applyFridgeFilter();
   } catch (err) {
@@ -434,6 +485,9 @@ function rowTpl(it) {
   tr.innerHTML = `
     <td>${escapeHtml(p.name || '[brak w bazie]')}</td>
     <td>${escapeHtml(p.category || '')}</td>
+    <td class="exp-date ${isExpired(it.expiresAt) ? 'expired' : ''}">
+      ${it.expiresAt ? escapeHtml(it.expiresAt) : '—'}
+    </td>
     <td><strong>${it.grams}</strong></td>
     <td>${fmt(m.kcal)}</td>
     <td>${fmt(m.p)}</td>
@@ -444,13 +498,15 @@ function rowTpl(it) {
       <button class="btn small" data-act="minus50">-50g</button>
       <button class="btn small" data-act="plus50">+50g</button>
       <button class="btn small" data-act="edit">Zmień</button>
+      <button class="btn small" data-act="date">Zmień datę</button>
       <button class="btn small danger" data-act="delete">Usuń</button>
     </td>`;
   const act = (sel) => tr.querySelector(`[data-act="${sel}"]`);
   act('minus10').addEventListener('click', () => adjust(it, -10));
   act('minus50').addEventListener('click', () => adjust(it, -50));
   act('plus50').addEventListener('click', () => adjust(it, +50));
-act('edit').addEventListener('click', () => openEditModal(it));
+  act('edit').addEventListener('click', () => openEditModal(it));
+  act('date').addEventListener('click', () => openDateModal(it));
   act('delete').addEventListener('click', async () => {
     if (!confirm(`Usunąć z lodówki: ${p.name}?`)) return;
     try {

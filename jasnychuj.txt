@@ -13,4 +13,15 @@ https://www.mdanderson.org/cancerwise/macronutrients-101--what-to-know-about-pro
  https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2023.1331854/full?utm_source=chatgpt.com
  https://pubmed.ncbi.nlm.nih.gov/16004827/
 
+
+
+
+ poprawki:
+ errory pod tym co jes zle a nie na odpierdol
+ zmiana wielkosci okna w lodowce
  
+
+
+ uwagi:
+ ilosc rzeczy na stronie zalezna od wielkosci okna
+

@@ -8,14 +8,16 @@ const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const productsRoutes = require('./routes/products');
 const fridgeRoutes = require('./routes/fridge');
+const mealsRoutes = require('./routes/meals');
 
 const app = express();
 
-// Middlewares
+// ── Middlewares ────────────────────────────────────────────────────────────────
 app.use(helmet());
-app.use(express.json());
+app.use(express.json()); // jeśli chcesz limit: express.json({ limit: '1mb' })
+app.use(morgan(process.env.NODE_ENV === 'test' ? 'tiny' : 'dev'));
 
-// --- NORMALIZACJA fullName -> username (rejestracja) ---
+// ── Normalizacja fullName -> username (rejestracja) ────────────────────────────
 app.use((req, res, next) => {
   const isRegister =
     req.method === 'POST' &&
@@ -43,18 +45,29 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(morgan(process.env.NODE_ENV === 'test' ? 'tiny' : 'dev'));
-
-// Static
+// ── Statyczne pliki ────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// API Routes
+// ── Healthcheck (prosto) ───────────────────────────────────────────────────────
+app.get('/api/health', (_req, res) => res.json({ ok: true }));
+
+// ── API Routes ────────────────────────────────────────────────────────────────
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/fridge', fridgeRoutes);
+app.use('/api/meals', mealsRoutes);
 
-// 404 dla nieistniejących endpointów API + fallback na index.html
+// ── Błędy parsowania JSON (400) ────────────────────────────────────────────────
+app.use((err, _req, res, next) => {
+  // express.json() rzuca SyntaxError z err.type === 'entity.parse.failed'
+  if (err?.type === 'entity.parse.failed' || (err instanceof SyntaxError && 'body' in err)) {
+    return res.status(400).json({ message: 'Nieprawidłowy JSON w żądaniu.' });
+  }
+  return next(err);
+});
+
+// ── 404 dla nieistniejących endpointów API + fallback na index.html ───────────
 app.use((req, res) => {
   if (req.path.startsWith('/api/')) {
     return res.status(404).json({ error: 'Not Found' });
