@@ -19,6 +19,6 @@ const ProfileSchema = new mongoose.Schema(
 );
 
 // (opcjonalnie) twardy indeks unikalny — i tak jest dzięki `unique: true`
-ProfileSchema.index({ userId: 1 }, { unique: true });
+
 
 module.exports = mongoose.model('Profile', ProfileSchema);

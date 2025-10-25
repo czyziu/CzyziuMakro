@@ -825,3 +825,279 @@ body.blur-active::before {
   flex: 1; 
 }
 
+/* kompaktowa, stabilna tabela + ładne przyciski + scrollbary */
+:root{
+  --pad:.45rem .55rem;
+  --num-col-w:9ch;                 /* szer. kolumn 3–6: kcal/B/T/W */
+  --btn-h:34px; --btn-pad:.42rem .72rem; --btn-radius:9999px;
+  --btn-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.25);
+  --btn-shadow-lg:0 2px 8px rgba(0,0,0,.35);
+  --danger-500:#ef4444; --danger-600:#dc2626;
+}
+#addEditCard{margin-bottom:1.25rem}
+
+/* wrapper tabeli + lokalny scrollbar */
+.table-wrapper{
+  overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-gutter:stable;
+  scrollbar-width:thin; scrollbar-color:var(--border-700) var(--bg-800);
+}
+.table-wrapper::-webkit-scrollbar{height:10px}
+.table-wrapper::-webkit-scrollbar-track{background:var(--bg-800);border-radius:9999px}
+.table-wrapper::-webkit-scrollbar-thumb{background:var(--bg-700);border:1px solid var(--border-700);border-radius:9999px}
+.table-wrapper::-webkit-scrollbar-thumb:hover{background:var(--accent-500);border-color:var(--accent-600)}
+
+/* tabela */
+.table{width:100%;border-collapse:collapse;table-layout:fixed;border:1px solid var(--border-700)}
+.table :is(th,td){box-sizing:border-box;padding:var(--pad);vertical-align:middle;border-bottom:1px solid var(--border-700)}
+.table thead th{background:var(--bg-700);white-space:nowrap;overflow:visible;text-overflow:clip}
+.table tbody tr:last-child td{border-bottom:0}
+
+/* kolumny */
+.table :is(th,td):first-child{max-width:clamp(200px,30vw,360px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.table :is(th,td):nth-child(2){width:clamp(120px,18vw,220px)}
+.table :is(th,td):nth-child(n+3):nth-child(-n+6){width:var(--num-col-w);text-align:right}
+.table :is(th,td):last-child{width:clamp(150px,22vw,220px)!important}
+
+/* kolumna Akcje + ładne przyciski */
+.table td:last-child{display:flex;justify-content:flex-end;align-items:center;gap:.4rem}
+.table td:last-child .btn,
+.table td:last-child a.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+  padding:var(--btn-pad);height:var(--btn-h);min-width:92px;
+  font-size:.92rem;font-weight:600;letter-spacing:.01em;line-height:1;
+  border-radius:var(--btn-radius);border:1px solid transparent;box-shadow:var(--btn-shadow);
+  transition:transform .12s, box-shadow .12s, border-color .12s, background-color .12s, color .12s;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;flex:1 1 0;
+}
+.table td:last-child .btn-edit,
+.table td:last-child .btn:first-of-type{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--bg-800),white 4%),var(--bg-800));
+  color:var(--text-100);border-color:var(--border-700);
+}
+.table td:last-child .btn-edit:hover,
+.table td:last-child .btn:first-of-type:hover{
+  border-color:var(--accent-500);color:var(--accent-500);box-shadow:var(--btn-shadow-lg);transform:translateY(-1px);
+}
+.table td:last-child .btn-delete,
+.table td:last-child .btn:last-of-type{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--danger-500),white 6%),var(--danger-500));
+  color:#fff;border-color:transparent;
+}
+.table td:last-child .btn-delete:hover,
+.table td:last-child .btn:last-of-type:hover{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--danger-600),white 6%),var(--danger-600));
+  box-shadow:var(--btn-shadow-lg);transform:translateY(-1px);
+}
+.table td:last-child .btn:focus-visible{outline:2px solid var(--accent-500);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  .table td:last-child .btn{transition:none}
+  .table td:last-child .btn:hover{transform:none}
+}
+
+/* responsy */
+@media (max-width:1200px){
+  .table :is(th,td){padding:.35rem .45rem;font-size:.95rem}
+  .table td:last-child .btn{height:32px;min-width:88px;font-size:.9rem}
+}
+@media (max-width:900px){
+  .table td:last-child{flex-direction:column;align-items:stretch;gap:.35rem}
+  .table td:last-child .btn{width:100%;min-width:auto}
+  .table thead th{font-size:.9rem}
+}
+
+/* globalny scrollbar */
+html{scrollbar-width:thin;scrollbar-color:var(--border-700) var(--bg-900)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg-800)}
+::-webkit-scrollbar-thumb{background:var(--bg-700);border:1px solid var(--border-700);border-radius:9999px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-500);border-color:var(--accent-600)}
+::-webkit-scrollbar-corner{background:var(--bg-800)}
+
+
+
+
+
+
+/* Węższa Nazwa i Kategoria (bez znikania kolumn) */
+.table :is(th,td):first-child{
+  width: clamp(160px, 24vw, 320px);
+  min-width: 150px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.table :is(th,td):nth-child(2){
+  width: clamp(110px, 14vw, 180px);
+  min-width: 100px;
+}
+
+/* jeszcze ciaśniej na węższych ekranach */
+@media (max-width: 1200px){
+  .table :is(th,td):first-child{ width: clamp(150px, 22vw, 280px); min-width: 140px; }
+  .table :is(th,td):nth-child(2){ width: clamp(100px, 12vw, 160px); min-width: 96px; }
+}
+
+
+
+
+
+
+/* ===================== Autocomplete (ac-*) — dark/amber ===================== */
+.ac-wrap {
+  position: relative;
+  overflow: visible; /* nie ucina dropdownu */
+}
+
+/* ukrywanie przez [hidden] */
+.ac-panel[hidden] { display: none !important; }
+
+.ac-panel {
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  margin-top: 6px;
+
+  max-height: 260px;
+  overflow-y: auto;
+
+  /* spójne z kartami i tabelami */
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  border: 1px solid var(--border-700);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+
+  z-index: 80; /* nad treścią/side-nav, poniżej modal (1000) */
+  backdrop-filter: saturate(120%);
+  transition: opacity .12s ease, transform .12s ease;
+  opacity: 1; transform: translateY(0);
+}
+
+/* wariant „portal do body” (jeśli JS tak wstawi) */
+.ac-panel[data-portal="true"] {
+  position: absolute;
+  z-index: 990; /* tuż pod modalem (1000), nad headerem/side-nav */
+}
+
+/* scrollbar spójny z resztą */
+.ac-panel::-webkit-scrollbar{ width: 10px; height: 10px; }
+.ac-panel::-webkit-scrollbar-track{ background: var(--bg-800); border-radius: 9999px; }
+.ac-panel::-webkit-scrollbar-thumb{
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: 9999px;
+}
+.ac-panel::-webkit-scrollbar-thumb:hover{
+  background: var(--accent-500);
+  border-color: var(--accent-600);
+}
+.ac-panel{ scrollbar-width: thin; scrollbar-color: var(--border-700) var(--bg-800); }
+
+.ac-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .5rem;
+
+  padding: .6rem .8rem;
+  cursor: pointer;
+  color: var(--text-100);
+}
+
+.ac-item:hover {
+  background: var(--bg-700);
+}
+
+.ac-item.is-active {
+  /* delikatny amber highlight pod aktywnym */
+  background: color-mix(in oklab, var(--accent-500) 12%, var(--bg-800));
+  outline: none;
+}
+
+.ac-item:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.ac-muted {
+  color: var(--muted-500);
+  font-size: .9em;
+  white-space: nowrap;
+}
+
+/* Małe ekrany: odrobinkę ciaśniej */
+@media (max-width: 720px){
+  .ac-item { padding: .5rem .65rem; }
+}
+
+
+
+
+
+
+
+/* ===================== Modal (cm-modal) ===================== */
+.cm-modal[hidden]{ display:none !important; }
+
+.cm-modal__backdrop{
+  position: fixed; inset: 0;
+  background: color-mix(in oklab, var(--bg-900, #0b0f14) 60%, black);
+  opacity: .75;
+  z-index: 999;  /* pod dialogiem */
+}
+
+.cm-modal__dialog{
+  position: fixed; inset: 0; margin: auto;
+  width: min(520px, 94vw);
+  background: linear-gradient(180deg, var(--bg-700, #10151d), var(--bg-800, #0c1118));
+  border: 1px solid var(--border-700, #1f2937);
+  border-radius: 16px;
+  box-shadow: var(--shadow, 0 20px 60px rgba(0,0,0,.35));
+  z-index: 1000;
+
+  display: grid; grid-template-rows: auto 1fr auto;
+  max-height: min(78vh, 720px);
+}
+
+.cm-modal__header{ padding: .9rem 1rem; border-bottom: 1px solid var(--border-700,#1f2937); }
+.cm-modal__header h4{ margin:0; color: var(--text-100, #e5e7eb); font-size: 1.05rem; }
+
+.cm-modal__body{ padding: 1rem; color: var(--text-100, #e5e7eb); }
+.cm-modal__footer{
+  padding: .8rem 1rem;
+  border-top: 1px solid var(--border-700,#1f2937);
+  display:flex; justify-content:flex-end; gap:.5rem; flex-wrap:wrap;
+}
+
+.cm-modal__dialog:focus-visible{ outline: 2px solid var(--accent-500,#f59e0b); outline-offset: 4px; }
+
+/* Mały bonus: zablokuj scroll tła przy otwartym modalu */
+body.cm-modal-open{ overflow:hidden; }
+
+/* Akcje w tabeli: upewnij się, że wszystkie przyciski są nad dropdownem */
+.table td:last-child {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: .25rem;
+  flex-wrap: wrap;
+}
+
+.table td:last-child .btn {
+  position: relative;
+  z-index: 1;               /* nad ewentualnymi overlayami */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Uniwersalny hover/focus dla wszystkich, nie tylko pierwszego */
+.table td:last-child .btn:hover,
+.table td:last-child .btn:focus-visible {
+  background: var(--bg-700);
+  border-color: var(--accent-600);
+  color: var(--text-100);
+}
+
+/* Na wszelki wypadek skasuj ewentualne reguły typu :first-child */
+.table td:last-child .btn:first-child:hover,
+.table td:last-child .btn:first-child:focus-visible {
+  /* nic specjalnego – użyjemy reguły powyżej */
+}

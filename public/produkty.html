@@ -37,7 +37,9 @@
   <aside class="side-nav">
     <ul>
       <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+      <li><a href="lodowka.html" class="side-link" >Lodówka</a></li>
       <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+      <li><a href="dania.html" class="side-link">Twoje dania</a></li>
       <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
       <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
     </ul>
@@ -48,15 +50,103 @@
     <div class="container">
       <header class="page-header">
         <h1>Twoje produkty</h1>
-        <p class="muted">Zarządzaj swoją spiżarką: dodawaj, edytuj i usuwaj produkty.</p>
+        <p class="muted">Tutaj możesz dodać prukty których nie ma w bazie. Lista wyświetla 10 pozycji na stronę.</p>
       </header>
 
+      <!-- ====== DODAJ / EDYTUJ PRODUKT ====== -->
+      <section class="card" id="addEditCard" hidden>
+        <h3 id="formTitle">Dodaj produkt</h3>
+        <form id="productForm" class="form-grid" novalidate>
+          <input type="hidden" name="id" />
+
+          <label class="form-field">
+            <span>Nazwa *</span>
+            <input type="text" name="name" required placeholder="np. Pierś z kurczaka" />
+          </label>
+
+          <label class="form-field">
+            <span>Kategoria *</span>
+            <select name="category" required>
+              <option value="" disabled selected>Wybierz kategorię</option>
+              <option value="Mięso">Mięso</option>
+              <option value="Ryby i owoce morza">Ryby i owoce morza</option>
+              <option value="Nabiał">Nabiał</option>
+              <option value="Zboża i pieczywo">Zboża i pieczywo</option>
+              <option value="Warzywa">Warzywa</option>
+              <option value="Owoce">Owoce</option>
+              <option value="Orzechy i nasiona">Orzechy i nasiona</option>
+              <option value="Tłuszcze">Tłuszcze</option>
+              <option value="Słodycze i przekąski">Słodycze i przekąski</option>
+              <option value="Napoje">Napoje</option>
+              <option value="Gotowe / przetworzone">Gotowe / przetworzone</option>
+              <option value="Przyprawy i sosy">Przyprawy i sosy</option>
+            </select>
+          </label>
+
+          <label class="form-field">
+            <span>Kcal / 100 g</span>
+            <input type="number" name="kcal100" min="0" step="1" placeholder="np. 165" />
+          </label>
+
+          <label class="form-field">
+            <span>Białko / 100 g (g)</span>
+            <input type="number" name="p100" min="0" step="0.1" placeholder="np. 31" />
+          </label>
+
+          <label class="form-field">
+            <span>Tłuszcz / 100 g (g)</span>
+            <input type="number" name="f100" min="0" step="0.1" placeholder="np. 3.6" />
+          </label>
+
+          <label class="form-field">
+            <span>Węgle / 100 g (g)</span>
+            <input type="number" name="c100" min="0" step="0.1" placeholder="np. 0" />
+          </label>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn primary" id="saveBtn">Zapisz</button>
+            <button type="button" class="btn secondary" id="cancelBtn">Anuluj</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ====== LISTA PRODUKTÓW + KONTROLKI ====== -->
       <section class="card">
-        <h3>Lista produktów</h3>
-        <div class="content-flow">
-          <!-- TODO: wstaw widok listy produktów -->
-          <p class="muted">Tu pojawi się lista produktów z możliwością filtrowania i edycji.</p>
-          <a class="btn btn-accent" href="#">+ Dodaj produkt</a>
+        <div class="content-flow" id="productApp">
+          <div class="toolbar" style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+            <label class="form-field" style="flex:1; min-width:240px;">
+              <span>Szukaj</span>
+              <input type="search" id="searchInput" placeholder="Filtruj po nazwie lub kategorii" />
+            </label>
+            <button type="button" class="btn btn-accent" id="openAddBtn">+ Dodaj produkt</button>
+          </div>
+
+          <div id="listContainer" class="table-wrapper" style="margin-top:1rem;">
+            <table class="table" aria-describedby="pagerInfo">
+              <thead>
+                <tr>
+                  <th scope="col">Nazwa</th>
+                  <th scope="col">Kategoria</th>
+                  <th scope="col">kcal/100g</th>
+                  <th scope="col">B/100g</th>
+                  <th scope="col">T/100g</th>
+                  <th scope="col">W/100g</th>
+                  <th scope="col" style="width:160px;">Akcje</th>
+                </tr>
+              </thead>
+              <tbody id="productTbody">
+                <!-- wypełniane skryptem -->
+              </tbody>
+            </table>
+            <p class="muted" id="emptyState" hidden>Brak produktów. Dodaj pierwszy, używając przycisku powyżej.</p>
+          </div>
+
+          <div class="pagination" id="pagination" style="display:flex; align-items:center; gap:0.5rem; justify-content:flex-end; margin-top:1rem;">
+            <button class="btn secondary" id="prevPage" aria-label="Poprzednia strona">‹</button>
+            <div id="pageList" aria-label="Numery stron" style="display:flex; gap:0.25rem; flex-wrap:wrap;"></div>
+            <button class="btn secondary" id="nextPage" aria-label="Następna strona">›</button>
+          </div>
+          <p class="muted" id="pagerInfo" style="text-align:right; margin-top:0.25rem;"></p>
         </div>
       </section>
     </div>
@@ -164,23 +254,23 @@
       </footer>
     </form>
   </div>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-info">
-      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
-      <p class="small-note">
-        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
-        Autor: <strong>Jakub Czyżycki</strong>
-      </p>
-    </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+        <p class="small-note">
+          Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+          Autor: <strong>Jakub Czyżycki</strong>
+        </p>
+      </div>
 
-    <nav class="footer-nav" aria-label="Nawigacja w stopce">
-      <a href="index.html">O aplikacji</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="regulamin.html">Regulamin</a>
-    </nav>
-  </div>
-</footer>
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+      </nav>
+    </div>
+  </footer>
   <!-- ===================== SKRYPTY ===================== -->
 
   <script src="/app.js" defer></script>
@@ -188,5 +278,7 @@
 
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
+
+  <script type="module" src="/produkty.js"></script>
 </body>
 </html>
