@@ -10,7 +10,6 @@ const UserSchema = new mongoose.Schema(
     weightKg: { type: Number },
     heightCm: { type: Number },
     age: { type: Number },
-    isPregnant: { type: Boolean, default: false },
     sex: { type: String, enum: ['male', 'female', 'other'], default: 'other' }
   },
   { timestamps: true }
