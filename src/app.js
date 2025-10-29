@@ -9,6 +9,7 @@ const profileRoutes = require('./routes/profile');
 const productsRoutes = require('./routes/products');
 const fridgeRoutes = require('./routes/fridge');
 const mealsRoutes = require('./routes/meals');
+const calendarRoutes = require('./routes/calendar');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/fridge', fridgeRoutes);
 app.use('/api/meals', mealsRoutes);
+app.use('/api/calendar', calendarRoutes); 
 
 // ── Błędy parsowania JSON (400) ────────────────────────────────────────────────
 app.use((err, _req, res, next) => {
