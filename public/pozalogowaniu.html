@@ -3,37 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CzyziuMakro — Panel użytkownika</title>
+  <title>CzyziuMakro — Panel użytkownika (Kalendarz)</title>
 
   <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
   <link rel="stylesheet" href="/styles.css" />
   <meta name="theme-color" content="#0b0f14" />
+
+  <!-- Style kalendarza w osobnym pliku -->
+  <link rel="stylesheet" href="./css/meal-calendar.css" />
 </head>
 
-<body data-page="pozalogowaniu" ><!-- <- rozmazane tło na start -->
-
-  <!-- ===================== WRAPPER DO ROZMYCIA ===================== -->
+<body data-page="pozalogowaniu">
   <div id="pageBlurWrap">
     <!-- ===================== HEADER ===================== -->
     <header class="site-header">
       <div class="container header-inner">
         <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
-          <img
-            src="/assets/logo-czyziumakro.svg"
-            alt="CzyziuMakro"
-            class="brand-logo"
-            width="220"
-            height="48"
-            decoding="async"
-            fetchpriority="high"
-          />
+          <img src="/assets/logo-czyziumakro.svg" alt="CzyziuMakro" class="brand-logo" width="220" height="48" decoding="async" fetchpriority="high" />
           <noscript><span class="brand-text">CzyziuMakro</span></noscript>
         </a>
 
         <nav class="nav" aria-label="Główna nawigacja">
-          <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">
-            Cześć, <span id="userName"></span>!
-          </a>
+          <a href="pozalogowaniu.html" class="nav-link user-greet" data-auth="in">Cześć, <span id="userName"></span>!</a>
           <a class="nav-link" href="index.html">O aplikacji</a>
           <a class="nav-link" href="regulamin.html">Regulamin</a>
           <a class="nav-link" href="kontakt.html">Kontakt</a>
@@ -45,66 +36,64 @@
     </header>
 
     <!-- ===================== LATERAL NAV ===================== -->
-  <aside class="side-nav">
-    <ul>
-      <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
-      <li><a href="lodowka.html" class="side-link" >Lodówka</a></li>
-      <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
-      <li><a href="dania.html" class="side-link">Twoje dania</a></li>
-      <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
-      <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
-    </ul>
-  </aside>
+    <aside class="side-nav">
+      <ul>
+        <li><a href="pozalogowaniu.html" class="side-link">Kalendarz</a></li>
+        <li><a href="lodowka.html" class="side-link">Lodówka</a></li>
+        <li><a href="produkty.html" class="side-link">Twoje produkty</a></li>
+        <li><a href="dania.html" class="side-link">Twoje dania</a></li>
+        <li><a href="ustaw-cele.html" class="side-link">Ustaw cele</a></li>
+        <li><a href="parametry.html" class="side-link">Zmień parametry</a></li>
+      </ul>
+    </aside>
 
     <!-- ===================== MAIN ===================== -->
     <main class="site-main with-sidebar">
       <div class="container">
         <section>
-          <h1>Panel użytkownika</h1>
-          <p class="muted">
-            Witaj w swoim panelu! Tutaj możesz dodać funkcje dostępne tylko po zalogowaniu —
-            np. podsumowanie diety, statystyki, ustawienia profilu itd.
-          </p>
+          <h1>Kalendarz żywieniowy</h1>
+          <p class="muted">Plan tygodnia od <strong>Poniedziałku</strong> do <strong>Niedzieli</strong>. W każdym dniu masz 5 posiłków — kliknij, by rozwinąć, dodawaj pozycje i kontroluj makra.</p>
         </section>
 
-        <!-- ===================== KOMUNIKAT ===================== -->
+        <!-- Info banner -->
         <div class="info-banner" id="infoBanner">
           ⚠️ <strong>Przypomnienie:</strong> aplikacja CzyziuMakro nie stanowi porady medycznej.
           Dane mają charakter informacyjny i nie zastępują konsultacji ze specjalistą.
           <button id="closeInfo" aria-label="Zamknij komunikat">&times;</button>
         </div>
+
+        <!-- ===================== KALENDARZ ===================== -->
+        <section id="mealCalendar" aria-label="Kalendarz posiłków">
+          <div class="cal-header">
+  <button class="cal-btn icon-only" data-cal="prev" aria-label="Poprzedni tydzień" title="Poprzedni tydzień">◀</button>
+  <div class="cal-days" id="calDays" role="group" aria-label="Dni tygodnia (Pon–Niedz)"></div>
+  <button class="cal-btn icon-only" data-cal="next" aria-label="Następny tydzień" title="Następny tydzień">▶</button>
+</div>
+
+          <div class="week-summary" aria-live="polite">
+            <div><span class="num" data-week-kcal>0</span> kcal / tydz.</div>
+            <div>B: <span class="num" data-week-protein>0</span> g</div>
+            <div>T: <span class="num" data-week-fat>0</span> g</div>
+            <div>W: <span class="num" data-week-carbs>0</span> g</div>
+          </div>
+
+          <div class="calendar-grid" id="calendarGrid" role="list"></div>
+        </section>
       </div>
     </main>
-  </div><!-- /#pageBlurWrap -->
+  </div>
 
-  <!-- ===================== ONBOARDING MODAL (FORMULARZ WIDOCZNY) ===================== -->
-<div class="modal-backdrop" id="onbBackdrop" hidden></div>
-<div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
-  <form id="onbForm" class="modal-card" novalidate>
-      <header class="modal-header">
-        <h2 id="onbTitle">Ustawienia startowe</h2>
-      </header>
-
+  <!-- Onboarding modal (pozostawiony z oryginału) -->
+  <div class="modal-backdrop" id="onbBackdrop" hidden></div>
+  <div class="modal" id="onbModal" role="dialog" aria-modal="true" aria-labelledby="onbTitle" hidden>
+    <form id="onbForm" class="modal-card" novalidate>
+      <header class="modal-header"><h2 id="onbTitle">Ustawienia startowe</h2></header>
       <p class="modal-desc">Uzupełnij podstawowe dane. Bez tego nie możemy ruszyć dalej.</p>
-
       <div class="form-grid">
-        <label class="form-field">
-          <span>Wiek</span>
-          <input type="number" name="age" min="18" max="120" step="1" required placeholder="np. 24" />
-        </label>
-
-        <label class="form-field">
-          <span>Waga (kg)</span>
-          <input type="number" name="weight" min="20" max="400" step="0.1" required placeholder="np. 72.5" />
-        </label>
-
-        <label class="form-field">
-          <span>Wzrost (cm)</span>
-          <input type="number" name="height" min="100" max="250" step="0.5" required placeholder="np. 180" />
-        </label>
-
-        <label class="form-field">
-          <span>Aktywność</span>
+        <label class="form-field"><span>Wiek</span><input type="number" name="age" min="18" max="120" step="1" required placeholder="np. 24" /></label>
+        <label class="form-field"><span>Waga (kg)</span><input type="number" name="weight" min="20" max="400" step="0.1" required placeholder="np. 72.5" /></label>
+        <label class="form-field"><span>Wzrost (cm)</span><input type="number" name="height" min="100" max="250" step="0.5" required placeholder="np. 180" /></label>
+        <label class="form-field"><span>Aktywność</span>
           <select name="activity" required>
             <option value="" disabled selected>Wybierz poziom</option>
             <option value="1">1 — siedzący tryb życia</option>
@@ -114,9 +103,7 @@
             <option value="5">5 — bardzo wysoka / wyczynowa</option>
           </select>
         </label>
-
-        <label class="form-field">
-          <span>Cel</span>
+        <label class="form-field"><span>Cel</span>
           <select name="goal" required>
             <option value="" disabled selected>Wybierz cel</option>
             <option value="loss">Chcę schudnąć</option>
@@ -124,87 +111,54 @@
             <option value="gain">Chcę przytyć</option>
           </select>
         </label>
-
-        <fieldset class="form-field">
-          <legend>Płeć</legend>
-          <label class="radio">
-            <input type="radio" name="sex" value="F" required />
-            <span>Kobieta</span>
-          </label>
-          <label class="radio">
-            <input type="radio" name="sex" value="M" />
-            <span>Mężczyzna</span>
-          </label>
+        <fieldset class="form-field"><legend>Płeć</legend>
+          <label class="radio"><input type="radio" name="sex" value="F" required /><span>Kobieta</span></label>
+          <label class="radio"><input type="radio" name="sex" value="M" /><span>Mężczyzna</span></label>
         </fieldset>
-
-        <!-- 🔹 POZIOM UŻYTKOWNIKA -->
         <div class="level-card" role="group" aria-labelledby="levelTitle">
-          <div class="level-card-header">
-            <h3 id="levelTitle">Poziom użytkownika</h3>
-          </div>
-
+          <div class="level-card-header"><h3 id="levelTitle">Poziom użytkownika</h3></div>
           <div class="level-card-grid">
-            <label class="level-option">
-              <input type="radio" name="level" value="basic" required />
-              <div class="option-body">
-                <div class="option-title">Zwykły</div>
-                <div class="option-desc">
-                  Dla początkujących. Aplikacja stosuje bezpieczne, „twarde” limity i tempo zmian masy,
-                  żeby uniknąć kontuzji lub zbyt szybkiej redukcji.
-                </div>
+            <label class="level-option"><input type="radio" name="level" value="basic" required />
+              <div class="option-body"><div class="option-title">Zwykły</div>
+                <div class="option-desc">Dla początkujących. Aplikacja stosuje bezpieczne, „twarde” limity i tempo zmian masy, żeby uniknąć kontuzji lub zbyt szybkiej redukcji.</div>
               </div>
             </label>
-
-            <label class="level-option">
-              <input type="radio" name="level" value="advanced" />
-              <div class="option-body">
-                <div class="option-title">Zaawansowany</div>
-                <div class="option-desc">
-                  Dla sportowców i osób obytych z podobnymi aplikacjami. Większa swoboda w ustawianiu celów;
-                  domyślnie start z „makrem sportowca”.
-                </div>
+            <label class="level-option"><input type="radio" name="level" value="advanced" />
+              <div class="option-body"><div class="option-title">Zaawansowany</div>
+                <div class="option-desc">Dla sportowców i osób obytych z podobnymi aplikacjami. Większa swoboda w ustawianiu celów; domyślnie start z „makrem sportowca”.</div>
               </div>
             </label>
           </div>
         </div>
-      </div> <!-- /form-grid -->
-
+      </div>
       <footer class="modal-actions">
-        <button type="submit" class="btn primary" id="onbSubmit">
-          Zapisz i kontynuuj
-        </button>
-        <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">
-          Wyloguj
-        </a>
+        <button type="submit" class="btn primary" id="onbSubmit">Zapisz i kontynuuj</button>
+        <a href="logowanie.html" class="btn secondary" data-action="logout" id="logoutBtn">Wyloguj</a>
       </footer>
     </form>
   </div>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-info">
-      <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
-      <p class="small-note">
-        Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
-        Autor: <strong>Jakub Czyżycki</strong>
-      </p>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+        <p class="small-note">Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />Autor: <strong>Jakub Czyżycki</strong></p>
+      </div>
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+      </nav>
     </div>
+  </footer>
 
-    <nav class="footer-nav" aria-label="Nawigacja w stopce">
-      <a href="index.html">O aplikacji</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="regulamin.html">Regulamin</a>
-    </nav>
-  </div>
-</footer>
+  <!-- ===================== KALENDARZ — SCRIPT ===================== -->
+  <script type="module" src="./js/meal-calendar.js"></script>
 
-
-
-  <!-- ===================== SKRYPTY ===================== -->
+  <!-- ===================== SKRYPTY GLOBALNE APLIKACJI ===================== -->
   <script src="/app.js" defer></script>
   <script src="/guard.js" defer></script>
   <script src="/ui.js" defer></script>
   <script src="/onboarding.js" defer></script>
-
-
 </body>
 </html>
