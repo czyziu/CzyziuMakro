@@ -1515,3 +1515,160 @@ body[data-page="dania"] #previewBody .metrics li strong { font-variant-numeric: 
     min-width: 96px;
   }
 }
+
+
+
+
+
+/* ==== AI Panel – layout składników i przycisków ==== */
+.ai-panel .ai-results,
+.ai-panel .ai-recipe { margin-top: .5rem; }
+
+.ai-panel .muted-note {
+  color: var(--text-300);
+  font-size: .95rem;
+}
+
+/* Kontener listy i przycisku "Dodaj wszystko" */
+.ai-panel .recipe-ingredients{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+}
+
+/* Lista w jednej kolumnie */
+.ai-panel .ingredients-list{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:.35rem;
+  order:1; /* lista u góry */
+  margin:.25rem 0;
+}
+
+/* Wiersz: NAZWA | GRAMY | PRZYCISK */
+.ai-panel .ingredients-list .ing{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) 90px 120px;
+  align-items:center;
+  gap:.5rem;
+  padding:.45rem .6rem;
+  border:1px solid var(--border-700);
+  border-radius:.6rem;
+  background: linear-gradient(180deg,var(--bg-700),var(--bg-800));
+}
+
+.ai-panel .ingredients-list .ing .name{
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+.ai-panel .ingredients-list .ing .grams{
+  text-align:right; font-variant-numeric: tabular-nums;
+  color: var(--muted-500);
+}
+
+/* przycisk w wierszu – równa szerokość */
+.ai-panel .ingredients-list .ing .btn-small{
+  justify-self:end;
+  min-width: 120px;
+}
+
+/* Pasek z "Dodaj wszystko" POD listą */
+.ai-panel .ingredients-head{
+  order:2;
+  display:flex;
+  justify-content:flex-end;
+  margin-top:.25rem;
+}
+
+/* jeśli JS wstawia tylko sam przycisk bez .ingredients-head */
+.ai-panel [data-add-all]{
+  width:100%;
+  max-width:220px;
+}
+
+/* ==== Styl .btn-small spójny z motywem ==== */
+.btn-small{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.42rem .72rem;
+  height:34px;
+  border-radius:9999px;
+  border:1px solid var(--border-700);
+  background: var(--bg-700);
+  color: var(--text-100);
+  font-weight:600; font-size:.92rem; letter-spacing:.01em;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.25);
+  cursor:pointer; transition:.15s ease;
+}
+.btn-small:hover{
+  border-color: var(--accent-500);
+  color: var(--accent-500);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+.btn-small:disabled{
+  opacity:.6; cursor:not-allowed; transform:none;
+}
+
+/* Warianty */
+.btn-small.primary{
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color:#0b0f14; border-color: var(--accent-600);
+}
+.btn-small.success{
+  background: linear-gradient(180deg, #10b981, #059669);
+  color:#fff; border-color: transparent;
+}
+
+/* ==== Responsywność: dwa rzędy na wąskich ekranach ==== */
+@media (max-width: 420px){
+  .ai-panel .ingredients-list .ing{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name name"
+      "grams btn";
+  }
+  .ai-panel .ingredients-list .ing .name  { grid-area:name; }
+  .ai-panel .ingredients-list .ing .grams { grid-area:grams; }
+  .ai-panel .ingredients-list .ing .btn-small { grid-area:btn; }
+  .ai-panel [data-add-all]{ max-width:none; }
+}
+
+
+/* AI panel: pasek tytułu + strzałki */
+.ai-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.5rem; margin:.25rem 0 .25rem;
+}
+.ai-title{ margin:0; font-size:1.05rem; font-weight:700; }
+.ai-nav{
+  min-width:36px; height:36px; border-radius:10px;
+  border:1px solid var(--border-700); background:var(--bg-700);
+  color:var(--text-100); cursor:pointer;
+}
+.ai-nav:hover{ border-color:var(--accent-500); color:var(--accent-500); }
+
+.ai-sub{ color:var(--text-300); margin-bottom:.5rem; }
+.ai-count{ color:var(--muted-500); margin-left:.35rem; }
+
+/* Jedna kolumna produktów + „Dodaj wszystko” pod spodem */
+.recipe-ingredients.one-col{
+  display:grid; gap:.35rem;
+}
+.recipe-ingredients .ing{
+  display:grid; grid-template-columns: 1fr auto auto; gap:.5rem; align-items:center;
+  padding:.35rem .45rem; border:1px solid var(--border-700); border-radius:.6rem;
+  background:linear-gradient(180deg,var(--bg-700),var(--bg-800));
+}
+.recipe-ingredients .ing .name{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.recipe-ingredients .ing .grams{ color:var(--text-300); }
+
+.recipe-ingredients .ing-actions{
+  margin-top:.4rem; display:flex; justify-content:flex-end;
+}
+.recipe-ingredients .ing-actions .primary{
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color:#0b0f14; border:1px solid var(--accent-600);
+}
+
+/* delikatne oznaczenie elementów dodanych przez AI (w liście slota) */
+.slot-item.ai-added{ opacity:.95; }

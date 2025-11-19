@@ -1,8 +1,13 @@
 // src/app.js
+require('dotenv').config();
+
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
 
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
@@ -10,15 +15,26 @@ const productsRoutes = require('./routes/products');
 const fridgeRoutes = require('./routes/fridge');
 const mealsRoutes = require('./routes/meals');
 const calendarRoutes = require('./routes/calendar');
+const aiRoutes = require('./routes/ai'); // ← tylko Ollama
 
 const app = express();
 
-// ── Middlewares ────────────────────────────────────────────────────────────────
+// ── Bezpieczeństwo / ergonomia ────────────────────────────────────────────────
+app.disable('x-powered-by');
 app.use(helmet());
-app.use(express.json()); // jeśli chcesz limit: express.json({ limit: '1mb' })
+
+if (process.env.ORIGIN) {
+  app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
+}
+
+app.use(compression());
+app.use(express.json({ limit: '1mb' }));
 app.use(morgan(process.env.NODE_ENV === 'test' ? 'tiny' : 'dev'));
 
-// ── Normalizacja fullName -> username (rejestracja) ────────────────────────────
+// Krótki log diagnostyczny AI
+console.log(`[AI] Ollama host: ${process.env.OLLAMA_HOST || 'http://127.0.0.1:11434'} | model: ${process.env.OLLAMA_MODEL || 'llama3.1:8b'}`);
+
+// ── Normalizacja fullName -> username (rejestracja) ───────────────────────────
 app.use((req, res, next) => {
   const isRegister =
     req.method === 'POST' &&
@@ -46,11 +62,19 @@ app.use((req, res, next) => {
   next();
 });
 
-// ── Statyczne pliki ────────────────────────────────────────────────────────────
+// ── Statyczne pliki ───────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// ── Healthcheck (prosto) ───────────────────────────────────────────────────────
+// ── Healthcheck ───────────────────────────────────────────────────────────────
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
+
+// ── Rate limit dla AI ─────────────────────────────────────────────────────────
+const aiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 60,
+  standardHeaders: true,
+  legacyHeaders: false
+});
 
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use('/api/auth', authRoutes);
@@ -58,18 +82,18 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/fridge', fridgeRoutes);
 app.use('/api/meals', mealsRoutes);
-app.use('/api/calendar', calendarRoutes); 
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/ai', aiLimiter, aiRoutes);
 
-// ── Błędy parsowania JSON (400) ────────────────────────────────────────────────
+// ── Błędy parsowania JSON (400) ───────────────────────────────────────────────
 app.use((err, _req, res, next) => {
-  // express.json() rzuca SyntaxError z err.type === 'entity.parse.failed'
   if (err?.type === 'entity.parse.failed' || (err instanceof SyntaxError && 'body' in err)) {
     return res.status(400).json({ message: 'Nieprawidłowy JSON w żądaniu.' });
   }
   return next(err);
 });
 
-// ── 404 dla nieistniejących endpointów API + fallback na index.html ───────────
+// ── 404 + fallback na index.html ──────────────────────────────────────────────
 app.use((req, res) => {
   if (req.path.startsWith('/api/')) {
     return res.status(404).json({ error: 'Not Found' });

@@ -1,19 +1,25 @@
-// /js/meal-calendar-core.js
-// Rdzeń: kalendarz dnia, autouzupełnianie, dodawanie/edycja/usuwanie, podsumowanie i paski
-// (bez: kopiowania i listy zakupów – to w osobnym module)
+// public/js/meal-calendar-core.js
+// Rdzeń kalendarza: render dnia/tygodnia, dodawanie/edycja/usuwanie, podsumowania.
+// (Bez logiki AI – to jest w osobnym pliku meal-calendar-ai.js)
 
 export const MEALS = ["Śniadanie", "II śniadanie", "Obiad", "Podwieczorek", "Kolacja"];
 const KEY_PREFIX = "czyziu:calendar:v1:";
 const CANDIDATE_UID_KEYS = ["cm:userId", "userId", "uid", "cm:uid", "auth:uid"];
-const $ = (sel, root = document) => root.querySelector(sel);
 
+const $ = (sel, root = document) => root.querySelector(sel);
 const elGrid = document.getElementById("calendarGrid");
 const elDays = document.getElementById("calDays");
 
-let MEALS_CACHE = [];
-let PRODUCTS_CACHE = [];
-let COMBINED_CACHE = [];
-let USER_TARGETS = { kcal: 0, protein: 0, fat: 0, carbs: 0 };
+// Cache'y dostępne dla innych modułów (AI itp.)
+window.MEALS_CACHE = window.MEALS_CACHE || [];
+window.PRODUCTS_CACHE = window.PRODUCTS_CACHE || [];
+window.COMBINED_CACHE = window.COMBINED_CACHE || [];
+window.USER_TARGETS = window.USER_TARGETS || { kcal: 0, protein: 0, fat: 0, carbs: 0 };
+
+let MEALS_CACHE = window.MEALS_CACHE;
+let PRODUCTS_CACHE = window.PRODUCTS_CACHE;
+let COMBINED_CACHE = window.COMBINED_CACHE;
+let USER_TARGETS = window.USER_TARGETS;
 
 export const toLocalISO = (d) => {
   const off = d.getTimezoneOffset();
@@ -71,12 +77,15 @@ function saveWeekLocal(weekStartISO, data) {
 const TOKEN_KEY = 'cm_token';
 const LEGACY_TOKEN_KEY = 'token';
 const getToken = () => localStorage.getItem(TOKEN_KEY) || localStorage.getItem(LEGACY_TOKEN_KEY);
+
 export function authHeaders() {
   const h = { 'Content-Type': 'application/json' };
   const t = getToken();
   if (t) h['Authorization'] = `Bearer ${t}`;
   return h;
 }
+
+// Ogólny fetch JSON (bez narzucania cache – kontrolujemy to per-endpoint)
 export async function apiJson(url, opts = {}) {
   const res = await fetch(url, { ...opts, headers: { ...authHeaders(), ...(opts.headers || {}) } });
   if (!res.ok) {
@@ -87,7 +96,7 @@ export async function apiJson(url, opts = {}) {
   return res.json();
 }
 
-// ====== CELE (z bazy)
+// ====== CELE (z bazy lub localStorage)
 async function loadUserTargets() {
   try {
     const resp = await apiJson('/api/profile/macro/latest'); // { ok, macro }
@@ -119,10 +128,13 @@ async function loadUserTargets() {
   return { kcal, protein, fat, carbs };
 }
 
-// ====== Kalendarz API
+// ====== Kalendarz API (GET tydzień z cache-bust!)
 export async function loadWeekFromAPI(mondayISO) {
   try {
-    const data = await apiJson(`/api/calendar/week?monday=${encodeURIComponent(mondayISO)}`);
+    const url = `/api/calendar/week?monday=${encodeURIComponent(mondayISO)}&_=${Date.now()}`;
+    const res = await fetch(url, { cache: 'no-store', headers: authHeaders() });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
     return data.week;
   } catch (e) {
     console.warn("API week fetch failed, fallback localStorage:", e.message);
@@ -145,6 +157,7 @@ export async function apiUpdateItem(dateISO, slotName, itemId, { grams, productI
       body: JSON.stringify({ grams })
     });
   } catch (e) {
+    // fallback: usuń i dodaj jeszcze raz
     await apiDeleteItem(dateISO, slotName, itemId);
     if (!productId) throw new Error("Brak productId do ponownego dodania");
     return await apiAddItem(dateISO, slotName, { productId, grams });
@@ -268,7 +281,6 @@ export async function render() {
   const data = await loadWeekFromAPI(weekISO);
 
   renderHeaderDays();
-
   elGrid.innerHTML = "";
 
   let idx = weekdayIndexFromISO(selectedDayISO);
@@ -339,7 +351,7 @@ export async function render() {
         <div class="add-controls">
           <button class="btn-small" data-open-add="db">Dodaj z bazy</button>
           <button class="btn-small" data-open-add="quick">Szybkie dodawanie</button>
-          <button class="btn-small ai" data-open-add="ai" disabled title="Wkrótce">Asystent AI</button>
+          <button class="btn-small ai" data-open-add="ai" title="Zaproponuj">Asystent AI</button>
         </div>
         <div class="add-panel" data-add-panel hidden>
           <div class="add-panel-inner" data-panel="db" hidden>
@@ -365,9 +377,7 @@ export async function render() {
               <button class="btn-small" data-quick-clear>Wyczyść</button>
             </div>
           </div>
-          <div class="add-panel-inner" data-panel="ai" hidden>
-            <div class="muted-note">Asystent AI — w przygotowaniu 🔧</div>
-          </div>
+          <!-- Panel AI podpinany przez meal-calendar-ai.js -->
         </div>
       </div>
     `;
@@ -410,8 +420,8 @@ function toNum(v, def = 0) {
   const n = parseFloat(String(v ?? "").replace(",", "."));
   return Number.isFinite(n) ? n : def;
 }
-const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ESC[c]); }
+const ESC_HTML = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ESC_HTML[c]); }
 function norm(str) {
   return String(str ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
@@ -545,34 +555,9 @@ function onAcKeydown(e, inp) {
   }
 }
 
-// ==== Modal helper (spójny ze stylem pozostałych) ============================
-function openDialog({ title, content, onOpen }){
-  const back = document.createElement('div');
-  back.className = 'dlg-backdrop';
-  const dlg = document.createElement('div');
-  dlg.className = 'dlg';
-  dlg.innerHTML = `
-    <div class="dlg-head">
-      <div class="dlg-title">${title}</div>
-      <button class="dlg-x" data-dlg-close aria-label="Zamknij">×</button>
-    </div>
-    <div class="dlg-body">${content}</div>
-    <div class="dlg-foot">
-      <button class="btn-small" data-dlg-cancel>Anuluj</button>
-      <div class="dlg-actions"></div>
-    </div>
-  `;
-  back.appendChild(dlg);
-  document.body.appendChild(back);
-  const close = () => back.remove();
-  if (typeof onOpen === 'function') onOpen({ back, dlg, close });
-  return { back, dlg, close };
-}
-const opt = (v, t) => `<option value="${String(v)}">${t}</option>`;
-
 // ==== „Wyczyść…” — dialog + wykonanie ========================================
 function openClearDialog(sourceISO){
-  const mealOpts = [ opt('all','Cały dzień'), ...MEALS.map((m,i)=>opt(`slot:${i}`, m)) ].join('');
+  const mealOpts = [`<option value="all">Cały dzień</option>`, ...MEALS.map((m,i)=>`<option value="slot:${i}">${m}</option>`) ].join('');
   const html = `
     <div class="form-grid">
       <label class="form-field">
@@ -663,10 +648,39 @@ async function performClear({ sourceISO, scope }){
   }
 }
 
+// ==== Modal helper ============================================================
+function openDialog({ title, content, onOpen }){
+  const back = document.createElement('div');
+  back.className = 'dlg-backdrop';
+  const dlg = document.createElement('div');
+  dlg.className = 'dlg';
+  dlg.innerHTML = `
+    <div class="dlg-head">
+      <div class="dlg-title">${title}</div>
+      <button class="dlg-x" data-dlg-close aria-label="Zamknij">×</button>
+    </div>
+    <div class="dlg-body">${content}</div>
+    <div class="dlg-foot">
+      <button class="btn-small" data-dlg-cancel>Anuluj</button>
+      <div class="dlg-actions"></div>
+    </div>
+  `;
+  back.appendChild(dlg);
+  document.body.appendChild(back);
+  const close = () => back.remove();
+  if (typeof onOpen === 'function') onOpen({ back, dlg, close });
+  return { back, dlg, close };
+}
+
+async function goWeek(deltaDays) {
+  const keepIdx = weekdayIndexFromISO(selectedDayISO);
+  currentMonday.setDate(currentMonday.getDate() + deltaDays);
+  selectedDayISO = isoFromWeekdayIndex(Math.max(0, Math.min(6, keepIdx)));
+  await render();
+}
 
 
-
-// ====== obsługa klików (bez kopiuj/lista – te obsłuży moduł shopping)
+// ====== obsługa klików (bez AI – AI w osobnym pliku)
 document.addEventListener("click", async (ev) => {
   const t = ev.target;
   if (!(t instanceof HTMLElement)) return;
@@ -710,18 +724,23 @@ document.addEventListener("click", async (ev) => {
   }
 
   // nawigacja
- if (t.matches("[data-clear-day]")) {
-  ev.preventDefault();
-  const dayISO = t.closest(".day-card")?.dataset.date || getSelectedDayISO();
-  openClearDialog(dayISO);
-  return;
-}
+  if (t.matches("[data-clear-day]")) {
+    ev.preventDefault();
+    const dayISO = t.closest(".day-card")?.dataset.date || getSelectedDayISO();
+    openClearDialog(dayISO);
+    return;
+  }
   if (t.matches('[data-cal="next"]')) {
     ev.preventDefault();
     const keepIdx = weekdayIndexFromISO(selectedDayISO);
     currentMonday.setDate(currentMonday.getDate() + 7);
     selectedDayISO = isoFromWeekdayIndex(Math.max(0, Math.min(6, keepIdx)));
     await render();
+    return;
+  }
+    if (t.matches('[data-cal="prev"]')) {
+    ev.preventDefault();
+    await goWeek(-7);
     return;
   }
   if (t.matches("[data-cal-day]")) {
@@ -949,28 +968,13 @@ document.addEventListener("click", async (ev) => {
     }, 0);
     return;
   }
-
-  // wyczyść dzień (bez popupu – zgodnie z Twoją wersją)
-  if (t.matches("[data-clear-day]")) {
-    ev.preventDefault();
-    const dayISO = t.closest(".day-card")?.dataset.date;
-    if (!dayISO) return;
-    try { await apiClearDay(dayISO); }
-    catch (e) {
-      const weekISO = toLocalISO(currentMonday);
-      const data = loadWeekLocal(weekISO);
-      data[dayISO] = MEALS.map(name => ({ name, items: [] }));
-      saveWeekLocal(weekISO, data);
-    }
-    await render();
-    return;
-  }
 });
 
 // ====== start
 (async function init() {
   try {
     USER_TARGETS = await loadUserTargets();
+    window.USER_TARGETS = USER_TARGETS;
     const [prods, meals] = await Promise.all([ apiListProducts(), apiListMeals() ]);
     PRODUCTS_CACHE = prods.sort((a, b) => a.name.localeCompare(b.name, 'pl'));
     MEALS_CACHE    = meals.sort((a, b) => a.name.localeCompare(b.name, 'pl'));
@@ -978,17 +982,31 @@ document.addEventListener("click", async (ev) => {
       ...PRODUCTS_CACHE.map(p => ({ kind: 'product', ...p })),
       ...MEALS_CACHE.map(m => ({ kind: 'meal', ...m }))
     ].sort((a, b) => a.name.localeCompare(b.name, 'pl'));
+
+    window.PRODUCTS_CACHE = PRODUCTS_CACHE;
+    window.MEALS_CACHE = MEALS_CACHE;
+    window.COMBINED_CACHE = COMBINED_CACHE;
   } catch (e) {
     console.error('Init lists/targets failed', e);
     PRODUCTS_CACHE = [];
     MEALS_CACHE = [];
     COMBINED_CACHE = [];
     USER_TARGETS = { kcal: 0, protein: 0, fat: 0, carbs: 0 };
+    window.PRODUCTS_CACHE = PRODUCTS_CACHE;
+    window.MEALS_CACHE = MEALS_CACHE;
+    window.COMBINED_CACHE = COMBINED_CACHE;
+    window.USER_TARGETS = USER_TARGETS;
   }
   render();
 })();
+// --- udostępnij rdzeń dla innych modułów (AI/shopping)
+window.CalendarCore = Object.assign(window.CalendarCore || {}, {
+  render,
+  getSelectedDayISO,
+});
 
-// ====== eksporty przydatne dla modułu shopping
+
+// ====== eksporty przydatne dla modułu shopping/AI
 export function resolveName(productId){
   const hit = (PRODUCTS_CACHE || []).find(p => String(p.id) === String(productId));
   return hit ? hit.name : `Produkt ${productId}`;
