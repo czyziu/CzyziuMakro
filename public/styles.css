@@ -778,6 +778,8 @@ body[data-page="pozalogowaniu"] .side-link[href$="pozalogowaniu.html"],
 body[data-page="lodowka"] .side-link[href$="lodowka.html"],
 body[data-page="produkty"] .side-link[href$="produkty.html"],
 body[data-page="dania"] .side-link[href$="dania.html"],
+body[data-page="asystent-ai"] .side-link[href$="asystent-ai.html"],
+body[data-page="podsumowanie"] .side-link[href$="podsumowanie.html"],
 body[data-page="parametry"] .side-link[href$="parametry.html"],
 body[data-page="ustaw-cele"] .side-link[href$="ustaw-cele.html"] {
   background-color: var(--bg-700);
@@ -1672,3 +1674,72 @@ body[data-page="dania"] #previewBody .metrics li strong { font-variant-numeric: 
 
 /* delikatne oznaczenie elementów dodanych przez AI (w liście slota) */
 .slot-item.ai-added{ opacity:.95; }
+
+
+
+
+
+/* ===================== SIDE NAV – LAYOUT + DELETE ===================== */
+
+/* Sidebar w kolumnie, żeby "Usuń konto" mógł być na dole */
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ostatni element (Usuń konto) przyklejony do dołu */
+.side-nav .side-delete {
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid var(--border-700);
+}
+
+/* Podstawowy link w menu już masz jako .side-link – korzystamy z niego */
+
+/* Wariant niebezpieczny (Usuń konto) – czerwony, ale w tym samym stylu */
+.side-link-danger {
+  color: var(--danger-500);
+  font-weight: 600;
+  justify-content: flex-start; /* wygląda jak zwykły link, nie środek przycisku */
+}
+
+.side-link-danger:hover {
+  color: #fff;
+  background: linear-gradient(180deg, var(--danger-500), var(--danger-600));
+}
+
+.side-link-danger:focus-visible {
+  outline-color: var(--danger-500);
+}
+
+
+
+
+
+
+/* ===== PODSUMOWANIE – wyrównanie kart makro ===== */
+
+/* 1. W gridzie 2 kolumn NIE chcemy globalnego margin-top z .card + .card */
+body[data-page="podsumowanie"] .grid-2 > .card + .card {
+  margin-top: 0;
+}
+
+/* 2. Obie karty mają się rozciągać na tę samą wysokość */
+body[data-page="podsumowanie"] .grid-2 {
+  align-items: stretch;
+}
+
+body[data-page="podsumowanie"] .grid-2 > .card {
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-page="podsumowanie"] .grid-2 > .card > .content-flow {
+  flex: 1;
+}

@@ -144,6 +144,7 @@ async function fridgeConsume(productId, needGrams) {
 }
 
 // ====== LISTA ZAKUPÓW ========================================================
+// ====== LISTA ZAKUPÓW ========================================================
 function openShoppingDialog(){
   const today = toLocalISO(new Date());
   const html = `
@@ -160,8 +161,12 @@ function openShoppingDialog(){
         <input type="checkbox" name="shop-consume" />
         <span>Usuń zużyte z lodówki</span>
       </label>
+      <label class="form-field inline">
+        <input type="checkbox" name="shop-email" />
+        <span>Wyślij listę zakupów na mój e-mail</span>
+      </label>
     </div>
-    <div class="muted-note">Bez zaznaczenia — lista = pełne zapotrzebowanie (ignoruję lodówkę). Z zaznaczeniem — odejmuję z lodówki FIFO, a na listę trafiają tylko braki.</div>
+    
     <div class="shop-results" data-shop-results hidden></div>
   `;
   const { dlg, close } = openDialog({
@@ -184,10 +189,12 @@ function openShoppingDialog(){
   }, { passive: false });
 }
 
+
 async function handleGenerateShopping(dlg){
   const fromISO = dlg.querySelector('[name="shop-from"]').value;
   const toISO   = dlg.querySelector('[name="shop-to"]').value;
   const consume = dlg.querySelector('[name="shop-consume"]').checked;
+  const sendEmail = dlg.querySelector('[name="shop-email"]')?.checked;
   if (!fromISO || !toISO) return;
 
   // 1) Zbierz zapotrzebowanie (grams) po productId z zakresu dat
@@ -211,19 +218,75 @@ async function handleGenerateShopping(dlg){
   // 3) Render w modalu
   const box = dlg.querySelector('[data-shop-results]');
   const list = Object.entries(toBuy);
+
   if (list.length === 0) {
     box.innerHTML = `<div class="muted-note">Brak braków — nic nie trzeba kupować 🎉</div>`;
     dlg.querySelector('[data-shop-print]')?.setAttribute('hidden','');
   } else {
-    const rows = list
-      .sort((a,b) => resolveName(a[0]).localeCompare(resolveName(b[0]), 'pl'))
-      .map(([pid, g]) => `<div class="shop-row"><div class="shop-name">${escapeHtml(resolveName(pid))}</div><div class="shop-grams num">${Math.round(g)} g</div></div>`)
+    // posortowana lista, żeby UI i mail miały to samo
+    const sorted = list.sort((a,b) =>
+      resolveName(a[0]).localeCompare(resolveName(b[0]), 'pl')
+    );
+
+    const rows = sorted
+      .map(([pid, g]) =>
+        `<div class="shop-row">
+           <div class="shop-name">${escapeHtml(resolveName(pid))}</div>
+           <div class="shop-grams num">${Math.round(g)} g</div>
+         </div>`
+      )
       .join('');
+
     box.innerHTML = `<div class="shop-list">${rows}</div>`;
     dlg.querySelector('[data-shop-print]')?.removeAttribute('hidden');
+
+    // 4) Opcjonalnie: wyślij na e-mail użytkownika
+    if (sendEmail) {
+      const items = sorted.map(([pid, g]) => ({
+        productId: pid,
+        name: resolveName(pid),
+        grams: Math.round(g),
+      }));
+
+      try {
+        await apiSendShoppingEmail({ fromISO, toISO, consume, items });
+        alert('Lista zakupów została wysłana na Twój e-mail.');
+      } catch (err) {
+        console.error(err);
+        alert('Nie udało się wysłać listy zakupów na e-mail.');
+      }
+    }
   }
+
   box.removeAttribute('hidden');
 }
+
+async function apiSendShoppingEmail({ fromISO, toISO, consume, items }) {
+  if (!items || !items.length) return;
+
+  const headers = authHeaders();          // doda Authorization
+  headers['Content-Type'] = 'application/json';
+
+  const res = await fetch('/api/shopping/email', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      from: fromISO,
+      to: toISO,
+      consume: !!consume,
+      items
+    }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(text || 'Błąd wysyłki e-maila');
+  }
+
+  return res.json().catch(() => ({}));
+}
+
+
 
 // Zbiorcze gramatury z zakresu dat
 async function collectRequirementsByProduct(fromISO, toISO){

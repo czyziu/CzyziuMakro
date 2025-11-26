@@ -16,6 +16,11 @@ const fridgeRoutes = require('./routes/fridge');
 const mealsRoutes = require('./routes/meals');
 const calendarRoutes = require('./routes/calendar');
 const aiRoutes = require('./routes/ai'); // ← tylko Ollama
+const contactRoutes = require('./routes/contact');
+const shoppingRoutes = require('./routes/shopping');
+const passwordRoutes = require('./routes/password');
+const summaryRoutes = require('./routes/summary');
+
 
 const app = express();
 
@@ -84,6 +89,11 @@ app.use('/api/fridge', fridgeRoutes);
 app.use('/api/meals', mealsRoutes);
 app.use('/api/calendar', calendarRoutes);
 app.use('/api/ai', aiLimiter, aiRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/shopping', shoppingRoutes);
+app.use('/api/password', passwordRoutes);
+app.use('/api/summary', summaryRoutes);
+
 
 // ── Błędy parsowania JSON (400) ───────────────────────────────────────────────
 app.use((err, _req, res, next) => {

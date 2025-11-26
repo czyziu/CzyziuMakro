@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CzyziuMakro — Ustaw nowe hasło</title>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/icon-cm.svg" />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="nowe-haslo">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CzyziuMakro — strona główna">
+        <img
+          src="/assets/logo-czyziumakro.svg"
+          alt="CzyziuMakro"
+          class="brand-logo"
+          width="220"
+          height="48"
+        />
+        <noscript><span class="brand-text">CzyziuMakro</span></noscript>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a class="nav-link" href="index.html">O aplikacji</a>
+        <a class="nav-link" href="regulamin.html">Regulamin</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+        <a class="nav-link" href="logowanie.html">Logowanie</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <section class="page-header">
+        <h1>Ustaw nowe hasło</h1>
+        <p class="muted">
+          Wpisz nowe hasło dla swojego konta.
+        </p>
+      </section>
+
+      <article class="card card-narrow">
+        <div class="card-content">
+          <form class="form" id="new-password-form" action="#" method="post">
+            <div class="form-row">
+              <label for="password">Nowe hasło</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                minlength="8"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="password2">Powtórz hasło</label>
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                placeholder="••••••••"
+                required
+                minlength="8"
+              />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-accent">Zapisz nowe hasło</button>
+              <a class="btn-link" href="logowanie.html">Wróć do logowania</a>
+            </div>
+
+            <p id="reset-status" class="muted" aria-live="polite"></p>
+          </form>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <p>© 2025 CzyziuMakro • Wszystkie prawa zastrzeżone</p>
+        <p class="small-note">
+          Aplikacja powstała w celach realizacji pracy inżynierskiej.<br />
+          Autor: <strong>Jakub Czyżycki</strong>
+        </p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Nawigacja w stopce">
+        <a href="index.html">O aplikacji</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+  <script src="/js/reset-password.js" defer></script>
+</body>
+</html>
