@@ -15,12 +15,12 @@ const productsRoutes = require('./routes/products');
 const fridgeRoutes = require('./routes/fridge');
 const mealsRoutes = require('./routes/meals');
 const calendarRoutes = require('./routes/calendar');
-const aiRoutes = require('./routes/ai'); // ← tylko Ollama
+const aiRoutes = require('./routes/ai'); // istniejące SHIELD /plan
+const aiDayPlanRoutes = require('./routes/ai-day-plan'); // ← NOWY ROUTE
 const contactRoutes = require('./routes/contact');
 const shoppingRoutes = require('./routes/shopping');
 const passwordRoutes = require('./routes/password');
 const summaryRoutes = require('./routes/summary');
-
 
 const app = express();
 
@@ -37,21 +37,26 @@ app.use(express.json({ limit: '1mb' }));
 app.use(morgan(process.env.NODE_ENV === 'test' ? 'tiny' : 'dev'));
 
 // Krótki log diagnostyczny AI
-console.log(`[AI] Ollama host: ${process.env.OLLAMA_HOST || 'http://127.0.0.1:11434'} | model: ${process.env.OLLAMA_MODEL || 'llama3.1:8b'}`);
+console.log(
+  `[AI] Ollama host: ${
+    process.env.OLLAMA_HOST || 'http://127.0.0.1:11434'
+  } | model: ${process.env.OLLAMA_MODEL || 'llama3.1:8b'}`
+);
 
 // ── Normalizacja fullName -> username (rejestracja) ───────────────────────────
 app.use((req, res, next) => {
   const isRegister =
     req.method === 'POST' &&
     (req.originalUrl === '/api/auth/register' ||
-     req.originalUrl.startsWith('/api/auth/register'));
+      req.originalUrl.startsWith('/api/auth/register'));
 
   if (!isRegister) return next();
 
   const body = req.body || {};
-  const raw = (typeof body.username === 'string' && body.username.trim())
-    ? body.username
-    : (typeof body.fullName === 'string' ? body.fullName : '');
+  const raw =
+    (typeof body.username === 'string' && body.username.trim())
+      ? body.username
+      : (typeof body.fullName === 'string' ? body.fullName : '');
 
   if (!raw) return res.status(400).json({ message: 'Podaj imię i nazwisko.' });
 
@@ -60,7 +65,9 @@ app.use((req, res, next) => {
   u = u.trim().replace(/\s+/g, '_').toLowerCase();
 
   if (u.length < 3) {
-    return res.status(400).json({ message: 'Login po przetworzeniu musi mieć min. 3 znaki.' });
+    return res
+      .status(400)
+      .json({ message: 'Login po przetworzeniu musi mieć min. 3 znaki.' });
   }
 
   req.body.username = u;
@@ -78,7 +85,7 @@ const aiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 60,
   standardHeaders: true,
-  legacyHeaders: false
+  legacyHeaders: false,
 });
 
 // ── API Routes ────────────────────────────────────────────────────────────────
@@ -88,16 +95,22 @@ app.use('/api/products', productsRoutes);
 app.use('/api/fridge', fridgeRoutes);
 app.use('/api/meals', mealsRoutes);
 app.use('/api/calendar', calendarRoutes);
-app.use('/api/ai', aiLimiter, aiRoutes);
+
+// oba routery pod tym samym prefixem, z tym samym limiterem
+app.use('/api/ai', aiLimiter, aiRoutes);       // /api/ai/plan, /api/ai/health
+app.use('/api/ai', aiLimiter, aiDayPlanRoutes); // /api/ai/day-plan
+
 app.use('/api/contact', contactRoutes);
 app.use('/api/shopping', shoppingRoutes);
 app.use('/api/password', passwordRoutes);
 app.use('/api/summary', summaryRoutes);
 
-
 // ── Błędy parsowania JSON (400) ───────────────────────────────────────────────
 app.use((err, _req, res, next) => {
-  if (err?.type === 'entity.parse.failed' || (err instanceof SyntaxError && 'body' in err)) {
+  if (
+    err?.type === 'entity.parse.failed' ||
+    (err instanceof SyntaxError && 'body' in err)
+  ) {
     return res.status(400).json({ message: 'Nieprawidłowy JSON w żądaniu.' });
   }
   return next(err);

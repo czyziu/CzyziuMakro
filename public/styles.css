@@ -1743,3 +1743,129 @@ body[data-page="podsumowanie"] .grid-2 > .card {
 body[data-page="podsumowanie"] .grid-2 > .card > .content-flow {
   flex: 1;
 }
+
+
+
+
+
+
+
+/* ===== Asystent AI – modal wyboru zakresu dodawania do kalendarza ===== */
+
+.ai-plan-modal {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.ai-plan-modal__summary {
+  margin: 0 0 .5rem;
+  font-size: .95rem;
+  color: var(--text-300);
+}
+
+.ai-plan-modal__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: .75rem;
+}
+
+@media (max-width: 720px) {
+  .ai-plan-modal__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-plan-modal__section {
+  background: var(--bg-800);
+  border-radius: .75rem;
+  border: 1px solid var(--border-700);
+  padding: .75rem .85rem;
+}
+
+.ai-plan-label {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .4rem;
+}
+
+.ai-plan-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .35rem;
+}
+
+.ai-plan-dates label {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  font-size: .85rem;
+  color: var(--text-300);
+}
+
+.ai-plan-dates input[type="date"] {
+  background: #0e1520;
+  color: var(--text-100);
+  border-radius: .55rem;
+  border: 1px solid var(--border-700);
+  padding: .45rem .6rem;
+  font: inherit;
+}
+
+.ai-plan-dates input[type="date"]:focus {
+  outline: none;
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.ai-plan-meals {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+
+.ai-plan-meal-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .4rem .55rem;
+  border-radius: .6rem;
+  border: 1px solid var(--border-700);
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  font-size: .9rem;
+}
+
+.ai-plan-meal-chip input[type="checkbox"] {
+  margin: 0;
+  accent-color: var(--accent-500);
+}
+
+.ai-plan-meal-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ai-plan-meal-kcal {
+  font-size: .85rem;
+}
+
+.ai-plan-meal-chip--disabled {
+  opacity: .55;
+}
+
+.ai-plan-meal-chip--disabled input[type="checkbox"] {
+  cursor: not-allowed;
+}
+
+.ai-plan-error {
+  min-height: 1.1em;
+  margin: .25rem 0 0;
+  font-size: .85rem;
+  color: var(--danger-500);
+}

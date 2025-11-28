@@ -633,6 +633,233 @@ router.post('/plan', express.json(), async (req,res)=>{
   }
 });
 
+router.post('/resolve-day-plan', express.json(), async (req, res) => {
+  const R = rid();
+  try {
+    const { variant } = req.body || {};
+    if (!variant || !Array.isArray(variant.meals)) {
+      return res.status(400).json({ message: 'Brak pola "variant.meals".' });
+    }
+
+    // 1) Wczytaj posiłki + produkty z bazy (lub z app.locals)
+    const { meals, prodById } = await loadData(req, `${R}:resolve`);
+    const productsArr = Object.values(prodById || {}).map(p => ({
+      id: oid(p._id ?? p.id),
+      name: String(p.name || ''),
+      _n: norm(p.name || ''),
+    }));
+
+    // 2) Zbierz unikalne składniki z wariantu AI (po nazwie)
+    const ingMap = new Map(); // name -> { name, gramsTotal }
+    for (const m of variant.meals) {
+      for (const it of (m.items || [])) {
+        const rawName = (it && it.name) ? String(it.name).trim() : '';
+        if (!rawName) continue;
+
+        let grams = Number(it.grams || 0);
+        const nName = norm(rawName || '');
+
+        // Heurystyka: AI często robi "jajka: 4 g" mając na myśli 4 sztuki.
+        // Jeśli nazwa to jajka i liczba jest mała (<20), traktujemy to jako liczbę jajek.
+        if (/^jaj/.test(nName) && grams > 0 && grams < 20) {
+          const WEIGHT_PER_EGG = 55; // ~55 g / jajko
+          grams = grams * WEIGHT_PER_EGG;
+        }
+
+        const key = rawName;
+        const prev = ingMap.get(key) || { name: key, gramsTotal: 0 };
+        prev.gramsTotal += grams > 0 ? grams : 0;
+        ingMap.set(key, prev);
+      }
+    }
+
+    // 3) Normalizacja nazw składników z AI -> nazwy zbliżone do produktów w bazie
+    //    Wszystkie regexy lecą po znormalizowanym, małymi literami tekście bez polskich ogonków.
+    const ING_SYNONYMS = [
+      // owsianka / oatmeal / dziwne literówki
+      { re: /\bovisza\b/, canonical: 'Płatki owsiane' },
+      { re: /oatmeal/, canonical: 'Płatki owsiane' },
+      { re: /owsiank/, canonical: 'Płatki owsiane' },
+
+      // "owoszec", "ovoska" itd – śmieszne literówki → traktujemy jak owsiankę
+      { re: /owoszec|ovoska|owoska|owoszek/, canonical: 'Płatki owsiane' },
+
+      // jagody → używamy jako "owoce leśne"
+      { re: /zwiniete jagody|zwieniete jagody|jagody/, canonical: 'Owoce leśne mrożone' },
+
+      // ogólne "owoce" / "owocy" → miks mrożonych owoców
+      { re: /\bowoce\b|\bowocy\b/, canonical: 'Mieszanka owoców mrożonych' },
+
+      // mięso z kurczaka
+      { re: /kurczak.*mies|^kurczak$/, canonical: 'Pierś z kurczaka' },
+
+      // ser biały / twarożek
+      { re: /ser bialy|bialy ser|twarozek/, canonical: 'Twaróg chudy' },
+
+      // naleśniki
+      { re: /nalesnik|nalesniki|nale[sś]nik/, canonical: 'Naleśniki' },
+
+      // pilaf / risotto → ryż
+      { re: /pilaf|risotto/, canonical: 'Ryż biały (suchy)' },
+
+      // pudding białkowy
+      { re: /pudding bialk|pudding protein/, canonical: 'Pudding proteinowy' },
+
+      // warzywa miks
+      { re: /warzywa z cebula i marchewka/, canonical: 'Warzywa na patelnię (mrożone)' },
+      { re: /warzywa z cebula i marchewk/, canonical: 'Warzywa na patelnię (mrożone)' },
+      { re: /^warzywa$/, canonical: 'Mieszanka warzyw mrożonych' },
+
+      // grzyby – na razie podpinamy pod warzywa
+      { re: /grzyby/, canonical: 'Warzywa na patelnię (mrożone)' },
+
+      // oleje / sosy
+      { re: /olej olejkowy/, canonical: 'Olej rzepakowy' },
+      { re: /sos pomidor/, canonical: 'Sos pomidorowy do makaronu' },
+      { re: /sos bialy|sos jogurt/, canonical: 'Sos jogurtowo-czosnkowy' },
+    ];
+
+    // Używane przez fuzzy-score – tutaj zwracamy ZNORMALIZOWANĄ nazwę,
+    // żeby a===b mogło zadziałać, gdy słownik trafi dokładnie w produkt.
+    function normalizeIngredientNameForMatch(name) {
+      let n = norm(name || '');
+      if (!n) return '';
+
+      for (const { re, canonical } of ING_SYNONYMS) {
+        if (re.test(n)) {
+          return norm(canonical);
+        }
+      }
+      return n;
+    }
+
+    // Osobna funkcja: twardy słownik → dokładna nazwa z bazy
+    function dictCanonical(name) {
+      const n = norm(name || '');
+      if (!n) return null;
+      for (const { re, canonical } of ING_SYNONYMS) {
+        if (re.test(n)) return canonical;
+      }
+      return null;
+    }
+
+    // 4) Prosty, ale trochę mądrzejszy scoring podobieństwa nazw
+    function scoreSimilarity(a, b) {
+      // a = nazwa składnika z AI
+      // b = nazwa produktu z bazy
+
+      a = normalizeIngredientNameForMatch(a);
+      b = norm(b);
+      if (!a || !b) return 0;
+
+      if (a === b) return 1.0;
+
+      // Ograniczamy "contains" tylko dla sensownie długich nazw
+      if (a.length >= 4 && b.length >= 4 && (b.includes(a) || a.includes(b))) {
+        return 0.9;
+      }
+
+      // Rozbij na słowa i użyj prostego stemmera PL
+      const wordsA = tokenizeWords(a);
+      const wordsB = tokenizeWords(b);
+
+      const stemsA = new Set(wordsA.map(plStemBasic));
+      const stemsB = new Set(wordsB.map(plStemBasic));
+
+      let stemHits = 0;
+      for (const s of stemsA) {
+        if (!s) continue;
+        if (stemsB.has(s)) stemHits++;
+      }
+
+      if (stemHits > 0) {
+        const maxLen = Math.max(stemsA.size, stemsB.size) || 1;
+        const stemScore = stemHits / maxLen;
+
+        if (stemScore >= 0.5) {
+          return 0.9;
+        }
+
+        if (stemScore > 0) {
+          return 0.6 * stemScore + 0.2; // 0.2–0.8
+        }
+      }
+
+      // Fallback: stare "czy słowa z A występują w B"
+      let score = 0;
+      for (const w of wordsA) {
+        if (!w) continue;
+        if (b.includes(w)) score += 0.25;
+      }
+      return Math.min(0.8, score);
+    }
+
+    const mapped = [];
+    for (const ing of ingMap.values()) {
+      const suggestions = [];
+
+      // 1) Najpierw TWARDY słownik → tylko to może wejść jako auto
+      const canonical = dictCanonical(ing.name);
+      if (canonical) {
+        const nCanon = norm(canonical);
+        const exact = productsArr.filter((p) => p._n === nCanon);
+
+        let picked = null;
+        if (exact.length === 1) {
+          picked = exact[0];
+        } else if (exact.length > 1) {
+          // np. kilka wariantów – weź najkrótszą nazwę
+          picked = exact.slice().sort((a, b) => a.name.length - b.name.length)[0];
+        }
+
+        if (picked) {
+          suggestions.push({
+            productId: picked.id,
+            productName: picked.name,
+            score: 1.0,
+            isAuto: true,     // auto tylko z dictionary
+            via: 'dict',
+          });
+        }
+      }
+
+      // 2) Jeżeli słownik NIC nie znalazł → tylko PODPOWIEDŹ z fuzzy (bez auto)
+      if (!suggestions.length) {
+        let best = null;
+        for (const p of productsArr) {
+          const s = scoreSimilarity(ing.name, p.name);
+          if (!best || s > best.score) best = { product: p, score: s };
+        }
+
+        if (best && best.score >= 0.7) {
+          suggestions.push({
+            productId: best.product.id,
+            productName: best.product.name,
+            score: Number(best.score.toFixed(3)),
+            isAuto: false,    // nic spoza słownika nie jest auto
+            via: 'fuzzy',
+          });
+        }
+      }
+
+      mapped.push({
+        name: ing.name,
+        gramsTotal: Math.round(ing.gramsTotal),
+        suggestions,
+      });
+    }
+
+    mapped.sort((a, b) => a.name.localeCompare(b.name, 'pl'));
+
+    return res.json({ mapped });
+  } catch (err) {
+    console.error(`[${R}:resolve] ERROR`, err);
+    return res.status(500).json({ message: 'Błąd serwera w /resolve-day-plan', details: String(err?.message || err) });
+  }
+});
+
+
+
 // Healthcheck (prosty)
 router.get('/health', async (_req,res)=>{
   let mongo='disabled';
