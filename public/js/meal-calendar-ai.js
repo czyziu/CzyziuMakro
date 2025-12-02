@@ -192,88 +192,102 @@ const listEl =
 
   // ───────── delegowany handler: „Zapytaj AI” ─────────
   // ───────── delegowany handler: „Zapytaj AI” ─────────
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   document.addEventListener('click', async (ev) => {
-    const t = ev.target;
-    if (!(t instanceof HTMLElement) || !t.matches('[data-ai-suggest]')) return;
+  const t = ev.target;
+  if (!(t instanceof HTMLElement) || !t.matches('[data-ai-suggest]')) return;
 
-    const panel = t.closest('[data-ai-panel]');
-    const card  = t.closest('.day-card');
-    if (!panel || !card) return;
+  const panel = t.closest('[data-ai-panel]');
+  const card  = t.closest('.day-card');
+  if (!panel || !card) return;
 
-    const inner = panel.closest('.add-panel-inner');
-    if (inner && inner.hidden) inner.hidden = false;
+  const inner = panel.closest('.add-panel-inner');
+  if (inner && inner.hidden) inner.hidden = false;
 
-    let resultsBox = panel.querySelector('[data-ai-results]');
-    let recipeBox  = panel.querySelector('[data-ai-recipe]');
-    if (!resultsBox) {
-      resultsBox = document.createElement('div');
-      resultsBox.setAttribute('data-ai-results','');
-      panel.appendChild(resultsBox);
-    }
-    if (!recipeBox)  {
-      recipeBox  = document.createElement('div');
-      recipeBox.setAttribute('data-ai-recipe','');
-      panel.appendChild(recipeBox);
-    }
+  let resultsBox = panel.querySelector('[data-ai-results]');
+  let recipeBox  = panel.querySelector('[data-ai-recipe]');
+  if (!resultsBox) {
+    resultsBox = document.createElement('div');
+    resultsBox.setAttribute('data-ai-results', '');
+    panel.appendChild(resultsBox);
+  }
+  if (!recipeBox) {
+    recipeBox = document.createElement('div');
+    recipeBox.setAttribute('data-ai-recipe', '');
+    panel.appendChild(recipeBox);
+  }
 
-    // slot, w którym jesteśmy (Śniadanie / Obiad / itd.)
-    panel.dataset.slot = resolveSlotName(panel);
-    const slotName = panel.dataset.slot || 'DOWOLNY';
+  // ustalamy slot, w którym jesteśmy (Śniadanie / Obiad / itp.)
+  panel.dataset.slot = resolveSlotName(panel);
+  const slotName = panel.dataset.slot || 'DOWOLNY';
 
-    const promptEl = panel.querySelector('[name="ai-prompt"]');
-    const prompt   = (promptEl?.value || '').trim();
-    if (!prompt) {
-      resultsBox.innerHTML = '<div class="muted-note">Napisz, czego potrzebujesz.</div>';
-      promptEl?.focus();
+  const promptEl = panel.querySelector('[name="ai-prompt"]');
+  const prompt   = (promptEl?.value || '').trim();
+  if (!prompt) {
+    resultsBox.innerHTML = '<div class="muted-note">Napisz, czego potrzebujesz.</div>';
+    promptEl?.focus();
+    return;
+  }
+
+  const targets = window.USER_TARGETS || {};
+
+  resultsBox.textContent = 'Myślę…';
+  recipeBox.innerHTML = '';
+
+  try {
+    const debugOn = (localStorage.getItem('AI_DEBUG') === '1');
+    const qs = new URLSearchParams();
+    if (debugOn) qs.set('debug', '1');
+
+    const url = '/api/ai/meal' + (qs.toString() ? `?${qs}` : '');
+
+    const body = {
+      prompt,
+      slot: slotName,
+      targets,
+    };
+
+    const data = await fetch(url, {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify(body),
+    }).then((r) => r.json());
+
+    resultsBox.textContent = '';
+
+    if (!data || data.ok === false || (!data.variant && !data.variantCalibrated && !data.variants)) {
+      resultsBox.innerHTML =
+        `<div class="muted-note">${esc(data?.message || 'Brak propozycji dla tego posiłku.')}</div>`;
       return;
     }
 
-    const targets = window.USER_TARGETS || {};
-
-    resultsBox.textContent = 'Myślę…';
-    recipeBox.innerHTML = '';
-
-    try {
-      const debugOn = (localStorage.getItem('AI_DEBUG') === '1');
-      const qs = new URLSearchParams();
-      if (debugOn) qs.set('debug','1');
-
-      const url = '/api/ai/meal' + (qs.toString() ? `?${qs}` : '');
-
-      const body = {
-        prompt,
-        slot: slotName,
-        // jeżeli użytkownik NIE poda makro w samym prompcie,
-        // backend weźmie proporcje 20/15/30/15/20 z dziennych targetów
-        targets,
-      };
-
-      const data = await fetch(url, {
-        method: 'POST',
-        headers: authHeaders(),
-        body: JSON.stringify(body),
-      }).then((r) => r.json());
-
-      resultsBox.textContent = '';
-
-      if (!data || data.ok === false || (!data.variant && !data.variantCalibrated)) {
-        resultsBox.innerHTML =
-          `<div class="muted-note">${esc(data?.message || 'Brak propozycji dla tego posiłku.')}</div>`;
-        return;
-      }
-
-      renderPlanResult({
-        box: recipeBox || panel,
-        data,
-        dayISO: card?.dataset?.date,
-        dayCard: card,
-        slotName,
-      });
-    } catch (e) {
-      resultsBox.innerHTML =
-        `<div class="muted-note">Błąd zapytania: ${esc(e.message || e)}</div>`;
-    }
-  });
+    renderPlanResult({
+      box: recipeBox || panel,
+      data,
+      dayISO: card?.dataset?.date,
+      dayCard: card,
+      slotName,
+    });
+  } catch (e) {
+    resultsBox.innerHTML =
+      `<div class="muted-note">Błąd zapytania: ${esc(e.message || e)}</div>`;
+  }
+});
 
 
 
@@ -292,19 +306,95 @@ const listEl =
 
 
 
-  
-  // ───────── render przepisu / wariantów ─────────
+
+// ───────── render przepisu / wariantów ─────────
   function renderPlanResult({ box, data, dayISO, dayCard, slotName }) {
-    const variants = Array.isArray(data.variants) && data.variants.length
-      ? data.variants
-      : [{
-          mealId: data.mealId, title: data.title, scale: 1,
-          totals: data.totals, timeMinutes: data.timeMinutes, servings: data.servings,
-          ingredients: data.ingredients||[], steps: data.steps||[]
-        }];
+    const slot = (slotName || data.slot || 'DOWOLNY').trim();
+
+    const calVariant  = data && data.variantCalibrated;
+    const baseVariant = (data && data.variant) || data;
+
+    // --- wybór posiłku ---
+    let meals = [];
+    if (calVariant && Array.isArray(calVariant.meals)) {
+      meals = calVariant.meals;
+    } else if (baseVariant && Array.isArray(baseVariant.meals)) {
+      meals = baseVariant.meals;
+    } else if (Array.isArray(baseVariant?.items)) {
+      meals = [{
+        slot,
+        items: baseVariant.items,
+        totals: baseVariant.totals || data.targetTotals || {},
+      }];
+    }
+
+    let meal = meals.find((m) => (m.slot || '').trim() === slot);
+    if (!meal && meals.length) meal = meals[0];
+
+    if (!meal) {
+      box.innerHTML =
+        '<div class="muted-note">Brak propozycji dla tego posiłku.</div>';
+      return;
+    }
+
+    // --- makra ---
+    const tSrc =
+      meal.totals ||
+      (calVariant && calVariant.totalsDbAfter) ||
+      (baseVariant && baseVariant.totals) ||
+      data.targetTotals ||
+      {};
+    const totals = {
+      kcal: Number(tSrc.kcal || tSrc.calories || 0),
+      p:    Number(tSrc.p || tSrc.protein || 0),
+      f:    Number(tSrc.f || tSrc.fat || 0),
+      c:    Number(tSrc.c || tSrc.carbs || 0),
+    };
+
+    // --- produkty ---
+    const ingredients = [];
+    if (Array.isArray(meal.items)) {
+      for (const it of meal.items) {
+        const gramsRaw = Number(
+          it.grams ?? it.aiGrams ?? it.amount ?? it.weight ?? 0
+        );
+        if (!gramsRaw) continue;
+
+        const pid =
+          it.dbProductId ||
+          it.productId ||
+          it.id ||
+          null;
+
+        ingredients.push({
+          productId: pid,
+          grams: Math.round(gramsRaw),
+          name: it.dbName || it.aiName || it.name || 'Produkt',
+        });
+      }
+    }
+
+    if (!ingredients.length) {
+      box.innerHTML =
+        '<div class="muted-note">AI nie zwróciło konkretnych produktów dla tego posiłku.</div>';
+      return;
+    }
+
+    const title =
+      (baseVariant && baseVariant.title) ||
+      (typeof data.title === 'string' && data.title) ||
+      slot;
+
+    const variants = [
+      {
+        title,
+        totals,
+        ingredients,
+      },
+    ];
 
     let idx = Number(box._variantIndex ?? data.selectedIndex ?? 0);
-    if (!Number.isFinite(idx) || idx<0) idx = 0;
+    if (!Number.isFinite(idx) || idx < 0) idx = 0;
     if (idx >= variants.length) idx = 0;
     box._variantIndex = idx;
 
@@ -317,7 +407,8 @@ const listEl =
       if (tag === 'textarea' || tag === 'input') return;
       if (ev.key === 'ArrowLeft') {
         ev.preventDefault();
-        box._variantIndex = (box._variantIndex - 1 + variants.length) % variants.length;
+        box._variantIndex =
+          (box._variantIndex - 1 + variants.length) % variants.length;
         paint();
       } else if (ev.key === 'ArrowRight') {
         ev.preventDefault();
@@ -326,31 +417,54 @@ const listEl =
       }
     };
 
-    function paint(){
+    function dayISOFromArg(dayISOArg, card) {
+      if (dayISOArg) return dayISOArg;
+      const c = card || box.closest('.day-card');
+      return c?.dataset?.date || '';
+    }
+
+    function paint() {
       const v = variants[box._variantIndex];
       const h = [];
 
       // Pasek tytuł + strzałki
       h.push(`
         <div class="ai-head">
-          <button type="button" class="ai-nav" data-ai-prev aria-label="Poprzedni" ${hasCarousel?'':'disabled'}>‹</button>
+          <button type="button" class="ai-nav" data-ai-prev aria-label="Poprzedni" ${
+            hasCarousel ? '' : 'disabled'
+          }>‹</button>
           <h4 class="ai-title">${esc(v.title || 'Propozycja')}</h4>
-          <button type="button" class="ai-nav" data-ai-next aria-label="Następny" ${hasCarousel?'':'disabled'}>›</button>
+          <button type="button" class="ai-nav" data-ai-next aria-label="Następny" ${
+            hasCarousel ? '' : 'disabled'
+          }>›</button>
         </div>
         <div class="ai-sub">
-          ${esc(fmtTotalsStr(v.totals || {kcal:0,p:0,f:0,c:0}))}
-          ${hasCarousel ? `<span class="ai-count">(${box._variantIndex+1}/${variants.length})</span>` : ``}
+          ${esc(fmtTotalsStr(v.totals || { kcal: 0, p: 0, f: 0, c: 0 }))}
+          ${
+            hasCarousel
+              ? `<span class="ai-count">(${box._variantIndex + 1}/${variants.length})</span>`
+              : ``
+          }
         </div>
       `);
 
       // Produkty + „Dodaj wszystko”
       h.push('<div class="recipe-ingredients one-col">');
-      for (const it of (v.ingredients||[])) {
+      for (const it of v.ingredients || []) {
+        const canAdd = !!it.productId;
         h.push(`
           <div class="ing">
-            <span class="name">${esc(it.name||('Produkt '+it.productId))}</span>
+            <span class="name">${esc(
+              it.name || (it.productId ? 'Produkt ' + it.productId : 'Produkt')
+            )}</span>
             <span class="grams">${fmt(it.grams)} g</span>
-            <button type="button" class="btn-small" data-add-ing data-id="${esc(it.productId)}" data-g="${fmt(it.grams)}">Dodaj</button>
+            ${
+              canAdd
+                ? `<button type="button" class="btn-small" data-add-ing data-id="${esc(
+                    it.productId
+                  )}" data-g="${fmt(it.grams)}">Dodaj</button>`
+                : `<button type="button" class="btn-small" disabled title="Brak dopasowanego produktu w bazie">Brak w bazie</button>`
+            }
           </div>
         `);
       }
@@ -365,14 +479,15 @@ const listEl =
 
       // fokus + klawiatura
       box.tabIndex = 0;
-      box.removeEventListener('keydown', box._keyHandler || (()=>{}));
+      box.removeEventListener('keydown', box._keyHandler || (() => {}));
       box._keyHandler = keyHandler;
       box.addEventListener('keydown', keyHandler);
 
       // Strzałki (tylko gdy >1)
       if (hasCarousel) {
         box.querySelector('[data-ai-prev]')?.addEventListener('click', () => {
-          box._variantIndex = (box._variantIndex - 1 + variants.length) % variants.length;
+          box._variantIndex =
+            (box._variantIndex - 1 + variants.length) % variants.length;
           paint();
         });
         box.querySelector('[data-ai-next]')?.addEventListener('click', () => {
@@ -381,37 +496,30 @@ const listEl =
         });
       }
 
+      const dayISOFinal = dayISOFromArg(dayISO, dayCard);
+      const slotForAdd = slot;
+
       // Dodaj pojedynczy
-      box.querySelectorAll('[data-add-ing]')?.forEach(btn => {
+      box.querySelectorAll('[data-add-ing]')?.forEach((btn) => {
         btn.addEventListener('click', async () => {
           const productId = btn.getAttribute('data-id');
           const grams = Number(btn.getAttribute('data-g'));
           try {
-            await apiAddItem(dayISO, slotName, { productId, grams });
-// === AI: pełny render po dodaniu (pojedynczy) ===
-btn.textContent = 'Dodano ✓';
-btn.disabled = true;
+            await apiAddItem(dayISOFinal, slotForAdd, { productId, grams });
 
-try {
-  const core = await import('./meal-calendar-core.js');
-  await (core.render?.() ?? window.CalendarCore?.render?.());
-} catch {
-  await window.CalendarCore?.render?.();
-}
+            btn.textContent = 'Dodano ✓';
+            btn.disabled = true;
 
-// Otwórz z powrotem ten sam dzień i ten sam posiłek
-setTimeout(() => {
-  const day = document.querySelector(`.day-card[data-date="${dayISO}"]`);
-  const det = day?.querySelector(`details.meal[data-slot="${CSS.escape(slotName)}"]`);
-  det?.setAttribute('open', 'true');
-}, 0);
-// === /AI ===
+            // odśwież slot z serwera, jeśli jest endpoint
+            await refreshSlotFromServer(dayISOFinal, slotForAdd, dayCard);
 
-
-
-            notifyItemsAdded({ dayISO, slotName, items:[{ productId, grams }] });
+            notifyItemsAdded({
+              dayISO: dayISOFinal,
+              slotName: slotForAdd,
+              items: [{ productId, grams }],
+            });
           } catch (e) {
-            alert('Nie udało się dodać: ' + (e.message||e));
+            alert('Nie udało się dodać: ' + (e.message || e));
           }
         });
       });
@@ -423,39 +531,53 @@ setTimeout(() => {
         btnAll.disabled = true;
         btnAll.textContent = 'Dodaję…';
         try {
-          for (const it of (vNow.ingredients||[])) {
-            await apiAddItem(dayISO, slotName, { productId: it.productId, grams: Number(it.grams)||0 });
-            const b = box.querySelector(`[data-add-ing][data-id="${CSS.escape(it.productId)}"]`);
-            if (b) { b.textContent = 'Dodano ✓'; b.disabled = true; }
+          const addedItems = [];
+          for (const it of vNow.ingredients || []) {
+            const pid = it.productId;
+            const grams = Number(it.grams) || 0;
+            if (!pid || !grams) continue;
+            await apiAddItem(dayISOFinal, slotForAdd, { productId: pid, grams });
+            addedItems.push({ productId: pid, grams });
+            const b = box.querySelector(
+              `[data-add-ing][data-id="${CSS.escape(pid)}"]`
+            );
+            if (b) {
+              b.textContent = 'Dodano ✓';
+              b.disabled = true;
+            }
           }
-// === AI: pełny render po dodaniu wszystkiego ===
-btnAll.textContent = 'Dodano wszystko ✓';
 
-try {
-  const core = await import('./meal-calendar-core.js');
-  await (core.render?.() ?? window.CalendarCore?.render?.());
-} catch {
-  await window.CalendarCore?.render?.();
-}
+          if (addedItems.length) {
+            notifyItemsAdded({
+              dayISO: dayISOFinal,
+              slotName: slotForAdd,
+              items: addedItems,
+            });
+          }
 
-// Otwórz z powrotem ten sam dzień i ten sam posiłek
-setTimeout(() => {
-  const day = document.querySelector(`.day-card[data-date="${dayISO}"]`);
-  const det = day?.querySelector(`details.meal[data-slot="${CSS.escape(slotName)}"]`);
-  det?.setAttribute('open', 'true');
-}, 0);
-// === /AI ===
+          await refreshSlotFromServer(dayISOFinal, slotForAdd, dayCard);
 
+          btnAll.textContent = addedItems.length
+            ? 'Dodano wszystko ✓'
+            : 'Brak produktów do dodania';
         } catch (e) {
           btnAll.disabled = false;
           btnAll.textContent = 'Dodaj wszystko';
-          alert('Nie udało się dodać wszystkiego: ' + (e.message||e));
+          alert('Nie udało się dodać wszystkiego: ' + (e.message || e));
         }
       });
     }
 
     paint();
   }
+
+
+
+
+
+
+
+
 
   // ───────── init ─────────
   window.addEventListener('DOMContentLoaded', () => {

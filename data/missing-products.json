@@ -19,15 +19,15 @@
   },
   {
     "name": "Brokuły",
-    "count": 17,
+    "count": 18,
     "firstSeenAt": "2025-12-02T21:53:25.659Z",
-    "lastSeenAt": "2025-12-02T22:34:06.576Z"
+    "lastSeenAt": "2025-12-02T23:35:52.861Z"
   },
   {
     "name": "Pomidory",
-    "count": 23,
+    "count": 24,
     "firstSeenAt": "2025-12-02T21:53:52.913Z",
-    "lastSeenAt": "2025-12-02T22:31:36.433Z"
+    "lastSeenAt": "2025-12-02T23:10:37.407Z"
   },
   {
     "name": "Seler naciowy",
@@ -43,9 +43,9 @@
   },
   {
     "name": "Banany",
-    "count": 55,
+    "count": 60,
     "firstSeenAt": "2025-12-02T21:54:22.907Z",
-    "lastSeenAt": "2025-12-02T22:51:15.303Z"
+    "lastSeenAt": "2025-12-02T23:37:09.276Z"
   },
   {
     "name": "Granola",
@@ -109,9 +109,9 @@
   },
   {
     "name": "Jabłka",
-    "count": 3,
+    "count": 4,
     "firstSeenAt": "2025-12-02T22:01:09.284Z",
-    "lastSeenAt": "2025-12-02T22:12:09.572Z"
+    "lastSeenAt": "2025-12-02T23:10:37.425Z"
   },
   {
     "name": "Zioła prowansalskie, pomidory",
@@ -358,5 +358,23 @@
     "count": 1,
     "firstSeenAt": "2025-12-02T22:51:15.324Z",
     "lastSeenAt": "2025-12-02T22:51:15.324Z"
+  },
+  {
+    "name": "pełnoziarniste płatki owsiane",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T23:22:12.958Z",
+    "lastSeenAt": "2025-12-02T23:22:41.055Z"
+  },
+  {
+    "name": "miód (opcjonalnie)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T23:22:41.066Z",
+    "lastSeenAt": "2025-12-02T23:22:41.066Z"
+  },
+  {
+    "name": "Jajko",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T23:34:40.278Z",
+    "lastSeenAt": "2025-12-02T23:35:52.867Z"
   }
 ]
