@@ -328,6 +328,61 @@
     `;
   }
 
+    // ===== Budowa wariantu na podstawie odpowiedzi z /api/ai/day-plan/test =====
+  function buildVariantFromCalibration(originalVariant, calibration) {
+    const baseTitle = originalVariant?.title || "Jadłospis dnia";
+    const vCal = calibration.variantCalibrated || {};
+    const displayMeals = Array.isArray(calibration.displayMeals) ? calibration.displayMeals : [];
+
+    const totalsAfter = normalizeTotals(
+      calibration.totalsDbAfter ||
+      vCal.totalsDbAfter ||
+      vCal.totals ||
+      originalVariant.totals
+    );
+
+    // slot -> items z displayMeals (mają już nasz label)
+    const displayBySlot = new Map();
+    for (const m of displayMeals) {
+      const slot = (m.slot || "").trim();
+      if (!slot) continue;
+      displayBySlot.set(slot, Array.isArray(m.items) ? m.items : []);
+    }
+
+    const meals = Array.isArray(vCal.meals)
+      ? vCal.meals.map((m) => {
+          const slot = (m.slot || "").trim() || "Posiłek";
+          const mt = normalizeTotals(m.totals);
+
+        const dispItems = displayBySlot.get(slot) || [];
+
+        // Używamy tylko nazwy z bazy + gramów po kalibracji
+        const items = dispItems.map((di) => ({
+          // nazwa: najpierw z bazy, jakby nie było to z AI, a na końcu awaryjnie label
+          name: di.dbName || di.aiName || di.label || "Produkt",
+          // gramatura: już PO kalibracji
+          grams: di.grams,
+        }));
+
+
+          return {
+            slot,
+            totals: mt,
+            items,
+          };
+        })
+      : [];
+
+    return {
+      title: baseTitle + " (po kalibracji)",
+      description:
+        "",
+      totals: totalsAfter,
+      meals,
+    };
+  }
+
+
   // ===== Helpers dla okienka wyboru zakresu =====
 function buildDateRangeArray(fromIso, toIso) {
   const out = [];
@@ -548,22 +603,35 @@ function buildDateRangeArray(fromIso, toIso) {
   }
 
   // ===== Zapis wybranego wariantu do kalendarza =====
+// ===== Zapis wybranego wariantu do kalendarza =====
+  // ===== Zapis wybranego wariantu do kalendarza (TYLKO skalibrowany) =====
   async function applyVariantToCalendar(variantIndex) {
     const statusEl = document.getElementById("aiStatus");
-    const store = window.LAST_AI_DAY_PLAN;
+    const store = window.LAST_AI_DAY_PLAN || {};
 
-    if (!store || !Array.isArray(store.variants) || !store.variants[variantIndex]) {
+    // pełne dane z kalibracji z backendu (mają dbProductId + grams)
+    const calResp = store.calibration;
+    const calVariant = calResp && calResp.variantCalibrated;
+
+    // wymagamy skalibrowanego jadłospisu – inaczej NIC nie zapisujemy do bazy
+    if (!calVariant || !Array.isArray(calVariant.meals)) {
       if (statusEl) {
-        statusEl.textContent = "Najpierw wygeneruj jadłospis.";
+        statusEl.textContent =
+          "Najpierw wygeneruj i skalibruj jadłospis – brak danych do zapisania.";
       }
       return;
     }
 
-    const rawVariant = store.variants[variantIndex];
-    const variant = normalizeVariant(rawVariant); // ma .meals[].slot / items[]
+    // wariant do UI (ładne etykiety po kalibracji)
+    const uiVariantRaw =
+      store.calibrated ||
+      calVariant ||
+      (store.variants && store.variants[variantIndex]);
 
-    // 1) Pokaż modal, nie prompt()
-    const selection = await openAiPlanModal(variant);
+    const uiVariant = normalizeVariant(uiVariantRaw);
+
+    // 1) Pokaż modal (zakres dat + które posiłki)
+    const selection = await openAiPlanModal(uiVariant);
     if (!selection) {
       // anulowane
       return;
@@ -577,72 +645,32 @@ function buildDateRangeArray(fromIso, toIso) {
     }
 
     if (statusEl) {
-      statusEl.textContent = "Porównuję składniki z bazą produktów…";
+      statusEl.textContent = "Zapisuję skalibrowany jadłospis do kalendarza…";
     }
 
-    // 2) Porównanie z bazą produktów
-    let resolveResp;
-    try {
-      resolveResp = await apiJson("/api/ai/resolve-day-plan", {
-        method: "POST",
-        body: JSON.stringify({ variant }),
-      });
-    } catch (e) {
-      if (statusEl) statusEl.textContent = "";
-      alert("Błąd porównywania z bazą produktów: " + (e.message || e));
-      return;
-    }
-
-    const mapped = Array.isArray(resolveResp?.mapped) ? resolveResp.mapped : [];
-
-    // nazwa składnika -> productId (auto-dopasowane)
-    const autoMap = new Map();
-    for (const m of mapped) {
-      const sugg =
-        (m.suggestions || []).find((s) => s && s.isAuto && s.productId);
-      if (sugg) {
-        autoMap.set(m.name, sugg.productId);
-      }
-    }
-
-    if (!autoMap.size) {
-      if (statusEl) {
-        statusEl.textContent =
-          "AI nie znalazło żadnych automatycznych dopasowań do Twoich produktów.";
-      }
-      return;
-    }
-
-    if (statusEl) {
-      statusEl.textContent = "Zapisuję jadłospis do kalendarza…";
-    }
-
-    // 3) Zapis do kalendarza dla wybranych dni i posiłków
     let added = 0;
 
+    // 2) Zapis do kalendarza: jedziemy po wariancie z serwera (slot, dbProductId, grams)
     for (const date of dates) {
-      for (const meal of variant.meals || []) {
+      for (const meal of calVariant.meals || []) {
         const slot = (meal.slot || "").trim();
         if (!slot || !slotsToUse.includes(slot)) continue;
 
         for (const it of meal.items || []) {
-          const name = it && it.name ? String(it.name).trim() : "";
-          const grams = Number(it && it.grams) || 0;
-          if (!name || !grams) continue;
-
-          const pid = autoMap.get(name);
-          if (!pid) continue;
+          const pid = it && it.dbProductId;
+          const grams = Math.round(toNum(it && it.grams, 0));
+          if (!pid || !grams) continue;
 
           try {
             await apiJson(
-              `/api/calendar/${encodeURIComponent(
-                date
-              )}/${encodeURIComponent(slot)}/items`,
+              `/api/calendar/${encodeURIComponent(date)}/${encodeURIComponent(
+                slot
+              )}/items`,
               {
                 method: "POST",
                 body: JSON.stringify({
                   productId: pid,
-                  grams: Math.round(grams),
+                  grams,
                 }),
               }
             );
@@ -657,18 +685,20 @@ function buildDateRangeArray(fromIso, toIso) {
     if (statusEl) {
       if (added > 0) {
         if (dates.length === 1) {
-          statusEl.textContent = `Dodano ${added} pozycji do kalendarza na dzień ${dates[0]}.`;
+          statusEl.textContent = `Dodano ${added} pozycji (skalibrowany jadłospis) na dzień ${dates[0]}.`;
         } else {
-          statusEl.textContent = `Dodano ${added} pozycji do kalendarza w zakresie ${dates[0]} – ${
+          statusEl.textContent = `Dodano ${added} pozycji (skalibrowany jadłospis) w zakresie ${dates[0]} – ${
             dates[dates.length - 1]
           }.`;
         }
       } else {
         statusEl.textContent =
-          "Nie udało się dodać żadnej pozycji (brak dopasowań lub błędy zapisu).";
+          "Nie udało się dodać żadnej pozycji ze skalibrowanego jadłospisu (brak produktów lub błędy zapisu).";
       }
     }
   }
+
+
 
 
   // ===== Obsługa formularza =====
@@ -748,14 +778,66 @@ function buildDateRangeArray(fromIso, toIso) {
         rawVariants = [data];
       }
 
+      // zapamiętujemy „surową” odpowiedź – przydaje się do debugowania
       window.LAST_AI_DAY_PLAN = { raw: data, variants: rawVariants };
 
-      const html = rawVariants
-        .map((v, idx) => buildVariantHTML(v, idx, rawVariants.length, targets))
-        .join("");
+      // UWAGA: nic tutaj NIE wyświetlamy.
+      // Czekamy na wynik kalibracji – dopiero skalibrowany jadłospis
+      // zostanie pokazany niżej w bloku z /api/ai/day-plan/test.
 
-      variantsBox.innerHTML =
-        html || '<p class="small-note muted">Brak propozycji.</p>';
+      // --- PO zapisie surowego jadłospisu od AI odpalamy kalibrację ---
+      (async () => {
+        try {
+          if (statusEl) {
+            statusEl.textContent = "Kalibruję jadłospis względem Twojej bazy produktów…";
+          }
+
+          // bierzemy pierwszy wariant (i tak generujesz 1)
+          const baseVariant = rawVariants[0];
+
+          const calResp = await apiJson("/api/ai/day-plan/test", {
+            method: "POST",
+            body: JSON.stringify({ variant: baseVariant }),
+          });
+
+          if (
+            calResp &&
+            calResp.ok !== false &&
+            calResp.variantCalibrated &&
+            Array.isArray(calResp.displayMeals)
+          ) {
+            const calibratedVariant = buildVariantFromCalibration(baseVariant, calResp);
+
+            // zapisz też do pamięci – przyda się później np. do dodawania do kalendarza
+            window.LAST_AI_DAY_PLAN.calibrated  = calibratedVariant;
+            window.LAST_AI_DAY_PLAN.calibration = calResp; // <-- NOWE!
+
+            const calHtml = buildVariantHTML(calibratedVariant, 0, 1, targets);
+            if (variantsBox) {
+              variantsBox.innerHTML =
+                calHtml ||
+                '<p class="small-note muted">Brak propozycji po kalibracji.</p>';
+            }
+            if (statusEl) {
+              statusEl.textContent =
+                "";
+            }
+          } else {
+
+            if (statusEl) {
+              statusEl.textContent =
+                "Wygenerowano jadłospis, ale nie udało się go skalibrować (brak dopasowań produktów).";
+            }
+          }
+        } catch (err) {
+          console.warn("Błąd kalibracji jadłospisu:", err);
+          if (statusEl) {
+            statusEl.textContent =
+              "Wygenerowano jadłospis, ale nie udało się go skalibrować z bazą produktów.";
+          }
+        }
+      })();
+
     } catch (e) {
       statusEl.textContent = "";
       variantsBox.innerHTML = `<p class="small-note muted">Błąd zapytania: ${esc(

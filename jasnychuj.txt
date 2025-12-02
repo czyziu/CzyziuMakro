@@ -33,3 +33,9 @@ dania jako calosc(zakladka) wraz z opisem przygotowania
 
 
 ai w kalendarzu proporcje 20/15/30/15/20
+
+
+
+
+na bazie plikow ai-resolve-plan, ai-test, ai-day-plan stworz plik ai.js ktory trafi do routes, asystent ma brac pod uwage prompt, jesli uzytkownik nie poda makro dla dania ma wziac kcal20/15/30/15/20 ( od sniadania do kolacji) tak samo z bialkiem, weglami, tluszczami ma brac pod uwage taka proporcje dla danego posilku (w zaleznosci w ktorym polu jest to wywolywane, ma generowac danie (tak jak w jadlospisie) a pozniej kalibrowac do tego, jesli sie da uzyc tego samego pliku to to zrob, potem jak klikne dodaj ma dodac to co jest juz skalibrowane
+

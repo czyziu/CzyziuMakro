@@ -191,6 +191,7 @@ const listEl =
   }
 
   // ───────── delegowany handler: „Zapytaj AI” ─────────
+  // ───────── delegowany handler: „Zapytaj AI” ─────────
   document.addEventListener('click', async (ev) => {
     const t = ev.target;
     if (!(t instanceof HTMLElement) || !t.matches('[data-ai-suggest]')) return;
@@ -204,15 +205,29 @@ const listEl =
 
     let resultsBox = panel.querySelector('[data-ai-results]');
     let recipeBox  = panel.querySelector('[data-ai-recipe]');
-    if (!resultsBox) { resultsBox = document.createElement('div'); resultsBox.setAttribute('data-ai-results',''); panel.appendChild(resultsBox); }
-    if (!recipeBox)  { recipeBox  = document.createElement('div'); recipeBox.setAttribute('data-ai-recipe','');  panel.appendChild(recipeBox); }
+    if (!resultsBox) {
+      resultsBox = document.createElement('div');
+      resultsBox.setAttribute('data-ai-results','');
+      panel.appendChild(resultsBox);
+    }
+    if (!recipeBox)  {
+      recipeBox  = document.createElement('div');
+      recipeBox.setAttribute('data-ai-recipe','');
+      panel.appendChild(recipeBox);
+    }
 
+    // slot, w którym jesteśmy (Śniadanie / Obiad / itd.)
     panel.dataset.slot = resolveSlotName(panel);
-    const promptEl   = panel.querySelector('[name="ai-prompt"]');
-    const prompt = (promptEl?.value || '').trim();
-    if (!prompt) { resultsBox.innerHTML = '<div class="muted-note">Napisz, czego potrzebujesz.</div>'; promptEl?.focus(); return; }
+    const slotName = panel.dataset.slot || 'DOWOLNY';
 
-    const dayTotalsNow = sumDayFromDOM(card);
+    const promptEl = panel.querySelector('[name="ai-prompt"]');
+    const prompt   = (promptEl?.value || '').trim();
+    if (!prompt) {
+      resultsBox.innerHTML = '<div class="muted-note">Napisz, czego potrzebujesz.</div>';
+      promptEl?.focus();
+      return;
+    }
+
     const targets = window.USER_TARGETS || {};
 
     resultsBox.textContent = 'Myślę…';
@@ -220,21 +235,30 @@ const listEl =
 
     try {
       const debugOn = (localStorage.getItem('AI_DEBUG') === '1');
-      const topN = Number(localStorage.getItem('AI_TOPN') || 3);
       const qs = new URLSearchParams();
       if (debugOn) qs.set('debug','1');
-      if (topN) qs.set('n', String(topN));   // jeżeli backend wspiera TOP-N
-      const url = '/api/ai/plan' + (qs.toString() ? `?${qs}` : '');
+
+      const url = '/api/ai/meal' + (qs.toString() ? `?${qs}` : '');
+
+      const body = {
+        prompt,
+        slot: slotName,
+        // jeżeli użytkownik NIE poda makro w samym prompcie,
+        // backend weźmie proporcje 20/15/30/15/20 z dziennych targetów
+        targets,
+      };
 
       const data = await fetch(url, {
         method: 'POST',
         headers: authHeaders(),
-        body: JSON.stringify({ prompt, dayTotals: dayTotalsNow, targets })
-      }).then(r => r.json());
+        body: JSON.stringify(body),
+      }).then((r) => r.json());
 
       resultsBox.textContent = '';
-      if (!data || (!Array.isArray(data.ingredients) && !Array.isArray(data.variants))) {
-        resultsBox.innerHTML = `<div class="muted-note">${esc(data?.message || 'Brak propozycji.')}</div>`;
+
+      if (!data || data.ok === false || (!data.variant && !data.variantCalibrated)) {
+        resultsBox.innerHTML =
+          `<div class="muted-note">${esc(data?.message || 'Brak propozycji dla tego posiłku.')}</div>`;
         return;
       }
 
@@ -243,13 +267,32 @@ const listEl =
         data,
         dayISO: card?.dataset?.date,
         dayCard: card,
-        slotName: panel.dataset.slot
+        slotName,
       });
     } catch (e) {
-      resultsBox.innerHTML = `<div class="muted-note">Błąd zapytania: ${esc(e.message || e)}</div>`;
+      resultsBox.innerHTML =
+        `<div class="muted-note">Błąd zapytania: ${esc(e.message || e)}</div>`;
     }
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   // ───────── render przepisu / wariantów ─────────
   function renderPlanResult({ box, data, dayISO, dayCard, slotName }) {
     const variants = Array.isArray(data.variants) && data.variants.length

@@ -1,0 +1,362 @@
+[
+  {
+    "name": "Banana",
+    "count": 4,
+    "firstSeenAt": "2025-12-02T21:32:47.550Z",
+    "lastSeenAt": "2025-12-02T22:28:36.036Z"
+  },
+  {
+    "name": "Pomidorki koktajlowe",
+    "count": 4,
+    "firstSeenAt": "2025-12-02T21:35:11.275Z",
+    "lastSeenAt": "2025-12-02T22:34:06.567Z"
+  },
+  {
+    "name": "Jagody",
+    "count": 35,
+    "firstSeenAt": "2025-12-02T21:53:25.637Z",
+    "lastSeenAt": "2025-12-02T22:34:06.554Z"
+  },
+  {
+    "name": "Brokuły",
+    "count": 17,
+    "firstSeenAt": "2025-12-02T21:53:25.659Z",
+    "lastSeenAt": "2025-12-02T22:34:06.576Z"
+  },
+  {
+    "name": "Pomidory",
+    "count": 23,
+    "firstSeenAt": "2025-12-02T21:53:52.913Z",
+    "lastSeenAt": "2025-12-02T22:31:36.433Z"
+  },
+  {
+    "name": "Seler naciowy",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T21:53:52.943Z",
+    "lastSeenAt": "2025-12-02T21:53:52.943Z"
+  },
+  {
+    "name": "Zielona fasolka szparagowa",
+    "count": 3,
+    "firstSeenAt": "2025-12-02T21:53:52.952Z",
+    "lastSeenAt": "2025-12-02T22:25:39.589Z"
+  },
+  {
+    "name": "Banany",
+    "count": 55,
+    "firstSeenAt": "2025-12-02T21:54:22.907Z",
+    "lastSeenAt": "2025-12-02T22:51:15.303Z"
+  },
+  {
+    "name": "Granola",
+    "count": 45,
+    "firstSeenAt": "2025-12-02T21:54:22.916Z",
+    "lastSeenAt": "2025-12-02T22:33:05.997Z"
+  },
+  {
+    "name": "Awokado",
+    "count": 15,
+    "firstSeenAt": "2025-12-02T21:54:22.935Z",
+    "lastSeenAt": "2025-12-02T22:33:36.379Z"
+  },
+  {
+    "name": "Muffiny owsiane (bezglutenowe)",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T21:55:22.753Z",
+    "lastSeenAt": "2025-12-02T21:56:39.636Z"
+  },
+  {
+    "name": "Brokuły gotowane na parze",
+    "count": 17,
+    "firstSeenAt": "2025-12-02T21:57:09.307Z",
+    "lastSeenAt": "2025-12-02T22:32:06.313Z"
+  },
+  {
+    "name": "Batony pełnoziarniste",
+    "count": 4,
+    "firstSeenAt": "2025-12-02T21:57:40.010Z",
+    "lastSeenAt": "2025-12-02T22:32:06.305Z"
+  },
+  {
+    "name": "Muffiny owsiane (przepis na 6 szt)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T21:58:39.548Z",
+    "lastSeenAt": "2025-12-02T21:58:39.548Z"
+  },
+  {
+    "name": "Muffiny owsiane z jagodami",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T21:59:39.607Z",
+    "lastSeenAt": "2025-12-02T22:23:10.301Z"
+  },
+  {
+    "name": "Oliwę z oliwek",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:00:09.075Z",
+    "lastSeenAt": "2025-12-02T22:00:09.075Z"
+  },
+  {
+    "name": "Szaszemata",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:00:39.743Z",
+    "lastSeenAt": "2025-12-02T22:00:39.743Z"
+  },
+  {
+    "name": "Musy owocowe",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:01:09.266Z",
+    "lastSeenAt": "2025-12-02T22:01:09.266Z"
+  },
+  {
+    "name": "Jabłka",
+    "count": 3,
+    "firstSeenAt": "2025-12-02T22:01:09.284Z",
+    "lastSeenAt": "2025-12-02T22:12:09.572Z"
+  },
+  {
+    "name": "Zioła prowansalskie, pomidory",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:01:09.293Z",
+    "lastSeenAt": "2025-12-02T22:01:09.293Z"
+  },
+  {
+    "name": "Wąsałki",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:03:09.162Z",
+    "lastSeenAt": "2025-12-02T22:33:06.010Z"
+  },
+  {
+    "name": "Brokuły (na parze)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:04:39.746Z",
+    "lastSeenAt": "2025-12-02T22:04:39.746Z"
+  },
+  {
+    "name": "Koktajl białkowy",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:05:09.375Z",
+    "lastSeenAt": "2025-12-02T22:15:40.017Z"
+  },
+  {
+    "name": "Zielony fasolka",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:05:09.384Z",
+    "lastSeenAt": "2025-12-02T22:05:09.384Z"
+  },
+  {
+    "name": "Brokuły (ugotowane na parze)",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:05:40.194Z",
+    "lastSeenAt": "2025-12-02T22:05:41.394Z"
+  },
+  {
+    "name": "Jagody (borówki, maliny)",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:06:10.505Z",
+    "lastSeenAt": "2025-12-02T22:17:40.252Z"
+  },
+  {
+    "name": "Granola (mała porcja)",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:06:10.514Z",
+    "lastSeenAt": "2025-12-02T22:13:10.659Z"
+  },
+  {
+    "name": "Oliwki",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:06:10.531Z",
+    "lastSeenAt": "2025-12-02T22:06:10.531Z"
+  },
+  {
+    "name": "Muesli",
+    "count": 3,
+    "firstSeenAt": "2025-12-02T22:06:39.691Z",
+    "lastSeenAt": "2025-12-02T22:20:10.089Z"
+  },
+  {
+    "name": "Zielona fasola",
+    "count": 5,
+    "firstSeenAt": "2025-12-02T22:07:39.792Z",
+    "lastSeenAt": "2025-12-02T22:23:10.331Z"
+  },
+  {
+    "name": "Mentolowe jogurty greckie",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:09:44.351Z",
+    "lastSeenAt": "2025-12-02T22:09:44.351Z"
+  },
+  {
+    "name": "Brokuły gotowane",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:10:10.727Z",
+    "lastSeenAt": "2025-12-02T22:10:11.926Z"
+  },
+  {
+    "name": "Brokuły (ugotowane)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:11:09.802Z",
+    "lastSeenAt": "2025-12-02T22:11:09.802Z"
+  },
+  {
+    "name": "Zielona fasolka",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:12:09.581Z",
+    "lastSeenAt": "2025-12-02T22:18:10.427Z"
+  },
+  {
+    "name": "Włoszczyzna",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:12:39.616Z",
+    "lastSeenAt": "2025-12-02T22:12:39.616Z"
+  },
+  {
+    "name": "Jagody (150g)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:13:10.670Z",
+    "lastSeenAt": "2025-12-02T22:13:10.670Z"
+  },
+  {
+    "name": "Sałatka z pomidorów i ogórków",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:13:10.679Z",
+    "lastSeenAt": "2025-12-02T22:14:39.879Z"
+  },
+  {
+    "name": "Brzanki kaszy gryczanej",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:13:39.808Z",
+    "lastSeenAt": "2025-12-02T22:24:40.268Z"
+  },
+  {
+    "name": "Zielony pieczarek",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:14:09.651Z",
+    "lastSeenAt": "2025-12-02T22:14:09.651Z"
+  },
+  {
+    "name": "Zioła prowansalskie, cytryna",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:14:39.876Z",
+    "lastSeenAt": "2025-12-02T22:14:39.876Z"
+  },
+  {
+    "name": "Pomidory koktajlowe",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:17:40.271Z",
+    "lastSeenAt": "2025-12-02T22:30:36.086Z"
+  },
+  {
+    "name": "Kukurydza (świeża)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:17:40.274Z",
+    "lastSeenAt": "2025-12-02T22:17:40.274Z"
+  },
+  {
+    "name": "Pomidki",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:18:10.421Z",
+    "lastSeenAt": "2025-12-02T22:18:10.421Z"
+  },
+  {
+    "name": "Miód",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:19:40.266Z",
+    "lastSeenAt": "2025-12-02T22:26:40.049Z"
+  },
+  {
+    "name": "Quinoa",
+    "count": 3,
+    "firstSeenAt": "2025-12-02T22:20:10.106Z",
+    "lastSeenAt": "2025-12-02T22:51:15.320Z"
+  },
+  {
+    "name": "Chrupkie płatki owsiane",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:21:10.055Z",
+    "lastSeenAt": "2025-12-02T22:31:36.416Z"
+  },
+  {
+    "name": "Zioła prowansalskie",
+    "count": 3,
+    "firstSeenAt": "2025-12-02T22:21:40.758Z",
+    "lastSeenAt": "2025-12-02T22:25:09.935Z"
+  },
+  {
+    "name": "Jagody (borówki)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:25:09.909Z",
+    "lastSeenAt": "2025-12-02T22:25:09.909Z"
+  },
+  {
+    "name": "Brzanki ryżu brązowego",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:25:09.922Z",
+    "lastSeenAt": "2025-12-02T22:25:09.922Z"
+  },
+  {
+    "name": "Muffiny owsiane (bez glutenu)",
+    "count": 2,
+    "firstSeenAt": "2025-12-02T22:26:09.904Z",
+    "lastSeenAt": "2025-12-02T22:30:06.054Z"
+  },
+  {
+    "name": "Banane",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:26:40.046Z",
+    "lastSeenAt": "2025-12-02T22:26:40.046Z"
+  },
+  {
+    "name": "Muffiny owsiane (przepis własny)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:29:05.957Z",
+    "lastSeenAt": "2025-12-02T22:29:05.957Z"
+  },
+  {
+    "name": "Batony owsiane",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:29:05.971Z",
+    "lastSeenAt": "2025-12-02T22:29:05.971Z"
+  },
+  {
+    "name": "Szaszemiot",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:29:05.978Z",
+    "lastSeenAt": "2025-12-02T22:29:05.978Z"
+  },
+  {
+    "name": "Chrupaki ryżowe",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:29:35.899Z",
+    "lastSeenAt": "2025-12-02T22:29:35.899Z"
+  },
+  {
+    "name": "Szaszemiotka",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:29:35.914Z",
+    "lastSeenAt": "2025-12-02T22:29:35.914Z"
+  },
+  {
+    "name": "Brokuły (gotowane na parze)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:30:06.071Z",
+    "lastSeenAt": "2025-12-02T22:30:06.071Z"
+  },
+  {
+    "name": "Szaszłyki z papryką i cebulą",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:32:36.128Z",
+    "lastSeenAt": "2025-12-02T22:32:36.128Z"
+  },
+  {
+    "name": "Muffiny owsiane (domowe)",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:33:36.356Z",
+    "lastSeenAt": "2025-12-02T22:33:36.356Z"
+  },
+  {
+    "name": "Cieczenie z puszki",
+    "count": 1,
+    "firstSeenAt": "2025-12-02T22:51:15.324Z",
+    "lastSeenAt": "2025-12-02T22:51:15.324Z"
+  }
+]

@@ -15,8 +15,12 @@ const productsRoutes = require('./routes/products');
 const fridgeRoutes = require('./routes/fridge');
 const mealsRoutes = require('./routes/meals');
 const calendarRoutes = require('./routes/calendar');
-const aiRoutes = require('./routes/ai'); // istniejące SHIELD /plan
+
+//const aiRoutes = require('./routes/ai'); // istniejące SHIELD /plan
 const aiDayPlanRoutes = require('./routes/ai-day-plan'); // ← NOWY ROUTE
+const aiTestRoutes = require('./routes/ai-test'); // ← ROUTE do kalibracji
+const aiResolveRoutes = require('./routes/ai-resolve-day-plan'); 
+
 const contactRoutes = require('./routes/contact');
 const shoppingRoutes = require('./routes/shopping');
 const passwordRoutes = require('./routes/password');
@@ -97,8 +101,11 @@ app.use('/api/meals', mealsRoutes);
 app.use('/api/calendar', calendarRoutes);
 
 // oba routery pod tym samym prefixem, z tym samym limiterem
-app.use('/api/ai', aiLimiter, aiRoutes);       // /api/ai/plan, /api/ai/health
-app.use('/api/ai', aiLimiter, aiDayPlanRoutes); // /api/ai/day-plan
+//app.use('/api/ai', aiLimiter, aiRoutes);                 // /api/ai/plan, /api/ai/health
+app.use('/api/ai/day-plan', aiLimiter, aiDayPlanRoutes); // /api/ai/day-plan
+app.use('/api/ai', aiLimiter, aiTestRoutes);    // /api/ai/day-plan/test
+app.use('/api/ai', aiLimiter, aiResolveRoutes); // /api/ai/resolve-day-plan  
+
 
 app.use('/api/contact', contactRoutes);
 app.use('/api/shopping', shoppingRoutes);

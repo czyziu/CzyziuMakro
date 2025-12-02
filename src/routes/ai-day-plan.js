@@ -1,324 +1,289 @@
 // src/routes/ai-day-plan.js
-// Endpoint: POST /api/ai/day-plan
-// Generuje cały dzień (5 posiłków) na podstawie makr i prompta użytkownika,
-// używając tylko Ollama. Wersja "bardziej restrykcyjna" względem makro.
+// Generowanie jadłospisu dnia (5 posiłków) za pomocą Ollama.
 
 const express = require('express');
 const router = express.Router();
 
-// Polyfill fetch dla Node < 18
-if (typeof fetch !== 'function') {
-  global.fetch = (...args) =>
-    import('node-fetch').then(({ default: f }) => f(...args));
-}
-
-const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'qwen2.5:14b-instruct';
-
-
-
-// 5 slotów – jak w UI/kalendarzu
+// 5 posiłków z podziałem 20/15/30/15/20
 const MEAL_SLOTS = [
-  { id: 'breakfast',        label: 'Śniadanie' },
-  { id: 'second_breakfast', label: 'II śniadanie' },
-  { id: 'lunch',            label: 'Obiad' },
-  { id: 'snack',            label: 'Podwieczorek' },
-  { id: 'dinner',           label: 'Kolacja' },
+  { slot: 'Śniadanie',    share: 0.20 },
+  { slot: 'II śniadanie', share: 0.15 },
+  { slot: 'Obiad',        share: 0.30 },
+  { slot: 'Podwieczorek', share: 0.15 },
+  { slot: 'Kolacja',      share: 0.20 },
 ];
 
-// Domyślny podział kcal: 20 / 15 / 30 / 15 / 20
-const DEFAULT_RATIOS = [0.20, 0.15, 0.30, 0.15, 0.20];
-
-// Domyślna tolerancja makro w skali dnia: ±5% (można nadpisać w body.macroTolerancePct)
-const DEFAULT_MACRO_TOL_PCT = Number(process.env.AI_DAYPLAN_MACRO_TOL || '0.05');
-
+// ===== Helpers =====
 function toNum(v, def = 0) {
-  const n = Number(v);
+  const n = parseFloat(String(v ?? '').replace(',', '.'));
   return Number.isFinite(n) ? n : def;
 }
 
-// Rozbicie dziennych makr na posiłki wg procentów kcal
-function splitTargetsIntoMeals(dailyTargets, ratios) {
-  const r =
-    Array.isArray(ratios) && ratios.length === MEAL_SLOTS.length
-      ? ratios
-      : DEFAULT_RATIOS;
-
-  const sum = r.reduce((acc, x) => acc + Math.max(0, x), 0) || 1;
-  const shares = r.map((x) => Math.max(0, x) / sum); // przeskalowane do 1.0
-
-  const out = [];
-  let accK = 0,
-    accP = 0,
-    accF = 0,
-    accC = 0;
-
-  MEAL_SLOTS.forEach((slot, idx) => {
-    let kcal, protein, fat, carbs;
-    if (idx < MEAL_SLOTS.length - 1) {
-      kcal = Math.round(dailyTargets.kcal * shares[idx]);
-      protein = Math.round(dailyTargets.protein * shares[idx]);
-      fat = Math.round(dailyTargets.fat * shares[idx]);
-      carbs = Math.round(dailyTargets.carbs * shares[idx]);
-
-      accK += kcal;
-      accP += protein;
-      accF += fat;
-      accC += carbs;
-    } else {
-      // ostatni posiłek łapie różnice zaokrągleń
-      kcal = dailyTargets.kcal - accK;
-      protein = dailyTargets.protein - accP;
-      fat = dailyTargets.fat - accF;
-      carbs = dailyTargets.carbs - accC;
-    }
-
-    out.push({
-      id: slot.id,
-      label: slot.label,
-      targets: { kcal, protein, fat, carbs },
-    });
-  });
-
-  return out;
+function normalizeTargets(raw) {
+  if (!raw || typeof raw !== 'object') {
+    return { kcal: 0, protein: 0, fat: 0, carbs: 0 };
+  }
+  return {
+    kcal: toNum(raw.kcal ?? raw.calories ?? raw.k, 0),
+    protein: toNum(raw.protein ?? raw.p ?? raw.b, 0),
+    fat: toNum(raw.fat ?? raw.f ?? raw.t, 0),
+    carbs: toNum(raw.carbs ?? raw.c ?? raw.w, 0),
+  };
 }
 
-// Proste wywołanie Ollamy z format: 'json'
-async function callOllamaJson({ systemPrompt, userPrompt, temperature = 0.25 }) {
-  const res = await fetch(`${OLLAMA_HOST}/api/chat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: OLLAMA_MODEL,
-      stream: false,
-      format: 'json',
-      options: { temperature },
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-    }),
-  });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    throw new Error(`Ollama HTTP ${res.status}: ${text.slice(0, 400)}`);
-  }
-
-  const data = await res.json();
-  const msg = data?.message;
-  const content = msg?.content ?? data?.content;
-
-  if (!content) {
-    throw new Error('Pusta odpowiedź od modelu (brak content).');
-  }
-
-  if (typeof content === 'object') {
-    // przy format: 'json' Ollama często zwraca już obiekt
-    return content;
-  }
-
-  try {
-    return JSON.parse(content);
-  } catch (_err) {
-    throw new Error('Nie udało się sparsować JSON z odpowiedzi AI.');
-  }
+function calcMealTargets(dayKcal) {
+  const total = toNum(dayKcal, 0);
+  return MEAL_SLOTS.map((m) => ({
+    slot: m.slot,
+    share: m.share,
+    targetKcal: Math.round(total * m.share),
+  }));
 }
 
-// POST /api/ai/day-plan
-router.post('/day-plan', async (req, res) => {
-  try {
-    const body = req.body || {};
-    const prompt = typeof body.prompt === 'string' ? body.prompt.trim() : '';
-    const t = body.targets || {};
+// Normalizacja posiłków z odpowiedzi AI do formatu, który rozumie frontend
+function normalizeMeals(rawMeals = []) {
+  return rawMeals.map((m) => {
+    const slot = (m.slot || m.name || '').trim() || 'Posiłek';
 
-    const dailyTargets = {
-      kcal: Math.round(toNum(t.kcal ?? t.calories ?? t.energy, 0)),
-      protein: Math.round(toNum(t.protein ?? t.B ?? t.bialko, 0)),
-      fat: Math.round(toNum(t.fat ?? t.T ?? t.tluszcz, 0)),
-      carbs: Math.round(toNum(t.carbs ?? t.W ?? t.wegle, 0)),
+    const rawItems = Array.isArray(m.items)
+      ? m.items
+      : Array.isArray(m.products)
+      ? m.products
+      : [];
+
+    const items = rawItems.map((p) => ({
+      name: String(p.name || p.product || 'Produkt').trim(),
+      grams: toNum(p.grams ?? p.amount ?? p.weight, 0),
+    }));
+
+    const t = m.totals || {};
+    const kcal =
+      toNum(m.kcal, NaN) ||
+      toNum(t.kcal, 0);
+    const protein =
+      toNum(m.protein, NaN) ||
+      toNum(t.protein, 0);
+    const fat =
+      toNum(m.fat, NaN) ||
+      toNum(t.fat, 0);
+    const carbs =
+      toNum(m.carbs, NaN) ||
+      toNum(t.carbs, 0);
+
+    return {
+      slot,
+      items,
+      totals: {
+        kcal: toNum(kcal, 0),
+        protein: toNum(protein, 0),
+        fat: toNum(fat, 0),
+        carbs: toNum(carbs, 0),
+      },
     };
+  });
+}
 
-    if (!dailyTargets.kcal) {
-      return res
-        .status(400)
-        .json({ message: 'Brak dziennego celu kcal w polu "targets.kcal".' });
+// ===== Główny endpoint: POST /api/ai/day-plan =====
+// Uwaga: w app.js będziemy montować router pod "/api/ai/day-plan"
+// więc tutaj ścieżka to tylko "/".
+router.post('/', async (req, res) => {
+  try {
+    const { prompt, targets: rawTargets } = req.body || {};
+
+    if (!prompt || typeof prompt !== 'string') {
+      return res.status(400).json({ message: 'Brak promptu dla AI.' });
     }
 
-    const nRaw =
-      body.n ?? body.count ?? req.query.n ?? req.query.count ?? req.query.top;
-    const nVariants = Math.max(1, Math.min(5, Number(nRaw) || 3));
+    // kaloryka „z bazy” – przychodzi z frontu w body.targets
+const targets = normalizeTargets(rawTargets);
+const dayKcal = targets.kcal || 0;
 
-    const ratios =
-      Array.isArray(body.ratios) && body.ratios.length === MEAL_SLOTS.length
-        ? body.ratios.map((x) => Number(x) || 0)
-        : DEFAULT_RATIOS;
+const mealTargets = calcMealTargets(dayKcal);
 
-    // tolerancja makro w skali dnia (np. 0.05 => ±5%)
-    const tolRaw =
-      body.macroTolerancePct ??
-      body.macroTolerance ??
-      body.macro_tol ??
-      DEFAULT_MACRO_TOL_PCT;
-    const macroTolPct = Math.min(
-      0.25,
-      Math.max(0.01, Number(tolRaw) || DEFAULT_MACRO_TOL_PCT)
-    );
+// NOWE:
+const macroTargets = {
+  protein: targets.protein || 0,
+  fat: targets.fat || 0,
+  carbs: targets.carbs || 0,
+};
 
-    const mealsTargets = splitTargetsIntoMeals(dailyTargets, ratios);
+const mealMacroTargets = MEAL_SLOTS.map((m) => ({
+  slot: m.slot,
+  share: m.share,
+  protein: Math.round(macroTargets.protein * m.share),
+  fat: Math.round(macroTargets.fat * m.share),
+  carbs: Math.round(macroTargets.carbs * m.share),
+}));
 
-    const tolPctStr = (macroTolPct * 100).toFixed(1).replace(/\.0$/, '');
-    const kcalMin = Math.round(dailyTargets.kcal * (1 - macroTolPct));
-    const kcalMax = Math.round(dailyTargets.kcal * (1 + macroTolPct));
+const host = process.env.OLLAMA_HOST.replace(/\/+$/, '');
+const model = process.env.OLLAMA_MODEL;
 
 const systemPrompt = `
-Jesteś asystentem dietetycznym dla osoby trenującej siłowo.
-Pracujesz w języku polskim.
-Odpowiadasz TYLKO w poprawnym JSON-ie (bez komentarzy, bez tekstu poza JSON).
+Jesteś asystentem dietetycznym.
 
-Priorytet #1: TRZYMAĆ SIĘ MAKR (WSZYSTKICH, NIE TYLKO BIAŁKA).
-- W skali całego dnia suma makr ma być możliwie najbliżej celu:
-  * kalorie w zakresie ok. ±${tolPctStr}% (preferuj delikatny niedobór niż nadwyżkę),
-  * białko możliwie blisko wartości docelowej,
-  * tłuszcz i węglowodany również możliwie blisko celu.
-- Bardzo ważne: nie rób dni kulturystycznych z absurdalnie dużą ilością białka i prawie bez węglowodanów.
-  * białko nie powinno przekraczać mniej więcej 110–120% wartości docelowej,
-  * węglowodany nie powinny być mocno zaniżone – przy braku informacji o diecie keto
-    unikaj planów, gdzie węglowodanów jest wyraźnie mniej niż w celu.
-  * jeżeli w celach dziennych węglowodanów jest więcej niż białka,
-    to w gotowym jadłospisie węglowodanów też musi być co najmniej tyle samo co białka.
-- Posiłki mogą się minimalnie różnić od docelowych makr, ale suma dnia jest kluczowa.
+Masz przygotować JEDEN plan dnia z 5 posiłkami:
+- Śniadanie
+- II śniadanie
+- Obiad
+- Podwieczorek
+- Kolacja
 
+Dzienna kaloryczność powinna być zbliżona do ~${Math.round(
+  dayKcal || 0
+)} kcal (jeśli 0, to ułóż rozsądny dzień np. 2000–2500 kcal).
 
-Priorytet #2: SZANOWAĆ OPIS UŻYTKOWNIKA I PORY DNIA.
-- Tekst użytkownika opisuje preferencje smakowe, produkty, pory dnia itp.
-- MUSISZ je uwzględnić przy rozdzielaniu dań na konkretne posiłki.
-- Przykład:
-  * "rano coś na słono, a wieczorem coś na słodko" oznacza:
-    - Śniadanie i II śniadanie → wyraźnie wytrawne/słone
-      (np. jajka, sery, wędliny, pieczywo, wytrawne warzywa; unikaj typowych deserów,
-       słodkich płatków, dużej ilości owoców).
-    - Podwieczorek i Kolacja → wyraźnie na słodko
-      (np. owsianka na słodko, naleśniki na słodko, deser białkowy, owoce z nabiałem, pudding białkowy).
-- Podobne sformułowania ("lekko na noc", "więcej węgli po treningu" itp.)
-  traktuj jako twarde wymagania przy przypisywaniu tego, co jemy, do pór dnia.
+Dzienny cel makroskładników (z bazy użytkownika, wartości orientacyjne):
+- białko: ~${Math.round(macroTargets.protein || 0)} g
+- tłuszcz: ~${Math.round(macroTargets.fat || 0)} g
+- węglowodany: ~${Math.round(macroTargets.carbs || 0)} g
 
-Dodatkowe zasady techniczne:
-- Dokładnie 5 posiłków: Śniadanie, II śniadanie, Obiad, Podwieczorek, Kolacja.
-- Każdy posiłek ma listę składników z gramaturą w gramach.
-- Używaj normalnych produktów spożywczych dostępnych w Polsce.
-- Unikaj skrajnie dziwnych kombinacji.
-`;
-
-
-
-const userPrompt = `
-Opis / ograniczenia od użytkownika (to są ważne wymagania smakowe i dotyczące pór dnia):
-"${prompt || 'brak dodatkowych preferencji'}"
-
-Jeżeli w opisie pojawia się coś w stylu:
-- "rano coś na słono, a wieczorem coś na słodko"
-to znaczy, że:
-- Śniadanie i II śniadanie mają być wyraźnie wytrawne/słone,
-- Podwieczorek i Kolacja mają być wyraźnie na słodko.
-Takie wymagania traktuj jako obowiązkowe przy tworzeniu jadłospisu.
-
-Dzienne cele użytkownika (w przybliżeniu):
-- kcal: ${dailyTargets.kcal}
-- białko: ${dailyTargets.protein} g
-- tłuszcz: ${dailyTargets.fat} g
-- węglowodany: ${dailyTargets.carbs} g
-
-Wymagania dotyczące MAKR:
-- Suma kalorii w skali dnia powinna być możliwie blisko ${dailyTargets.kcal} kcal,
-  najlepiej w zakresie ${kcalMin}–${kcalMax} kcal (±${tolPctStr}%).
-- Suma białka, tłuszczu i węglowodanów w skali dnia powinna być jak najbliżej celu.
-- Jeżeli musisz się pomylić:
-  * wybieraj LEKKĄ niedowagę kaloryczną zamiast dużej nadwyżki,
-  * nie zaniżaj mocno białka (powinno być raczej lekko powyżej niż poniżej celu,
-    ale nie więcej niż ok. 110–120% celu),
-  * NIE zaniżaj mocno węglowodanów – przy braku wyraźnej informacji o diecie keto
-    unikaj planów, w których węglowodanów jest znacznie mniej niż w celu
-    albo mniej niż białka, jeśli w celach jest odwrotnie.
-
-
-Podziel dzień na 5 posiłków:
-${mealsTargets
+Podział kalorii na posiłki:
+${mealTargets
   .map(
     (m) =>
-      `- ${m.label}: około ${m.targets.kcal} kcal, B ~${m.targets.protein} g, T ~${m.targets.fat} g, W ~${m.targets.carbs} g`
+      `- ${m.slot}: około ${m.targetKcal} kcal (${Math.round(m.share * 100)}%)`
   )
   .join('\n')}
 
-ZADANIE:
-Przygotuj ${nVariants} różne warianty jadłospisu na jeden dzień (pole "variants").
-Każdy wariant musi mieć dokładnie 5 POSIŁKÓW, po jednym na każdy slot.
+Podział makroskładników na posiłki (wartości docelowe, możesz zaokrąglać):
+${mealMacroTargets
+  .map(
+    (m) =>
+      `- ${m.slot}: ~${m.protein} g białka, ~${m.fat} g tłuszczu, ~${m.carbs} g węglowodanów`
+  )
+  .join('\n')}
 
-Struktura odpowiedzi (JSON):
+Zwróć **WYŁĄCZNIE** poprawny JSON, bez dodatkowego tekstu, bez markdown.
+Struktura JSON:
 
 {
-  "variants": [
+  "title": "krótki tytuł dnia",
+  "description": "1-2 zdania opisu po polsku",
+  "meals": [
     {
-      "title": "krótki tytuł, np. 'Przykładowy dzień z owsianką i kurczakiem'",
-      "summary": "1–2 zdania podsumowania dnia",
-      "meals": [
-        {
-          "slot": "Śniadanie" | "II śniadanie" | "Obiad" | "Podwieczorek" | "Kolacja",
-          "title": "nazwa posiłku, np. 'Owsianka z malinami'",
-          "description": "krótki opis przygotowania (1–2 zdania)",
-          "totals": {
-            "kcal": 0,
-            "protein": 0,
-            "fat": 0,
-            "carbs": 0
-          },
-          "items": [
-            { "name": "produkt 1", "grams": 0 },
-            { "name": "produkt 2", "grams": 0 }
-          ]
-        }
+      "slot": "Śniadanie",
+      "totals": {
+        "kcal": liczba,
+        "protein": liczba,
+        "fat": liczba,
+        "carbs": liczba
+      },
+      "items": [
+        { "name": "nazwa produktu", "grams": liczba },
+        ...
       ]
-    }
+    },
+    ...
   ]
 }
 
-WAŻNE:
-- W obrębie jednego wariantu NIE powtarzaj dokładnie tych samych posiłków.
-- Suma makr w skali dnia powinna być jak najbliżej celu (kalorie w podanym zakresie).
-- Odpowiedź musi być WYŁĄCZNIE JSON-em zgodnym ze strukturą powyżej.
-`;
+Ważne:
+- ZAWSZE zwróć dokładnie 5 posiłków, po jednym dla każdego slotu.
+- Używaj dokładnie takich nazw slotów: "Śniadanie", "II śniadanie", "Obiad", "Podwieczorek", "Kolacja".
+- W polu "totals" wpisuj makroskładniki i kalorie posiłku tak,
+  aby suma po wszystkich posiłkach była możliwie bliska dziennym celom kcal/białko/tłuszcz/węgle.
+- "items" to lista prostych produktów (np. "jajka", "ryż", "pierś z kurczaka", "oliwa z oliwek", "jogurt naturalny") z gramaturą.
+- Nazwy i opis po polsku.
+- Zadbaj, aby kaloryczność i makroskładniki posiłków były możliwie bliskie wskazanemu podziałowi procentowemu.
+`.trim();
 
 
+    const userContext = `
+Dodatkowy opis / preferencje od użytkownika:
+${prompt}
+    `.trim();
 
-
-    const raw = await callOllamaJson({
-      systemPrompt,
-      userPrompt,
-      temperature: 0.2, // bardziej "techniczne", mniej fantazji
+    // Uwaga: Node 22 ma globalny fetch, nie trzeba node-fetch
+    const ollamaResp = await fetch(`${host}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model,
+        stream: false,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userContext },
+        ],
+      }),
     });
 
-    const variants = Array.isArray(raw?.variants) ? raw.variants : [];
-
-    if (!variants.length) {
-      return res.status(422).json({
-        message: 'AI nie zwróciło żadnych wariantów jadłospisu.',
-        raw,
+    if (!ollamaResp.ok) {
+      const text = await ollamaResp.text().catch(() => '');
+      return res.status(502).json({
+        message: 'Błąd wywołania Ollama.',
+        status: ollamaResp.status,
+        detail: text.slice(0, 500),
       });
     }
 
-    return res.json({
-      dailyTargets,
-      macroTolerancePct: macroTolPct,
-      mealsTargets,
-      variants: variants.slice(0, nVariants),
-    });
+    const ollamaJson = await ollamaResp.json();
+    const content = (ollamaJson?.message?.content || '').trim();
+
+    if (!content) {
+      return res.status(502).json({
+        message: 'Pusta odpowiedź od modelu.',
+      });
+    }
+
+    let parsed;
+    try {
+      // na wszelki wypadek wycinamy od pierwszej { do ostatniej }
+      let txt = content;
+      const first = txt.indexOf('{');
+      const last = txt.lastIndexOf('}');
+      if (first !== -1 && last !== -1) {
+        txt = txt.slice(first, last + 1);
+      }
+      parsed = JSON.parse(txt);
+    } catch (e) {
+      return res.status(502).json({
+        message: 'Odpowiedź AI nie jest poprawnym JSON-em.',
+        raw: content.slice(0, 1000),
+      });
+    }
+
+    const rawMeals = Array.isArray(parsed.meals) ? parsed.meals : [];
+    const meals = normalizeMeals(rawMeals);
+
+    const totals = meals.reduce(
+      (acc, m) => {
+        acc.kcal += m.totals.kcal;
+        acc.protein += m.totals.protein;
+        acc.fat += m.totals.fat;
+        acc.carbs += m.totals.carbs;
+        return acc;
+      },
+      { kcal: 0, protein: 0, fat: 0, carbs: 0 }
+    );
+
+    const variant = {
+      title: parsed.title || 'Jadłospis dnia',
+      description: parsed.description || '',
+      totals,
+      meals,
+    };
+
+    const debug = req.query.debug === '1';
+
+    if (debug) {
+      return res.json({
+        variants: [variant],
+        debug: {
+          mealTargets,
+          targets,
+          ollamaRaw: ollamaJson,
+        },
+      });
+    }
+
+    return res.json({ variants: [variant] });
   } catch (err) {
-    console.error('[AI day-plan] error:', err);
+    console.error('AI day-plan error:', err);
     return res.status(500).json({
-      message: 'Błąd asystenta AI (day-plan).',
-      error: err.message || String(err),
+      message: 'Nie udało się wygenerować jadłospisu dnia.',
     });
   }
 });
 
+// KLUCZOWE: eksportujemy **czysty router** (funkcję), nie obiekt.
 module.exports = router;

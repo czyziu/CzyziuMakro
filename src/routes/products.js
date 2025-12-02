@@ -91,17 +91,36 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
+// // GET /api/products/:id
+// router.get('/:id', auth, async (req, res) => {
+//   try {
+//     const doc = await Product.findOne({ _id: req.params.id, userId: req.user.id }).lean();
+//     if (!doc) return res.status(404).json({ message: 'Nie znaleziono' });
+//     res.json(doc);
+//   } catch (e) {
+//     console.error('GET /products/:id error', e);
+//     res.status(500).json({ message: 'Błąd serwera' });
+//   }
+// });
+
 // GET /api/products/:id
 router.get('/:id', auth, async (req, res) => {
   try {
-    const doc = await Product.findOne({ _id: req.params.id, userId: req.user.id }).lean();
-    if (!doc) return res.status(404).json({ message: 'Nie znaleziono' });
+    // 👇 BEZ userId – widzimy produkt po samym _id (dowolnego użytkownika)
+    const doc = await Product.findById(req.params.id).lean();
+
+    if (!doc) {
+      return res.status(404).json({ message: 'Nie znaleziono' });
+    }
+
     res.json(doc);
   } catch (e) {
     console.error('GET /products/:id error', e);
     res.status(500).json({ message: 'Błąd serwera' });
   }
 });
+
+
 
 // PATCH /api/products/:id
 router.patch('/:id', auth, async (req, res) => {
