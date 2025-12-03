@@ -1,0 +1,2033 @@
+[{
+  "_id": {
+    "$oid": "690fa385a4176e858c8139c3"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "name": "piers z kurczaka",
+  "category": "Inne",
+  "portions": 1,
+  "postWeight": 22,
+  "recipe": "",
+  "isPublic": false,
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 11
+    },
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 11
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:09:41.455Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:09:41.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117a"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Owsianka z bananem i borówkami",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112d"
+      },
+      "grams": 50
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117b"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Jajecznica z pomidorem i masłem",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1134"
+      },
+      "grams": 5
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117c"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Kanapki z szynką i ogórkiem",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1123"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 80
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117d"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Skyr z malinami i migdałami",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1155"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112f"
+      },
+      "grams": 15
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117e"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Jogurt grecki z truskawkami i chia",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1154"
+      },
+      "grams": 170
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112e"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1132"
+      },
+      "grams": 10
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c117f"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Twaróg z bananem i orzechami",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111f"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1130"
+      },
+      "grams": 15
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1180"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Omlet ze szpinakiem i fetą",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1129"
+      },
+      "grams": 70
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115a"
+      },
+      "grams": 30
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1134"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1181"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Tosty z cheddarem i pomidorem",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1142"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 25
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1134"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1182"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Bułka z mozzarellą i pomidorem",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1164"
+      },
+      "grams": 70
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1159"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1183"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Kefir z bananem i płatkami",
+  "category": "Śniadanie",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1156"
+      },
+      "grams": 250
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 40
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1184"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Kurczak z ryżem i brokułem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 10
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1185"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Indyk z makaronem i pomidorem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1116"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1124"
+      },
+      "grams": 85
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1186"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Łosoś z ryżem i szpinakiem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1119"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 75
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1129"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1187"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Wołowina z kaszą i warzywami",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1118"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115e"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1166"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1167"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1188"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Karkówka z ziemniakami i jarmużem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c114a"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 300
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116a"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 10
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1189"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Dorsz z batatami i brokułem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 250
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 180
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118a"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Gulasz z indyka z kaszą jaglaną",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1148"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115f"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116d"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1126"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118b"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Makaron z tuńczykiem i oliwą",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1124"
+      },
+      "grams": 90
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111b"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 10
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116e"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118c"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Sałatka z kurczakiem i komosą",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 160
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1160"
+      },
+      "grams": 70
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1166"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118d"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Tortilla z wołowiną i warzywami",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1163"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1166"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116d"
+      },
+      "grams": 80
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118e"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Krewetki z kuskusem i cukinią",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1150"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1161"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1167"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c118f"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Halibut z ryżem i kalafiorem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1151"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 75
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1169"
+      },
+      "grams": 200
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1190"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Śledź z ziemniakami i cebulą",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1152"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 300
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116d"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1135"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1191"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Gęsina z kaszą i burakiem",
+  "category": "Obiad",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c114d"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115e"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116f"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1192"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Twaróg z pomidorem i ogórkiem",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111f"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1193"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Caprese na kolację",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1159"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 10
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1194"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Kanapki z salami i goudą",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1162"
+      },
+      "grams": 100
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1177"
+      },
+      "grams": 50
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1158"
+      },
+      "grams": 30
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1195"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Jajka na twardo z pieczywem",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1162"
+      },
+      "grams": 90
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1134"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1196"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Tortilla z jajkiem i szynką",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1163"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 20
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1197"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Makrela z chlebem i masłem",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111c"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1123"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1134"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1198"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Ricotta z pomidorem i oliwą",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115b"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c1199"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Sałatka grecka light",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115a"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119a"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Tuńczyk z waflami ryżowymi",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111b"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1139"
+      },
+      "grams": 20
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 5
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119b"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Dorsz z warzywami na kolację",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 160
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1129"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1166"
+      },
+      "grams": 80
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119c"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Karkówka z sałatką",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c114a"
+      },
+      "grams": 160
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 8
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119d"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Parówki z pieczywem i ketchupem",
+  "category": "Kolacja",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1141"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1142"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1145"
+      },
+      "grams": 20
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119e"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Jogurt naturalny z borówkami",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 180
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112d"
+      },
+      "grams": 80
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c119f"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Baton proteinowy i banan",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113a"
+      },
+      "grams": 60
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a0"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Migdały i jabłko",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112f"
+      },
+      "grams": 25
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 180
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a1"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Skyr z truskawkami",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1155"
+      },
+      "grams": 170
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112e"
+      },
+      "grams": 100
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a2"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Roladki szynka + cheddar",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 70
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 25
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a3"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Ricotta na waflu z malinami",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115b"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1139"
+      },
+      "grams": 14
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 70
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a4"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Kefir i banan",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1156"
+      },
+      "grams": 250
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a5"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Orzeszki ziemne i gruszka",
+  "category": "Przekąska",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1131"
+      },
+      "grams": 25
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 170
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a6"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Czekolada z truskawkami",
+  "category": "Deser",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1137"
+      },
+      "grams": 30
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112e"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a7"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Maliny z ricottą",
+  "category": "Deser",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 120
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115b"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a8"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Jogurt grecki z mango",
+  "category": "Deser",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1154"
+      },
+      "grams": 170
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1173"
+      },
+      "grams": 150
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11a9"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Ananas z jogurtem naturalnym",
+  "category": "Deser",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1174"
+      },
+      "grams": 200
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 150
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11aa"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Koktajl mleczny bananowy",
+  "category": "Inne",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 250
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 120
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "690fa582ca48fee6733c11ab"
+  },
+  "userId": {
+    "$oid": "000000000000000000000000"
+  },
+  "name": "Sałatka owocowa mix",
+  "category": "Inne",
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 150
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 150
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:16:29.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:17:30.372Z"
+  },
+  "isPublic": true
+},
+{
+  "_id": {
+    "$oid": "692f5dcbd12f13161b28f4b4"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "name": "cos tamn",
+  "category": "Obiad",
+  "portions": 1,
+  "postWeight": 2333,
+  "recipe": "dgd",
+  "isPublic": true,
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1129"
+      },
+      "grams": 222
+    },
+    {
+      "productId": {
+        "$oid": "692f429f192b11c76f3b9429"
+      },
+      "grams": 233
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:44:43.124Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T21:44:43.124Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692f6d1a9791349a05e5648f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "name": "tostyyyy",
+  "category": "Śniadanie",
+  "portions": 1,
+  "postWeight": 400,
+  "recipe": "",
+  "isPublic": true,
+  "ingredients": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1142"
+      },
+      "grams": 333
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 22
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 22
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:50:02.855Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:50:02.855Z"
+  },
+  "__v": 0
+}]

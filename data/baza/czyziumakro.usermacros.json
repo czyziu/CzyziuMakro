@@ -1,0 +1,968 @@
+[{
+  "_id": {
+    "$oid": "68f4acc1c0dddab0b45a6fab"
+  },
+  "userId": {
+    "$oid": "68f4acb1c0dddab0b45a6fa8"
+  },
+  "kcal": 1826,
+  "carbs_g": 400,
+  "fat_g": 0,
+  "protein_g": 80,
+  "method": "advanced",
+  "pa": 1.11,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T09:17:53.842Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:17:53.842Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4af20d6a523e99f0aa930"
+  },
+  "userId": {
+    "$oid": "68f4af05d6a523e99f0aa92d"
+  },
+  "kcal": 2932,
+  "carbs_g": 700,
+  "fat_g": 0,
+  "protein_g": 140,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T09:28:00.435Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:28:00.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b472b0fb08270ae1c19c"
+  },
+  "userId": {
+    "$oid": "68f4b460b0fb08270ae1c199"
+  },
+  "kcal": 1798,
+  "carbs_g": 320,
+  "fat_g": 29.1,
+  "protein_g": 64,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T09:50:42.623Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:50:42.623Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b4b5b0fb08270ae1c1a2"
+  },
+  "userId": {
+    "$oid": "68f4b499b0fb08270ae1c19f"
+  },
+  "kcal": 2239,
+  "carbs_g": 1010,
+  "fat_g": 0,
+  "protein_g": 202,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T09:51:49.470Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:51:49.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b4e5b0fb08270ae1c1a8"
+  },
+  "userId": {
+    "$oid": "68f4b4cab0fb08270ae1c1a5"
+  },
+  "kcal": 3457,
+  "carbs_g": 1180,
+  "fat_g": 0,
+  "protein_g": 236,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T09:52:37.953Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:52:37.953Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4cad627c2cec7cc3d97aa"
+  },
+  "userId": {
+    "$oid": "68f4c9fd27c2cec7cc3d97a6"
+  },
+  "kcal": 1443,
+  "carbs_g": 200,
+  "fat_g": 53.7,
+  "protein_g": 40,
+  "method": "advanced",
+  "pa": 1.11,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-19T11:26:14.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T11:26:14.604Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc1d0983ff2599b771c84b"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2070,
+  "carbs_g": 199,
+  "fat_g": 73,
+  "protein_g": 150,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T00:42:49.539Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:14:15.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc292c39f4aa6a8b47bbed"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2070,
+  "carbs_g": 199,
+  "fat_g": 73,
+  "protein_g": 150,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T01:34:36.730Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:34:36.742Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc293539f4aa6a8b47bbf8"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2070,
+  "carbs_g": 199,
+  "fat_g": 73,
+  "protein_g": 150,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T01:34:45.123Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:34:45.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc29ae4fad70db4ab14445"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2792,
+  "carbs_g": 365.6,
+  "fat_g": 81.2,
+  "protein_g": 149.6,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T01:36:46.803Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:36:46.803Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc29dc4fad70db4ab14452"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2792,
+  "carbs_g": 700,
+  "fat_g": 0,
+  "protein_g": 140,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T01:37:32.322Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:37:32.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc2e1b0c1e858c2a2ea834"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2792,
+  "carbs_g": 700,
+  "fat_g": 0,
+  "protein_g": 140,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T01:55:39.725Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T01:55:39.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc2f38cc3b420d234c8b1d"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:00:24.878Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:00:24.878Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30a3339de1f7590facbe"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:06:27.146Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:06:27.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30ac339de1f7590facc5"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2764,
+  "carbs_g": 361.9,
+  "fat_g": 80.4,
+  "protein_g": 148.1,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:06:36.873Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:06:36.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30b9339de1f7590faccc"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:06:49.168Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:06:49.168Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30ce339de1f7590facd3"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 3040,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "gain",
+  "createdAt": {
+    "$date": "2025-10-25T02:07:10.543Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:10.543Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30db339de1f7590facda"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2349,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:07:23.496Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:23.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30e4339de1f7590face1"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2349,
+  "carbs_g": 307.6,
+  "fat_g": 68.4,
+  "protein_g": 125.8,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:07:32.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:32.645Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30e7339de1f7590face5"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 2349,
+  "carbs_g": 307.6,
+  "fat_g": 68.4,
+  "protein_g": 125.8,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:07:35.241Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:35.241Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc30ef339de1f7590facec"
+  },
+  "userId": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "kcal": 3040,
+  "carbs_g": 398.1,
+  "fat_g": 88.5,
+  "protein_g": 162.9,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "gain",
+  "createdAt": {
+    "$date": "2025-10-25T02:07:43.689Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:43.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc312c339de1f7590facf7"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 361.9,
+  "fat_g": 80.4,
+  "protein_g": 148.1,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:08:44.793Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:08:44.793Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3135339de1f7590facfd"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:08:53.658Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:08:53.658Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3420d2a744d683344480"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:21:20.740Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:21:20.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc342fd2a744d683344485"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2388,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.2,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:21:35.093Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:21:35.093Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc34cb50bf03df508eb48e"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 680,
+  "fat_g": 0,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:24:11.222Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:24:11.222Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc37ff5d7c3e9387f448d1"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 416.8,
+  "fat_g": 61.4,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:37:51.497Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:37:51.497Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc380e5d7c3e9387f448d9"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2349,
+  "carbs_g": 340,
+  "fat_g": 54.4,
+  "protein_g": 124.9,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:38:06.245Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:38:06.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc38455d7c3e9387f448e4"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2030,
+  "carbs_g": 276.3,
+  "fat_g": 54.4,
+  "protein_g": 108.8,
+  "method": "advanced",
+  "pa": 1.2,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:39:01.471Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:39:01.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc384f5d7c3e9387f448ec"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2030,
+  "carbs_g": 265.8,
+  "fat_g": 59.1,
+  "protein_g": 108.8,
+  "method": "beginner",
+  "pa": 1.2,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:39:11.266Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:39:11.266Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc38565d7c3e9387f448f4"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2349,
+  "carbs_g": 307.6,
+  "fat_g": 68.4,
+  "protein_g": 125.8,
+  "method": "beginner",
+  "pa": 1.18,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T02:39:18.241Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:39:18.241Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc38765d7c3e9387f448fc"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2764,
+  "carbs_g": 416.8,
+  "fat_g": 61.4,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:39:50.666Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:39:50.666Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc389a5d7c3e9387f44904"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2410,
+  "carbs_g": 344.1,
+  "fat_g": 54.4,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:40:26.193Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:40:26.193Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc38dd5d7c3e9387f4490c"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3354,
+  "carbs_g": 476,
+  "fat_g": 100.7,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:41:33.485Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:41:33.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3d2b9bd7d0c660a79a0c"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3354,
+  "carbs_g": 476,
+  "fat_g": 100.7,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T02:59:55.440Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:59:55.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3d319bd7d0c660a79a14"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3354,
+  "carbs_g": 439.2,
+  "fat_g": 97.6,
+  "protein_g": 179.7,
+  "method": "beginner",
+  "pa": 1.48,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T03:00:01.670Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:00:01.670Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3e4e3dc7210727a84849"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3031,
+  "carbs_g": 396.9,
+  "fat_g": 88.2,
+  "protein_g": 162.4,
+  "method": "beginner",
+  "pa": 1.9,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T03:04:46.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:04:46.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3e573dc7210727a84851"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3354,
+  "carbs_g": 476,
+  "fat_g": 100.7,
+  "protein_g": 136,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T03:04:55.050Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:04:55.050Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc47a4d7f823883173e467"
+  },
+  "userId": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "kcal": 2576,
+  "carbs_g": 337.3,
+  "fat_g": 75,
+  "protein_g": 138,
+  "method": "beginner",
+  "pa": 1.6,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T03:44:36.716Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:44:36.716Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc6f9dd0ddc9b156194c91"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 3212,
+  "carbs_g": 434,
+  "fat_g": 108.9,
+  "protein_g": 124,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-25T06:35:09.070Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T06:35:09.070Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc6fb2d0ddc9b156194c96"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2730,
+  "carbs_g": 422,
+  "fat_g": 60.7,
+  "protein_g": 124,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T06:35:30.774Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T06:35:30.774Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc6fb8d0ddc9b156194c9e"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "kcal": 2730,
+  "carbs_g": 422,
+  "fat_g": 60.7,
+  "protein_g": 124,
+  "method": "advanced",
+  "pa": 1.48,
+  "goal": "loss",
+  "createdAt": {
+    "$date": "2025-10-25T06:35:36.807Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T06:35:36.807Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69014fc6880cc276ea256e6a"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "kcal": 2801,
+  "carbs_g": 420.2,
+  "fat_g": 62.2,
+  "protein_g": 140,
+  "method": "advanced",
+  "pa": 1.18,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-10-28T23:20:38.355Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-28T23:20:38.355Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e456213f245eac8135b31"
+  },
+  "userId": {
+    "$oid": "691e454e13f245eac8135b26"
+  },
+  "kcal": 2327,
+  "carbs_g": 304.7,
+  "fat_g": 67.7,
+  "protein_g": 124.7,
+  "method": "beginner",
+  "pa": 1.45,
+  "goal": "maintain",
+  "createdAt": {
+    "$date": "2025-11-19T22:32:02.091Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T22:32:02.091Z"
+  },
+  "__v": 0
+}]

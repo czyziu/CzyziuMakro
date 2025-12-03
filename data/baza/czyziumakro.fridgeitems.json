@@ -1,0 +1,85 @@
+[{
+  "_id": {
+    "$oid": "68fc663f49f1f83ae6376835"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "productId": {
+    "$oid": "68fc6222d002e937e22468f2"
+  },
+  "grams": 160,
+  "createdAt": {
+    "$date": "2025-10-25T05:55:11.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T07:56:50.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc6b134231689b884e3988"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "productId": {
+    "$oid": "68fc6222d002e937e22468f0"
+  },
+  "grams": 234,
+  "createdAt": {
+    "$date": "2025-10-25T06:15:47.971Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T08:00:47.405Z"
+  },
+  "__v": 0,
+  "expiresAt": {
+    "$date": "2025-11-04T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68fc81b9d0b184b40a6985c2"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "productId": {
+    "$oid": "68fc6222d002e937e22468f4"
+  },
+  "grams": 62,
+  "expiresAt": {
+    "$date": "2025-10-27T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-25T07:52:25.791Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-28T23:16:23.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692f6cb09791349a05e563d9"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "productId": {
+    "$oid": "690fa456ca48fee6733c1168"
+  },
+  "grams": 340,
+  "expiresAt": {
+    "$date": "2025-12-03T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-12-02T22:48:16.631Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:16.631Z"
+  },
+  "__v": 0
+}]

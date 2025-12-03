@@ -1,51 +1,632 @@
 [
   {
+    "_id": { "$oid": "000000000000000000000001" },
     "userId": "000000000000000000000000",
-    "name": "Warzywa na parze (marchew, brokuł)",
-    "category": "Warzywa",
-    "createdAt": "2025-12-02T19:11:45.737Z",
-    "updatedAt": "2025-12-02T19:11:45.737Z"
+    "name": "Banana",
+    "category": "Owoce",
+    "kcal100": 89,
+    "p100": 1.1,
+    "f100": 0.3,
+    "c100": 23
   },
   {
+    "_id": { "$oid": "000000000000000000000002" },
+    "userId": "000000000000000000000000",
+    "name": "Pomidorki koktajlowe",
+    "category": "Warzywa",
+    "kcal100": 20,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "000000000000000000000003" },
+    "userId": "000000000000000000000000",
+    "name": "Jagody",
+    "category": "Owoce",
+    "kcal100": 54,
+    "p100": 1,
+    "f100": 0.5,
+    "c100": 13
+  },
+  {
+    "_id": { "$oid": "000000000000000000000004" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000005" },
+    "userId": "000000000000000000000000",
+    "name": "Pomidory",
+    "category": "Warzywa",
+    "kcal100": 20,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "000000000000000000000006" },
+    "userId": "000000000000000000000000",
+    "name": "Seler naciowy",
+    "category": "Warzywa",
+    "kcal100": 16,
+    "p100": 0.7,
+    "f100": 0.2,
+    "c100": 3
+  },
+  {
+    "_id": { "$oid": "000000000000000000000007" },
+    "userId": "000000000000000000000000",
+    "name": "Zielona fasolka szparagowa",
+    "category": "Warzywa",
+    "kcal100": 31,
+    "p100": 1.8,
+    "f100": 0.1,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000008" },
+    "userId": "000000000000000000000000",
+    "name": "Banany",
+    "category": "Owoce",
+    "kcal100": 89,
+    "p100": 1.1,
+    "f100": 0.3,
+    "c100": 23
+  },
+  {
+    "_id": { "$oid": "000000000000000000000009" },
+    "userId": "000000000000000000000000",
+    "name": "Granola",
+    "category": "Produkty zbożowe",
+    "kcal100": 450,
+    "p100": 10,
+    "f100": 20,
+    "c100": 60
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000a" },
+    "userId": "000000000000000000000000",
+    "name": "Awokado",
+    "category": "Owoce",
+    "kcal100": 160,
+    "p100": 2,
+    "f100": 15,
+    "c100": 9
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000b" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane (bezglutenowe)",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000c" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły gotowane na parze",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000d" },
+    "userId": "000000000000000000000000",
+    "name": "Batony pełnoziarniste",
+    "category": "Słodycze i przekąski",
+    "kcal100": 400,
+    "p100": 8,
+    "f100": 12,
+    "c100": 68
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000e" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane (przepis na 6 szt)",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "00000000000000000000000f" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane z jagodami",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "000000000000000000000010" },
+    "userId": "000000000000000000000000",
+    "name": "Oliwę z oliwek",
+    "category": "Tłuszcze i oleje",
+    "kcal100": 884,
+    "p100": 0,
+    "f100": 100,
+    "c100": 0
+  },
+  {
+    "_id": { "$oid": "000000000000000000000011" },
+    "userId": "000000000000000000000000",
+    "name": "Szaszemata",
+    "category": "Inne",
+    "kcal100": 450,
+    "p100": 7,
+    "f100": 20,
+    "c100": 65
+  },
+  {
+    "_id": { "$oid": "000000000000000000000012" },
     "userId": "000000000000000000000000",
     "name": "Musy owocowe",
     "category": "Owoce",
-    "createdAt": "2025-12-02T19:37:48.494Z",
-    "updatedAt": "2025-12-02T19:37:48.494Z"
+    "kcal100": 60,
+    "p100": 0.3,
+    "f100": 0.2,
+    "c100": 15
   },
   {
+    "_id": { "$oid": "000000000000000000000013" },
     "userId": "000000000000000000000000",
-    "name": "Warzywa Obrazkowce (papryka, cukinia, cebula)",
-    "category": "Warzywa",
-    "createdAt": "2025-12-02T19:37:48.502Z",
-    "updatedAt": "2025-12-02T19:37:48.502Z"
+    "name": "Jabłka",
+    "category": "Owoce",
+    "kcal100": 52,
+    "p100": 0.3,
+    "f100": 0.2,
+    "c100": 14
   },
   {
+    "_id": { "$oid": "000000000000000000000014" },
     "userId": "000000000000000000000000",
-    "name": "Batony owocowo-orzechowe",
+    "name": "Zioła prowansalskie, pomidory",
+    "category": "Przyprawy",
+    "kcal100": 260,
+    "p100": 14,
+    "f100": 7,
+    "c100": 42
+  },
+  {
+    "_id": { "$oid": "000000000000000000000015" },
+    "userId": "000000000000000000000000",
+    "name": "Wąsałki",
     "category": "Słodycze i przekąski",
-    "createdAt": "2025-12-02T19:37:48.505Z",
-    "updatedAt": "2025-12-02T19:37:48.505Z"
+    "kcal100": 450,
+    "p100": 7,
+    "f100": 20,
+    "c100": 65
   },
   {
+    "_id": { "$oid": "000000000000000000000016" },
     "userId": "000000000000000000000000",
-    "name": "Łosoś (pieczony)",
-    "category": "Ryby i owoce morza",
-    "createdAt": "2025-12-02T19:37:48.511Z",
-    "updatedAt": "2025-12-02T19:37:48.511Z"
-  },
-  {
-    "userId": "000000000000000000000000",
-    "name": "Słodkie ziemniaki",
+    "name": "Brokuły (na parze)",
     "category": "Warzywa",
-    "createdAt": "2025-12-02T19:37:48.514Z",
-    "updatedAt": "2025-12-02T19:37:48.514Z"
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
   },
   {
+    "_id": { "$oid": "000000000000000000000017" },
     "userId": "000000000000000000000000",
-    "name": "Brokuły (gotowane)",
+    "name": "Koktajl białkowy",
+    "category": "Napoje",
+    "kcal100": 80,
+    "p100": 16,
+    "f100": 1.5,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "000000000000000000000018" },
+    "userId": "000000000000000000000000",
+    "name": "Zielony fasolka",
     "category": "Warzywa",
-    "createdAt": "2025-12-02T19:37:48.517Z",
-    "updatedAt": "2025-12-02T19:37:48.517Z"
+    "kcal100": 31,
+    "p100": 1.8,
+    "f100": 0.1,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000019" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły (ugotowane na parze)",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001a" },
+    "userId": "000000000000000000000000",
+    "name": "Jagody (borówki, maliny)",
+    "category": "Owoce",
+    "kcal100": 54,
+    "p100": 1,
+    "f100": 0.5,
+    "c100": 13
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001b" },
+    "userId": "000000000000000000000000",
+    "name": "Granola (mała porcja)",
+    "category": "Produkty zbożowe",
+    "kcal100": 450,
+    "p100": 10,
+    "f100": 20,
+    "c100": 60
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001c" },
+    "userId": "000000000000000000000000",
+    "name": "Oliwki",
+    "category": "Warzywa",
+    "kcal100": 145,
+    "p100": 1,
+    "f100": 15,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001d" },
+    "userId": "000000000000000000000000",
+    "name": "Muesli",
+    "category": "Produkty zbożowe",
+    "kcal100": 380,
+    "p100": 10,
+    "f100": 7,
+    "c100": 70
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001e" },
+    "userId": "000000000000000000000000",
+    "name": "Zielona fasola",
+    "category": "Warzywa",
+    "kcal100": 31,
+    "p100": 1.8,
+    "f100": 0.1,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "00000000000000000000001f" },
+    "userId": "000000000000000000000000",
+    "name": "Mentolowe jogurty greckie",
+    "category": "Nabiał i jaja",
+    "kcal100": 100,
+    "p100": 8,
+    "f100": 4,
+    "c100": 10
+  },
+  {
+    "_id": { "$oid": "000000000000000000000020" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły gotowane",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000021" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły (ugotowane)",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000022" },
+    "userId": "000000000000000000000000",
+    "name": "Zielona fasolka",
+    "category": "Warzywa",
+    "kcal100": 31,
+    "p100": 1.8,
+    "f100": 0.1,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000023" },
+    "userId": "000000000000000000000000",
+    "name": "Włoszczyzna",
+    "category": "Warzywa",
+    "kcal100": 30,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "000000000000000000000024" },
+    "userId": "000000000000000000000000",
+    "name": "Jagody (150g)",
+    "category": "Owoce",
+    "kcal100": 54,
+    "p100": 1,
+    "f100": 0.5,
+    "c100": 13
+  },
+  {
+    "_id": { "$oid": "000000000000000000000025" },
+    "userId": "000000000000000000000000",
+    "name": "Sałatka z pomidorów i ogórków",
+    "category": "Warzywa",
+    "kcal100": 25,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 5
+  },
+  {
+    "_id": { "$oid": "000000000000000000000026" },
+    "userId": "000000000000000000000000",
+    "name": "Brzanki kaszy gryczanej",
+    "category": "Produkty zbożowe",
+    "kcal100": 343,
+    "p100": 13,
+    "f100": 3,
+    "c100": 72
+  },
+  {
+    "_id": { "$oid": "000000000000000000000027" },
+    "userId": "000000000000000000000000",
+    "name": "Zielony pieczarek",
+    "category": "Warzywa",
+    "kcal100": 22,
+    "p100": 3,
+    "f100": 0.3,
+    "c100": 3
+  },
+  {
+    "_id": { "$oid": "000000000000000000000028" },
+    "userId": "000000000000000000000000",
+    "name": "Zioła prowansalskie, cytryna",
+    "category": "Przyprawy",
+    "kcal100": 260,
+    "p100": 14,
+    "f100": 7,
+    "c100": 42
+  },
+  {
+    "_id": { "$oid": "000000000000000000000029" },
+    "userId": "000000000000000000000000",
+    "name": "Pomidory koktajlowe",
+    "category": "Warzywa",
+    "kcal100": 20,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002a" },
+    "userId": "000000000000000000000000",
+    "name": "Kukurydza (świeża)",
+    "category": "Warzywa",
+    "kcal100": 86,
+    "p100": 3,
+    "f100": 1.5,
+    "c100": 19
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002b" },
+    "userId": "000000000000000000000000",
+    "name": "Pomidki",
+    "category": "Warzywa",
+    "kcal100": 20,
+    "p100": 1,
+    "f100": 0.2,
+    "c100": 4
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002c" },
+    "userId": "000000000000000000000000",
+    "name": "Miód",
+    "category": "Inne",
+    "kcal100": 304,
+    "p100": 0,
+    "f100": 0,
+    "c100": 82
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002d" },
+    "userId": "000000000000000000000000",
+    "name": "Quinoa",
+    "category": "Produkty zbożowe",
+    "kcal100": 368,
+    "p100": 14,
+    "f100": 6,
+    "c100": 64
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002e" },
+    "userId": "000000000000000000000000",
+    "name": "Chrupkie płatki owsiane",
+    "category": "Produkty zbożowe",
+    "kcal100": 380,
+    "p100": 13,
+    "f100": 7,
+    "c100": 67
+  },
+  {
+    "_id": { "$oid": "00000000000000000000002f" },
+    "userId": "000000000000000000000000",
+    "name": "Zioła prowansalskie",
+    "category": "Przyprawy",
+    "kcal100": 260,
+    "p100": 14,
+    "f100": 7,
+    "c100": 42
+  },
+  {
+    "_id": { "$oid": "000000000000000000000030" },
+    "userId": "000000000000000000000000",
+    "name": "Jagody (borówki)",
+    "category": "Owoce",
+    "kcal100": 54,
+    "p100": 1,
+    "f100": 0.5,
+    "c100": 13
+  },
+  {
+    "_id": { "$oid": "000000000000000000000031" },
+    "userId": "000000000000000000000000",
+    "name": "Brzanki ryżu brązowego",
+    "category": "Produkty zbożowe",
+    "kcal100": 365,
+    "p100": 7,
+    "f100": 3,
+    "c100": 76
+  },
+  {
+    "_id": { "$oid": "000000000000000000000032" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane (bez glutenu)",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "000000000000000000000033" },
+    "userId": "000000000000000000000000",
+    "name": "Banane",
+    "category": "Owoce",
+    "kcal100": 89,
+    "p100": 1.1,
+    "f100": 0.3,
+    "c100": 23
+  },
+  {
+    "_id": { "$oid": "000000000000000000000034" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane (przepis własny)",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "000000000000000000000035" },
+    "userId": "000000000000000000000000",
+    "name": "Batony owsiane",
+    "category": "Słodycze i przekąski",
+    "kcal100": 400,
+    "p100": 8,
+    "f100": 12,
+    "c100": 68
+  },
+  {
+    "_id": { "$oid": "000000000000000000000036" },
+    "userId": "000000000000000000000000",
+    "name": "Szaszemiot",
+    "category": "Inne",
+    "kcal100": 450,
+    "p100": 7,
+    "f100": 20,
+    "c100": 65
+  },
+  {
+    "_id": { "$oid": "000000000000000000000037" },
+    "userId": "000000000000000000000000",
+    "name": "Chrupaki ryżowe",
+    "category": "Słodycze i przekąski",
+    "kcal100": 380,
+    "p100": 8,
+    "f100": 3,
+    "c100": 80
+  },
+  {
+    "_id": { "$oid": "000000000000000000000038" },
+    "userId": "000000000000000000000000",
+    "name": "Szaszemiotka",
+    "category": "Inne",
+    "kcal100": 450,
+    "p100": 7,
+    "f100": 20,
+    "c100": 65
+  },
+  {
+    "_id": { "$oid": "000000000000000000000039" },
+    "userId": "000000000000000000000000",
+    "name": "Brokuły (gotowane na parze)",
+    "category": "Warzywa",
+    "kcal100": 35,
+    "p100": 2.5,
+    "f100": 0.4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003a" },
+    "userId": "000000000000000000000000",
+    "name": "Szaszłyki z papryką i cebulą",
+    "category": "Warzywa",
+    "kcal100": 80,
+    "p100": 4,
+    "f100": 4,
+    "c100": 7
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003b" },
+    "userId": "000000000000000000000000",
+    "name": "Muffiny owsiane (domowe)",
+    "category": "Słodycze i przekąski",
+    "kcal100": 260,
+    "p100": 6,
+    "f100": 10,
+    "c100": 38
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003c" },
+    "userId": "000000000000000000000000",
+    "name": "Cieczenie z puszki",
+    "category": "Rośliny strączkowe",
+    "kcal100": 164,
+    "p100": 9,
+    "f100": 2.6,
+    "c100": 27
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003d" },
+    "userId": "000000000000000000000000",
+    "name": "pełnoziarniste płatki owsiane",
+    "category": "Produkty zbożowe",
+    "kcal100": 389,
+    "p100": 17,
+    "f100": 7,
+    "c100": 66
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003e" },
+    "userId": "000000000000000000000000",
+    "name": "miód (opcjonalnie)",
+    "category": "Inne",
+    "kcal100": 304,
+    "p100": 0,
+    "f100": 0,
+    "c100": 82
+  },
+  {
+    "_id": { "$oid": "00000000000000000000003f" },
+    "userId": "000000000000000000000000",
+    "name": "Jajko",
+    "category": "Nabiał i jaja",
+    "kcal100": 143,
+    "p100": 13,
+    "f100": 10,
+    "c100": 1
   }
 ]

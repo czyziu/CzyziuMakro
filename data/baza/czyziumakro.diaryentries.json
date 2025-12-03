@@ -1,0 +1,6193 @@
+[{
+  "_id": {
+    "$oid": "6901a5cce9552d78558a82a0"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-10-29",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 111,
+      "_id": {
+        "$oid": "6901a5fee9552d78558a82ad"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T05:28:30.936Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T05:28:30.936Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-10-29T05:27:40.177Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T05:28:30.937Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6901c5ca294cc10837f17020"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-10-30",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6901a7b6163969ef8ad2f398"
+      },
+      "grams": 122,
+      "_id": {
+        "$oid": "6901c5ca294cc10837f17022"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T07:44:10.246Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T07:44:10.246Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 1000,
+      "_id": {
+        "$oid": "6901c5ca294cc10837f17027"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T07:44:10.257Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T07:44:10.257Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-10-29T07:44:10.241Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T07:44:10.257Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6901c5ca294cc10837f1702b"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-10-30",
+  "slot": "II śniadanie",
+  "items": [],
+  "createdAt": {
+    "$date": "2025-10-29T07:44:10.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T08:41:53.517Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "6901dce73015efeadaf3e8d2"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-10-29",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6901a7b6163969ef8ad2f398"
+      },
+      "grams": 122,
+      "_id": {
+        "$oid": "6901dce73015efeadaf3e8d4"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T09:22:47.344Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T09:22:47.344Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 1000,
+      "_id": {
+        "$oid": "6901dce73015efeadaf3e8d9"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T09:22:47.354Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T09:22:47.354Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-10-29T09:22:47.339Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T09:22:47.354Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6901ebd207a1e0846ed5f7fb"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-10-31",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6901ebd207a1e0846ed5f7fd"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:26:26.319Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:26:26.319Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6901ebde07a1e0846ed5f811"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:26:38.026Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:26:38.026Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f4"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6901ebe707a1e0846ed5f82f"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:26:47.445Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:26:47.445Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6901ec0607a1e0846ed5f84c"
+      },
+      "grams": 130,
+      "_id": {
+        "$oid": "6901ec0607a1e0846ed5f853"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:27:18.679Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:27:18.679Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-10-29T10:26:26.313Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T10:27:18.679Z"
+  },
+  "__v": 8
+},
+{
+  "_id": {
+    "$oid": "6901ec1d07a1e0846ed5f861"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-10-31",
+  "slot": "II śniadanie",
+  "items": [],
+  "createdAt": {
+    "$date": "2025-10-29T10:27:41.895Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T10:27:51.713Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6901ec3007a1e0846ed5f894"
+  },
+  "userId": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "date": "2025-11-02",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6901ec3007a1e0846ed5f896"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:28:00.639Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:28:00.639Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6901ec3007a1e0846ed5f89b"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:28:00.647Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:28:00.647Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f4"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6901ec3007a1e0846ed5f8a1"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:28:00.654Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:28:00.654Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6901ec0607a1e0846ed5f84c"
+      },
+      "grams": 130,
+      "_id": {
+        "$oid": "6901ec3007a1e0846ed5f8a8"
+      },
+      "createdAt": {
+        "$date": "2025-10-29T10:28:00.661Z"
+      },
+      "updatedAt": {
+        "$date": "2025-10-29T10:28:00.661Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-10-29T10:28:00.638Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T10:28:00.661Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "690f67dc34a8a47b608609bb"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-08",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 193,
+      "_id": {
+        "$oid": "690fa6b61bc063ad3cb9b5cf"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:23:18.868Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:23:18.868Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 86,
+      "_id": {
+        "$oid": "690fa6b61bc063ad3cb9b5d4"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:23:18.879Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:23:18.879Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 215,
+      "_id": {
+        "$oid": "690fa6b61bc063ad3cb9b5da"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:23:18.889Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:23:18.889Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 11,
+      "_id": {
+        "$oid": "690fa6b61bc063ad3cb9b5e1"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:23:18.900Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:23:18.900Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T15:55:08.245Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:23:18.900Z"
+  },
+  "__v": 20
+},
+{
+  "_id": {
+    "$oid": "690f6be3b5d41409813629f3"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-08",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "68fc52f21761fda887e4d917"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "690f6be3b5d41409813629f5"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T16:12:19.261Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T16:12:19.261Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f0"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "690f6be3b5d41409813629fa"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T16:12:19.270Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T16:12:19.270Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "68fc6222d002e937e22468f2"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "690f6be3b5d4140981362a00"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T16:12:19.278Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T16:12:19.278Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T16:12:19.258Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T16:12:19.278Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "690f6f9ab5d4140981362a1d"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-08",
+  "slot": "Obiad",
+  "items": [],
+  "createdAt": {
+    "$date": "2025-11-08T16:28:10.463Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:58:14.256Z"
+  },
+  "__v": 14
+},
+{
+  "_id": {
+    "$oid": "690f835c9687a69485e5754f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-09",
+  "slot": "Śniadanie",
+  "items": [],
+  "createdAt": {
+    "$date": "2025-11-08T17:52:28.472Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T23:51:27.568Z"
+  },
+  "__v": 30
+},
+{
+  "_id": {
+    "$oid": "690f83cc9687a69485e57572"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-09",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87f1"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "690f83cc9687a69485e57574"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:54:20.665Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:54:20.665Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87f3"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "690f83cc9687a69485e57579"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:54:20.674Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:54:20.674Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6da8ce9ff1e925de8849"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "690f83cc9687a69485e5757f"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:54:20.686Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:54:20.686Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87fd"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "690f83cc9687a69485e57586"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:54:20.698Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:54:20.698Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de8804"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "690f83cc9687a69485e5758e"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:54:20.707Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:54:20.707Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T17:54:20.663Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T17:54:20.707Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "690f84c6aad49d22794b63b1"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-09",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87fd"
+      },
+      "grams": 59,
+      "_id": {
+        "$oid": "690f84c6aad49d22794b63b3"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:58:30.309Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:58:30.309Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87f3"
+      },
+      "grams": 240,
+      "_id": {
+        "$oid": "690f84c6aad49d22794b63b8"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T17:58:30.321Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T17:58:30.321Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T17:58:30.303Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T17:58:30.321Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "690f93197ead7aae0d92f45d"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-09",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87ed"
+      },
+      "grams": 39,
+      "_id": {
+        "$oid": "690f93197ead7aae0d92f45f"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T18:59:37.559Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T18:59:37.559Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6da8ce9ff1e925de883c"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "690f93197ead7aae0d92f464"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T18:59:37.576Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T18:59:37.576Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87ef"
+      },
+      "grams": 10,
+      "_id": {
+        "$oid": "690f93197ead7aae0d92f46a"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T18:59:37.590Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T18:59:37.590Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de8811"
+      },
+      "grams": 83,
+      "_id": {
+        "$oid": "690f93197ead7aae0d92f471"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T18:59:37.603Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T18:59:37.603Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T18:59:37.551Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T18:59:37.604Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "690f95597ead7aae0d92f4ad"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-07",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "68fc61d9d002e937e22468ea"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "690f95597ead7aae0d92f4af"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T19:09:13.058Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T19:09:13.058Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87ee"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "690f95597ead7aae0d92f4b4"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T19:09:13.066Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T19:09:13.066Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de87f5"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "690f95597ead7aae0d92f4ba"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T19:09:13.075Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T19:09:13.075Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690f6c69ce9ff1e925de8813"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "690f95597ead7aae0d92f4c1"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T19:09:13.093Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T19:09:13.093Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6901a7b6163969ef8ad2f398"
+      },
+      "grams": 61,
+      "_id": {
+        "$oid": "690f95597ead7aae0d92f4c9"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T19:09:13.103Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T19:09:13.103Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T19:09:13.056Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T19:09:13.103Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "690fa924cdbaf24ffcd7df3e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-08",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 58,
+      "_id": {
+        "$oid": "690fa966cdbaf24ffcd7e00f"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:34:46.019Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:34:46.019Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 193,
+      "_id": {
+        "$oid": "690fa966cdbaf24ffcd7e014"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:34:46.033Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:34:46.033Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 116,
+      "_id": {
+        "$oid": "690fa966cdbaf24ffcd7e01a"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:34:46.057Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:34:46.057Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112d"
+      },
+      "grams": 48,
+      "_id": {
+        "$oid": "690fa966cdbaf24ffcd7e021"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:34:46.131Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:34:46.131Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:33:40.717Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:34:46.131Z"
+  },
+  "__v": 12
+},
+{
+  "_id": {
+    "$oid": "690fadb6d1f11c9e23e11321"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-08",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1154"
+      },
+      "grams": 304,
+      "_id": {
+        "$oid": "690faea4297132c983dd6a22"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:57:08.406Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:57:08.406Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112e"
+      },
+      "grams": 215,
+      "_id": {
+        "$oid": "690faea4297132c983dd6a27"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:57:08.415Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:57:08.415Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1132"
+      },
+      "grams": 18,
+      "_id": {
+        "$oid": "690faea4297132c983dd6a2d"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T20:57:08.423Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T20:57:08.423Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T20:53:10.491Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T20:57:08.423Z"
+  },
+  "__v": 47
+},
+{
+  "_id": {
+    "$oid": "690fb0dc8a5a2cb356aafb18"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-21",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 1500,
+      "_id": {
+        "$oid": "690fb0dc8a5a2cb356aafb1a"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:06:36.066Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:06:36.066Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 900,
+      "_id": {
+        "$oid": "690fb0dc8a5a2cb356aafb1f"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:06:36.076Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:06:36.076Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 720,
+      "_id": {
+        "$oid": "690fb0dc8a5a2cb356aafb25"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:06:36.088Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:06:36.088Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T21:06:36.061Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T21:06:36.088Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "690fb1538a5a2cb356aafb5f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-21",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1156"
+      },
+      "grams": 521,
+      "_id": {
+        "$oid": "690fb1548a5a2cb356aafb61"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:08:36.281Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:08:36.281Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 250,
+      "_id": {
+        "$oid": "690fb1548a5a2cb356aafb66"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:08:36.323Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:08:36.323Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 83,
+      "_id": {
+        "$oid": "690fb1548a5a2cb356aafb6c"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:08:36.339Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:08:36.339Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T21:08:35.346Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T21:08:36.339Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "690fb1ab8a5a2cb356aafba5"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-21",
+  "slot": "Podwieczorek",
+  "items": [],
+  "createdAt": {
+    "$date": "2025-11-08T21:10:03.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T21:10:18.875Z"
+  },
+  "__v": 8
+},
+{
+  "_id": {
+    "$oid": "690fb243e6cdafe50dc71e32"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-13",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1156"
+      },
+      "grams": 1500,
+      "_id": {
+        "$oid": "690fb298e6cdafe50dc71e62"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:14:00.568Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:14:00.568Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 720,
+      "_id": {
+        "$oid": "690fb298e6cdafe50dc71e67"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:14:00.578Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:14:00.578Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 240,
+      "_id": {
+        "$oid": "690fb298e6cdafe50dc71e6d"
+      },
+      "createdAt": {
+        "$date": "2025-11-08T21:14:00.593Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-08T21:14:00.593Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-08T21:12:35.180Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-08T21:14:00.593Z"
+  },
+  "__v": 9
+},
+{
+  "_id": {
+    "$oid": "6913e2ea39cbd275f54cadcc"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-12",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1163"
+      },
+      "grams": 60,
+      "_id": {
+        "$oid": "6913e2ea39cbd275f54cadce"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T01:29:14.747Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T01:29:14.747Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 120,
+      "_id": {
+        "$oid": "6913e2ea39cbd275f54cadd3"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T01:29:14.764Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T01:29:14.764Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 60,
+      "_id": {
+        "$oid": "6913e2ea39cbd275f54cadd9"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T01:29:14.774Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T01:29:14.774Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 20,
+      "_id": {
+        "$oid": "6913e2ea39cbd275f54cade0"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T01:29:14.784Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T01:29:14.784Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T01:29:14.727Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T01:29:14.784Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "6913fc95a7dc2f36461f272f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-12",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 215,
+      "_id": {
+        "$oid": "691449f340d942620369cd0e"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:48:51.754Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:48:51.754Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 268,
+      "_id": {
+        "$oid": "691449f340d942620369cd13"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:48:51.770Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:48:51.770Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 193,
+      "_id": {
+        "$oid": "691449f340d942620369cd19"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:48:51.780Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:48:51.780Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T03:18:45.616Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T08:49:58.465Z"
+  },
+  "__v": 53
+},
+{
+  "_id": {
+    "$oid": "69144c17eaac6645151c7a28"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-12",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c114a"
+      },
+      "grams": 180,
+      "_id": {
+        "$oid": "69144c17eaac6645151c7a2a"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:57:59.711Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:57:59.711Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 270,
+      "_id": {
+        "$oid": "69144c17eaac6645151c7a2f"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:57:59.725Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:57:59.725Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116a"
+      },
+      "grams": 90,
+      "_id": {
+        "$oid": "69144c17eaac6645151c7a35"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:57:59.735Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:57:59.735Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 9,
+      "_id": {
+        "$oid": "69144c17eaac6645151c7a3c"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:57:59.745Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:57:59.745Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T08:57:59.706Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T08:57:59.745Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "69144c36eaac6645151c7a58"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-12",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "69144c36eaac6645151c7a5a"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:58:30.480Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:58:30.480Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "69144c36eaac6645151c7a5f"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:58:30.488Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:58:30.488Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "69144c36eaac6645151c7a65"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:58:30.498Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:58:30.498Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "69144c36eaac6645151c7a6c"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T08:58:30.508Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T08:58:30.508Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T08:58:30.478Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T08:58:30.508Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "69144f6a6ca954c4d6547e40"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-12",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "6914526773cf8396e92248c5"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:24:55.629Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:24:55.629Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "6914526773cf8396e92248ca"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:24:55.639Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:24:55.639Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "6914526773cf8396e92248d0"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:24:55.651Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:24:55.651Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "6914526773cf8396e92248d7"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:24:55.662Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:24:55.662Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691453aebea07f210e221e49"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:30:22.168Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:30:22.168Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T09:12:10.850Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T09:30:22.168Z"
+  },
+  "__v": 13
+},
+{
+  "_id": {
+    "$oid": "6914544e13be1b9524f007a5"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-13",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 89,
+      "_id": {
+        "$oid": "6914544e13be1b9524f007a7"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:02.293Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:02.293Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 112,
+      "_id": {
+        "$oid": "6914544e13be1b9524f007ac"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:02.309Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:02.309Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 81,
+      "_id": {
+        "$oid": "6914544e13be1b9524f007b2"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:02.320Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:02.320Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T09:33:02.286Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T09:33:02.320Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6914546513be1b9524f007b8"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-13",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1151"
+      },
+      "grams": 359,
+      "_id": {
+        "$oid": "6914546513be1b9524f007ba"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:25.135Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:25.135Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "6914546513be1b9524f007bf"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:25.144Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:25.144Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1169"
+      },
+      "grams": 399,
+      "_id": {
+        "$oid": "6914546513be1b9524f007c5"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:33:25.154Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:33:25.154Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T09:33:25.133Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T09:33:25.154Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "691456b683b72c3619895547"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-13",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691456b683b72c3619895549"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:43:18.045Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:43:18.045Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691456b683b72c361989554e"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:43:18.058Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:43:18.058Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691456b683b72c3619895554"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:43:18.070Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:43:18.070Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691456b683b72c361989555b"
+      },
+      "createdAt": {
+        "$date": "2025-11-12T09:43:18.078Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-12T09:43:18.078Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-12T09:43:18.039Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-12T09:43:18.078Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e457113f245eac8135b3e"
+  },
+  "userId": {
+    "$oid": "691e454e13f245eac8135b26"
+  },
+  "date": "2025-11-19",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1137"
+      },
+      "grams": 400,
+      "_id": {
+        "$oid": "691e457113f245eac8135b40"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:17.516Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:17.516Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112e"
+      },
+      "grams": 1600,
+      "_id": {
+        "$oid": "691e457113f245eac8135b45"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:17.530Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:17.530Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-19T22:32:17.495Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T22:32:17.530Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "691e457913f245eac8135b4f"
+  },
+  "userId": {
+    "$oid": "691e454e13f245eac8135b26"
+  },
+  "date": "2025-11-19",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 47,
+      "_id": {
+        "$oid": "691e457913f245eac8135b51"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:25.468Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:25.468Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 21,
+      "_id": {
+        "$oid": "691e457913f245eac8135b56"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:25.477Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:25.477Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 52,
+      "_id": {
+        "$oid": "691e457913f245eac8135b5c"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:25.489Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:25.489Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 3,
+      "_id": {
+        "$oid": "691e457913f245eac8135b63"
+      },
+      "createdAt": {
+        "$date": "2025-11-19T22:32:25.499Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-19T22:32:25.499Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-19T22:32:25.467Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T22:32:25.499Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e60c7fe08f644f26fcadf"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-20",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1156"
+      },
+      "grams": 1500,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcae1"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.125Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.125Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 720,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcae6"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.135Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.135Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 240,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcaec"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.144Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.144Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:28:55.118Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:28:55.145Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "691e60c7fe08f644f26fcaf0"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-20",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1151"
+      },
+      "grams": 359,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcaf2"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.156Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.156Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcaf7"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.163Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.163Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1169"
+      },
+      "grams": 399,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcafd"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.172Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.172Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:28:55.154Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:28:55.172Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "691e60c7fe08f644f26fcb01"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-20",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 89,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb03"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.184Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.184Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 112,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb08"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.192Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.192Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 81,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb0e"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.199Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.199Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:28:55.182Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:28:55.200Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "691e60c7fe08f644f26fcb12"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-20",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb14"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.210Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.210Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb19"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.218Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.218Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb1f"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.226Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.226Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 444,
+      "_id": {
+        "$oid": "691e60c7fe08f644f26fcb26"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:28:55.233Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:28:55.233Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:28:55.209Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:28:55.233Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e60d1fe08f644f26fcbb6"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-19",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1163"
+      },
+      "grams": 60,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbb8"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.852Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.852Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 120,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbbd"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.861Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.861Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 60,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbc3"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.869Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.869Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 20,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbca"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.877Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.877Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:29:05.851Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:29:05.877Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e60d1fe08f644f26fcbce"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-19",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbd0"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.886Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.886Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbd5"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.895Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.895Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbdb"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.904Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.904Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbe2"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.915Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.915Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:29:05.885Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:29:05.915Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e60d1fe08f644f26fcbe6"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-19",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c114a"
+      },
+      "grams": 180,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbe8"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.929Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.929Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 270,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbed"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.940Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.940Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116a"
+      },
+      "grams": 90,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbf3"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.949Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.949Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 9,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcbfa"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.963Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.963Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:29:05.928Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:29:05.964Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "691e60d1fe08f644f26fcbfe"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-19",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111a"
+      },
+      "grams": 215,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcc00"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.978Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.978Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 268,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcc05"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.990Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.990Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1125"
+      },
+      "grams": 193,
+      "_id": {
+        "$oid": "691e60d1fe08f644f26fcc0b"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:05.999Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:05.999Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:29:05.977Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:29:05.999Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "691e60d2fe08f644f26fcc0f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-19",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112b"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d2fe08f644f26fcc11"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:06.010Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:06.010Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1170"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d2fe08f644f26fcc16"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:06.019Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:06.019Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d2fe08f644f26fcc1c"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:06.029Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:06.029Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112c"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d2fe08f644f26fcc23"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:06.038Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:06.038Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1172"
+      },
+      "grams": 133,
+      "_id": {
+        "$oid": "691e60d2fe08f644f26fcc2b"
+      },
+      "createdAt": {
+        "$date": "2025-11-20T00:29:06.048Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-20T00:29:06.048Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-20T00:29:06.007Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:29:06.048Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "6926c3e7f7712e36fca4d3e7"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-26",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1123"
+      },
+      "grams": 160,
+      "_id": {
+        "$oid": "6926c3e7f7712e36fca4d3e9"
+      },
+      "createdAt": {
+        "$date": "2025-11-26T09:09:59.817Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-26T09:09:59.817Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1176"
+      },
+      "grams": 96,
+      "_id": {
+        "$oid": "6926c3e7f7712e36fca4d3ee"
+      },
+      "createdAt": {
+        "$date": "2025-11-26T09:09:59.831Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-26T09:09:59.831Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1128"
+      },
+      "grams": 128,
+      "_id": {
+        "$oid": "6926c3e7f7712e36fca4d3f4"
+      },
+      "createdAt": {
+        "$date": "2025-11-26T09:09:59.843Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-26T09:09:59.843Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-26T09:09:59.795Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-26T09:09:59.843Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c822"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-30",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c824"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.748Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.748Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c829"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.761Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.761Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.746Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.761Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c82d"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-30",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c82f"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.771Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.771Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.769Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.771Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c833"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-30",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c835"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.780Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.780Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.779Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.780Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c839"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-30",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c83b"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.790Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.790Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.788Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.790Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c83f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-30",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c841"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.799Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.799Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.797Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.799Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c845"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-01",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c847"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.810Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.810Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c84c"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.818Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.818Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.818Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c850"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-01",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c852"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.826Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.826Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.826Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c856"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-01",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c858"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.834Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.834Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.833Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.834Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c85c"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-01",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c85e"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.841Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.841Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.841Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.842Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929dd3f6f085db23526c862"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-01",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929dd3f6f085db23526c864"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:34:55.850Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:34:55.850Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:34:55.849Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:34:55.850Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c882"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-07",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c884"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.310Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.310Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c889"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.324Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.324Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.308Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.324Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c88d"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-07",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c88f"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.334Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.334Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.333Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.334Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c893"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-07",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c895"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.344Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.344Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.343Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.344Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c899"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-07",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c89b"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.354Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.354Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.354Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c89f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-07",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8a1"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.363Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.363Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.362Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.363Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8a5"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-08",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8a7"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.374Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.374Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8ac"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.385Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.385Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.385Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8b0"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-08",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8b2"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.397Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.397Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.396Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.397Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8b6"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-08",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8b8"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.408Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.408Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.406Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.408Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8bc"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-08",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8be"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.418Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.418Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.416Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.418Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8c2"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-08",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8c4"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.427Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.427Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.425Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.427Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8c8"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-09",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8ca"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.437Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.437Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8cf"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.445Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.445Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.435Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.445Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8d3"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-09",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8d5"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.455Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.455Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.455Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8d9"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-09",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8db"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.464Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.464Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.463Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.464Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8df"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-09",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8e1"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.474Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.474Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.472Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.474Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8e5"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-09",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8e7"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.486Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.486Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.485Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.487Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8eb"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-10",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8ed"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.498Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.498Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8f2"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.507Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.507Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.497Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.507Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8f6"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-10",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8f8"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.518Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.518Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.517Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.518Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c8fc"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-10",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c8fe"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.531Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.531Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.529Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.531Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c902"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-10",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c904"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.546Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.546Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.544Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.546Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c908"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-10",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c90a"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.577Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.577Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.575Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.577Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c90e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-11",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c910"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.606Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.606Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c915"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.617Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.617Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.617Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c919"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-11",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c91b"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.646Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.646Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.646Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c91f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-11",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c921"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.659Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.657Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.659Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c925"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-11",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c927"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.681Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.681Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.680Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.681Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c92b"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-11",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c92d"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.712Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.712Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.710Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.712Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c931"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-12",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c933"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.725Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.725Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c938"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.737Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.737Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.724Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.737Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c93c"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-12",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c93e"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.758Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.758Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.756Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.758Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c942"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-12",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c944"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.775Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.775Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.773Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.775Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c948"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-12",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c94a"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.786Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.786Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.785Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.786Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c94e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-12",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c950"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.803Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.803Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.800Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.803Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c954"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-13",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c956"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.818Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.818Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c95b"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.829Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.829Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.816Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.829Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c95f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-13",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c961"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.845Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.845Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.842Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.845Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c965"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-13",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c967"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.867Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.867Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.861Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.867Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c96b"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-13",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c113b"
+      },
+      "grams": 500,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c96d"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.893Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.893Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.893Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929ddb16f085db23526c971"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-13",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929ddb16f085db23526c973"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:36:49.905Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:36:49.905Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:36:49.903Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:36:49.905Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a773"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-15",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a775"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.652Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.652Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a77a"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.666Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.666Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a780"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.676Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.676Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.677Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a784"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-15",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a786"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.690Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.690Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a78b"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.699Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.699Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.687Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.700Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a78f"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-15",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a791"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.711Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.711Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1126"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a796"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.720Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.720Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a79c"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.731Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.731Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.709Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.731Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7a0"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-15",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7a2"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.741Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.741Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7a7"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.749Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.749Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7ad"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.758Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.758Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.739Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.758Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7b1"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-15",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7b3"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.767Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.767Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7b8"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.775Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.775Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.775Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7bc"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-16",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7be"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.784Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.784Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7c3"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.793Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.793Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1175"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7c9"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.802Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.802Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.782Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.802Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7cd"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-16",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c112a"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7cf"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.811Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.811Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111d"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7d4"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.819Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.819Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.810Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.819Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7d8"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-16",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1149"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7da"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.828Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.828Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1126"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7df"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.835Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.835Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7e5"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.842Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.842Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.843Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7e9"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-16",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa36ca4176e858c8139bc"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7eb"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.852Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.852Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116b"
+      },
+      "grams": 200,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7f0"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.861Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.861Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7f6"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.872Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.872Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.851Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.872Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6929de8dd4750d3d3964a7fa"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-16",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1127"
+      },
+      "grams": 300,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a7fc"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.889Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.889Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "6929de8dd4750d3d3964a801"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T17:40:29.897Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T17:40:29.897Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T17:40:29.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T17:40:29.897Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692a20b8a22d94cceccce474"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-28",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce476"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.556Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.556Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T22:22:48.552Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T22:22:48.557Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "692a20b8a22d94cceccce47a"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-28",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1115"
+      },
+      "grams": 80,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce47c"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.569Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.569Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T22:22:48.567Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T22:22:48.569Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "692a20b8a22d94cceccce480"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-28",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1115"
+      },
+      "grams": 150,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce482"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.584Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.584Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T22:22:48.582Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T22:22:48.585Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "692a20b8a22d94cceccce486"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-28",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6d"
+      },
+      "grams": 30,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce488"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.598Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.598Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6c"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce48d"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.610Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.610Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T22:22:48.596Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T22:22:48.610Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692a20b8a22d94cceccce491"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-11-28",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6c"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "692a20b8a22d94cceccce493"
+      },
+      "createdAt": {
+        "$date": "2025-11-28T22:22:48.622Z"
+      },
+      "updatedAt": {
+        "$date": "2025-11-28T22:22:48.622Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-28T22:22:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T22:22:48.622Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "692f56a05bb468e8d06579e1"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-02",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 10,
+      "_id": {
+        "$oid": "692f56a05bb468e8d06579e3"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.105Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.105Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7a"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f56a05bb468e8d06579e8"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.116Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.116Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "692f214c192b11c76f3b93e4"
+      },
+      "grams": 451,
+      "_id": {
+        "$oid": "692f56a05bb468e8d06579ee"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.127Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.127Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "692f2ec0192b11c76f3b9417"
+      },
+      "grams": 50,
+      "_id": {
+        "$oid": "692f56a05bb468e8d06579f5"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.138Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.138Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f56a05bb468e8d06579fd"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.147Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.147Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1168"
+      },
+      "grams": 234,
+      "_id": {
+        "$oid": "692f6c699791349a05e563ad"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:47:05.971Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:47:05.971Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:14:08.098Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:47:05.971Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "692f56a05bb468e8d0657a01"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-02",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "692f2d4e192b11c76f3b9404"
+      },
+      "grams": 332,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a03"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.158Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.158Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6a"
+      },
+      "grams": 83,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a08"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.167Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.167Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "692f256f192b11c76f3b93fb"
+      },
+      "grams": 226,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a0e"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.177Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.177Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1130"
+      },
+      "grams": 17,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a15"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.186Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.186Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:14:08.157Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T21:14:08.186Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "692f56a05bb468e8d0657a19"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-02",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7b"
+      },
+      "grams": 249,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a1b"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.195Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.195Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1115"
+      },
+      "grams": 55,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a20"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.204Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.204Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c72"
+      },
+      "grams": 249,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a26"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.213Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.213Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "692f256f192b11c76f3b93ff"
+      },
+      "grams": 226,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a2d"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.222Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.222Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a35"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.231Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.231Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:14:08.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T21:14:08.232Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "692f56a05bb468e8d0657a39"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-02",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a3b"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.243Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.243Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "692f33a1192b11c76f3b9422"
+      },
+      "grams": 37,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a40"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.252Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.252Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a46"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.263Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.263Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:14:08.242Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T21:14:08.263Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "692f56a05bb468e8d0657a4a"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-02",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7b"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a4c"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.276Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.276Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1150"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a51"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.286Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.286Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c72"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a57"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.297Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.297Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f56a05bb468e8d0657a5e"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T21:14:08.307Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T21:14:08.307Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T21:14:08.274Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T21:14:08.307Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "692f6cbc9791349a05e5642b"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-03",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 10,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5642d"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.054Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.054Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7a"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56432"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.065Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.065Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56438"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.073Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.073Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1168"
+      },
+      "grams": 234,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5643f"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.081Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.081Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:48:28.052Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:28.081Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "692f6cbc9791349a05e56443"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-03",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6a"
+      },
+      "grams": 83,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56445"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.091Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.091Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1130"
+      },
+      "grams": 17,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5644a"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.099Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.099Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:48:28.090Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:28.099Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692f6cbc9791349a05e5644e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-03",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7b"
+      },
+      "grams": 249,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56450"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.110Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.110Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1115"
+      },
+      "grams": 55,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56455"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.122Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.122Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c72"
+      },
+      "grams": 249,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5645b"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.140Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.140Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56462"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.154Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.154Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:48:28.108Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:28.154Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "692f6cbc9791349a05e56466"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-03",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1121"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56468"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.168Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.168Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5646d"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.179Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.179Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:48:28.165Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:28.179Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692f6cbc9791349a05e56471"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-03",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7b"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56473"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.191Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.191Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c1150"
+      },
+      "grams": 100,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56478"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.201Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.201Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c72"
+      },
+      "grams": 166,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e5647e"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.212Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.212Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1133"
+      },
+      "grams": 2,
+      "_id": {
+        "$oid": "692f6cbc9791349a05e56485"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T22:48:28.225Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T22:48:28.225Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T22:48:28.189Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T22:48:28.225Z"
+  },
+  "__v": 4
+},
+{
+  "_id": {
+    "$oid": "692f72098ea6417966fe4817"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-04",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115d"
+      },
+      "grams": 96,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4819"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.279Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.279Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f5bda13e5e34b8fe0c7a"
+      },
+      "grams": 54,
+      "_id": {
+        "$oid": "692f72098ea6417966fe481e"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.295Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.295Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T23:11:05.272Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T23:11:05.295Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692f72098ea6417966fe4822"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-04",
+  "slot": "II śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 128,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4824"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.306Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.306Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c6a"
+      },
+      "grams": 27,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4829"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.316Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.316Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T23:11:05.304Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T23:11:05.316Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692f72098ea6417966fe482d"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-04",
+  "slot": "Obiad",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1115"
+      },
+      "grams": 107,
+      "_id": {
+        "$oid": "692f72098ea6417966fe482f"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.327Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.327Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c115e"
+      },
+      "grams": 54,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4834"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.336Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.336Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "6929f33aa13e5e34b8fe0c72"
+      },
+      "grams": 64,
+      "_id": {
+        "$oid": "692f72098ea6417966fe483a"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.346Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.346Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T23:11:05.325Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T23:11:05.346Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "692f72098ea6417966fe483e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-04",
+  "slot": "Podwieczorek",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1130"
+      },
+      "grams": 27,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4840"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.355Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.355Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1120"
+      },
+      "grams": 13,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4845"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.366Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.366Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T23:11:05.354Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T23:11:05.366Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "692f72098ea6417966fe4849"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-04",
+  "slot": "Kolacja",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1119"
+      },
+      "grams": 107,
+      "_id": {
+        "$oid": "692f72098ea6417966fe484b"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.430Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.430Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa456ca48fee6733c116c"
+      },
+      "grams": 1751,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4850"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.451Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.451Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1129"
+      },
+      "grams": 876,
+      "_id": {
+        "$oid": "692f72098ea6417966fe4856"
+      },
+      "createdAt": {
+        "$date": "2025-12-02T23:11:05.463Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-02T23:11:05.463Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-02T23:11:05.414Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-02T23:11:05.463Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "692f7e1fa677c4b473f6bc77"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "date": "2025-12-06",
+  "slot": "Śniadanie",
+  "items": [
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1122"
+      },
+      "grams": 30,
+      "_id": {
+        "$oid": "692f7e1fa677c4b473f6bc79"
+      },
+      "createdAt": {
+        "$date": "2025-12-03T00:02:39.015Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-03T00:02:39.015Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c111e"
+      },
+      "grams": 61,
+      "_id": {
+        "$oid": "692f7e1fa677c4b473f6bc7e"
+      },
+      "createdAt": {
+        "$date": "2025-12-03T00:02:39.027Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-03T00:02:39.027Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "000000000000000000000003"
+      },
+      "grams": 591,
+      "_id": {
+        "$oid": "692f7e1fa677c4b473f6bc84"
+      },
+      "createdAt": {
+        "$date": "2025-12-03T00:02:39.038Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-03T00:02:39.038Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "00000000000000000000003f"
+      },
+      "grams": 1,
+      "_id": {
+        "$oid": "692f7e1fa677c4b473f6bc8b"
+      },
+      "createdAt": {
+        "$date": "2025-12-03T00:02:39.047Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-03T00:02:39.047Z"
+      }
+    },
+    {
+      "productId": {
+        "$oid": "690fa3d8ca48fee6733c1130"
+      },
+      "grams": 9,
+      "_id": {
+        "$oid": "692f7e1fa677c4b473f6bc93"
+      },
+      "createdAt": {
+        "$date": "2025-12-03T00:02:39.056Z"
+      },
+      "updatedAt": {
+        "$date": "2025-12-03T00:02:39.056Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-12-03T00:02:39.008Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T00:02:39.056Z"
+  },
+  "__v": 5
+}]

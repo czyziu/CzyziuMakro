@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "691e6b9ac0ea2a569a25c01e"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "text": "fgds",
+  "createdAt": {
+    "$date": "2025-11-20T01:15:06.631Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T01:15:06.631Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e6b9cc0ea2a569a25c021"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "text": "fsd",
+  "createdAt": {
+    "$date": "2025-11-20T01:15:08.680Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T01:15:08.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e6b9ec0ea2a569a25c024"
+  },
+  "userId": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "text": "nhfgngfhngdh",
+  "createdAt": {
+    "$date": "2025-11-20T01:15:10.710Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T01:15:10.710Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,252 @@
+[{
+  "_id": {
+    "$oid": "68f4aad07c13d3fc5c6510eb"
+  },
+  "userId": "68f4aab357ae592ef00fc1d0",
+  "__v": 0,
+  "activity": 3,
+  "age": 23,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:09:36.948Z"
+  },
+  "goal": "maintain",
+  "height": 164,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-28T23:20:38.325Z"
+  },
+  "weight": 70
+},
+{
+  "_id": {
+    "$oid": "68f4abb67c13d3fc5c6510ec"
+  },
+  "userId": "68f4ab9d57ae592ef00fc1d4",
+  "__v": 0,
+  "activity": 3,
+  "age": 100,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:13:26.595Z"
+  },
+  "goal": "loss",
+  "height": 130,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:13:26.595Z"
+  },
+  "weight": 130
+},
+{
+  "_id": {
+    "$oid": "68f4acc17c13d3fc5c6510ed"
+  },
+  "userId": "68f4acb1c0dddab0b45a6fa8",
+  "__v": 0,
+  "activity": 2,
+  "age": 40,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:17:53.834Z"
+  },
+  "goal": "maintain",
+  "height": 140,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:17:53.834Z"
+  },
+  "weight": 40
+},
+{
+  "_id": {
+    "$oid": "68f4af207c13d3fc5c6510ee"
+  },
+  "userId": "68f4af05d6a523e99f0aa92d",
+  "__v": 0,
+  "activity": 3,
+  "age": 20,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:28:00.425Z"
+  },
+  "goal": "maintain",
+  "height": 180,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:28:00.425Z"
+  },
+  "weight": 70
+},
+{
+  "_id": {
+    "$oid": "68f4b4727c13d3fc5c6510ef"
+  },
+  "userId": "68f4b460b0fb08270ae1c199",
+  "__v": 0,
+  "activity": 3,
+  "age": 32,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:50:42.612Z"
+  },
+  "goal": "maintain",
+  "height": 132,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:50:42.612Z"
+  },
+  "weight": 32
+},
+{
+  "_id": {
+    "$oid": "68f4b4b57c13d3fc5c6510f0"
+  },
+  "userId": "68f4b499b0fb08270ae1c19f",
+  "__v": 0,
+  "activity": 3,
+  "age": 101,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:51:49.467Z"
+  },
+  "goal": "maintain",
+  "height": 101,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:51:49.467Z"
+  },
+  "weight": 101
+},
+{
+  "_id": {
+    "$oid": "68f4b4e57c13d3fc5c6510f1"
+  },
+  "userId": "68f4b4cab0fb08270ae1c1a5",
+  "__v": 0,
+  "activity": 3,
+  "age": 18,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T09:52:37.950Z"
+  },
+  "goal": "maintain",
+  "height": 118,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T09:52:37.950Z"
+  },
+  "weight": 118
+},
+{
+  "_id": {
+    "$oid": "68f4cad629e146cac8a7031d"
+  },
+  "userId": "68f4c9fd27c2cec7cc3d97a6",
+  "__v": 0,
+  "activity": 2,
+  "age": 18,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-19T11:26:14.565Z"
+  },
+  "goal": "maintain",
+  "height": 100,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-19T11:26:14.565Z"
+  },
+  "weight": 20
+},
+{
+  "_id": {
+    "$oid": "68fc1d09fa97546c3e001148"
+  },
+  "userId": "68fc1cfb83ff2599b771c848",
+  "__v": 0,
+  "activity": 3,
+  "age": 24,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-25T00:42:49.523Z"
+  },
+  "goal": "maintain",
+  "height": 164,
+  "level": "basic",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-25T03:44:36.700Z"
+  },
+  "weight": 70
+},
+{
+  "_id": {
+    "$oid": "68fc2f38fa97546c3e001149"
+  },
+  "userId": "68fc2f2acc3b420d234c8b1a",
+  "__v": 0,
+  "activity": 3,
+  "age": 23,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-25T02:00:24.870Z"
+  },
+  "goal": "gain",
+  "height": 164,
+  "level": "basic",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-25T02:07:43.687Z"
+  },
+  "weight": 68
+},
+{
+  "_id": {
+    "$oid": "68fc312cfa97546c3e00114a"
+  },
+  "userId": "68fc3117339de1f7590facf4",
+  "__v": 0,
+  "activity": 5,
+  "age": 23,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-10-25T02:08:44.791Z"
+  },
+  "goal": "loss",
+  "height": 164,
+  "level": "advanced",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-10-25T06:35:36.803Z"
+  },
+  "weight": 62
+},
+{
+  "_id": {
+    "$oid": "691e4562c391caf52ae4f404"
+  },
+  "userId": "691e454e13f245eac8135b26",
+  "__v": 0,
+  "activity": 2,
+  "age": 23,
+  "completed": true,
+  "createdAt": {
+    "$date": "2025-11-19T22:32:02.069Z"
+  },
+  "goal": "maintain",
+  "height": 164,
+  "level": "basic",
+  "sex": "M",
+  "updatedAt": {
+    "$date": "2025-11-19T22:32:02.069Z"
+  },
+  "weight": 69
+}]

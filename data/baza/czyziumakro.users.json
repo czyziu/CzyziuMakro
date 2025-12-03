@@ -1,0 +1,267 @@
+[{
+  "_id": {
+    "$oid": "68f4aab357ae592ef00fc1d0"
+  },
+  "email": "cc@cc.cc",
+  "name": "cc cc",
+  "isPregnant": false,
+  "sex": "male",
+  "passwordHash": "$2a$10$eKJveWFVdN1dAC4A5rqHhu.mv54yl9pE7PJQaFBhcO8BuoavdJOGu",
+  "createdAt": {
+    "$date": "2025-10-19T09:09:07.875Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-28T23:20:38.334Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4ab9d57ae592ef00fc1d4"
+  },
+  "email": "aa@aa.aa",
+  "name": "aa@aa.aa",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$v/JwQBtVUdIdp.qhoTVqY.DGvuMF.sKB3rku9nGubiqUwGKq2DsIm",
+  "createdAt": {
+    "$date": "2025-10-19T09:13:01.936Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:13:01.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4acb1c0dddab0b45a6fa8"
+  },
+  "email": "asd@asd.asd",
+  "name": "asd@asd.asd",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$EHXJNIa.4liWZmRbSmk.U.D1vAC5AnPmX79E.HsFmidsz0ifCAGtu",
+  "createdAt": {
+    "$date": "2025-10-19T09:17:37.211Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:17:37.211Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4af05d6a523e99f0aa92d"
+  },
+  "email": "test@test.test",
+  "name": "test@test",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$ZG4sDZmq7aZfhXtBJUIBCuwijwha0X3G9/0A83oNsipl.S4eLcQRq",
+  "createdAt": {
+    "$date": "2025-10-19T09:27:33.805Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:27:33.805Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b460b0fb08270ae1c199"
+  },
+  "email": "qq@qq.qq",
+  "name": "qq@qq.qq",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$iwYp88cnSjmvU3Ja6rd3euwXlLzTcOu6DhwQfUeETvVtGeLRMpt3G",
+  "createdAt": {
+    "$date": "2025-10-19T09:50:24.146Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:50:24.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b499b0fb08270ae1c19f"
+  },
+  "email": "asdf@asdf.asdf",
+  "name": "asdf@asdf.asdf",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$EBDHQqbozqp.X4rDu81fXubBpqVRPobEWQOqIl1QbV6YT0uf7k2RS",
+  "createdAt": {
+    "$date": "2025-10-19T09:51:21.181Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:51:21.181Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4b4cab0fb08270ae1c1a5"
+  },
+  "email": "zxc@zxc.zxc",
+  "name": "zxc@zxc.zxc",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$XTWFCnmQ4LQRZ9qpB8LhDOCXYLSRUg/LBtH2R/gDeKl05e9XzAovi",
+  "createdAt": {
+    "$date": "2025-10-19T09:52:10.839Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T09:52:10.839Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68f4c9fd27c2cec7cc3d97a6"
+  },
+  "email": "chuj@chuj.chuj",
+  "name": "chuj@chuj.chuj",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$7r3SbW1hyvor3d1ujOUq2OIEKKdjHqZt3TKswkwXv7YOA5/QR0Wvq",
+  "createdAt": {
+    "$date": "2025-10-19T11:22:37.365Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T11:22:37.365Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc1cfb83ff2599b771c848"
+  },
+  "email": "cwel@cwel.cwel",
+  "name": "cwel@cwel.cwel",
+  "isPregnant": false,
+  "sex": "male",
+  "passwordHash": "$2a$10$IhL4Vzlb0AH6BMCtcFAbO.ZjpzZBbALk6Vai5ruEcZWK5XBs9ZiBS",
+  "createdAt": {
+    "$date": "2025-10-25T00:42:35.179Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:44:36.708Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc2f2acc3b420d234c8b1a"
+  },
+  "email": "kurwa@kurwa.kurwa",
+  "name": "kurwa@kurwa.kurwa",
+  "isPregnant": false,
+  "sex": "other",
+  "passwordHash": "$2a$10$YPsd69QyE4EUbNjZvfF0PuVJBH4kBqw/jZhIDyzvpRYEPAj9M88uC",
+  "createdAt": {
+    "$date": "2025-10-25T02:00:10.259Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T02:00:10.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc3117339de1f7590facf4"
+  },
+  "email": "dziwka@dziwka.dziwka",
+  "name": "dziwka@dziwka.dziwka",
+  "isPregnant": false,
+  "sex": "male",
+  "passwordHash": "$2a$10$kVei6g6s/bovdYZaU0GXqOrap6NhULKc/K0HwS8mBRZb9IRbsox.K",
+  "createdAt": {
+    "$date": "2025-10-25T02:08:23.198Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T06:35:36.805Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68fc418cc52446cf10a396fe"
+  },
+  "email": "kys@kys.kys",
+  "name": "kys@kys.kys",
+  "sex": "other",
+  "passwordHash": "$2a$10$NVCx4LX7wv3eK8puKVenWOVTNggJEKIXgrx9y.IapNUSqR9A/usoW",
+  "createdAt": {
+    "$date": "2025-10-25T03:18:36.297Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T03:18:36.297Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e454e13f245eac8135b26"
+  },
+  "email": "j.czyzycki.private@gmail.com",
+  "name": "j.czyzycki.private@gmail.com",
+  "sex": "male",
+  "passwordHash": "$2a$10$lJTvWlocazIqE2xYj2S1ueCBpu.WXzHDlhFYiWorlMuI8ikCz9CCW",
+  "createdAt": {
+    "$date": "2025-11-19T22:31:42.444Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T22:32:02.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e4dd64fbbe2a995d71a90"
+  },
+  "email": "czyzycki95@gmail.com",
+  "name": "czyzycki95@gmail.com",
+  "sex": "other",
+  "passwordHash": "$2a$10$JT6JYYyJ4XTcyoQXJi8Hne4KI/2FkyzZQmHo51rKkyyV.bQBij2Bm",
+  "createdAt": {
+    "$date": "2025-11-19T23:08:07.048Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-20T00:03:38.283Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e502569cfc14cd388e59b"
+  },
+  "email": "dfsasadf@dfsasadf.dfsasadf",
+  "name": "dfsasadf@dfsasadf.dfsasadf",
+  "sex": "other",
+  "passwordHash": "$2a$10$UhzrgYzyxUm02hii6SiVw.h6o56YElTMv4bJZGI4CF0gLUEw1G6t2",
+  "createdAt": {
+    "$date": "2025-11-19T23:17:57.697Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T23:17:57.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "691e531f8b0b8492fa75d7d6"
+  },
+  "email": "adsgfhjklsdfgh@adsgfhjklsdfgh.adsgfhjklsdfgh",
+  "name": "adsgfhjklsdfgh@adsgfhjklsdfgh.adsgfhjklsdfgh",
+  "sex": "other",
+  "passwordHash": "$2a$10$ZMQwNzxsxi00uUEXfSD47OYHHHP2kuH/rYjc.mNvO3ld8FdyiulXC",
+  "createdAt": {
+    "$date": "2025-11-19T23:30:39.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-19T23:30:39.824Z"
+  },
+  "__v": 0
+}]

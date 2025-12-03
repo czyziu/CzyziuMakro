@@ -154,14 +154,15 @@ ${mealMacroTargets
   .join('\n')}
 
 Zwróć **WYŁĄCZNIE** poprawny JSON, bez dodatkowego tekstu, bez markdown.
+
 Struktura JSON:
 
 {
-  "title": "krótki tytuł dnia",
+  "title": "krótki tytuł dnia po polsku",
   "description": "1-2 zdania opisu po polsku",
   "meals": [
     {
-      "slot": "Śniadanie",
+      "slot": "Śniadanie" | "II śniadanie" | "Obiad" | "Podwieczorek" | "Kolacja",
       "totals": {
         "kcal": liczba,
         "protein": liczba,
@@ -180,18 +181,35 @@ Struktura JSON:
 Ważne:
 - ZAWSZE zwróć dokładnie 5 posiłków, po jednym dla każdego slotu.
 - Używaj dokładnie takich nazw slotów: "Śniadanie", "II śniadanie", "Obiad", "Podwieczorek", "Kolacja".
-- W polu "totals" wpisuj makroskładniki i kalorie posiłku tak,
-  aby suma po wszystkich posiłkach była możliwie bliska dziennym celom kcal/białko/tłuszcz/węgle.
-- "items" to lista prostych produktów (np. "jajka", "ryż", "pierś z kurczaka", "oliwa z oliwek", "jogurt naturalny") z gramaturą.
-- Nazwy i opis po polsku.
+- "items" to lista prostych produktów / SKŁADNIKÓW (np. "jajka", "ryż biały", "pierś z kurczaka",
+  "kiełbasa", "marchew", "papryka czerwona", "pomidor", "ogórek", "ziemniaki", "oliwa z oliwek",
+  "jogurt naturalny", "ser żółty", "chleb pszenny") z gramaturą.
+- Używaj składników, a nie gotowych dań:
+  • NIE wpisuj w "items" nazw typu "tosty", "kanapka", "burger", "wrap", "pizza", "zapiekanka", "zupa", "gulasz".
+  • Jeśli chcesz zrobić np. tosty, rozbij je na składniki: "chleb", "ser żółty", "szynka", "masło" z konkretnymi gramami.
+- Preferuj zwykłe produkty jak mięso (np. "pierś z kurczaka", "schab", "karkówka", "kiełbasa"),
+  kasze, ryż, makarony, nabiał, konkretne warzywa i owoce – a nie abstrakcyjne dania.
+- Nazwy produktów i opisy mają być po polsku.
+
+- W polu "totals" wpisuj makroskładniki i kalorie posiłku jako LICZBY (bez jednostek, bez tekstu),
+  tak aby suma po wszystkich posiłkach była możliwie bliska dziennym celom kcal/białko/tłuszcz/węgle.
+  Wartości mogą być przybliżone, ale staraj się, by:
+  • suma kcal ≈ dzienny cel kcal,
+  • suma białka/tłuszczu/węgli ≈ dzienne cele makro,
+  • podział między posiłkami odpowiada podanemu podziałowi procentowemu.
+
 - Zadbaj, aby kaloryczność i makroskładniki posiłków były możliwie bliskie wskazanemu podziałowi procentowemu.
+- Każdy posiłek powinien mieć zwykle co najmniej 2–3 składniki (np. białko + węgle + tłuszcz),
+  chyba że to prosty shake lub jogurt z dodatkami.
+- Pole "grams" to zawsze liczba w gramach (bez "g", bez innych jednostek).
+
+Zwróć TYLKO jeden obiekt JSON dokładnie w opisanej strukturze, bez żadnych komentarzy, nagłówków, markdown ani dodatkowych pól.
 `.trim();
 
-
-    const userContext = `
+const userContext = `
 Dodatkowy opis / preferencje od użytkownika:
 ${prompt}
-    `.trim();
+`.trim();
 
     // Uwaga: Node 22 ma globalny fetch, nie trzeba node-fetch
     const ollamaResp = await fetch(`${host}/api/chat`, {
