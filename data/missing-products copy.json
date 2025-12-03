@@ -378,3 +378,564 @@
     "lastSeenAt": "2025-12-02T23:35:52.867Z"
   }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+  {
+    "name": "Włoska pasta pełna fasoli",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:04:51.270Z",
+    "lastSeenAt": "2025-12-03T00:04:51.270Z"
+  },
+  {
+    "name": "Odrobina miodu",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:12:36.136Z",
+    "lastSeenAt": "2025-12-03T00:12:36.136Z"
+  },
+  {
+    "name": "Pieczona cietrzewia",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:15:05.576Z",
+    "lastSeenAt": "2025-12-03T00:15:05.576Z"
+  },
+  {
+    "name": "Suszone morele (50g)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:16:36.565Z",
+    "lastSeenAt": "2025-12-03T00:16:36.565Z"
+  },
+  {
+    "name": "Zielone fasolka (świeża)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:17:06.130Z",
+    "lastSeenAt": "2025-12-03T00:17:06.130Z"
+  },
+  {
+    "name": "Jajecznica z chorizo i papryką",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.679Z",
+    "lastSeenAt": "2025-12-03T00:18:01.926Z"
+  },
+  {
+    "name": "Wrap z kurczakiem teriyaki",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.694Z",
+    "lastSeenAt": "2025-12-03T00:18:01.940Z"
+  },
+  {
+    "name": "Burger z soczewicą i grilla",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.709Z",
+    "lastSeenAt": "2025-12-03T00:18:01.952Z"
+  },
+  {
+    "name": "Puree z batatów",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.721Z",
+    "lastSeenAt": "2025-12-03T00:18:01.963Z"
+  },
+  {
+    "name": "Nudelki z sosem z kurczakiem i brokułami",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.726Z",
+    "lastSeenAt": "2025-12-03T00:18:01.966Z"
+  },
+  {
+    "name": "Tacos al pastor z kurczakiem",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:18:00.733Z",
+    "lastSeenAt": "2025-12-03T00:18:01.972Z"
+  },
+  {
+    "name": "Salsa",
+    "count": 11,
+    "firstSeenAt": "2025-12-03T00:18:00.742Z",
+    "lastSeenAt": "2025-12-03T00:57:24.915Z"
+  },
+  {
+    "name": "Tosty pełnoziarniste",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.634Z",
+    "lastSeenAt": "2025-12-03T00:20:51.634Z"
+  },
+  {
+    "name": "Salsa (pomidory, cebula, papryka, chili)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.637Z",
+    "lastSeenAt": "2025-12-03T00:20:51.637Z"
+  },
+  {
+    "name": "Tacos (tortilla pełnoziarnista)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.652Z",
+    "lastSeenAt": "2025-12-03T00:20:51.652Z"
+  },
+  {
+    "name": "Fajitas z kurczaka i warzyw (papryka, cebula, pieczarki)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.657Z",
+    "lastSeenAt": "2025-12-03T00:20:51.657Z"
+  },
+  {
+    "name": "Guacamole",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.662Z",
+    "lastSeenAt": "2025-12-03T00:20:51.662Z"
+  },
+  {
+    "name": "Salsa roja (domowa)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:20:51.667Z",
+    "lastSeenAt": "2025-12-03T00:20:51.667Z"
+  },
+  {
+    "name": "Tosty z awokado i jajkiem sadzonym",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.515Z",
+    "lastSeenAt": "2025-12-03T00:21:10.784Z"
+  },
+  {
+    "name": "Tacos z kurczakiem (150g)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.537Z",
+    "lastSeenAt": "2025-12-03T00:21:10.799Z"
+  },
+  {
+    "name": "Tortille (2 szt)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.540Z",
+    "lastSeenAt": "2025-12-03T00:21:10.802Z"
+  },
+  {
+    "name": "Salsa (pomidory, cebula, papryka)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.546Z",
+    "lastSeenAt": "2025-12-03T00:21:10.805Z"
+  },
+  {
+    "name": "Kewia kapryśny",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.563Z",
+    "lastSeenAt": "2025-12-03T00:21:10.818Z"
+  },
+  {
+    "name": "Wędka łososie (100g)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:21:09.571Z",
+    "lastSeenAt": "2025-12-03T00:21:10.824Z"
+  },
+  {
+    "name": "Wrap tortilla",
+    "count": 28,
+    "firstSeenAt": "2025-12-03T00:30:19.368Z",
+    "lastSeenAt": "2025-12-03T00:59:23.627Z"
+  },
+  {
+    "name": "Jalapeño",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:30:19.375Z",
+    "lastSeenAt": "2025-12-03T00:30:19.375Z"
+  },
+  {
+    "name": "Riołta",
+    "count": 5,
+    "firstSeenAt": "2025-12-03T00:34:53.286Z",
+    "lastSeenAt": "2025-12-03T00:52:23.344Z"
+  },
+  {
+    "name": "Kolendra",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:34:53.311Z",
+    "lastSeenAt": "2025-12-03T00:34:54.554Z"
+  },
+  {
+    "name": "Szczypiorek",
+    "count": 7,
+    "firstSeenAt": "2025-12-03T00:35:52.638Z",
+    "lastSeenAt": "2025-12-03T00:52:52.983Z"
+  },
+  {
+    "name": "Tosty z chleba pszennego",
+    "count": 11,
+    "firstSeenAt": "2025-12-03T00:36:23.717Z",
+    "lastSeenAt": "2025-12-03T00:48:24.751Z"
+  },
+  {
+    "name": "Frytki",
+    "count": 3,
+    "firstSeenAt": "2025-12-03T00:36:23.741Z",
+    "lastSeenAt": "2025-12-03T00:56:23.307Z"
+  },
+  {
+    "name": "Włóka",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:36:23.748Z",
+    "lastSeenAt": "2025-12-03T00:36:24.969Z"
+  },
+  {
+    "name": "Burger (bułka)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:36:53.743Z",
+    "lastSeenAt": "2025-12-03T00:36:53.743Z"
+  },
+  {
+    "name": "Imbir",
+    "count": 4,
+    "firstSeenAt": "2025-12-03T00:37:23.675Z",
+    "lastSeenAt": "2025-12-03T00:53:53.362Z"
+  },
+  {
+    "name": "Kurkuma",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:37:23.684Z",
+    "lastSeenAt": "2025-12-03T00:37:24.935Z"
+  },
+  {
+    "name": "Przyprawy (czosnek, papryka, pieprz)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:37:53.487Z",
+    "lastSeenAt": "2025-12-03T00:37:54.679Z"
+  },
+  {
+    "name": "Tłuczek z kurczaka",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:38:23.491Z",
+    "lastSeenAt": "2025-12-03T00:38:24.727Z"
+  },
+  {
+    "name": "Hummus",
+    "count": 8,
+    "firstSeenAt": "2025-12-03T00:38:23.494Z",
+    "lastSeenAt": "2025-12-03T00:59:23.635Z"
+  },
+  {
+    "name": "Burgery (pieczywo, mięso mielone, ser, sałata, pomidor, cebula)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:38:23.502Z",
+    "lastSeenAt": "2025-12-03T00:38:24.737Z"
+  },
+  {
+    "name": "Frytki z batata",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:38:23.505Z",
+    "lastSeenAt": "2025-12-03T00:38:24.741Z"
+  },
+  {
+    "name": "Kanapka z kurczakiem",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:38:53.250Z",
+    "lastSeenAt": "2025-12-03T00:46:23.250Z"
+  },
+  {
+    "name": "Tosty",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:39:22.935Z",
+    "lastSeenAt": "2025-12-03T00:40:53.274Z"
+  },
+  {
+    "name": "Salsa (pomidory, papryka, cebula, kolendra)",
+    "count": 3,
+    "firstSeenAt": "2025-12-03T00:39:53.802Z",
+    "lastSeenAt": "2025-12-03T00:44:24.476Z"
+  },
+  {
+    "name": "Hamburger (chude mięso)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:39:53.829Z",
+    "lastSeenAt": "2025-12-03T00:39:53.829Z"
+  },
+  {
+    "name": "Sałata, pomidor, ogórek",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:39:53.836Z",
+    "lastSeenAt": "2025-12-03T00:39:53.836Z"
+  },
+  {
+    "name": "Oliwka",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:39:53.840Z",
+    "lastSeenAt": "2025-12-03T00:39:53.840Z"
+  },
+  {
+    "name": "Wędka z kurczaka",
+    "count": 3,
+    "firstSeenAt": "2025-12-03T00:40:23.377Z",
+    "lastSeenAt": "2025-12-03T00:42:54.346Z"
+  },
+  {
+    "name": "Salsa (pomidor, cebula, chilli)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:40:53.268Z",
+    "lastSeenAt": "2025-12-03T00:45:23.220Z"
+  },
+  {
+    "name": "Słodki ziemniak",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:41:23.434Z",
+    "lastSeenAt": "2025-12-03T00:41:23.434Z"
+  },
+  {
+    "name": "Teriyaki",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:41:23.439Z",
+    "lastSeenAt": "2025-12-03T00:41:23.439Z"
+  },
+  {
+    "name": "Siekawka",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:23.281Z",
+    "lastSeenAt": "2025-12-03T00:42:24.471Z"
+  },
+  {
+    "name": "Salsa (pomidor, cebula, papryka)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:23.307Z",
+    "lastSeenAt": "2025-12-03T00:42:24.499Z"
+  },
+  {
+    "name": "Hamburger (bułka, mięso mielone, ser cheddar, sałata, pomidor)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:23.311Z",
+    "lastSeenAt": "2025-12-03T00:42:24.505Z"
+  },
+  {
+    "name": "Frytki smażone",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:23.315Z",
+    "lastSeenAt": "2025-12-03T00:42:24.509Z"
+  },
+  {
+    "name": "Smalec",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:53.133Z",
+    "lastSeenAt": "2025-12-03T00:42:54.324Z"
+  },
+  {
+    "name": "Hamburger (mięso mielone)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:42:53.162Z",
+    "lastSeenAt": "2025-12-03T00:42:54.354Z"
+  },
+  {
+    "name": "Salsa (pomidory, cebula, chilli)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:43:23.294Z",
+    "lastSeenAt": "2025-12-03T00:43:24.520Z"
+  },
+  {
+    "name": "Burgery (chleb, mięso wieprzowe)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:43:53.502Z",
+    "lastSeenAt": "2025-12-03T00:43:53.502Z"
+  },
+  {
+    "name": "Sałata, pomidor, cebula",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:43:53.506Z",
+    "lastSeenAt": "2025-12-03T00:43:53.506Z"
+  },
+  {
+    "name": "Frytki (z batatów)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:43:53.511Z",
+    "lastSeenAt": "2025-12-03T00:43:53.511Z"
+  },
+  {
+    "name": "Puree ziemniaczane",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:44:23.287Z",
+    "lastSeenAt": "2025-12-03T00:44:24.504Z"
+  },
+  {
+    "name": "Schabowe",
+    "count": 3,
+    "firstSeenAt": "2025-12-03T00:45:23.223Z",
+    "lastSeenAt": "2025-12-03T00:56:53.375Z"
+  },
+  {
+    "name": "Salsa (pomidor, papryka, cebula)",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:45:53.228Z",
+    "lastSeenAt": "2025-12-03T00:45:54.487Z"
+  },
+  {
+    "name": "Schabowe z warzywami",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:45:53.248Z",
+    "lastSeenAt": "2025-12-03T00:45:54.507Z"
+  },
+  {
+    "name": "burger",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:47:53.556Z",
+    "lastSeenAt": "2025-12-03T00:47:53.556Z"
+  },
+  {
+    "name": "Sól, pieprz",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:48:23.514Z",
+    "lastSeenAt": "2025-12-03T00:48:24.777Z"
+  },
+  {
+    "name": "Burgr",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:49:22.370Z",
+    "lastSeenAt": "2025-12-03T00:49:22.370Z"
+  },
+  {
+    "name": "Smaralik (olej rzepakowy)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:49:53.242Z",
+    "lastSeenAt": "2025-12-03T00:49:53.242Z"
+  },
+  {
+    "name": "Pieczarki",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:49:53.248Z",
+    "lastSeenAt": "2025-12-03T00:49:53.248Z"
+  },
+  {
+    "name": "Schabowy",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:49:53.251Z",
+    "lastSeenAt": "2025-12-03T00:49:53.251Z"
+  },
+  {
+    "name": "Tłuczek wołowy",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:51:23.592Z",
+    "lastSeenAt": "2025-12-03T00:51:23.592Z"
+  },
+  {
+    "name": "Kapusta kiszona",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:52:52.991Z",
+    "lastSeenAt": "2025-12-03T00:52:52.991Z"
+  },
+  {
+    "name": "Wraps",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:53:23.229Z",
+    "lastSeenAt": "2025-12-03T00:53:23.229Z"
+  },
+  {
+    "name": "Moruska",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:53:23.242Z",
+    "lastSeenAt": "2025-12-03T00:53:23.242Z"
+  },
+  {
+    "name": "Salsa (pomidorowa, papryka)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:54:23.752Z",
+    "lastSeenAt": "2025-12-03T00:54:23.752Z"
+  },
+  {
+    "name": "Hamburger (bułka)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:54:23.765Z",
+    "lastSeenAt": "2025-12-03T00:54:23.765Z"
+  },
+  {
+    "name": "Sardele w oleju",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:54:53.521Z",
+    "lastSeenAt": "2025-12-03T00:54:53.521Z"
+  },
+  {
+    "name": "Rioża",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:56:23.278Z",
+    "lastSeenAt": "2025-12-03T00:56:23.278Z"
+  },
+  {
+    "name": "Rioja biała",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:57:23.683Z",
+    "lastSeenAt": "2025-12-03T00:57:24.876Z"
+  },
+  {
+    "name": "Tosty z pełnoziarnistego chleba",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:57:23.690Z",
+    "lastSeenAt": "2025-12-03T00:57:24.885Z"
+  },
+  {
+    "name": "Lewa",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:57:23.717Z",
+    "lastSeenAt": "2025-12-03T00:57:24.918Z"
+  },
+  {
+    "name": "Smaragdowa soczewica",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:57:53.705Z",
+    "lastSeenAt": "2025-12-03T00:57:53.705Z"
+  },
+  {
+    "name": "Salsa (pomidory, papryka, cebula, imbir)",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:58:23.637Z",
+    "lastSeenAt": "2025-12-03T00:58:23.637Z"
+  },
+  {
+    "name": "Shitake",
+    "count": 1,
+    "firstSeenAt": "2025-12-03T00:58:23.641Z",
+    "lastSeenAt": "2025-12-03T00:58:23.641Z"
+  },
+  {
+    "name": "Riocha ryż",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:58:53.385Z",
+    "lastSeenAt": "2025-12-03T00:58:54.587Z"
+  },
+  {
+    "name": "Yogurt naturalny",
+    "count": 2,
+    "firstSeenAt": "2025-12-03T00:58:53.428Z",
+    "lastSeenAt": "2025-12-03T00:58:54.611Z"
+  }
+]
