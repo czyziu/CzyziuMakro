@@ -5,6 +5,12 @@
 // - generuje posiłek przez Ollamę
 // - kalibruje go przez /api/ai/day-plan/test (jak cały dzień)
 
+const { Agent } = require('undici');
+const insecureHttps = new Agent({ connect: { rejectUnauthorized: false } });
+
+
+
+
 const express = require('express');
 const router = express.Router();
 
@@ -440,36 +446,42 @@ ${prompt}
     // 7) Kalibracja – używamy istniejącego endpointu /api/ai/day-plan/test
     let calibration = null;
 
-    try {
-      const calResp = await fetch(
-        `${INTERNAL_BASE_URL}/api/ai/day-plan/test`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            ...(req.headers.authorization
-              ? { Authorization: req.headers.authorization }
-              : {}),
-          },
-          body: JSON.stringify({ variant }),
-        }
-      );
+try {
+  const dispatcher = INTERNAL_BASE_URL.startsWith('https://')
+    ? insecureHttps
+    : undefined;
 
-      if (calResp.ok) {
-        calibration = await calResp.json();
-      } else {
-        let msg = `HTTP ${calResp.status} przy /api/ai/day-plan/test`;
-        try {
-          const j = await calResp.json();
-          if (j?.message) msg = j.message;
-        } catch {
-          /* ignore */
-        }
-        console.warn('[AI-MEAL] Błąd kalibracji:', msg);
-      }
-    } catch (e) {
-      console.warn('[AI-MEAL] Wyjątek przy kalibracji posiłku:', e);
+  const calResp = await fetch(
+    `${INTERNAL_BASE_URL}/api/ai/day-plan/test`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(req.headers.authorization
+          ? { Authorization: req.headers.authorization }
+          : {}),
+      },
+      body: JSON.stringify({ variant }),
+      dispatcher,
     }
+  );
+
+  if (calResp.ok) {
+    calibration = await calResp.json();
+  } else {
+    let msg = `HTTP ${calResp.status} przy /api/ai/day-plan/test`;
+    try {
+      const j = await calResp.json();
+      if (j?.message) msg = j.message;
+    } catch {
+      /* ignore */
+    }
+    console.warn('[AI-MEAL] Błąd kalibracji:', msg);
+  }
+} catch (e) {
+  console.warn('[AI-MEAL] Wyjątek przy kalibracji posiłku:', e);
+}
+
 
     const resp = {
       ok: true,

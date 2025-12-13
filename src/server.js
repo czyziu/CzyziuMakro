@@ -1,4 +1,11 @@
 // server.js
+
+
+const https = require('https');
+const fs = require('fs');
+
+
+
 require('dotenv').config();
 const http = require('http');
 const mongoose = require('mongoose');
@@ -76,14 +83,29 @@ Zgoda na przetwarzanie danych: ${consent ? 'TAK' : 'NIE'}
     await mongoose.connect(MONGO_URI);
     console.log(`✅ MongoDB connected: ${MONGO_URI}`);
 
-    server = http.createServer(app);
+    const useHttps = process.env.HTTPS === '1';
 
-    server.listen(PORT, () => {
-      console.log(`🚀 CzyziuMakro API listening on port ${PORT}`);
+    if (useHttps) {
+      const keyPath = process.env.HTTPS_KEY_PATH || 'certs/lan-key.pem';
+      const certPath = process.env.HTTPS_CERT_PATH || 'certs/lan-cert.pem';
+
+      server = https.createServer(
+        {
+          key: fs.readFileSync(keyPath),
+          cert: fs.readFileSync(certPath),
+        },
+        app
+      );
+    } else {
+      server = http.createServer(app);
+    }
+
+    server.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 CzyziuMakro API listening on ${useHttps ? 'https' : 'http'}://0.0.0.0:${PORT}`);
     });
 
     server.on('error', (err) => {
-      console.error('❌ HTTP server error:', err.message);
+      console.error(`❌ ${useHttps ? 'HTTPS' : 'HTTP'} server error:`, err.message);
       process.exit(1);
     });
   } catch (err) {

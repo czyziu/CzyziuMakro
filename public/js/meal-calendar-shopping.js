@@ -200,65 +200,81 @@ async function handleGenerateShopping(dlg){
   // 1) Zbierz zapotrzebowanie (grams) po productId z zakresu dat
   const req = await collectRequirementsByProduct(fromISO, toISO);
 
-  // 2) Zbuduj listę do kupienia
-  const toBuy = {};
-  if (consume) {
-    // Zaznaczone → odejmujemy realnie z lodówki, a na listę trafiają tylko braki
-    for (const [pid, gramsNeeded] of Object.entries(req)) {
-      const { shortage } = await fridgeConsume(pid, gramsNeeded);
-      if (shortage > 0) toBuy[pid] = (toBuy[pid] || 0) + shortage;
-    }
-  } else {
-    // Niezaznaczone → IGNORUJEMY zapasy lodówki (pełne zapotrzebowanie)
-    for (const [pid, gramsNeeded] of Object.entries(req)) {
-      toBuy[pid] = gramsNeeded;
-    }
-  }
+// 2) Zbuduj listę do kupienia (zachowując nazwę produktu)
+const toBuy = {}; 
+// toBuy[pid] = { grams: number, name: string }
 
-  // 3) Render w modalu
-  const box = dlg.querySelector('[data-shop-results]');
-  const list = Object.entries(toBuy);
+if (consume) {
+  // Zaznaczone → odejmujemy z lodówki, a na listę trafiają tylko braki
+  for (const [pid, info] of Object.entries(req)) {
+    const gramsNeeded = Number(info?.grams || 0);
+    if (!(gramsNeeded > 0)) continue;
 
-  if (list.length === 0) {
-    box.innerHTML = `<div class="muted-note">Brak braków — nic nie trzeba kupować 🎉</div>`;
-    dlg.querySelector('[data-shop-print]')?.setAttribute('hidden','');
-  } else {
-    // posortowana lista, żeby UI i mail miały to samo
-    const sorted = list.sort((a,b) =>
-      resolveName(a[0]).localeCompare(resolveName(b[0]), 'pl')
-    );
-
-    const rows = sorted
-      .map(([pid, g]) =>
-        `<div class="shop-row">
-           <div class="shop-name">${escapeHtml(resolveName(pid))}</div>
-           <div class="shop-grams num">${Math.round(g)} g</div>
-         </div>`
-      )
-      .join('');
-
-    box.innerHTML = `<div class="shop-list">${rows}</div>`;
-    dlg.querySelector('[data-shop-print]')?.removeAttribute('hidden');
-
-    // 4) Opcjonalnie: wyślij na e-mail użytkownika
-    if (sendEmail) {
-      const items = sorted.map(([pid, g]) => ({
-        productId: pid,
-        name: resolveName(pid),
-        grams: Math.round(g),
-      }));
-
-      try {
-        await apiSendShoppingEmail({ fromISO, toISO, consume, items });
-        alert('Lista zakupów została wysłana na Twój e-mail.');
-      } catch (err) {
-        console.error(err);
-        alert('Nie udało się wysłać listy zakupów na e-mail.');
-      }
+    const { shortage } = await fridgeConsume(pid, gramsNeeded);
+    if (shortage > 0) {
+      const name = info?.name || resolveName(pid);
+      if (!toBuy[pid]) toBuy[pid] = { grams: 0, name };
+      toBuy[pid].grams += shortage;
+      if (!toBuy[pid].name && name) toBuy[pid].name = name;
     }
   }
+} else {
+  // Niezaznaczone → IGNORUJEMY zapasy lodówki (pełne zapotrzebowanie)
+  for (const [pid, info] of Object.entries(req)) {
+    const gramsNeeded = Number(info?.grams || 0);
+    if (!(gramsNeeded > 0)) continue;
 
-  box.removeAttribute('hidden');
+    toBuy[pid] = {
+      grams: gramsNeeded,
+      name: info?.name || resolveName(pid),
+    };
+  }
+}
+
+// 3) Render w modalu
+const box = dlg.querySelector('[data-shop-results]');
+const list = Object.entries(toBuy); // [ [pid, {grams,name}], ... ]
+
+if (list.length === 0) {
+  box.innerHTML = `<div class="muted-note">Brak braków — nic nie trzeba kupować 🎉</div>`;
+  dlg.querySelector('[data-shop-print]')?.setAttribute('hidden','');
+} else {
+  // posortowana lista, żeby UI i mail miały to samo
+  const sorted = list.sort((a,b) =>
+    (a?.[1]?.name || resolveName(a[0])).localeCompare((b?.[1]?.name || resolveName(b[0])), 'pl')
+  );
+
+  const rows = sorted
+    .map(([pid, it]) =>
+      `<div class="shop-row">
+         <div class="shop-name">${escapeHtml(it?.name || resolveName(pid))}</div>
+         <div class="shop-grams num">${Math.round(Number(it?.grams || 0))} g</div>
+       </div>`
+    )
+    .join('');
+
+  box.innerHTML = `<div class="shop-list">${rows}</div>`;
+  dlg.querySelector('[data-shop-print]')?.removeAttribute('hidden');
+
+  // 4) Opcjonalnie: wyślij na e-mail użytkownika
+  if (sendEmail) {
+    const items = sorted.map(([pid, it]) => ({
+      productId: pid,
+      name: it?.name || resolveName(pid),
+      grams: Math.round(Number(it?.grams || 0)),
+    }));
+
+    try {
+      await apiSendShoppingEmail({ fromISO, toISO, consume, items });
+      alert('Lista zakupów została wysłana na Twój e-mail.');
+    } catch (err) {
+      console.error(err);
+      alert('Nie udało się wysłać listy zakupów na e-mail.');
+    }
+  }
+}
+
+box.removeAttribute('hidden');
 }
 
 async function apiSendShoppingEmail({ fromISO, toISO, consume, items }) {
@@ -289,6 +305,7 @@ async function apiSendShoppingEmail({ fromISO, toISO, consume, items }) {
 
 
 // Zbiorcze gramatury z zakresu dat
+// Zbiorcze gramatury z zakresu dat
 async function collectRequirementsByProduct(fromISO, toISO){
   let start = new Date(fromISO + 'T00:00:00');
   let end   = new Date(toISO   + 'T00:00:00');
@@ -298,13 +315,17 @@ async function collectRequirementsByProduct(fromISO, toISO){
   for (let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) {
     days.push(toLocalISO(new Date(d)));
   }
+
   const weeks = new Map();
   for (const iso of days) {
     const mon = toLocalISO(mondayOfWeek(new Date(iso)));
     if (!weeks.has(mon)) weeks.set(mon, []);
     weeks.get(mon).push(iso);
   }
+
+  // req: { [productId]: { grams: number, name: string } }
   const req = {};
+
   for (const [monISO, isoDays] of weeks.entries()) {
     const w = await loadWeekFromAPI(monISO);
     for (const iso of isoDays) {
@@ -314,13 +335,20 @@ async function collectRequirementsByProduct(fromISO, toISO){
           const pid = it.productId || it.product?.id || it.product?._id;
           const g = Number(it.grams || 0);
           if (!pid || !(g > 0)) continue;
-          req[pid] = (req[pid] || 0) + g;
+
+          const name = it.name || it.product?.name || resolveName(pid);
+
+          if (!req[pid]) req[pid] = { grams: 0, name };
+          req[pid].grams += g;
+          if (!req[pid].name && name) req[pid].name = name;
         }
       }
     }
   }
+
   return req;
 }
+
 
 // ====== DRUKOWANIE: ukryty iframe + srcdoc bez inline JS (CSP-safe) ==========
 function handlePrintShopping(dlg){

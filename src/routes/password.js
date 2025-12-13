@@ -18,13 +18,22 @@ const transporter = nodemailer.createTransport({
 });
 
 // Skąd brać origin frontu
+// Skąd brać origin frontu
 function getFrontOrigin() {
-  if (process.env.FRONTEND_URL) return process.env.FRONTEND_URL;
+  const url = process.env.FRONTEND_URL || process.env.ORIGIN;
+
+  // jeśli ustawione w .env (np. https://192.168.0.129:4000 albo https://app.twojadomena.pl)
+  if (url) return String(url).replace(/\/$/, '');
+
+  // opcjonalny fallback produkcyjny (jak nie ustawisz env)
   if (process.env.NODE_ENV === 'production') {
     return 'https://twoja-domena.pl'; // podmień jak będziesz miał domenę
   }
+
+  // dev fallback
   return 'http://localhost:4000';
 }
+
 
 // ============================================================================
 // POST /api/password/forgot
@@ -59,7 +68,8 @@ router.post('/forgot', async (req, res) => {
 
     // 2) Link do STRONY USTAWIANIA NOWEGO HASŁA
     const origin = getFrontOrigin(); // np. http://localhost:4000
-    const resetUrl = `${origin}/nowe-haslo.html?token=${token}`;
+   const resetUrl = `${origin}/nowe-haslo.html?token=${encodeURIComponent(token)}`;
+
 
     // 3) Treść maila
     const text = [

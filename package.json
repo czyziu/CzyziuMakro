@@ -29,6 +29,7 @@
     "nodemailer": "^7.0.10",
     "openai": "^6.8.1",
     "pdfkit": "^0.17.2",
+    "undici": "^7.16.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

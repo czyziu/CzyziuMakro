@@ -32,3 +32,3546 @@ samouczek
 dania jako calosc(zakladka) wraz z opisem przygotowania 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JAKIM CHUJEM 
+
+/* 
+  CzyziuMakro — Dark UI z żółtym akcentem (amber)
+  Zachowany układ i styl z Twojej wersji + poprawiony sticky footer.
+*/
+/* Stabilizuje szerokość layoutu gdy raz jest scrollbar, a raz go nie ma */
+html { scrollbar-gutter: stable; }
+
+
+/* ====== Zmienne kolorów ====== */
+:root{
+  --bg-900:#0b0f14;
+  --bg-800:#101720;
+  --bg-700:#121b26;
+  --text-100:#e6edf3;
+  --text-300:#c6d2dc;
+  --muted-500:#8392a5;
+
+  /* Żółty akcent */
+  --accent-500:#facc15;   /* amber 500 */
+  --accent-600:#eab308;   /* amber 600 */
+
+  --border-700:#1a2532;
+  --ring: rgba(234,179,8,.35); /* amber glow */
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ====== Reset & bazowe ====== */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+/* Sticky footer fix */
+/* === 🔧 FIX: tło ciągnące się na całej długości strony === */
+html {
+  background: linear-gradient(180deg, var(--bg-900), var(--bg-800)) repeat-y;
+  background-size: 100% auto;
+  background-attachment: scroll;
+}
+
+body {
+  background: transparent !important; /* usuwa wcześniejsze tło z body */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--text-100);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main { flex: 1; }
+
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(1100px, 92%); margin-inline:auto; }
+
+/* ====== Header ====== */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(16,23,32,.8);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--border-700);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px;
+}
+.brand{ display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.2px; }
+.brand-mark{ display:inline-grid; place-items:center; width:32px; height:32px; border-radius:8px; background:var(--accent-500); color:#1a1500; }
+.brand-text{ font-size:1.05rem; }
+
+.nav{ display:flex; gap:.6rem; }
+.nav-link{
+  padding:.55rem .9rem; border-radius:10px; color:var(--text-300);
+  border:1px solid transparent;
+}
+.nav-link:hover{ color:var(--text-100); background:var(--bg-700); border-color:var(--border-700); }
+.nav-link:focus{ outline:2px solid var(--ring); outline-offset:2px; border-color:transparent; }
+
+/* ====== Hero ====== */
+.hero{ padding: clamp(2rem, 6vw, 5rem) 0; }
+.hero-grid{ display:grid; gap:2rem; grid-template-columns: 1.1fr .9fr; }
+.hero-copy h1{ font-size:clamp(1.8rem, 3.2vw, 2.6rem); margin:0 0 .6rem; }
+.lead{ color:var(--text-300); line-height:1.7; margin:0 0 1.2rem; }
+
+.cta-row{ display:flex; gap:.8rem; flex-wrap:wrap; margin:.8rem 0 0; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.8rem 1.1rem; border-radius:12px; font-weight:600; border:1px solid transparent;
+  transition:.15s ease-in-out; box-shadow: var(--shadow);
+}
+.btn-accent{ background:var(--accent-500); color:#1a1500; }
+.btn-accent:hover{ background:var(--accent-600); transform:translateY(-1px); }
+.btn-outline{ background:transparent; color:var(--text-100); border-color:var(--border-700); }
+.btn-outline:hover{ background:var(--bg-700); }
+
+.author{ margin:.9rem 0 0; color:var(--muted-500); }
+
+.feature-card{
+  background:linear-gradient(180deg,var(--bg-700),var(--bg-800));
+  border:1px solid var(--border-700);
+  border-radius:16px; padding:1.25rem 1.25rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+.feature-card h2{ margin:.1rem 0 1rem; font-size:1.15rem; }
+.feature-list{ margin:0; padding-left:1.1rem; display:grid; gap:.5rem; color:var(--text-300); }
+
+/* ====== Sekcje ====== */
+.section{ padding: clamp(2rem, 6vw, 4rem) 0; }
+.section.alt{ background:linear-gradient(180deg,var(--bg-800),var(--bg-900)); }
+.section-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; align-items:start; }
+
+.card{
+  background:linear-gradient(180deg,var(--bg-700),var(--bg-800));
+  border:1px solid var(--border-700);
+  border-radius:16px; padding:1.25rem 1.25rem 1.25rem;
+  box-shadow: var(--shadow);
+}
+.card h3, .card h4{ margin:.2rem 0 1rem; }
+.card p{ color:var(--text-300); }
+
+.tips{ border-style:dashed; }
+
+/* ====== Formularze ====== */
+.form{ display:grid; gap:.9rem; }
+.field{ display:grid; gap:.45rem; }
+.field > span{ color:var(--text-300); font-size:.95rem; }
+input, textarea{
+  width:100%; resize:vertical;
+  background:#0e1520; color:var(--text-100);
+  border:1px solid var(--border-700); border-radius:12px;
+  padding:.75rem .9rem; outline:none; transition:border-color .15s ease;
+}
+input:focus, textarea:focus{ border-color:var(--accent-500); box-shadow:0 0 0 4px rgba(250,204,21,.18); }
+
+.row-between{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.checkbox{ display:flex; align-items:center; gap:.55rem; color:var(--text-300); }
+.link{ color:var(--accent-500); }
+.link:hover{ text-decoration:underline; }
+
+.bullets{ margin:.2rem 0 0 1rem; color:var(--text-300); display:grid; gap:.35rem; }
+
+/* ====== Regulamin ====== */
+.terms{ display:grid; gap:.55rem; margin:0; padding-left:1.2rem; color:var(--text-300); }
+.terms li{ line-height:1.6; }
+
+/* ====== Stopka ====== */
+.site-footer{
+  border-top:1px solid var(--border-700);
+  background:rgba(16,23,32,.6);
+  backdrop-filter:saturate(140%) blur(8px);
+}
+.footer-grid{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; padding:1.1rem 0;
+}
+.footer-nav{ display:flex; gap:1rem; }
+.footer-nav a{ color:var(--text-300); }
+.footer-nav a:hover{ color:var(--text-100); }
+
+/* ====== Responsive ====== */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .section-grid{ grid-template-columns: 1fr; }
+  .nav{ gap:.25rem; }
+  .nav-link{ padding:.5rem .7rem; }
+}
+
+/* ====== Compatibility layer for subpages (nav/site-main/cards/forms) ====== */
+
+/* Nav alias: .site-nav (używana na podstronach) = .nav z indexu */
+.site-nav { display:flex; align-items:center; }
+.site-nav ul { list-style:none; display:flex; gap:.6rem; margin:0; padding:0; }
+.site-nav a {
+  padding:.55rem .9rem; border-radius:10px; color:var(--text-300);
+  border:1px solid transparent;
+}
+.site-nav a:hover { color:var(--text-100); background:var(--bg-700); border-color:var(--border-700); }
+.site-nav a:focus { outline:2px solid var(--ring); outline-offset:2px; border-color:transparent; }
+
+/* Główna zawartość na podstronach */
+.site-main { padding: clamp(2rem, 6vw, 4rem) 0; }
+
+/* Header sekcji stron (tytuł + opis) */
+.page-header { margin: 0 0 1rem; }
+.page-header h1 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.muted { color: var(--muted-500); }
+
+/* Siatka 2 kolumnowa (np. Kontakt: formularz + panel info) */
+.grid-2 { display:grid; gap:1.25rem; grid-template-columns: 1fr 1fr; }
+@media (max-width: 980px){ .grid-2 { grid-template-columns: 1fr; } }
+
+/* Karty i ich treść wewnątrz */
+.card-content { display:block; }
+.content-flow > * + * { margin-top: .75rem; } /* miękki rytm pionowy */
+
+/* Węższa karta dla auth (logowanie/rejestracja) */
+.card-narrow { max-width: 520px; margin: 0 auto; }
+
+/* Listy pomocnicze */
+.stack { display:grid; gap:.4rem; padding-left:0; margin:0; list-style:none; }
+
+/* Formularze (aliasy klas użytych w podstronach) */
+.form { display:grid; gap:.9rem; }
+.form-row { display:grid; gap:.45rem; }
+.form-row.inline { display:flex; align-items:center; gap:.55rem; }
+.form-actions { display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; }
+
+/* Link-przycisk (np. „Nie pamiętasz hasła?”) */
+.btn-link {
+  background:transparent; border:0; padding:0; font:inherit;
+  color: var(--accent-500); cursor:pointer;
+}
+.btn-link:hover { text-decoration: underline; }
+
+/* Stopka alias (podstrony mają .footer-inner) */
+.footer-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; padding:1.1rem 0;
+}
+
+/* Drobne dopasowania elementów formularzy */
+label { font-weight: 600; }
+input[type="checkbox"] { width:auto; height:auto; }
+/* ====== Fix: biały pasek po lewej na podstronach ====== */
+
+/* 1) Upewnij się, że tło jest też na <html>, nie tylko na <body> */
+html {
+  background: var(--bg-900); /* ciemny kolor bazowy */
+}
+
+/* 2) Stabilny scrollbar bez rezerwowania LEWEJ krawędzi */
+html {
+  /* jeżeli wcześniej dodałem "both-edges", zamień na samo "stable" */
+  scrollbar-gutter: stable;
+}
+
+/* 3) Zablokuj ewentualny horyzontalny przewijak, który mógł robić „prześwit” */
+body {
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+/* === Active nav via data-page (działa bez JS) === */
+body[data-page="index"]       .nav a[href$="index.html"],
+body[data-page="regulamin"]   .nav a[href$="regulamin.html"],
+body[data-page="kontakt"]     .nav a[href$="kontakt.html"],
+body[data-page="logowanie"]   .nav a[href$="logowanie.html"],
+body[data-page="rejestracja"] .nav a[href$="rejestracja.html"],
+/* jeżeli na części podstron masz jeszcze .site-nav zamiast .nav */
+body[data-page="index"]       .site-nav a[href$="index.html"],
+body[data-page="regulamin"]   .site-nav a[href$="regulamin.html"],
+body[data-page="kontakt"]     .site-nav a[href$="kontakt.html"],
+body[data-page="logowanie"]   .site-nav a[href$="logowanie.html"],
+body[data-page="rejestracja"] .site-nav a[href$="rejestracja.html"] {
+  color: var(--accent-500);
+  font-weight: 700;
+  background: var(--bg-700);
+  border-color: var(--border-700);
+}
+
+/* ====== Nowy styl przycisków CzyziuMakro (shape + font) ====== */
+
+/* bazowa czcionka dla guzików — ładna, nowoczesna */
+.btn, button {
+  font-family: "Inter", "Segoe UI", "Roboto", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: .25px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all .18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  font-size: 1rem;
+  border-radius: 9999px; /* pełny, „pigułkowy” kształt */
+  padding: .9rem 1.6rem;
+}
+
+/* Żółty akcent — główny */
+.btn-accent {
+  background: var(--accent-500);
+  color: #1a1500;
+  box-shadow: 0 4px 10px rgba(234,179,8,.25);
+}
+.btn-accent:hover {
+  background: var(--accent-600);
+  box-shadow: 0 6px 16px rgba(234,179,8,.35);
+  transform: translateY(-1px);
+}
+.btn-accent:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(234,179,8,.25);
+}
+
+/* Ciemny obrysowany */
+.btn-outline {
+  background: transparent;
+  color: var(--text-100);
+  border: 2px solid var(--border-700);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.btn-outline:hover {
+  border-color: var(--accent-500);
+  color: var(--accent-500);
+  background: var(--bg-700);
+  transform: translateY(-1px);
+}
+.btn-outline:active {
+  transform: translateY(1px);
+}
+
+/* Linkowy */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--accent-500);
+  padding: 0;
+  font-weight: 500;
+  font-size: .95rem;
+  transition: color .15s ease;
+}
+.btn-link:hover {
+  color: var(--accent-600);
+  text-decoration: underline;
+}
+
+/* Fokus / klawiatura */
+.btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 3px;
+}
+
+.user-greet {
+  font-weight: 500;
+  color: var(--accent-500);
+  cursor: default;
+}
+
+/* ===================== INFO BANNER ===================== */
+.info-banner {
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid var(--accent-500);
+  color: var(--text-100);
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-banner strong {
+  color: var(--accent-500);
+}
+
+.info-banner button {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-300);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/* ===================== SIDE NAV ===================== */
+.side-nav {
+  position: fixed;
+  top: 72px; /* poniżej headera */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 72px);
+  background-color: var(--bg-800);
+  border-right: 1px solid var(--border-700);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  z-index: 5;
+}
+
+.side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-link {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-300);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.side-link:hover {
+  background-color: var(--bg-700);
+  color: var(--accent-500);
+}
+
+.with-sidebar {
+  margin-left: 220px; /* przesunięcie głównej zawartości */
+}
+
+/* ===================== INFO BANNER (z poprzedniej wersji) ===================== */
+.info-banner {
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid var(--accent-500);
+  color: var(--text-100);
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-banner strong {
+  color: var(--accent-500);
+}
+
+.info-banner button {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-300);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+
+/* ====================================================================== */
+/* ===============  MODAL (ONBOARDING) – LAYOUT & STYLES  =============== */
+/* ====================================================================== */
+
+/* Backdrop */
+/* ===================== MODAL BACKDROP (Z ROZMYCIEM STRONY) ===================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* półprzezroczyste przyciemnienie */
+  backdrop-filter: blur(8px);      /* 🔹 rozmycie całej strony */
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 40;
+  transition: opacity 0.3s ease;
+}
+
+
+/* Modal container */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+/* Modal card */
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 720px;                 /* ← możesz zwiększyć/zmniejszyć */
+  max-height: 90vh;                 /* wewnętrzne przewijanie */
+  overflow: hidden;
+  background: var(--bg-700);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: var(--text-100);
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .5rem;
+}
+.modal-header h2 {
+  font-size: 1.25rem;
+  color: var(--text-100);
+}
+.modal-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-300);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Opis pod tytułem */
+.modal-desc {
+  color: var(--text-300);
+  margin-bottom: 1rem;
+}
+
+/* ====================================================================== */
+/* ======================  FORM – GRID & FIELDS  ======================== */
+/* ====================================================================== */
+
+/* Siatka formularza (2 kolumny na desktopie) */
+.form-grid {
+  flex: 1 1 auto;                  /* wypełnia kartę między headerem a stopką */
+  overflow: auto;                  /* przewijanie tylko treści, nie stopki */
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* ← 2 kolumny */
+  gap: 1rem;
+}
+
+/* Pojedyncze pole / grupa */
+.form-field {
+  display: block;
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: .75rem;
+}
+.form-field > span,
+.form-field > legend {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .5rem;
+}
+
+/* Inputs & selects w polu */
+.form-field input[type="number"],
+.form-field select {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-700);
+  border-radius: .5rem;
+  padding: .6rem .7rem;
+  color: var(--text-100);
+  outline: none;
+}
+.form-field input:focus,
+.form-field select:focus {
+  box-shadow: 0 0 0 3px var(--ring);
+  border-color: var(--accent-600);
+}
+
+/* Radio inline */
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-right: 1rem;
+  margin-top: .25rem;
+  user-select: none;
+}
+
+/* 1 kolumna na mobile */
+@media (max-width: 720px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================================================================== */
+/* =========================  SELECT (UI)  ============================== */
+/* ====================================================================== */
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--bg-700);
+  color: var(--text-100);
+  border: 1px solid var(--border-700);
+  border-radius: 0.6rem;
+  padding: 0.65rem 2.5rem 0.65rem 0.9rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--accent-500) 50%),
+    linear-gradient(135deg, var(--accent-500) 50%, transparent 50%);
+  background-position: calc(100% - 1.2rem) center, calc(100% - 1rem) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  transition: border-color .2s, box-shadow .2s;
+}
+select:hover { border-color: var(--accent-500); }
+select:focus {
+  outline: none;
+  border-color: var(--accent-600);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+option {
+  background: var(--bg-800);
+  color: var(--text-100);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+option:hover, option:checked {
+  background: var(--accent-600);
+  color: #0b0f14;
+}
+
+/* ====================================================================== */
+/* ================  POZIOM UŻYTKOWNIKA – 2 WARIANTY  =================== */
+/* ====================================================================== */
+
+/* --- Wariant 1: „kafelek obok” (fieldset + info-box) ------------------ */
+.level-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: .25rem;
+}
+.level-left {
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.level-left legend {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .5rem;
+}
+.level-left .radio {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .25rem 0;
+}
+.info-card {
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+  color: var(--text-100);
+  font-size: .9rem;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.info-card h4 { margin: 0 0 .4rem 0; font-size: 1rem; color: var(--text-100); }
+.info-card p  { margin: .4rem 0;    color: var(--text-300); }
+.info-card strong { color: var(--text-100); }
+
+@media (max-width: 720px) {
+  .level-row { grid-template-columns: 1fr; }
+}
+
+/* --- Wariant 2: „jeden szeroki kafelek” (2 karty-opcje) --------------- */
+.level-card {
+  grid-column: 1 / -1;
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: .75rem;
+  padding: .75rem .9rem 1rem;
+  margin-bottom: 1.25rem;          /* odstęp przed stopką */
+}
+.level-card-header { margin-bottom: .5rem; }
+.level-card-header h3 { margin: 0; font-size: 1rem; color: var(--text-100); }
+
+.level-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+.level-option {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  border-radius: .6rem;
+  position: relative;
+}
+.level-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  pointer-events: none;
+}
+.option-body {
+  height: 100%;
+  background: var(--bg-800, #0e131a);
+  border: 1px solid var(--border-700);
+  border-radius: .6rem;
+  padding: .8rem .9rem;
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.level-option:hover .option-body { border-color: var(--border-600, #2b3544); }
+.option-title { font-weight: 600; color: var(--text-100); margin-bottom: .25rem; }
+.option-desc  { color: var(--text-300); font-size: .92rem; line-height: 1.4; }
+.level-option input[type="radio"]:checked + .option-body {
+  border-color: var(--accent-500, #ffd166);
+  box-shadow: 0 0 0 2px rgba(255,209,102,.15);
+}
+@media (max-width: 720px) {
+  .level-card-grid { grid-template-columns: 1fr; }
+}
+
+/* ====================================================================== */
+/* ===========================  FOOTER / CTA  =========================== */
+/* ====================================================================== */
+
+/* === STOPKA BEZ TŁA === */
+.modal-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+
+  padding-top: .75rem;
+  margin-top: .75rem;
+  background: none;                  /* 🔹 usuwa tło */
+  border-top: 1px solid var(--border-700); /* cienka linia separująca */
+  box-shadow: none;                  /* bez cienia */
+}
+
+.btn {
+  padding: .65rem 1rem;
+  border-radius: .75rem;
+  border: 1px solid var(--border-700);
+  background: var(--bg-700);
+  color: var(--text-100);
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.primary {
+  border-color: var(--accent-600);
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color: #0b0f14;
+  box-shadow: 0 3px 12px rgba(250,204,21,0.25);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--text-300);
+}
+.modal-actions .btn.secondary {
+  background: transparent;
+  border: 1px solid var(--border-700);
+  color: var(--text-300);
+}
+.modal-actions .btn.secondary:hover {
+  color: var(--accent-500);
+  border-color: var(--accent-500);
+}
+
+/* ====================================================================== */
+/* ================  SIDE NAV – ACTIVE STATE (bez zmian)  =============== */
+/* ====================================================================== */
+
+.side-link.active,
+body[data-page="pozalogowaniu"] .side-link[href$="pozalogowaniu.html"],
+body[data-page="lodowka"] .side-link[href$="lodowka.html"],
+body[data-page="produkty"] .side-link[href$="produkty.html"],
+body[data-page="dania"] .side-link[href$="dania.html"],
+body[data-page="asystent-ai"] .side-link[href$="asystent-ai.html"],
+body[data-page="podsumowanie"] .side-link[href$="podsumowanie.html"],
+body[data-page="parametry"] .side-link[href$="parametry.html"],
+body[data-page="ustaw-cele"] .side-link[href$="ustaw-cele.html"] {
+  background-color: var(--bg-700);
+  color: var(--accent-500);
+  font-weight: 600;
+  border-left: 3px solid var(--accent-600);
+}
+
+
+
+
+
+/* === Modal zawsze na wierzchu, backdrop tuż pod nim === */
+.modal         { z-index: 1000 !important; }
+.modal-backdrop{ z-index:  900 !important; }
+
+/* Header nie może być nad backdorpem */
+.site-header   { z-index:   20 !important; }  /* mniej niż 900 */
+
+/* (opcjonalnie) boczne menu też nisko */
+.side-nav      { z-index:   15 !important; }
+/* === Blur całej strony podczas wysyłania formularza === */
+body.blur-active main,
+body.blur-active header,
+body.blur-active aside {
+  filter: blur(6px);
+  pointer-events: none; /* blokuje klikanie w tle */
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+
+body.blur-active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* lekkie przyciemnienie */
+  z-index: 999;
+}
+/* 🔹 Wyłącz rozmycie wewnątrz modału */
+#onbModal, 
+#onbModal * {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Wrapper, który ma wypełnić ekran między headerem a footerem */
+#pageBlurWrap {
+  flex: 1;                 /* ← to jest klucz do sticky footera */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;           /* pozwala dzieciom z flex rosnąć/przewijać */
+}
+
+/* Główna treść wypełnia dostępną przestrzeń */
+.site-main { 
+  flex: 1; 
+}
+
+/* kompaktowa, stabilna tabela + ładne przyciski + scrollbary */
+:root{
+  --pad:.45rem .55rem;
+  --num-col-w:9ch;                 /* szer. kolumn 3–6: kcal/B/T/W */
+  --btn-h:34px; --btn-pad:.42rem .72rem; --btn-radius:9999px;
+  --btn-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.25);
+  --btn-shadow-lg:0 2px 8px rgba(0,0,0,.35);
+  --danger-500:#ef4444; --danger-600:#dc2626;
+}
+#addEditCard{margin-bottom:1.25rem}
+
+/* wrapper tabeli + lokalny scrollbar */
+.table-wrapper{
+  overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-gutter:stable;
+  scrollbar-width:thin; scrollbar-color:var(--border-700) var(--bg-800);
+}
+.table-wrapper::-webkit-scrollbar{height:10px}
+.table-wrapper::-webkit-scrollbar-track{background:var(--bg-800);border-radius:9999px}
+.table-wrapper::-webkit-scrollbar-thumb{background:var(--bg-700);border:1px solid var(--border-700);border-radius:9999px}
+.table-wrapper::-webkit-scrollbar-thumb:hover{background:var(--accent-500);border-color:var(--accent-600)}
+
+/* tabela */
+.table{width:100%;border-collapse:collapse;table-layout:fixed;border:1px solid var(--border-700)}
+.table :is(th,td){box-sizing:border-box;padding:var(--pad);vertical-align:middle;border-bottom:1px solid var(--border-700)}
+.table thead th{background:var(--bg-700);white-space:nowrap;overflow:visible;text-overflow:clip}
+.table tbody tr:last-child td{border-bottom:0}
+
+/* kolumny */
+.table :is(th,td):first-child{max-width:clamp(200px,30vw,360px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.table :is(th,td):nth-child(2){width:clamp(120px,18vw,220px)}
+.table :is(th,td):nth-child(n+3):nth-child(-n+6){width:var(--num-col-w);text-align:right}
+.table :is(th,td):last-child{width:clamp(150px,22vw,220px)!important}
+
+/* kolumna Akcje + ładne przyciski */
+.table td:last-child{display:flex;justify-content:flex-end;align-items:center;gap:.4rem}
+.table td:last-child .btn,
+.table td:last-child a.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+  padding:var(--btn-pad);height:var(--btn-h);min-width:92px;
+  font-size:.92rem;font-weight:600;letter-spacing:.01em;line-height:1;
+  border-radius:var(--btn-radius);border:1px solid transparent;box-shadow:var(--btn-shadow);
+  transition:transform .12s, box-shadow .12s, border-color .12s, background-color .12s, color .12s;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;flex:1 1 0;
+}
+.table td:last-child .btn-edit,
+.table td:last-child .btn:first-of-type{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--bg-800),white 4%),var(--bg-800));
+  color:var(--text-100);border-color:var(--border-700);
+}
+.table td:last-child .btn-edit:hover,
+.table td:last-child .btn:first-of-type:hover{
+  border-color:var(--accent-500);color:var(--accent-500);box-shadow:var(--btn-shadow-lg);transform:translateY(-1px);
+}
+.table td:last-child .btn-delete,
+.table td:last-child .btn:last-of-type{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--danger-500),white 6%),var(--danger-500));
+  color:#fff;border-color:transparent;
+}
+.table td:last-child .btn-delete:hover,
+.table td:last-child .btn:last-of-type:hover{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--danger-600),white 6%),var(--danger-600));
+  box-shadow:var(--btn-shadow-lg);transform:translateY(-1px);
+}
+.table td:last-child .btn:focus-visible{outline:2px solid var(--accent-500);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  .table td:last-child .btn{transition:none}
+  .table td:last-child .btn:hover{transform:none}
+}
+
+/* responsy */
+@media (max-width:1200px){
+  .table :is(th,td){padding:.35rem .45rem;font-size:.95rem}
+  .table td:last-child .btn{height:32px;min-width:88px;font-size:.9rem}
+}
+@media (max-width:900px){
+  .table td:last-child{flex-direction:column;align-items:stretch;gap:.35rem}
+  .table td:last-child .btn{width:100%;min-width:auto}
+  .table thead th{font-size:.9rem}
+}
+
+/* globalny scrollbar */
+html{scrollbar-width:thin;scrollbar-color:var(--border-700) var(--bg-900)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg-800)}
+::-webkit-scrollbar-thumb{background:var(--bg-700);border:1px solid var(--border-700);border-radius:9999px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-500);border-color:var(--accent-600)}
+::-webkit-scrollbar-corner{background:var(--bg-800)}
+
+
+
+
+
+
+/* Węższa Nazwa i Kategoria (bez znikania kolumn) */
+.table :is(th,td):first-child{
+  width: clamp(160px, 24vw, 320px);
+  min-width: 150px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.table :is(th,td):nth-child(2){
+  width: clamp(110px, 14vw, 180px);
+  min-width: 100px;
+}
+
+/* jeszcze ciaśniej na węższych ekranach */
+@media (max-width: 1200px){
+  .table :is(th,td):first-child{ width: clamp(150px, 22vw, 280px); min-width: 140px; }
+  .table :is(th,td):nth-child(2){ width: clamp(100px, 12vw, 160px); min-width: 96px; }
+}
+
+
+
+
+
+
+/* ===================== Autocomplete (ac-*) — dark/amber ===================== */
+.ac-wrap {
+  position: relative;
+  overflow: visible; /* nie ucina dropdownu */
+}
+
+/* ukrywanie przez [hidden] */
+.ac-panel[hidden] { display: none !important; }
+
+.ac-panel {
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  margin-top: 6px;
+
+  max-height: 260px;
+  overflow-y: auto;
+
+  /* spójne z kartami i tabelami */
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  border: 1px solid var(--border-700);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+
+  z-index: 80; /* nad treścią/side-nav, poniżej modal (1000) */
+  backdrop-filter: saturate(120%);
+  transition: opacity .12s ease, transform .12s ease;
+  opacity: 1; transform: translateY(0);
+}
+
+/* wariant „portal do body” (jeśli JS tak wstawi) */
+.ac-panel[data-portal="true"] {
+  position: absolute;
+  z-index: 990; /* tuż pod modalem (1000), nad headerem/side-nav */
+}
+
+/* scrollbar spójny z resztą */
+.ac-panel::-webkit-scrollbar{ width: 10px; height: 10px; }
+.ac-panel::-webkit-scrollbar-track{ background: var(--bg-800); border-radius: 9999px; }
+.ac-panel::-webkit-scrollbar-thumb{
+  background: var(--bg-700);
+  border: 1px solid var(--border-700);
+  border-radius: 9999px;
+}
+.ac-panel::-webkit-scrollbar-thumb:hover{
+  background: var(--accent-500);
+  border-color: var(--accent-600);
+}
+.ac-panel{ scrollbar-width: thin; scrollbar-color: var(--border-700) var(--bg-800); }
+
+.ac-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .5rem;
+
+  padding: .6rem .8rem;
+  cursor: pointer;
+  color: var(--text-100);
+}
+
+.ac-item:hover {
+  background: var(--bg-700);
+}
+
+.ac-item.is-active {
+  /* delikatny amber highlight pod aktywnym */
+  background: color-mix(in oklab, var(--accent-500) 12%, var(--bg-800));
+  outline: none;
+}
+
+.ac-item:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.ac-muted {
+  color: var(--muted-500);
+  font-size: .9em;
+  white-space: nowrap;
+}
+
+/* Małe ekrany: odrobinkę ciaśniej */
+@media (max-width: 720px){
+  .ac-item { padding: .5rem .65rem; }
+}
+
+
+
+
+
+
+
+/* ===================== Modal (cm-modal) ===================== */
+.cm-modal[hidden]{ display:none !important; }
+
+.cm-modal__backdrop{
+  position: fixed; inset: 0;
+  background: color-mix(in oklab, var(--bg-900, #0b0f14) 60%, black);
+  opacity: .75;
+  z-index: 999;  /* pod dialogiem */
+}
+
+.cm-modal__dialog{
+  position: fixed; inset: 0; margin: auto;
+  width: min(520px, 94vw);
+  background: linear-gradient(180deg, var(--bg-700, #10151d), var(--bg-800, #0c1118));
+  border: 1px solid var(--border-700, #1f2937);
+  border-radius: 16px;
+  box-shadow: var(--shadow, 0 20px 60px rgba(0,0,0,.35));
+  z-index: 1000;
+
+  display: grid; grid-template-rows: auto 1fr auto;
+  max-height: min(78vh, 720px);
+}
+
+.cm-modal__header{ padding: .9rem 1rem; border-bottom: 1px solid var(--border-700,#1f2937); }
+.cm-modal__header h4{ margin:0; color: var(--text-100, #e5e7eb); font-size: 1.05rem; }
+
+.cm-modal__body{ padding: 1rem; color: var(--text-100, #e5e7eb); }
+.cm-modal__footer{
+  padding: .8rem 1rem;
+  border-top: 1px solid var(--border-700,#1f2937);
+  display:flex; justify-content:flex-end; gap:.5rem; flex-wrap:wrap;
+}
+
+.cm-modal__dialog:focus-visible{ outline: 2px solid var(--accent-500,#f59e0b); outline-offset: 4px; }
+
+/* Mały bonus: zablokuj scroll tła przy otwartym modalu */
+body.cm-modal-open{ overflow:hidden; }
+
+/* Akcje w tabeli: upewnij się, że wszystkie przyciski są nad dropdownem */
+.table td:last-child {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: .25rem;
+  flex-wrap: wrap;
+}
+
+.table td:last-child .btn {
+  position: relative;
+  z-index: 1;               /* nad ewentualnymi overlayami */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Uniwersalny hover/focus dla wszystkich, nie tylko pierwszego */
+.table td:last-child .btn:hover,
+.table td:last-child .btn:focus-visible {
+  background: var(--bg-700);
+  border-color: var(--accent-600);
+  color: var(--text-100);
+}
+
+/* Na wszelki wypadek skasuj ewentualne reguły typu :first-child */
+.table td:last-child .btn:first-child:hover,
+.table td:last-child .btn:first-child:focus-visible {
+  /* nic specjalnego – użyjemy reguły powyżej */
+}
+
+
+
+
+
+
+
+/* ===== Odstęp między "Dodaj do lodówki" a "Szukaj w lodówce" ===== */
+:root{
+  /* jeden suwak na przerwę między kartami */
+  --section-gap: 1.25rem;
+}
+
+#addEditCard{
+  margin-bottom: var(--section-gap);
+}
+
+/* Gdyby ID nie było — zapasowa reguła: każda karta po karcie ma przerwę */
+.card + .card{
+  margin-top: var(--section-gap);
+}
+
+/* Trochę ciaśniej na węższych ekranach */
+@media (max-width: 900px){
+  :root{ --section-gap: 1rem; }
+}
+
+/* Oddech w górnej części karty z tabelą: pasek narzędzi odsuń od tabeli */
+.toolbar{
+  margin-bottom: .5rem;
+}
+
+
+
+
+
+
+
+/* === Dania: pole produktu + autocomplete widoczne w tabeli === */
+
+/* Pozwól komórce z polem produktu normalnie się składać i nie ucinać zawartości */
+#ingTbody td:first-child {
+  white-space: normal;   /* nadpisuje nowrap z ogólnej reguły tabeli */
+  overflow: visible;     /* nie przycinaj pola input wewnątrz */
+}
+
+/* Uprość styl „kartki” wewnątrz komórki i ustaw kontekst dla dropdownu */
+#ingTbody td:first-child .form-field {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  position: relative;    /* kotwica dla .ac-panel (absolute) */
+  overflow: visible;
+}
+
+/* Samo pole produktu – pełna szerokość kolumny + minimalna użyteczna szerokość */
+#ingTbody td:first-child .form-field input.ing-name {
+  display: block;
+  width: 100%;
+  min-width: 220px;
+}
+
+/* Dropdown autouzupełniania ponad tabelą/sidebarem */
+.ac-panel {
+  z-index: 120;          /* wyżej niż side-nav/header i komórki tabeli */
+}
+
+/* Na węższych ekranach pozwól pierwszej kolumnie rosnąć (gdy brakuje miejsca) */
+@media (max-width: 900px) {
+  .table :is(th,td):first-child { max-width: none; }
+}
+
+
+/* Dania: większe okno na tabelę składników */
+body[data-page="dania"] #mealFormCard .table-wrapper {
+  max-height: 72vh; /* zwiększ wysokość okna tabeli */
+  overflow: auto;   /* wewnętrzny scroll */
+  padding-bottom: 100px; /* zapas pod tabelą na dropdown przy ostatniej pozycji */
+}
+
+/* Nie ucinać pola produktu i dropdownu w pierwszej kolumnie */
+#ingTbody td:first-child { white-space: normal; overflow: visible; }
+#ingTbody td:first-child .form-field { position: relative; overflow: visible; }
+.ac-panel { z-index: 120; }
+
+
+/* === Dania: fix nachodzących nagłówków w liście dań === */
+body[data-page="dania"] #mealListCard .table {
+  width: 100%;
+  table-layout: fixed; /* kolumny trzymają szerokości */
+}
+
+/* pozwól nagłówkom się łamać, nie ściskaj ich */
+body[data-page="dania"] #mealListCard thead th {
+  white-space: normal !important;
+  overflow-wrap: anywhere;   /* może łamać w dowolnym miejscu, też przy "/" */
+  word-break: break-word;
+  line-height: 1.25;
+  vertical-align: bottom;
+}
+
+/* treść komórek nie wychodzi poza kolumny */
+body[data-page="dania"] #mealListCard tbody td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* sugerowane szerokości kolumn */
+body[data-page="dania"] #mealListCard thead th:nth-child(1),
+body[data-page="dania"] #mealListCard tbody td:nth-child(1) { width: 34%; } /* Nazwa */
+body[data-page="dania"] #mealListCard thead th:nth-child(2),
+body[data-page="dania"] #mealListCard tbody td:nth-child(2) { width: 16%; } /* Kategoria */
+body[data-page="dania"] #mealListCard thead th:nth-child(3),
+body[data-page="dania"] #mealListCard tbody td:nth-child(3) { width: 10%; text-align:center; } /* Porcji */
+body[data-page="dania"] #mealListCard thead th:nth-child(4),
+body[data-page="dania"] #mealListCard tbody td:nth-child(4) { width: 14%; } /* kcal/porcję */
+body[data-page="dania"] #mealListCard thead th:nth-child(5),
+body[data-page="dania"] #mealListCard tbody td:nth-child(5) { width: 14%; } /* B/T/W/porcję */
+body[data-page="dania"] #mealListCard thead th:nth-child(6),
+body[data-page="dania"] #mealListCard tbody td:nth-child(6) { width: 200px; white-space: nowrap; } /* Akcje */
+
+/* responsywnie: delikatnie zmniejsz font i ścieśnij przyciski akcji */
+@media (max-width: 900px) {
+  body[data-page="dania"] #mealListCard .table { font-size: 0.95rem; }
+  body[data-page="dania"] #mealListCard thead th:nth-child(6),
+  body[data-page="dania"] #mealListCard tbody td:nth-child(6) { width: 160px; }
+}
+
+
+
+/* === Podgląd dania: poprawki UI === */
+body[data-page="dania"] .cm-modal__dialog {
+  width: min(96vw, 980px);
+  max-width: 980px;
+}
+body[data-page="dania"] .cm-modal__body {
+  max-height: 72vh;
+  overflow: auto;
+}
+
+/* Nagłówek podglądu */
+#previewBody .preview-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+#previewBody .preview-name { font-size: 1.25rem; font-weight: 700; }
+#previewBody .preview-meta { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+
+.cm-badge {
+  display: inline-block;
+  padding: .2rem .5rem;
+  border-radius: .5rem;
+  background: var(--surface-3, #eef1f5);
+  font-size: .85rem;
+  line-height: 1;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.cm-badge.success { background: #e6f6ea; border-color: #cdebd6; }
+.cm-badge.neutral { background: #edf3ff; border-color: #d6e3ff; }
+.cm-badge.outline { background: transparent; border-color: rgba(0,0,0,.12); }
+
+/* Tabela w podglądzie */
+#previewBody .table.preview-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1, #fff);
+  z-index: 1;
+}
+#previewBody .table.preview-table th.t-right,
+#previewBody .table.preview-table td.t-right { text-align: right; }
+
+/* Kafel podsumowania */
+#previewBody .preview-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .5rem .75rem;
+}
+#previewBody .recipe-card p { white-space: pre-wrap; }
+
+
+
+
+/* === Dania / Podgląd — zgodne z resztą stylu === */
+body[data-page="dania"] .cm-modal__dialog {
+  width: min(96vw, 960px);
+  max-width: 960px;
+}
+body[data-page="dania"] .cm-modal__body {
+  max-height: 72vh;
+  overflow: auto;
+}
+
+/* Nagłówek podglądu */
+#previewBody .preview-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+#previewBody .preview-name {
+  font-size: 1.1rem;   /* zbliżone do nagłówków sekcji */
+  font-weight: 700;
+  line-height: 1.25;
+}
+#previewBody .preview-meta {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* „Badge” bez twardych kolorów — podpinamy pod surface/border z motywu */
+#previewBody .cm-badge {
+  display: inline-block;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border, rgba(0,0,0,.1));
+  font-size: .85rem;
+  line-height: 1;
+  color: inherit;
+}
+
+/* Tabela składników — zachowujemy styl .table, tylko UX */
+#previewBody .table.preview-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1, #fff); /* spójne z resztą tła */
+  z-index: 1;
+}
+#previewBody .table.preview-table th.t-right,
+#previewBody .table.preview-table td.t-right {
+  text-align: right;
+}
+
+/* Kafel podsumowania — układ siatki, bez własnych kolorów */
+#previewBody .preview-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .5rem .75rem;
+}
+
+/* Treść przepisu — respektuj łamanie linii z textarea */
+#previewBody .recipe-card p { white-space: pre-wrap; }
+
+
+
+/* Dania: nagłówek tabeli w podglądzie — spójny z kartą */
+body[data-page="dania"] #previewBody .table.preview-table thead th {
+  background: var(--surface-2) !important;          /* zamiast bieli */
+  border-bottom: 1px solid var(--border, rgba(0,0,0,.12));
+  box-shadow: none;                                  /* bez cieniowania */
+}
+
+
+
+/* Dania: nagłówek tabeli w podglądzie na żółto (accent) */
+body[data-page="dania"] #previewBody .table.preview-table thead th {
+  background: var(--accent-500) !important;   /* Twój żółty */
+  color: #0b0f14;                             /* ciemny tekst dla kontrastu */
+  border-bottom: 1px solid var(--accent-600); /* delikatne odcięcie */
+}
+
+
+/* === Dania / Podgląd — tabela & podsumowanie === */
+
+/* Tabela w podglądzie: stały układ, klarowne szerokości liczbowych kolumn */
+body[data-page="dania"] #previewBody .table.preview-table {
+  table-layout: fixed;
+}
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(1),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(1) { width: 42%; }
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(2),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(2) { width: 18%; }
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(3),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(3),
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(4),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(4),
+body[data-page="dania"] #previewBody .table.preview-table th:nth-child(5),
+body[data-page="dania"] #previewBody .table.preview-table td:nth-child(5) { width: 13%; }
+
+/* Dodatkowe wyrównanie liczb */
+body[data-page="dania"] #previewBody .table.preview-table th.t-right,
+body[data-page="dania"] #previewBody .table.preview-table td.t-right { text-align: right; }
+
+/* Oddech pod tabelą, żeby podsumowanie nie „nachodziło” */
+body[data-page="dania"] #previewBody .table.preview-table { margin-bottom: .75rem; }
+
+/* Grid z boksami podsumowania */
+body[data-page="dania"] #previewBody .summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .75rem;
+}
+
+/* Pudełka z metrykami — spójne z kartami */
+body[data-page="dania"] #previewBody .summary-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border, rgba(0,0,0,.12));
+  border-radius: .5rem;
+  padding: .5rem .75rem;
+}
+
+/* Tytuł boksu */
+body[data-page="dania"] #previewBody .summary-box .summary-title {
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+/* Lista metryk: każda w osobnej linii, równe odstępy, bez upychania "obok siebie" */
+body[data-page="dania"] #previewBody .metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body[data-page="dania"] #previewBody .metrics li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .15rem 0;
+  border-top: 1px dashed var(--border, rgba(0,0,0,.12));
+}
+body[data-page="dania"] #previewBody .metrics li:first-child { border-top: 0; }
+body[data-page="dania"] #previewBody .metrics li strong { font-variant-numeric: tabular-nums; }
+
+
+
+/* ==== OVERRIDE: węższe "Nazwa" i "Kategoria" (wklej na SAM KONIEC pliku) ==== */
+
+/* 1) Nazwa (kolumna 1) */
+.table :is(th,td):first-child{
+  width: clamp(120px, 18vw, 240px) !important;
+  min-width: 120px;            /* twarde minimum */
+  max-width: 240px;            /* nie rośnie ponad */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2) Kategoria (kolumna 2) */
+.table :is(th,td):nth-child(2){
+  width: clamp(90px, 12vw, 160px) !important;
+  min-width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Trochę ciaśniej na węższych ekranach */
+@media (max-width: 1200px){
+  .table :is(th,td):first-child{
+    width: clamp(110px, 20vw, 200px) !important;
+    min-width: 110px;
+  }
+  .table :is(th,td):nth-child(2){
+    width: clamp(80px, 12vw, 140px) !important;
+    min-width: 80px;
+  }
+}
+
+
+
+/* Data ważności w tabeli */
+.exp-date.expired { color: var(--danger-500); font-weight: 600; }
+
+
+
+
+
+/* ==== Lodówka: kolumna "Ważne do" + korekta szerokości kolumn (OVERRIDE) ==== */
+
+/* 3) "Ważne do" – wąska kolumna na datę */
+.table :is(th,td):nth-child(3){
+  width: clamp(110px, 12vw, 140px) !important;
+  min-width: 110px;
+  text-align: left;               /* data czytelna jak tekst */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 4–7) Liczbowe kolumny: Ilość + kcal/B/T/W */
+.table :is(th,td):nth-child(n+4):nth-child(-n+7){
+  width: var(--num-col-w) !important; /* masz w :root np. 9ch */
+  text-align: right !important;
+}
+
+/* Data — wygląd i stan po terminie */
+.exp-date{ font-variant-numeric: tabular-nums; }
+.exp-date.expired{ color: var(--danger-500, #ef4444); font-weight: 600; }
+
+/* Na bardzo wąskich ekranach data może się zwęzić jeszcze bardziej */
+@media (max-width: 900px){
+  .table :is(th,td):nth-child(3){
+    width: clamp(96px, 24vw, 120px) !important;
+    min-width: 96px;
+  }
+}
+
+
+
+
+
+/* ==== AI Panel – layout składników i przycisków ==== */
+.ai-panel .ai-results,
+.ai-panel .ai-recipe { margin-top: .5rem; }
+
+.ai-panel .muted-note {
+  color: var(--text-300);
+  font-size: .95rem;
+}
+
+/* Kontener listy i przycisku "Dodaj wszystko" */
+.ai-panel .recipe-ingredients{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+}
+
+/* Lista w jednej kolumnie */
+.ai-panel .ingredients-list{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:.35rem;
+  order:1; /* lista u góry */
+  margin:.25rem 0;
+}
+
+/* Wiersz: NAZWA | GRAMY | PRZYCISK */
+.ai-panel .ingredients-list .ing{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) 90px 120px;
+  align-items:center;
+  gap:.5rem;
+  padding:.45rem .6rem;
+  border:1px solid var(--border-700);
+  border-radius:.6rem;
+  background: linear-gradient(180deg,var(--bg-700),var(--bg-800));
+}
+
+.ai-panel .ingredients-list .ing .name{
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+.ai-panel .ingredients-list .ing .grams{
+  text-align:right; font-variant-numeric: tabular-nums;
+  color: var(--muted-500);
+}
+
+/* przycisk w wierszu – równa szerokość */
+.ai-panel .ingredients-list .ing .btn-small{
+  justify-self:end;
+  min-width: 120px;
+}
+
+/* Pasek z "Dodaj wszystko" POD listą */
+.ai-panel .ingredients-head{
+  order:2;
+  display:flex;
+  justify-content:flex-end;
+  margin-top:.25rem;
+}
+
+/* jeśli JS wstawia tylko sam przycisk bez .ingredients-head */
+.ai-panel [data-add-all]{
+  width:100%;
+  max-width:220px;
+}
+
+/* ==== Styl .btn-small spójny z motywem ==== */
+.btn-small{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.42rem .72rem;
+  height:34px;
+  border-radius:9999px;
+  border:1px solid var(--border-700);
+  background: var(--bg-700);
+  color: var(--text-100);
+  font-weight:600; font-size:.92rem; letter-spacing:.01em;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.25);
+  cursor:pointer; transition:.15s ease;
+}
+.btn-small:hover{
+  border-color: var(--accent-500);
+  color: var(--accent-500);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+.btn-small:disabled{
+  opacity:.6; cursor:not-allowed; transform:none;
+}
+
+/* Warianty */
+.btn-small.primary{
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color:#0b0f14; border-color: var(--accent-600);
+}
+.btn-small.success{
+  background: linear-gradient(180deg, #10b981, #059669);
+  color:#fff; border-color: transparent;
+}
+
+/* ==== Responsywność: dwa rzędy na wąskich ekranach ==== */
+@media (max-width: 420px){
+  .ai-panel .ingredients-list .ing{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name name"
+      "grams btn";
+  }
+  .ai-panel .ingredients-list .ing .name  { grid-area:name; }
+  .ai-panel .ingredients-list .ing .grams { grid-area:grams; }
+  .ai-panel .ingredients-list .ing .btn-small { grid-area:btn; }
+  .ai-panel [data-add-all]{ max-width:none; }
+}
+
+
+/* AI panel: pasek tytułu + strzałki */
+.ai-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.5rem; margin:.25rem 0 .25rem;
+}
+.ai-title{ margin:0; font-size:1.05rem; font-weight:700; }
+.ai-nav{
+  min-width:36px; height:36px; border-radius:10px;
+  border:1px solid var(--border-700); background:var(--bg-700);
+  color:var(--text-100); cursor:pointer;
+}
+.ai-nav:hover{ border-color:var(--accent-500); color:var(--accent-500); }
+
+.ai-sub{ color:var(--text-300); margin-bottom:.5rem; }
+.ai-count{ color:var(--muted-500); margin-left:.35rem; }
+
+/* Jedna kolumna produktów + „Dodaj wszystko” pod spodem */
+.recipe-ingredients.one-col{
+  display:grid; gap:.35rem;
+}
+.recipe-ingredients .ing{
+  display:grid; grid-template-columns: 1fr auto auto; gap:.5rem; align-items:center;
+  padding:.35rem .45rem; border:1px solid var(--border-700); border-radius:.6rem;
+  background:linear-gradient(180deg,var(--bg-700),var(--bg-800));
+}
+.recipe-ingredients .ing .name{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.recipe-ingredients .ing .grams{ color:var(--text-300); }
+
+.recipe-ingredients .ing-actions{
+  margin-top:.4rem; display:flex; justify-content:flex-end;
+}
+.recipe-ingredients .ing-actions .primary{
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+  color:#0b0f14; border:1px solid var(--accent-600);
+}
+
+/* delikatne oznaczenie elementów dodanych przez AI (w liście slota) */
+.slot-item.ai-added{ opacity:.95; }
+
+
+
+
+
+/* ===================== SIDE NAV – LAYOUT + DELETE ===================== */
+
+/* Sidebar w kolumnie, żeby "Usuń konto" mógł być na dole */
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ostatni element (Usuń konto) przyklejony do dołu */
+.side-nav .side-delete {
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid var(--border-700);
+}
+
+/* Podstawowy link w menu już masz jako .side-link – korzystamy z niego */
+
+/* Wariant niebezpieczny (Usuń konto) – czerwony, ale w tym samym stylu */
+.side-link-danger {
+  color: var(--danger-500);
+  font-weight: 600;
+  justify-content: flex-start; /* wygląda jak zwykły link, nie środek przycisku */
+}
+
+.side-link-danger:hover {
+  color: #fff;
+  background: linear-gradient(180deg, var(--danger-500), var(--danger-600));
+}
+
+.side-link-danger:focus-visible {
+  outline-color: var(--danger-500);
+}
+
+
+
+
+
+
+/* ===== PODSUMOWANIE – wyrównanie kart makro ===== */
+
+/* 1. W gridzie 2 kolumn NIE chcemy globalnego margin-top z .card + .card */
+body[data-page="podsumowanie"] .grid-2 > .card + .card {
+  margin-top: 0;
+}
+
+/* 2. Obie karty mają się rozciągać na tę samą wysokość */
+body[data-page="podsumowanie"] .grid-2 {
+  align-items: stretch;
+}
+
+body[data-page="podsumowanie"] .grid-2 > .card {
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-page="podsumowanie"] .grid-2 > .card > .content-flow {
+  flex: 1;
+}
+
+
+
+
+
+
+
+/* ===== Asystent AI – modal wyboru zakresu dodawania do kalendarza ===== */
+
+.ai-plan-modal {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.ai-plan-modal__summary {
+  margin: 0 0 .5rem;
+  font-size: .95rem;
+  color: var(--text-300);
+}
+
+.ai-plan-modal__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: .75rem;
+}
+
+@media (max-width: 720px) {
+  .ai-plan-modal__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-plan-modal__section {
+  background: var(--bg-800);
+  border-radius: .75rem;
+  border: 1px solid var(--border-700);
+  padding: .75rem .85rem;
+}
+
+.ai-plan-label {
+  display: block;
+  font-size: .9rem;
+  color: var(--text-300);
+  margin-bottom: .4rem;
+}
+
+.ai-plan-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .35rem;
+}
+
+.ai-plan-dates label {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  font-size: .85rem;
+  color: var(--text-300);
+}
+
+.ai-plan-dates input[type="date"] {
+  background: #0e1520;
+  color: var(--text-100);
+  border-radius: .55rem;
+  border: 1px solid var(--border-700);
+  padding: .45rem .6rem;
+  font: inherit;
+}
+
+.ai-plan-dates input[type="date"]:focus {
+  outline: none;
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.ai-plan-meals {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+
+.ai-plan-meal-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .4rem .55rem;
+  border-radius: .6rem;
+  border: 1px solid var(--border-700);
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  font-size: .9rem;
+}
+
+.ai-plan-meal-chip input[type="checkbox"] {
+  margin: 0;
+  accent-color: var(--accent-500);
+}
+
+.ai-plan-meal-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ai-plan-meal-kcal {
+  font-size: .85rem;
+}
+
+.ai-plan-meal-chip--disabled {
+  opacity: .55;
+}
+
+.ai-plan-meal-chip--disabled input[type="checkbox"] {
+  cursor: not-allowed;
+}
+
+.ai-plan-error {
+  min-height: 1.1em;
+  margin: .25rem 0 0;
+  font-size: .85rem;
+  color: var(--danger-500);
+}
+
+
+/* ============================================================
+   PRODUKTY (#productApp) + DANIA (#mealApp)
+   - naprawa “luk” (zabicie flex/grid na tabeli)
+   - wąskie kolumny liczbowe
+   - centrowanie od liczb do Akcje
+   - ikonki w kółkach (produkty: edit/delete, dania: preview/edit/delete)
+   - pionowe linie debug między kolumnami (usuń potem)
+   ============================================================ */
+
+
+/* ===================== PRODUKTY ===================== */
+#productApp .table{
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* zabij flex/grid jeśli globalnie wchodzi */
+#productApp .table thead{ display: table-header-group !important; }
+#productApp .table tbody{ display: table-row-group !important; }
+#productApp .table tr{ display: table-row !important; }
+#productApp .table th,
+#productApp .table td{ display: table-cell !important; }
+
+#productApp .table th,
+#productApp .table td{
+  padding: .55rem .6rem !important;
+  vertical-align: middle;
+}
+
+/* Nazwa + Kategoria: ellipsis */
+#productApp .table :is(th,td):nth-child(1),
+#productApp .table :is(th,td):nth-child(2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+/* wąskie liczby */
+#productApp .table :is(th,td):nth-child(3){ width: 7ch !important; } /* kcal */
+#productApp .table :is(th,td):nth-child(4){ width: 5ch !important; } /* B */
+#productApp .table :is(th,td):nth-child(5){ width: 5ch !important; } /* T */
+#productApp .table :is(th,td):nth-child(6){ width: 5ch !important; } /* W */
+
+/* Akcje (ikony) */
+#productApp .table :is(th,td):nth-child(7){
+  width: 84px !important;
+  white-space: nowrap;
+  text-align: center !important;
+}
+
+/* center 3..7 */
+#productApp .table :is(th,td):nth-child(n+3):nth-child(-n+7){
+  text-align: center !important;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ciaśniej dla 3–6 */
+#productApp .table :is(th,td):nth-child(n+3):nth-child(-n+6){
+  padding-left: .25rem !important;
+  padding-right: .25rem !important;
+}
+
+/* poziome linie */
+#productApp .table thead th{
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+#productApp .table tbody td{
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* PIONOWE linie DEBUG (usuń potem) */
+#productApp .table th,
+#productApp .table td{
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+#productApp .table tr > :last-child{
+  border-right: none;
+}
+
+/* --- Ikonki w kółkach: produkty (edit/delete) --- */
+#productApp .table td:nth-child(7) .btn[data-act]{
+  flex: 0 0 auto !important;
+  width: 1.65rem !important;
+  height: 1.65rem !important;
+  min-width: 1.65rem !important;
+  max-width: 1.65rem !important;
+  aspect-ratio: 1 / 1;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-grid !important;
+  place-items: center !important;
+
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+  vertical-align: middle;
+}
+
+#productApp .table td:nth-child(7) .btn[data-act] + .btn[data-act]{
+  margin-left: .25rem;
+}
+
+#productApp .table td:nth-child(7) .btn[data-act]::before{
+  content: "";
+  width: 1.1rem !important;
+  height: 1.4rem !important;
+  transform: translateY(1px);
+
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+#productApp .table td:nth-child(7) .btn[data-act]::after{
+  content: none !important;
+}
+
+/* długopis */
+#productApp .table td:nth-child(7) .btn[data-act="edit"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+}
+
+/* kosz */
+#productApp .table td:nth-child(7) .btn[data-act="delete"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+}
+
+
+/* ===================== DANIA ===================== */
+#mealApp .table{
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* zabij flex/grid jeśli globalnie wchodzi */
+#mealApp .table thead{ display: table-header-group !important; }
+#mealApp .table tbody{ display: table-row-group !important; }
+#mealApp .table tr{ display: table-row !important; }
+#mealApp .table th,
+#mealApp .table td{ display: table-cell !important; }
+
+#mealApp .table th,
+#mealApp .table td{
+  padding: .55rem .6rem !important;
+  vertical-align: middle;
+}
+
+/* Nazwa + Kategoria: ellipsis */
+#mealApp .table :is(th,td):nth-child(1),
+#mealApp .table :is(th,td):nth-child(2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+/* wąskie kolumny */
+#mealApp .table :is(th,td):nth-child(3){ width: 6ch !important; }   /* Porcji */
+#mealApp .table :is(th,td):nth-child(4){ width: 10ch !important; }  /* kcal/porcję */
+#mealApp .table :is(th,td):nth-child(5){ width: 16ch !important; }  /* B/T/W */
+
+/* Akcje (ikony) */
+#mealApp .table :is(th,td):nth-child(6){
+  width: 120px !important;
+  white-space: nowrap;
+  text-align: center !important;
+}
+
+/* center 3..6 */
+#mealApp .table :is(th,td):nth-child(n+3):nth-child(-n+6){
+  text-align: center !important;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ciaśniej dla 3–5 */
+#mealApp .table :is(th,td):nth-child(n+3):nth-child(-n+5){
+  padding-left: .25rem !important;
+  padding-right: .25rem !important;
+}
+
+/* poziome linie */
+#mealApp .table thead th{
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+#mealApp .table tbody td{
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* PIONOWE linie DEBUG (usuń potem) */
+#mealApp .table th,
+#mealApp .table td{
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+#mealApp .table tr > :last-child{
+  border-right: none;
+}
+
+/* --- Ikonki w kółkach: dania (preview/edit/delete) --- */
+#mealApp .table td:nth-child(6) .btn[data-act]{
+  flex: 0 0 auto !important;
+  width: 1.65rem !important;
+  height: 1.65rem !important;
+  min-width: 1.65rem !important;
+  max-width: 1.65rem !important;
+  aspect-ratio: 1 / 1;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-grid !important;
+  place-items: center !important;
+
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+  vertical-align: middle;
+}
+
+#mealApp .table td:nth-child(6) .btn[data-act] + .btn[data-act]{
+  margin-left: .25rem;
+}
+
+#mealApp .table td:nth-child(6) .btn[data-act]::before{
+  content: "";
+  width: 1.1rem !important;
+  height: 1.4rem !important;
+  transform: translateY(1px);
+
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+#mealApp .table td:nth-child(6) .btn[data-act]::after{
+  content: none !important;
+}
+
+/* lupa */
+#mealApp .table td:nth-child(6) .btn[data-act="preview"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M10 2a8 8 0 105.293 14.293l4.207 4.207l1.414-1.414l-4.207-4.207A8 8 0 0010 2zm0 2a6 6 0 110 12a6 6 0 010-12z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M10 2a8 8 0 105.293 14.293l4.207 4.207l1.414-1.414l-4.207-4.207A8 8 0 0010 2zm0 2a6 6 0 110 12a6 6 0 010-12z'/%3E%3C/svg%3E");
+}
+
+/* długopis */
+#mealApp .table td:nth-child(6) .btn[data-act="edit"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+}
+
+/* kosz */
+#mealApp .table td:nth-child(6) .btn[data-act="delete"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Przyciski formularza: na PRAWO i na całą szerokość grida */
+#addEditCard #productForm .modal-actions{
+  grid-column: 1 / -1;          /* niech zajmie cały rząd w gridzie */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;     /* wyrównanie do prawej */
+  gap: .5rem;
+  margin-top: 1rem;
+
+  /* jeśli gdzieś masz centrowanie w gridzie */
+  justify-self: stretch;
+}
+
+/* (opcjonalnie) żeby przyciski nie rozciągały się */
+#addEditCard #productForm .modal-actions .btn{
+  width: auto !important;
+}
+
+
+/* Meal form: przyciski Zapisz/Anuluj po PRAWEJ */
+#mealFormCard #mealForm .modal-actions{
+  grid-column: 1 / -1;          /* cały rząd grida */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;     /* na prawo */
+  gap: .5rem;
+  margin-top: 1rem;
+  justify-self: stretch;
+}
+
+/* żeby przyciski nie rozciągały się na szerokość */
+#mealFormCard #mealForm .modal-actions .btn{
+  width: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SKŁADNIKI (tabelka z #ingTbody) – styl jak wyżej + ikonki
+   ========================================================= */
+
+/* Selector główny: działa w nowych przeglądarkach (CSS :has) */
+table.table:has(#ingTbody){
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* (fallback) jeśli nie masz :has – dodaj klasę ing-table do tej tabeli i zadziała też: */
+table.table.ing-table{
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* zabij flex/grid jeśli globalnie wchodzi */
+table.table:has(#ingTbody) thead,
+table.table.ing-table thead{ display: table-header-group !important; }
+table.table:has(#ingTbody) tbody,
+table.table.ing-table tbody{ display: table-row-group !important; }
+table.table:has(#ingTbody) tr,
+table.table.ing-table tr{ display: table-row !important; }
+table.table:has(#ingTbody) th,
+table.table:has(#ingTbody) td,
+table.table.ing-table th,
+table.table.ing-table td{ display: table-cell !important; }
+
+/* padding + linie */
+table.table:has(#ingTbody) th,
+table.table:has(#ingTbody) td,
+table.table.ing-table th,
+table.table.ing-table td{
+  padding: .55rem .6rem !important;
+  vertical-align: middle;
+}
+
+table.table:has(#ingTbody) thead th,
+table.table.ing-table thead th{
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+table.table:has(#ingTbody) tbody td,
+table.table.ing-table tbody td{
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* DEBUG pionowe linie między kolumnami (usuń potem) */
+table.table:has(#ingTbody) th,
+table.table:has(#ingTbody) td,
+table.table.ing-table th,
+table.table.ing-table td{
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+table.table:has(#ingTbody) tr > :last-child,
+table.table.ing-table tr > :last-child{
+  border-right: none;
+}
+
+/* kolumny: 1 i 2 jak “Nazwa/Kategoria” (ellipsis) */
+table.table:has(#ingTbody) :is(th,td):nth-child(1),
+table.table:has(#ingTbody) :is(th,td):nth-child(2),
+table.table.ing-table :is(th,td):nth-child(1),
+table.table.ing-table :is(th,td):nth-child(2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+/* 3..6 wyśrodkowane */
+table.table:has(#ingTbody) :is(th,td):nth-child(n+3):nth-child(-n+6),
+table.table.ing-table :is(th,td):nth-child(n+3):nth-child(-n+6){
+  text-align: center !important;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* kolumna Usuń węższa pod kółko */
+table.table:has(#ingTbody) :is(th,td):nth-child(6),
+table.table.ing-table :is(th,td):nth-child(6){
+  width: 64px !important; /* nadpisuje inline 90px */
+}
+
+/* inputy w tabeli */
+#ingTbody .ing-name{ width: 100%; }
+#ingTbody .ing-grams{
+  width: 100%;
+  text-align: center;
+}
+
+/* =========================================================
+   IKONKA “+” na #addIngBtn (zamiast tekstu)
+   ========================================================= */
+#addIngBtn{
+  width: 1.85rem !important;
+  height: 1.rem !important;
+  min-width: 1.85rem !important;
+  max-width: 1.85rem !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-grid !important;
+  place-items: center !important;
+
+  font-size: 0 !important;      /* ukryj "+ Dodaj składnik" */
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+#addIngBtn::before{
+  content: "";
+  width: 1.05rem !important;
+  height: 1.05rem !important;
+  transform: translateY(2px);
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 5h2v14h-2zM5 11h14v2H5z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 5h2v14h-2zM5 11h14v2H5z'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   IKONKA KOSZA w kolumnie “Usuń” (zamiast tekstu Usuń)
+   ========================================================= */
+#ingTbody td:nth-child(6) .btn{
+  flex: 0 0 auto !important;
+  width: 1.65rem !important;
+  height: 1.65rem !important;
+  min-width: 1.65rem !important;
+  max-width: 1.65rem !important;
+  aspect-ratio: 1 / 1;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-grid !important;
+  place-items: center !important;
+
+  font-size: 0 !important; /* ukryj “Usuń” */
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+#ingTbody td:nth-child(6) .btn::before{
+  content: "";
+  width: 1.05rem !important;
+  height: 1.05rem !important;
+  transform: translateY(1px);
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+}
+
+
+/* ===== Autocomplete w składnikach: nachodzi na wiersze poniżej + poprawny z-index ===== */
+
+/* nie ucinać dropdownu */
+#addEditCard,
+#addEditCard .table-wrapper,
+#mealApp .table-wrapper{
+  overflow: visible !important;
+}
+
+/* jeżeli gdzieś jest transform/filter – potrafi psuć z-index */
+#addEditCard{
+  transform: none !important;
+  filter: none !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* 1) Pierwsza kolumna (Produkt) nie może ucinać */
+#ingTbody td:nth-child(1){
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 0 !important;            /* WAŻNE: bazowo 0, nie 5000 dla wszystkich */
+}
+
+/* 2) TYLKO aktywny wiersz/komórka ma być nad resztą */
+#ingTbody td:nth-child(1):focus-within{
+  z-index: 10000 !important;
+}
+
+/* kotwica pod dropdown */
+#ingTbody td:nth-child(1) .form-field{
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 0 !important;
+}
+
+/* 3) Panel – absolutnie, wysoko, i w tym samym stacking-context co aktywna komórka */
+#ingTbody .ac-panel{
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: calc(100% + .35rem);
+  z-index: 10001 !important;        /* nad inputami z kolejnych wierszy */
+
+  background: rgba(20, 26, 34, .98);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: .75rem;
+  box-shadow: 0 14px 40px rgba(0,0,0,.55);
+
+  max-height: 280px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* elementy listy */
+#ingTbody .ac-item{
+  padding: .6rem .75rem;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+#ingTbody .ac-item:last-child{ border-bottom: 0; }
+
+#ingTbody .ac-item:hover,
+#ingTbody .ac-item.is-active{
+  background: rgba(255,255,255,.12);
+}
+
+#ingTbody .ac-item strong{ color: rgba(255,255,255,.95); }
+#ingTbody .ac-muted{ color: rgba(255,255,255,.70); font-size: .85em; }
+
+#ingTbody .ac-item.is-active{
+  outline: 1px solid rgba(255,255,255,.22);
+  outline-offset: -1px;
+}
+
+
+/* =========================
+   AI Layout / Jadłospis
+   ========================= */
+
+/* układ 2 kolumny */
+.ai-layout{
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 980px){
+  .ai-layout{ grid-template-columns: 1fr; }
+}
+
+/* karta */
+.ai-card{
+  background: var(--surface-1, rgba(20,26,34,.85));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.25rem;
+  padding: 1rem 1rem 1.1rem;
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+}
+
+.ai-card h2{
+  margin: 0 0 .75rem 0;
+  font-size: 1.15rem;
+  letter-spacing: .2px;
+}
+
+/* lewa kolumna sticky (opcjonalnie, mega wygodne) */
+@media (min-width: 981px){
+  .ai-layout > .ai-card:first-child{
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+/* targets box */
+#targetsBox{
+  padding: .75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  margin-bottom: .75rem;
+}
+
+/* chipsy */
+.ai-target-chips,
+.ai-day-head-macros{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: .4rem;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: baseline;
+  gap: .35rem;
+  padding: .28rem .55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  font-size: .85rem;
+}
+
+.chip .num{
+  font-variant-numeric: tabular-nums;
+}
+
+/* formularz AI */
+#aiForm textarea{
+  min-height: 120px;
+}
+
+.ai-form-actions{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: .5rem;
+}
+
+.ai-form-actions .btn{
+  white-space: nowrap;
+}
+
+#aiStatus{
+  min-height: 1.2em;
+}
+
+/* kontener wariantów */
+.ai-variants{
+  display: grid;
+  gap: .75rem;
+}
+
+/* karta dnia */
+.ai-day-card{
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 1.25rem;
+  padding: .85rem;
+}
+
+/* nagłówek dnia */
+.ai-day-head{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .5rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.ai-day-title-block h3{
+  margin: .25rem 0 0 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+/* siatka posiłków */
+.ai-meals-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+@media (max-width: 980px){
+  .ai-meals-grid{ grid-template-columns: 1fr; }
+}
+
+/* pojedynczy posiłek */
+.ai-meal{
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.12);
+  border-radius: 1rem;
+  padding: .75rem;
+}
+
+.ai-meal h4{
+  margin: 0 0 .25rem 0;
+  font-size: .98rem;
+}
+
+.ai-meal-macros{
+  font-size: .9rem;
+  color: rgba(255,255,255,.72);
+  margin-bottom: .5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* lista składników */
+.ai-meal-items{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .35rem;
+}
+
+.ai-meal-items li{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .6rem;
+  padding: .35rem .5rem;
+  border-radius: .75rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.ai-meal-items .name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ai-meal-items .grams{
+  font-variant-numeric: tabular-nums;
+  color: rgba(255,255,255,.80);
+  white-space: nowrap;
+}
+
+/* stopka */
+.ai-day-footer{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: .75rem;
+}
+
+/* małe notki */
+.small-note{
+  font-size: .9rem;
+  line-height: 1.35;
+}
+
+
+/* checkbox: tekst ładnie wyśrodkowany przy kratce */
+#onbForm .form-field.checkbox{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Lodówka (fridgeApp): styl jak w daniach + akcje 2 rzędy (grid) ===== */
+#fridgeApp .table{
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  table-layout: fixed !important;
+}
+
+/* zabij flex/grid na tabeli (jeśli globalnie wchodzi) */
+#fridgeApp .table thead{ display: table-header-group !important; }
+#fridgeApp .table tbody{ display: table-row-group !important; }
+#fridgeApp .table tr{ display: table-row !important; }
+#fridgeApp .table th,
+#fridgeApp .table td{ display: table-cell !important; }
+
+/* padding */
+#fridgeApp .table th,
+#fridgeApp .table td{
+  padding: .55rem .6rem !important;
+  vertical-align: middle;
+}
+
+/* Nazwa + Kategoria: ellipsis */
+#fridgeApp .table :is(th,td):nth-child(1),
+#fridgeApp .table :is(th,td):nth-child(2){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+/* Ważne do + Ilość + Akcje wyśrodkowane */
+#fridgeApp .table :is(th,td):nth-child(n+3):nth-child(-n+5){
+  text-align: center !important;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* wąskie kolumny: data + ilość */
+#fridgeApp .table :is(th,td):nth-child(3){ width: 12ch !important; }  /* data */
+#fridgeApp .table :is(th,td):nth-child(4){ width: 120px !important; } /* ilość */
+
+/* Akcje */
+#fridgeApp .table :is(th,td):nth-child(5){
+  width: 260px !important;
+  text-align: center !important;
+  white-space: nowrap;
+}
+
+/* ciaśniej dla daty/ilości */
+#fridgeApp .table :is(th,td):nth-child(3),
+#fridgeApp .table :is(th,td):nth-child(4){
+  padding-left: .25rem !important;
+  padding-right: .25rem !important;
+}
+
+/* poziome linie */
+#fridgeApp .table thead th{
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+#fridgeApp .table tbody td{
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* DEBUG pionowe linie (usuń potem) */
+#fridgeApp .table th,
+#fridgeApp .table td{
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+#fridgeApp .table tr > :last-child{
+  border-right: none;
+}
+
+/* ===================== AKCJE: 2 RZĘDY (GRID 2x3) ===================== */
+#fridgeApp .table td:nth-child(5){
+  display: grid !important; /* nadpisuje inline flex z HTML */
+  grid-template-columns: repeat(3, max-content);
+  grid-auto-rows: max-content;
+  justify-content: center;
+  align-content: center;
+  gap: .4rem .4rem; /* (row, col) */
+}
+
+/* pozycjonowanie 6 przycisków (zawsze: -10, -50, +50, edit, date, delete) */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="minus10"]{ grid-row: 1; grid-column: 1; }
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="minus50"]{ grid-row: 1; grid-column: 2; }
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="plus50"] { grid-row: 1; grid-column: 3; }
+
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="edit"]  { grid-row: 2; grid-column: 1; }
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="date"]  { grid-row: 2; grid-column: 2; }
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="delete"]{ grid-row: 2; grid-column: 3; }
+
+/* ---------- GÓRA: -10/-50/+50 (TEKST WIDOCZNY) ---------- */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="minus10"],
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="minus50"],
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="plus50"]{
+  font-size: .82rem !important;
+  line-height: 1 !important;
+  padding: .35rem .55rem !important;
+  border-radius: 999px !important;
+  min-width: 3.2rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- DÓŁ: IKONKI jako “pigułki” jak w 1. rzędzie ---------- */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="edit"],
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="date"],
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="delete"]{
+  padding: .35rem .55rem !important;
+  border-radius: 999px !important;
+  min-width: 3.2rem;
+  height: auto !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ikonka w środku – PRZESUNIĘTA W PRAWO */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="edit"]::before,
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="date"]::before,
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="delete"]::before{
+  content: "";
+  width: 1.15rem !important;
+  height: 1.15rem !important;
+
+  /* <- tu regulujesz: pierwsza wartość w prawo, druga w dół */
+  transform: translate(2px, 1px) !important;
+
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+
+/* ołówek */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="edit"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+}
+
+/* zegarek (zamiast kalendarza) */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="date"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8a8 8 0 01-8 8zm.5-12H11v6l5 3l1-1.73l-4-2.27z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8a8 8 0 01-8 8zm.5-12H11v6l5 3l1-1.73l-4-2.27z'/%3E%3C/svg%3E");
+}
+
+
+/* kosz */
+#fridgeApp .table td:nth-child(5) .btn.small[data-act="delete"]::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+}
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Formularz lodówki (#fridgeForm) – jak productForm ===== */
+
+/* grid jak w innych formularzach */
+#addEditCard #fridgeForm.form-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+/* na mobile 1 kolumna */
+@media (max-width: 720px){
+  #addEditCard #fridgeForm.form-grid{ grid-template-columns: 1fr; }
+}
+
+/* autocomplete (szukanie) ma iść na całą szerokość */
+#addEditCard #fridgeForm .ac-wrap{
+  grid-column: 1 / -1;
+}
+
+/* modal-actions po prawej na całą szerokość */
+#addEditCard #fridgeForm .modal-actions{
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  margin-top: .5rem;
+  justify-self: stretch;
+}
+
+#addEditCard #fridgeForm .modal-actions .btn{
+  width: auto !important;
+}
+
+/* ===== Autocomplete w #catalogFilter (podpowiedzi) ===== */
+#addEditCard #fridgeForm .ac-wrap{
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+/* panel podpowiedzi (JS wstrzykuje .ac-panel + .ac-item) */
+#addEditCard #fridgeForm .ac-panel{
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  top: calc(100% + .35rem);
+  z-index: 99999 !important;
+
+  background: rgba(20, 26, 34, .98);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: .75rem;
+
+  box-shadow: 0 14px 40px rgba(0,0,0,.55);
+  max-height: 280px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* elementy listy */
+#addEditCard #fridgeForm .ac-item{
+  padding: .6rem .75rem;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+#addEditCard #fridgeForm .ac-item:last-child{ border-bottom: 0; }
+
+#addEditCard #fridgeForm .ac-item:hover,
+#addEditCard #fridgeForm .ac-item.is-active{
+  background: rgba(255,255,255,.12);
+}
+
+#addEditCard #fridgeForm .ac-item strong{ color: rgba(255,255,255,.95); }
+#addEditCard #fridgeForm .ac-muted{ color: rgba(255,255,255,.70); font-size: .85em; }
+
+
+
+#fridgeForm #gramsInput{
+  background: #0e1520 !important;
+}
+
+/* Dialog: tło pól jak #0e1520 */
+.dlg .form-field select,
+.dlg .form-field input[type="date"],
+.dlg .form-field input[type="text"],
+.dlg .form-field input[type="number"],
+.dlg .form-field input[type="search"],
+.dlg .form-field textarea{
+  background: #0e1520 !important;
+}
+
+
+/* --- Side nav: przycisk "Usuń konto" jak link + wyśrodkowany --- */
+.side-nav .side-delete{
+  margin-top: auto;            /* jeśli side-nav/ul jest flexem; jak nie, nie zaszkodzi */
+  padding-top: .5rem;
+}
+
+.side-nav .side-link-danger{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;     /* wyśrodkowanie */
+  text-align: center;
+
+  background: transparent;
+  border: 1px solid var(--border-700);
+  border-radius: .6rem;
+
+  padding: .55rem .75rem;      /* jak reszta linków */
+  cursor: pointer;
+
+  color: color-mix(in oklab, var(--danger-500, #ef4444) 80%, var(--text-100));
+}
+
+.side-nav .side-link-danger:hover{
+  background: color-mix(in oklab, var(--danger-500, #ef4444) 12%, transparent);
+  border-color: color-mix(in oklab, var(--danger-500, #ef4444) 40%, var(--border-700));
+}
+
+.side-nav .side-link-danger:active{
+  transform: translateY(1px);
+}
+
+.side-nav .side-link-danger:focus-visible{
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+
+
+/* ===================================================================
+   Asystent AI — wygląd jak reszta (karty/tabele) + 2 kolumny
+   =================================================================== */
+
+.ai-layout{
+  display: grid;
+  grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 980px){
+  .ai-layout{ grid-template-columns: 1fr; }
+}
+
+/* karty po lewej/prawej */
+.ai-layout .ai-card{
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  border: 1px solid var(--border-700);
+  border-radius: .9rem;
+  padding: 1rem;
+  color: var(--text-100);
+}
+
+/* nagłówki */
+.ai-layout .ai-card h2{
+  margin: 0 0 .85rem 0;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+/* box z celami */
+.ai-layout #targetsBox{
+  background: color-mix(in oklab, var(--bg-800), black 3%);
+  border: 1px dashed var(--border-700);
+  border-radius: .85rem;
+  padding: .8rem .9rem;
+  margin-bottom: .85rem;
+}
+
+.ai-layout .small-note{
+  margin: .35rem 0;
+  color: var(--muted-500);
+}
+
+/* chipy jak w kalendarzu (ale scoped do AI) */
+.ai-layout .chip{
+  border: 1px dashed var(--border-700);
+  border-radius: .7rem;
+  padding: .2rem .55rem;
+  font-size: .85rem;
+  color: var(--muted-500);
+  background: transparent;
+}
+.ai-layout .chip .num{
+  color: var(--text-100);
+  font-variant-numeric: tabular-nums;
+}
+
+.ai-layout .ai-target-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .45rem 0 .35rem;
+}
+
+/* textarea jak reszta inputów */
+.ai-layout .form-field textarea{
+  width: 100%;
+  background: #0e1520;                 /* spójnie z Twoim */
+  border: 1px solid var(--border-700);
+  border-radius: .6rem;
+  padding: .6rem .7rem;
+  color: var(--text-100);
+  outline: none;
+  resize: vertical;
+}
+.ai-layout .form-field textarea::placeholder{ color: var(--text-300); }
+.ai-layout .form-field textarea:focus-visible{
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* akcje formularza */
+.ai-layout .ai-form-actions{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-top: .6rem;
+}
+.ai-layout #aiStatus{ min-height: 1.2em; }
+
+/* prawa kolumna: warianty */
+.ai-layout .ai-variants{
+  display: grid;
+  gap: .9rem;
+}
+
+/* karta wariantu dnia (jak day-card w kalendarzu) */
+.ai-layout .ai-day-card{
+  background: color-mix(in oklab, var(--bg-800), black 2%);
+  border: 1px solid var(--border-700);
+  border-radius: .9rem;
+  padding: .9rem;
+}
+
+.ai-layout .ai-day-head{
+  display: grid;
+  gap: .6rem;
+  margin-bottom: .75rem;
+}
+
+.ai-layout .ai-day-title-block{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ai-layout .ai-day-title-block h3{
+  margin: 0;
+  font-weight: 800;
+}
+
+.ai-layout .ai-day-head-macros{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+/* siatka posiłków */
+.ai-layout .ai-meals-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+@media (max-width: 980px){
+  .ai-layout .ai-meals-grid{ grid-template-columns: 1fr; }
+}
+
+/* pojedynczy posiłek */
+.ai-layout .ai-meal{
+  border: 1px solid var(--border-700);
+  border-radius: .85rem;
+  background: color-mix(in oklab, var(--bg-800), black 3%);
+  padding: .75rem .8rem;
+}
+.ai-layout .ai-meal h4{
+  margin: 0 0 .35rem 0;
+  font-weight: 800;
+}
+.ai-layout .ai-meal-macros{
+  color: var(--text-300);
+  font-size: .92rem;
+  margin-bottom: .45rem;
+}
+
+/* lista składników w posiłku */
+.ai-layout .ai-meal-items{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: .35rem;
+}
+.ai-layout .ai-meal-items li{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .6rem;
+
+  border: 1px dashed color-mix(in oklab, var(--border-700), transparent 35%);
+  border-radius: .65rem;
+  padding: .35rem .5rem;
+}
+.ai-layout .ai-meal-items .name{
+  color: var(--text-100);
+  font-weight: 650;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ai-layout .ai-meal-items .grams{
+  color: var(--muted-500);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* footer w wariancie */
+.ai-layout .ai-day-footer{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: .8rem;
+}
+
+
+
+/* ===== Kontakt: równe kolumny + start treści od góry ===== */
+body[data-page="kontakt"] .grid-2{
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;              /* obie kolumny na równą wysokość */
+}
+
+/* karty rozciągają się na całą wysokość wiersza */
+body[data-page="kontakt"] .grid-2 > .card{
+  height: 100%;
+  display: flex;
+}
+
+/* treść w kartach przyklejona do góry */
+body[data-page="kontakt"] .grid-2 > .card > .card-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* usuń domyślny margines pierwszego elementu (np. h2), żeby nie “zjeżdżał” w dół */
+body[data-page="kontakt"] .grid-2 .card-content > :first-child{
+  margin-top: 0 !important;
+}
+
+/* mobile: jedna kolumna */
+@media (max-width: 900px){
+  body[data-page="kontakt"] .grid-2{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== Kontakt: NIE spychaj drugiej karty w dół ===== */
+body[data-page="kontakt"] .grid-2 > .card + .card{
+  margin-top: 0 !important;
+}
+
+
+
+#onbForm.modal-card input[type="radio"]{ width:auto !important; }
+
+
+
+
+
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+/* ===== IPHONE ===== */
+
+
+/* ===================== iPhone / mobile fixes ===================== */
+
+/* iOS czasem przeskalowuje tekst – wyrównaj */
+html { -webkit-text-size-adjust: 100%; }
+
+/* iOS Safari: lepsze vh (pasek adresu) */
+:root { --header-h: 72px; }
+
+@media (max-width: 900px){
+  /* wyłącz przesunięcie contentu */
+  .with-sidebar { margin-left: 0 !important; }
+
+  /* sidebar zamień na pasek poziomy pod headerem */
+  .side-nav{
+    position: sticky !important;
+    top: var(--header-h);
+    left: 0;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row;
+    padding: .5rem .5rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-700);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .side-nav ul{
+    flex-direction: row;
+    gap: .5rem;
+    height: auto !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .side-link{
+    white-space: nowrap;
+    padding: .55rem .85rem;
+    border: 1px solid var(--border-700);
+    border-radius: 999px;
+  }
+
+  /* “Usuń konto” niech nie spycha layoutu */
+  .side-nav .side-delete{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: 0 !important;
+  }
+}
+
+@media (max-width: 900px){
+  input, select, textarea, button { font-size: 16px; }
+}
+
+
+
+/* ===== iPhone / mobile header fix (nav nie może wychodzić poza header) ===== */
+@media (max-width: 700px){
+
+  /* header nie może mieć sztywnej wysokości */
+  .header-inner{
+    height: auto !important;
+    padding: .75rem 0;
+    gap: .6rem;
+    flex-wrap: wrap;          /* pozwól zejść elementom na następną linię */
+    align-items: center;
+  }
+
+  /* na mobile nav jako przewijany pasek, bez łamania tekstu */
+  .site-nav{ width: 100%; }
+  .site-nav ul{
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .25rem;
+  }
+  .site-nav a{ white-space: nowrap; }
+}
+
+
+
+
+
+/* ===== iPhone footer + safe-area + miejsce na FAB ===== */
+@media (max-width: 700px){
+
+  /* żeby stopka nie była pod przyciskiem i pod paskiem iOS */
+  .site-footer{
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom) + 90px);
+  }
+
+  .footer-grid{
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: .75rem;
+  }
+
+  /* dodatkowe miejsce na dole strony, żeby content nie wchodził pod stopkę/FAB */
+  .site-main{
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom) + 90px);
+  }
+}
+
+
+.fab, .floating-btn{
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+}
+
+
+
+/* ===================== MOBILE PATCH (iPhone) ===================== */
+@media (max-width: 820px){
+
+  /* Header nie może mieć sztywnej wysokości, bo nav może się zawinąć */
+  .header-inner{
+    height: auto !important;
+    min-height: 72px;
+    padding: .75rem 0;
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+
+  /* Zmniejsz logo, żeby było miejsce */
+  .brand-logo{
+    width: 160px;
+    height: auto;
+  }
+
+  /* Górna nawigacja: jedna linia + przewijanie w poziomie zamiast łamania */
+  .nav{
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: .4rem;
+    padding-bottom: .25rem;
+  }
+  .nav-link{
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: .5rem .7rem;
+  }
+
+  /* Boczne menu: na telefonie nie może być fixed 220px */
+  .with-sidebar{ margin-left: 0 !important; }
+
+  .side-nav{
+    position: static !important;      /* <- najważniejsze */
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    flex-direction: row;
+    padding: .5rem .5rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-700);
+    z-index: 10;
+  }
+  .side-nav ul{
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .side-link{
+    white-space: nowrap;
+    padding: .55rem .85rem;
+    border: 1px solid var(--border-700);
+    border-radius: 999px;
+  }
+
+  /* iOS: żeby inputy nie robiły auto-zoom */
+  input, select, textarea, button { font-size: 16px; }
+
+  /* Stopka: safe-area na iPhone */
+  .site-footer{ padding-bottom: env(safe-area-inset-bottom); }
+  .site-main{ padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
+
+
+/* ===== FIX: top navbar nie może uciekać poza ekran (wszystkie strony) ===== */
+@media (max-width: 820px){
+
+  /* łap header nawet jeśli gdzieś nie ma .header-inner */
+  .site-header .container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .6rem;
+    height: auto !important;
+    min-height: 72px;
+    padding: .75rem 0;
+  }
+
+  /* logo trochę mniejsze na telefonie */
+  .site-header .brand-logo{
+    width: 160px;
+    height: auto;
+  }
+
+  /* nav zawsze w drugiej linii i przewijany w poziomie */
+  .site-header .nav,
+  .site-header .site-nav{
+    flex: 1 1 100%;
+    min-width: 0;                 /* ważne w flex, żeby nie wypychało */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: .4rem;
+    padding-bottom: .25rem;
+  }
+
+  .site-header .nav-link,
+  .site-header .site-nav a{
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* jakby gdzieś nadal robiło poziomy scroll całej strony */
+  body{ overflow-x: hidden; }
+}
+
+
+@media (max-width: 820px){
+  .with-sidebar{ margin-left: 0 !important; }
+
+  .side-nav{
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-700);
+    padding: .5rem .5rem;
+  }
+
+  .side-nav ul{
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+   
+
+
+
+
+
+   
