@@ -418,9 +418,9 @@ function mealRowTpl(it) {
     <td>${fmt(per.kcal)}</td>
     <td>${fmt(per.p)}/${fmt(per.f)}/${fmt(per.c)}</td>
     <td>
-      <button class="btn small" data-act="preview">Podgląd</button>
-      <button class="btn small" data-act="edit">Edytuj</button>
-      <button class="btn small danger" data-act="delete">Usuń</button>
+      <button class="btn small" data-act="preview">P</button>
+      <button class="btn small" data-act="edit">E</button>
+      <button class="btn small danger" data-act="delete">U</button>
     </td>`;
 
   tr.querySelector('[data-act="edit"]').addEventListener('click', () => openMealForm(it));

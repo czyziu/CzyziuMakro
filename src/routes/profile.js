@@ -19,11 +19,18 @@ router.get('/status', auth, async (req, res) => {
     if (!doc) {
       return res.json({ completed: false });
     }
-    const { age, weight, height, activity, sex, level, goal, completed } = doc;
-    return res.json({
-      completed: !!completed,
-      profile: { age, weight, height, activity, sex, level, goal }
-    });
+const { age, weight, height, activity, sex, level, goal, completed } = doc;
+
+const inferred = [age, weight, height, activity, sex, level, goal]
+  .every(v => v !== undefined && v !== null && v !== '');
+
+const done = (typeof completed === 'boolean') ? completed : inferred;
+
+return res.json({
+  completed: !!done,
+  profile: { age, weight, height, activity, sex, level, goal }
+});
+
   } catch (e) {
     console.error('PROFILE GET /status error:', e);
     return res.status(500).json({ message: 'Błąd serwera' });

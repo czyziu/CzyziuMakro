@@ -231,9 +231,9 @@ export const dayTotals = (meals) => meals.reduce((acc, m) => {
 function renderSummaryDay(sumBox, totals, targets) {
   const rows = [
     ["kcal", totals.kcal,    toNum(targets.kcal, 0),    "kcal"],
-    ["B",    totals.protein, toNum(targets.protein, 0), "g"],
-    ["T",    totals.fat,     toNum(targets.fat, 0),     "g"],
-    ["W",    totals.carbs,   toNum(targets.carbs, 0),   "g"],
+    ["Białko",    totals.protein, toNum(targets.protein, 0), "g"],
+    ["Tłuszcz",    totals.fat,     toNum(targets.fat, 0),     "g"],
+    ["Węglowodany",    totals.carbs,   toNum(targets.carbs, 0),   "g"],
   ].map(([label, val, target, unit]) => buildMacroRow(label, val, target, unit)).join("");
   sumBox.innerHTML = `<div class="sumrows">${rows}</div>`;
 }

@@ -34,10 +34,13 @@ router.get('/', auth, async (req, res) => {
   try {
     const page = Math.max(1, parseInt(req.query.page || '1', 10));
     const pageSize = Math.min(100, Math.max(1, parseInt(req.query.pageSize || '10', 10)));
-    const q = String(req.query.q || '').trim();
-    const scope = String(req.query.scope || 'all').toLowerCase(); // 'all' | 'mine'
+const q = String(req.query.q || '').trim();
+const scope = String(req.query.scope || 'mine').toLowerCase(); // 'mine' | 'all'
 
-    const base = scope === 'mine' ? { userId: req.user.id } : {}; // ← ALL by default
+// mine => tylko moje (produkty.html)
+// all  => wszystkie (dania.html)
+const base = scope === 'mine' ? { userId: req.user.id } : {};
+
     const where = q
      ? {
          $and: [
@@ -108,6 +111,8 @@ router.get('/:id', auth, async (req, res) => {
   try {
     // 👇 BEZ userId – widzimy produkt po samym _id (dowolnego użytkownika)
     const doc = await Product.findById(req.params.id).lean();
+
+
 
     if (!doc) {
       return res.status(404).json({ message: 'Nie znaleziono' });

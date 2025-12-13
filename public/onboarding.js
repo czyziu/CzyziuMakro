@@ -1,5 +1,5 @@
 // public/onboarding.js
-(function () {
+(async function () {
   let token = null;
   try { token = localStorage.getItem('cm_token'); } catch {}
   if (!token) return;
@@ -41,17 +41,87 @@
   const submitBtn = document.getElementById('onbSubmit');
   if (!backdrop || !modal || !form || !submitBtn) return;
 
+
+
+
+function hardCloseOnboardingUI() {
+  // ukryj modal/backdrop
+  modal.hidden = true;
+  backdrop.hidden = true;
+  modal.style.display = 'none';
+  backdrop.style.display = 'none';
+
+  // zdejmij blokady/klasy
+  document.body.style.overflow = '';
+  document.body.classList.remove('blur-active');
+  document.documentElement.classList.remove('modal-open');
+
+  // usuń warstwę blur jeśli już istnieje
+  const layer = document.getElementById('cm-submit-blur');
+  if (layer) layer.remove();
+}
+
+
+
+
+
+
+
   // ✅ jeśli ten user ma już setup, schowaj modal
+let needsOnboarding = true;
+
+try {
+  if (localStorage.getItem(KEY_SETUP) === 'true') {
+    needsOnboarding = false;
+  }
+} catch {}
+
+
+
+
+
+// 🔎 jeśli NIE ma flagi w localStorage (np. po zmianie http->https), sprawdź w bazie
+if (needsOnboarding) {
   try {
-    if (localStorage.getItem(KEY_SETUP) === 'true') {
-      modal.hidden = true;
-      backdrop.hidden = true;
-      modal.style.display = 'none';
-      backdrop.style.display = 'none';
-      document.body.style.overflow = '';
-      return;
+    const r = await fetch('/api/profile/status', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    });
+
+    if (r.ok) {
+      const data = await r.json();
+
+      if (data && data.completed) {
+        needsOnboarding = false;
+
+        try { localStorage.setItem(KEY_SETUP, 'true'); } catch {}
+        if (data.profile) {
+          try { localStorage.setItem(KEY_PROFILE, JSON.stringify(data.profile)); } catch {}
+        }
+      }
     }
   } catch {}
+}
+
+if (!needsOnboarding) {
+  hardCloseOnboardingUI();
+  return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
   // —————————————————————————————
   //  Warstwa BLUR widoczna zawsze (tworzona do sterowania)
@@ -105,7 +175,8 @@
   // Auto-otwarcie modału i blur jeśli profil nie skonfigurowany:
   // (wcześniej było zakomentowane openModal(); — teraz otwieramy modal
   // i rozmazywujemy stronę do momentu wypełnienia formularza)
-  openModal();
+if (needsOnboarding) openModal();
+
 
   // ============ Walidacja ============
   function validateForm() {

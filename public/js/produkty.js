@@ -15,7 +15,8 @@ const authHeaders = () => {
 // ======= Adapter API =======
 const api = {
   async list() {
-    const r = await fetch(`${API_BASE}?page=1&pageSize=1000`, { headers: authHeaders() });
+    const r = await fetch(`${API_BASE}?page=1&pageSize=1000&scope=mine`, { headers: authHeaders() });
+
     if (!r.ok) {
       console.warn('API list() error', r.status);
       return []; // bez przekierowań — guard zajmie się autoryzacją/wall-em

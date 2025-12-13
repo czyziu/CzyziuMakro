@@ -489,10 +489,7 @@ function rowTpl(it) {
       ${it.expiresAt ? escapeHtml(it.expiresAt) : '—'}
     </td>
     <td><strong>${it.grams}</strong></td>
-    <td>${fmt(m.kcal)}</td>
-    <td>${fmt(m.p)}</td>
-    <td>${fmt(m.f)}</td>
-    <td>${fmt(m.c)}</td>
+
     <td style="display:flex; gap:.25rem; flex-wrap:wrap;">
       <button class="btn small" data-act="minus10">-10g</button>
       <button class="btn small" data-act="minus50">-50g</button>

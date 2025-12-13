@@ -547,3 +547,80 @@ html, body{ height:100%; }
     grid-column: 1 / -1; /* nazwa na całą szerokość */
   }
 }
+
+
+/* Kalendarz: karta dnia ma być tak szeroka jak pasek (week-summary) */
+body[data-page="pozalogowaniu"] #mealCalendar .calendar-grid{
+  grid-template-columns: 1fr !important;
+  justify-content: stretch !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+body[data-page="pozalogowaniu"] #mealCalendar .day-card{
+  width: 100% !important;
+}
+
+
+
+
+
+
+/* ===== Week summary: 4 paski w jednej linii, label nad paskiem, liczby pod ===== */
+#mealCalendar .week-summary .sumrows{
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem !important;
+  align-items: start;
+}
+
+#mealCalendar .week-summary .sumrow{
+  display: grid !important;
+  grid-template-rows: auto auto auto;  /* label / bar / numbers */
+  row-gap: .35rem !important;
+}
+
+/* nagłówek NIE jako "justify-content:space-between", tylko kolumna */
+#mealCalendar .week-summary .sumrow-head{
+  display: contents !important;  /* rozkłada dzieci w siatce .sumrow */
+}
+
+/* label na górze */
+#mealCalendar .week-summary .sumrow-label{
+  grid-row: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--cal-text-weak);
+}
+
+/* pasek w środku */
+#mealCalendar .week-summary .sumrow-bar{
+  grid-row: 2;
+}
+
+/* liczby pod paskiem */
+#mealCalendar .week-summary .sumrow-num{
+  grid-row: 3;
+  font-weight: 700;
+  color: var(--cal-text-weak);
+  text-align: left;
+}
+
+/* responsywka: na małych ekranach 2 w rzędzie */
+@media (max-width: 820px){
+  #mealCalendar .week-summary .sumrows{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px){
+  #mealCalendar .week-summary .sumrows{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+#mealCalendar .day-totals{
+  display: none !important;
+}
