@@ -3650,3 +3650,147 @@ body[data-page="kontakt"] .grid-2 > .card + .card{
     text-overflow: ellipsis;
   }
 }
+
+
+
+
+
+/* ===== FOOD LIST: makra w 1. wierszu, akcje w 2. wierszu (POD makrami) ===== */
+.food-list .food-item{
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 1fr)  /* nazwa */
+    9ch             /* kcal */
+    7ch             /* B */
+    7ch             /* T */
+    7ch;            /* W */
+  grid-template-rows: auto auto;
+  column-gap: .8rem;
+  row-gap: .45rem;
+  align-items: center;
+
+  padding: .55rem .7rem;
+  border: 1px solid var(--border-700);
+  border-radius: .9rem;
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+}
+
+/* nazwa po lewej na 2 wiersze */
+.food-list .food-item .name{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.food-list .food-item .name .label{
+  font-weight: 700;
+  color: var(--text-100);
+}
+
+/* makra: 1. wiersz */
+.food-list .food-item .num{
+  grid-row: 1;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-300);
+}
+.food-list .food-item .num.kcal{ grid-column: 2; }
+.food-list .food-item .num.protein{ grid-column: 3; }
+.food-list .food-item .num.fat{ grid-column: 4; }
+.food-list .food-item .num.carbs{ grid-column: 5; }
+
+/* akcje: 2. wiersz POD makrami (kolumny 2..5) */
+.food-list .food-item .food-actions{
+  grid-column: 2 / -1;
+  grid-row: 2;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: .7rem;                 /* większe, równe odstępy */
+}
+
+/* przyciski w kółkach (nadpisuje globalne buttony) */
+.food-list .food-item .food-actions button{
+  width: 2.1rem !important;
+  height: 2.1rem !important;
+  min-width: 2.1rem !important;
+
+  padding: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-grid !important;
+  place-items: center !important;
+
+  font-size: 0 !important;
+  line-height: 0 !important;
+
+  border: 1px solid var(--border-700) !important;
+  background: color-mix(in oklab, var(--bg-800), white 2%) !important;
+  color: var(--text-300) !important;
+
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.25);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.food-list .food-item .food-actions button:hover{
+  border-color: var(--accent-500) !important;
+  color: var(--accent-500) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(0,0,0,.38);
+}
+.food-list .food-item .food-actions button:active{ transform: translateY(0); }
+.food-list .food-item .food-actions button:focus-visible{
+  outline: 2px solid var(--accent-500);
+  outline-offset: 3px;
+}
+
+/* ikonki maską */
+.food-list .food-item .food-actions button::before{
+  content: "";
+  width: 1.25rem !important;
+  height: 1.7rem !important;
+  background-color: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.food-list .food-item .food-actions button::after{ content:none !important; }
+
+/* edit */
+.food-list .food-item .food-actions .food-edit::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.83H5v-.92l9.06-9.06.92.92L5.92 20.08zM20.71 7.04a1 1 0 000-1.41L18.37 3.29a1 1 0 00-1.41 0l-1.13 1.13 3.75 3.75 1.13-1.13z'/%3E%3C/svg%3E");
+}
+
+/* substitute */
+.food-list .food-item .food-actions .food-substitute::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 7h11l-2.5-2.5L17 3l6 6l-6 6l-1.5-1.5L18 10H7V7zm10 10H6l2.5 2.5L7 21l-6-6l6-6l1.5 1.5L6 14h11v3z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 7h11l-2.5-2.5L17 3l6 6l-6 6l-1.5-1.5L18 10H7V7zm10 10H6l2.5 2.5L7 21l-6-6l6-6l1.5 1.5L6 14h11v3z'/%3E%3C/svg%3E");
+}
+
+/* remove (hover na czerwono) */
+.food-list .food-item .food-actions .food-remove::before{
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 3h6l1 2h4v2H4V5h4l1-2zm-1 6h2v10H8V9zm6 0h2v10h-2V9zM6 7h12l-1 14H7L6 7z'/%3E%3C/svg%3E");
+}
+.food-list .food-item .food-actions .food-remove:hover{
+  border-color: var(--danger-500, #ef4444) !important;
+  color: var(--danger-500, #ef4444) !important;
+}
+
+
+
+.food-item .food-edit{
+  margin-right: 0 !important;
+}

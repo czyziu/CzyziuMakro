@@ -383,29 +383,44 @@ export async function render() {
     `;
 
     // lista pozycji
-    const list = det.querySelector(".food-list");
-    (meal.items || []).forEach((it, itemIndex) => {
-      const row = document.createElement("div");
-      row.className = "food-item";
-      row.dataset.itemIndex = String(itemIndex);
-      if (it.id) row.dataset.itemId = String(it.id);
-      if (it.productId) row.dataset.productId = String(it.productId);
-      if (it.grams != null) row.dataset.grams = String(it.grams);
+const list = det.querySelector(".food-list");
+(meal.items || []).forEach((it, itemIndex) => {
+  const row = document.createElement("div");
+  row.className = "food-item";
+  row.dataset.itemIndex = String(itemIndex);
+  if (it.id) row.dataset.itemId = String(it.id);
+  if (it.productId) row.dataset.productId = String(it.productId);
+  if (it.grams != null) row.dataset.grams = String(it.grams);
 
-      row.innerHTML = `
-        <div class="name">
-          <span class="label">${it.name}</span>${it.grams ? ` — ${Math.round(it.grams)} g` : ''}
-        </div>
-        <div class="num kcal">${Math.round(it.kcal || 0)} kcal</div>
-        <div class="num protein">B ${Math.round(it.protein || 0)} g</div>
-        <div class="num fat">T ${Math.round(it.fat || 0)} g</div>
-        <div class="num carbs">W ${Math.round(it.carbs || 0)} g</div>
-        <button class="food-edit" title="Edytuj wagę" aria-label="Edytuj" data-edit>✎</button>
-        <button class="food-remove" title="Usuń" aria-label="Usuń pozycję" data-remove>×</button>
-      `;
+  const safeName = escapeHtml(it.name);
 
-      list.appendChild(row);
-    });
+row.innerHTML = `
+  <div class="name">
+    <span class="label">${safeName}</span>${it.grams ? ` — ${Math.round(it.grams)} g` : ''}
+  </div>
+
+  <div class="num kcal">${Math.round(it.kcal || 0)} kcal</div>
+  <div class="num protein">B ${Math.round(it.protein || 0)} g</div>
+  <div class="num fat">T ${Math.round(it.fat || 0)} g</div>
+  <div class="num carbs">W ${Math.round(it.carbs || 0)} g</div>
+
+  <div class="food-actions">
+    <button class="food-edit" title="Edytuj wagę" aria-label="Edytuj" data-edit>✎</button>
+
+    ${it.id ? `
+      <button class="food-substitute" title="Zamiennik" aria-label="Zamiennik" data-action="substitute-item">⇄</button>
+    ` : ''}
+
+    <button class="food-remove" title="Usuń" aria-label="Usuń pozycję" data-remove>×</button>
+  </div>
+`;
+
+
+  list.appendChild(row);
+});
+
+
+
 
     mealsWrap.appendChild(det);
   });
@@ -1005,9 +1020,15 @@ window.CalendarCore = Object.assign(window.CalendarCore || {}, {
   getSelectedDayISO,
 });
 
+// odświeżenie kalendarza na żądanie innych modułów (np. zamienniki)
+window.addEventListener('cm:calendar:reload', (e) => {
+  // moduł zamienników wysyła event cancelable → oznaczamy, że core ogarnął reload
+  if (e && typeof e.preventDefault === 'function') e.preventDefault();
+  render();
+});
 
 // ====== eksporty przydatne dla modułu shopping/AI
-export function resolveName(productId){
+export function resolveName(productId) {
   const hit = (PRODUCTS_CACHE || []).find(p => String(p.id) === String(productId));
   return hit ? hit.name : `Produkt ${productId}`;
 }
