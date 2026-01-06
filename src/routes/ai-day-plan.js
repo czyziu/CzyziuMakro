@@ -4,13 +4,22 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../middleware/auth'); // Bearer JWT -> req.user.id
+const FridgeItem = require('../models/FridgeItem');
+
+// optional auth: jeśli jest Authorization to próbujemy ustawić req.user, a jak nie ma — lecimy dalej
+function optionalAuth(req, res, next) {
+  if (req.headers?.authorization) return auth(req, res, next);
+  return next();
+}
+
 // 5 posiłków z podziałem 20/15/30/15/20
 const MEAL_SLOTS = [
-  { slot: 'Śniadanie',    share: 0.20 },
+  { slot: 'Śniadanie', share: 0.20 },
   { slot: 'II śniadanie', share: 0.15 },
-  { slot: 'Obiad',        share: 0.30 },
+  { slot: 'Obiad', share: 0.30 },
   { slot: 'Podwieczorek', share: 0.15 },
-  { slot: 'Kolacja',      share: 0.20 },
+  { slot: 'Kolacja', share: 0.20 },
 ];
 
 // ===== Helpers =====
@@ -57,18 +66,10 @@ function normalizeMeals(rawMeals = []) {
     }));
 
     const t = m.totals || {};
-    const kcal =
-      toNum(m.kcal, NaN) ||
-      toNum(t.kcal, 0);
-    const protein =
-      toNum(m.protein, NaN) ||
-      toNum(t.protein, 0);
-    const fat =
-      toNum(m.fat, NaN) ||
-      toNum(t.fat, 0);
-    const carbs =
-      toNum(m.carbs, NaN) ||
-      toNum(t.carbs, 0);
+    const kcal = toNum(m.kcal, NaN) || toNum(t.kcal, 0);
+    const protein = toNum(m.protein, NaN) || toNum(t.protein, 0);
+    const fat = toNum(m.fat, NaN) || toNum(t.fat, 0);
+    const carbs = toNum(m.carbs, NaN) || toNum(t.carbs, 0);
 
     return {
       slot,
@@ -83,43 +84,116 @@ function normalizeMeals(rawMeals = []) {
   });
 }
 
+function fmtDateYYYYMMDD(d) {
+  if (!d) return null;
+  const dt = new Date(d);
+  if (Number.isNaN(dt.getTime())) return null;
+  return dt.toISOString().slice(0, 10);
+}
+
+function normalizeFridgeItemsFromBody(fridgeItems) {
+  if (!Array.isArray(fridgeItems)) return [];
+  return fridgeItems
+    .map((it) => ({
+      name: String(it?.product?.name || it?.name || 'Produkt').trim(),
+      grams: toNum(it?.grams, 0),
+      expiresAt: it?.expiresAt || null,
+    }))
+    .filter((x) => x.name && x.grams > 0);
+}
+
+async function loadFridgeItemsFromDb(userId) {
+  if (!userId) return [];
+  const items = await FridgeItem.find({ userId })
+    .populate({ path: 'productId', select: 'name' })
+    .lean();
+
+  return (items || [])
+    .map((it) => ({
+      name: String(it?.productId?.name || 'Produkt').trim(),
+      grams: toNum(it?.grams, 0),
+      expiresAt: it?.expiresAt || null,
+    }))
+    .filter((x) => x.name && x.grams > 0);
+}
+
+function fridgeToPromptText(items) {
+  if (!items || !items.length) return '— (brak / pusto)';
+
+  // sort: najpierw z datą, od najbliższej; potem bez daty
+  const sorted = [...items].sort((a, b) => {
+    const da = fmtDateYYYYMMDD(a.expiresAt);
+    const db = fmtDateYYYYMMDD(b.expiresAt);
+    if (da && db) return da.localeCompare(db);
+    if (da && !db) return -1;
+    if (!da && db) return 1;
+    return 0;
+  });
+
+  return sorted
+    .map((it) => {
+      const exp = fmtDateYYYYMMDD(it.expiresAt);
+      return `- ${it.name}: ${Math.round(it.grams)} g${exp ? ` (ważne do ${exp})` : ''}`;
+    })
+    .join('\n');
+}
+
 // ===== Główny endpoint: POST /api/ai/day-plan =====
 // Uwaga: w app.js będziemy montować router pod "/api/ai/day-plan"
 // więc tutaj ścieżka to tylko "/".
-router.post('/', async (req, res) => {
+router.post('/', optionalAuth, async (req, res) => {
   try {
-    const { prompt, targets: rawTargets } = req.body || {};
+    const { prompt, targets: rawTargets, fridgeItems: fridgeItemsFromBody } = req.body || {};
 
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({ message: 'Brak promptu dla AI.' });
     }
 
     // kaloryka „z bazy” – przychodzi z frontu w body.targets
-const targets = normalizeTargets(rawTargets);
-const dayKcal = targets.kcal || 0;
+    const targets = normalizeTargets(rawTargets);
+    const dayKcal = targets.kcal || 0;
 
-const mealTargets = calcMealTargets(dayKcal);
+    const mealTargets = calcMealTargets(dayKcal);
 
-// NOWE:
-const macroTargets = {
-  protein: targets.protein || 0,
-  fat: targets.fat || 0,
-  carbs: targets.carbs || 0,
-};
+    const macroTargets = {
+      protein: targets.protein || 0,
+      fat: targets.fat || 0,
+      carbs: targets.carbs || 0,
+    };
 
-const mealMacroTargets = MEAL_SLOTS.map((m) => ({
-  slot: m.slot,
-  share: m.share,
-  protein: Math.round(macroTargets.protein * m.share),
-  fat: Math.round(macroTargets.fat * m.share),
-  carbs: Math.round(macroTargets.carbs * m.share),
-}));
+    const mealMacroTargets = MEAL_SLOTS.map((m) => ({
+      slot: m.slot,
+      share: m.share,
+      protein: Math.round(macroTargets.protein * m.share),
+      fat: Math.round(macroTargets.fat * m.share),
+      carbs: Math.round(macroTargets.carbs * m.share),
+    }));
 
-const host = process.env.OLLAMA_HOST.replace(/\/+$/, '');
-const model = process.env.OLLAMA_MODEL;
+    // ===== LODÓWKA (priorytet #2) =====
+    let fridgeItems = normalizeFridgeItemsFromBody(fridgeItemsFromBody);
 
-const systemPrompt = `
+    if (!fridgeItems.length && req.user?.id) {
+      try {
+        fridgeItems = await loadFridgeItemsFromDb(req.user.id);
+      } catch (e) {
+        console.warn('[AI-DAY-PLAN] Nie udało się pobrać lodówki z DB:', e?.message || e);
+        fridgeItems = [];
+      }
+    }
+
+    const fridgeText = fridgeToPromptText(fridgeItems);
+
+    const hostRaw = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
+    const host = hostRaw.replace(/\/+$/, '');
+    const model = process.env.OLLAMA_MODEL;
+
+    const systemPrompt = `
 Jesteś asystentem dietetycznym.
+
+PRIORYTETY (bardzo ważne):
+1) Najpierw stosuj się do wymagań z promptu użytkownika (dieta, zakazy, preferencje, cel).
+2) Następnie (jeśli nie koliduje z pkt 1) maksymalnie wykorzystuj produkty z lodówki, szczególnie te z krótką datą.
+3) Dopiero na końcu dodawaj własne propozycje (minimalna liczba dodatkowych produktów).
 
 Masz przygotować JEDEN plan dnia z 5 posiłkami:
 - Śniadanie
@@ -128,9 +202,8 @@ Masz przygotować JEDEN plan dnia z 5 posiłkami:
 - Podwieczorek
 - Kolacja
 
-Dzienna kaloryczność powinna być zbliżona do ~${Math.round(
-  dayKcal || 0
-)} kcal (jeśli 0, to ułóż rozsądny dzień np. 2000–2500 kcal).
+Dzienna kaloryczność powinna być zbliżona do ~${Math.round(dayKcal || 0)} kcal
+(jeśli 0, to ułóż rozsądny dzień np. 2000–2500 kcal).
 
 Dzienny cel makroskładników (z bazy użytkownika, wartości orientacyjne):
 - białko: ~${Math.round(macroTargets.protein || 0)} g
@@ -139,79 +212,47 @@ Dzienny cel makroskładników (z bazy użytkownika, wartości orientacyjne):
 
 Podział kalorii na posiłki:
 ${mealTargets
-  .map(
-    (m) =>
-      `- ${m.slot}: około ${m.targetKcal} kcal (${Math.round(m.share * 100)}%)`
-  )
+  .map((m) => `- ${m.slot}: około ${m.targetKcal} kcal (${Math.round(m.share * 100)}%)`)
   .join('\n')}
 
 Podział makroskładników na posiłki (wartości docelowe, możesz zaokrąglać):
 ${mealMacroTargets
-  .map(
-    (m) =>
-      `- ${m.slot}: ~${m.protein} g białka, ~${m.fat} g tłuszczu, ~${m.carbs} g węglowodanów`
-  )
+  .map((m) => `- ${m.slot}: ~${m.protein} g białka, ~${m.fat} g tłuszczu, ~${m.carbs} g węglowodanów`)
   .join('\n')}
 
 Zwróć **WYŁĄCZNIE** poprawny JSON, bez dodatkowego tekstu, bez markdown.
 
 Struktura JSON:
-
 {
   "title": "krótki tytuł dnia po polsku",
   "description": "1-2 zdania opisu po polsku",
   "meals": [
     {
       "slot": "Śniadanie" | "II śniadanie" | "Obiad" | "Podwieczorek" | "Kolacja",
-      "totals": {
-        "kcal": liczba,
-        "protein": liczba,
-        "fat": liczba,
-        "carbs": liczba
-      },
-      "items": [
-        { "name": "nazwa produktu", "grams": liczba },
-        ...
-      ]
-    },
-    ...
+      "totals": { "kcal": liczba, "protein": liczba, "fat": liczba, "carbs": liczba },
+      "items": [ { "name": "nazwa produktu", "grams": liczba }, ... ]
+    }
   ]
 }
 
 Ważne:
 - ZAWSZE zwróć dokładnie 5 posiłków, po jednym dla każdego slotu.
 - Używaj dokładnie takich nazw slotów: "Śniadanie", "II śniadanie", "Obiad", "Podwieczorek", "Kolacja".
-- "items" to lista prostych produktów / SKŁADNIKÓW (np. "jajka", "ryż biały", "pierś z kurczaka",
-  "kiełbasa", "marchew", "papryka czerwona", "pomidor", "ogórek", "ziemniaki", "oliwa z oliwek",
-  "jogurt naturalny", "ser żółty", "chleb pszenny") z gramaturą.
-- Używaj składników, a nie gotowych dań:
-  • NIE wpisuj w "items" nazw typu "tosty", "kanapka", "burger", "wrap", "pizza", "zapiekanka", "zupa", "gulasz".
-  • Jeśli chcesz zrobić np. tosty, rozbij je na składniki: "chleb", "ser żółty", "szynka", "masło" z konkretnymi gramami.
-- Preferuj zwykłe produkty jak mięso (np. "pierś z kurczaka", "schab", "karkówka", "kiełbasa"),
-  kasze, ryż, makarony, nabiał, konkretne warzywa i owoce – a nie abstrakcyjne dania.
-- Nazwy produktów i opisy mają być po polsku.
+- "items" to lista prostych produktów / SKŁADNIKÓW (nie gotowych dań) z gramaturą.
+- Jeśli musisz dodać produkty spoza lodówki, dodaj ich jak najmniej (np. 0–5 na cały dzień).
+- W polu "totals" wpisuj liczby (bez jednostek), staraj się trzymać celów kcal i makro.
 
-- W polu "totals" wpisuj makroskładniki i kalorie posiłku jako LICZBY (bez jednostek, bez tekstu),
-  tak aby suma po wszystkich posiłkach była możliwie bliska dziennym celom kcal/białko/tłuszcz/węgle.
-  Wartości mogą być przybliżone, ale staraj się, by:
-  • suma kcal ≈ dzienny cel kcal,
-  • suma białka/tłuszczu/węgli ≈ dzienne cele makro,
-  • podział między posiłkami odpowiada podanemu podziałowi procentowemu.
-
-- Zadbaj, aby kaloryczność i makroskładniki posiłków były możliwie bliskie wskazanemu podziałowi procentowemu.
-- Każdy posiłek powinien mieć zwykle co najmniej 2–3 składniki (np. białko + węgle + tłuszcz),
-  chyba że to prosty shake lub jogurt z dodatkami.
-- Pole "grams" to zawsze liczba w gramach (bez "g", bez innych jednostek).
-
-Zwróć TYLKO jeden obiekt JSON dokładnie w opisanej strukturze, bez żadnych komentarzy, nagłówków, markdown ani dodatkowych pól.
+Zwróć TYLKO jeden obiekt JSON dokładnie w opisanej strukturze, bez komentarzy i bez dodatkowych pól.
 `.trim();
 
-const userContext = `
-Dodatkowy opis / preferencje od użytkownika:
+    const userContext = `
+PROMPT UŻYTKOWNIKA (priorytet #1):
 ${prompt}
+
+LODÓWKA — produkty dostępne do wykorzystania (priorytet #2):
+${fridgeText}
 `.trim();
 
-    // Uwaga: Node 22 ma globalny fetch, nie trzeba node-fetch
     const ollamaResp = await fetch(`${host}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -238,20 +279,15 @@ ${prompt}
     const content = (ollamaJson?.message?.content || '').trim();
 
     if (!content) {
-      return res.status(502).json({
-        message: 'Pusta odpowiedź od modelu.',
-      });
+      return res.status(502).json({ message: 'Pusta odpowiedź od modelu.' });
     }
 
     let parsed;
     try {
-      // na wszelki wypadek wycinamy od pierwszej { do ostatniej }
       let txt = content;
       const first = txt.indexOf('{');
       const last = txt.lastIndexOf('}');
-      if (first !== -1 && last !== -1) {
-        txt = txt.slice(first, last + 1);
-      }
+      if (first !== -1 && last !== -1) txt = txt.slice(first, last + 1);
       parsed = JSON.parse(txt);
     } catch (e) {
       return res.status(502).json({
@@ -289,6 +325,7 @@ ${prompt}
         debug: {
           mealTargets,
           targets,
+          fridgeItems,
           ollamaRaw: ollamaJson,
         },
       });
@@ -303,5 +340,4 @@ ${prompt}
   }
 });
 
-// KLUCZOWE: eksportujemy **czysty router** (funkcję), nie obiekt.
 module.exports = router;
