@@ -1,47 +1,50 @@
 # CzyziuMakro
 
-CzyziuMakro to aplikacja backendowa pomagająca rejestrować posiłki, makra, zapasy produktów i zamienniki. Zawiera zabezpieczone API z JWT, integrację z MongoDB, podstawowe endpointy AI (Ollama), wysyłkę wiadomości e-mail oraz generowanie list zakupów.
+Aplikacja webowa do planowania i analizy żywienia: rejestrowanie posiłków, kontrola kcal/makro, zarządzanie „lodówką” (zapasami) oraz generowanie list zakupów. Projekt zawiera backend (Node.js + Express) oraz statyczny frontend serwowany z katalogu `public/`. Opcjonalnie dostępny jest moduł AI oparty o lokalnie uruchomioną usługę Ollama. 
 
-## Wymagania wstępne
-- Node.js 18+
-- działająca instancja MongoDB (domyślnie `mongodb://127.0.0.1:27017/czyziumakro`) lub tryb in-memory w DEV
-- (opcjonalnie) konto SMTP/Gmail do formularza kontaktowego, resetowania hasła i list zakupów
+---
 
-## Instalacja
+## Funkcje
+
+- **Rejestracja i logowanie** (JWT)
+- **Profil i cele**: wyliczanie i ustawianie dziennych celów kcal/makro
+- **Produkty**: baza produktów z wartościami na 100g (CRUD, izolacja po użytkowniku)
+- **Dania**: definicje dań (lista składników + gramatura), tryb prywatny/publiczny (tylko odczyt) 
+- **Kalendarz posiłków**: planowanie dnia w 5 stałych slotach (Śniadanie, II śniadanie, Obiad, Podwieczorek, Kolacja) i bieżący bilans
+- **Lodówka / zapasy**: ilości + termin ważności
+- **Lista zakupów**: zakres dat → zapotrzebowanie z planu – stan lodówki = lista; generowanie PDF i (opcjonalnie) wysyłka e-mail 
+- **AI (opcjonalnie)**:
+  - generowanie posiłku / planu dnia,
+  - walidacja odpowiedzi (JSON), mapowanie składników do bazy,
+  - przeliczenia i ewentualne skalowanie porcji,
+  - zapis do kalendarza dopiero po akceptacji użytkownika 
+
+---
+
+## Architektura (skrót)
+
+- **Backend**: Node.js + Express + REST API (JSON)
+- **Baza**: MongoDB (+ Mongoose)
+- **Frontend**: statyczne pliki w `public/` serwowane przez backend
+- **AI**: Ollama (lokalny serwer modeli), model konfigurowany przez `OLLAMA_MODEL` (np. `gemma3:4b`) 
+
+---
+
+## Wymagania
+
+Minimalnie:
+- Node.js (zalecane LTS) + npm
+- MongoDB (lokalnie lub kontener)
+- przeglądarka internetowa
+
+Opcjonalnie:
+- Ollama (moduł AI)
+- SMTP (wysyłka e-mail) :contentReference[oaicite:6]{index=6}
+
+---
+
+## Instalacja i uruchomienie
+
+1) Instalacja zależności:
 ```bash
 npm install
-```
-
-## Uruchomienie
-- Środowisko developerskie z automatycznym restartem: `npm run dev`
-- DEV z bazą w pamięci (mongo-memory-server): `npm run dev:mem` przy `MONGO_URI=memory`
-- Produkcyjnie: `npm start`
-
-Serwer HTTP startuje na porcie `PORT` (domyślnie 4000) i loguje połączenie z MongoDB.
-
-## Kluczowe zmienne środowiskowe
-- `PORT` – port API
-- `MONGO_URI` / `MONGODB_URI` – adres MongoDB (`memory` uruchamia bazę w pamięci w DEV)
-- `MONGO_DB_NAME` / `MONGODB_DB` – nazwa bazy (opcjonalnie)
-- `ALLOW_MEMORY_DB` – `true/false` czy dopuścić fallback do bazy in-memory w DEV
-- `ORIGIN` – dozwolony origin dla CORS
-- `JWT_SECRET`, `JWT_EXPIRES_IN` – konfiguracja tokenów
-- `MAIL_USER` / `MAIL_PASS` / `MAIL_TO` – formularz kontaktowy
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM` – reset hasła i listy zakupów
-- `FRONTEND_URL` – adres używany w linkach resetu hasła
-- `OLLAMA_HOST`, `OLLAMA_MODEL`, `AI_DEBUG` – obsługa endpointów AI
-
-## Funkcje API
-- **Autoryzacja i profile**: rejestracja/logowanie z normalizacją username, obsługa JWT i profil użytkownika.
-- **Produkty, lodówka, posiłki, kalendarz**: CRUD-y bazujące na MongoDB.
-- **AI (Ollama)**: sugestie posiłków i receptury z limiterem żądań.
-- **Formularz kontaktowy**: wysyła e-mail przez Gmail/SMTP z pola `/api/contact`.
-- **Reset hasła**: generowanie tokenu i wysyłka maila z linkiem.
-- **Lista zakupów**: przygotowanie i wysyłka PDF na maila.
-- **Statyczny frontend**: serwowany z katalogu `public/` z fallbackiem do `index.html`.
-
-## Testy
-Uruchom testy jednostkowe poleceniem:
-```bash
-npm test
-```
